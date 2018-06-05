@@ -23,12 +23,13 @@ int mpi_lsa_com_type_recv(MPI_Comm * com, int * type){
 }
 /*receive type information functionality*/
 int mpi_lsa_com_type_send(MPI_Comm * com, int * type){
-  MPI_Request aReq[2];
+  int remote_size;
+  MPI_Comm_remote_size(* com, &remote_size);
+  MPI_Request aReq[remote_size];
   MPI_Status status;
-  for(int i = 0; i < 2; i++){
+  for(int i = 0; i < remote_size; i++){
     MPI_Isend(type, 1, MPI_INT, i, i,*com, &aReq[i]);
     MPI_Wait(&aReq[i], &status);
   }
-
   return 0;
 }

@@ -24,28 +24,18 @@ int main( int argc, char *argv[] ) {
   MPI_Comm_spawn( "./arnoldi.exe", MPI_ARGV_NULL, ARNOLDI_SIZE, MPI_INFO_NULL, 0, MPI_COMM_WORLD, &COMM_ARNOLDI, MPI_ERRCODES_IGNORE);
   MPI_Comm_spawn( "./lsqr.exe", MPI_ARGV_NULL, LS_SIZE, MPI_INFO_NULL, 0, MPI_COMM_WORLD, &COMM_LS, MPI_ERRCODES_IGNORE);
 
-  int exit_type = 666;
-  int out_sended = 0, flag;
-  MPI_Status status;
+  int exit_type;
 
+  //receive exit type from GMRES Componet
+  mpi_lsa_com_type_recv(&COMM_GMRES, &exit_type);
+
+  //send exit type to LS and ERAM Components
   mpi_lsa_com_type_send(&COMM_ARNOLDI, &exit_type);
-  //send exit_type to ERAM
-/*
-  for(int i = 0; i < out_sended; i++){
-    MPI_Test(&aReq[i],&flag,&status);
-    //if not cancel it
-    if(!flag){
-		  MPI_Cancel(&aReq[i]);
-	  }
-  }
-  for(int i = 0; i < ARNOLDI_SIZE; i++){
-    MPI_Isend(&exit_type, 1, MPI_INT, i, i,COMM_ARNOLDI, &aReq[i]);
-    out_sended++;
-//    MPI_Send(&exit_type, 1, MPI_INT, i, i,COMM_ARNOLDI);
-    MPI_Wait(&aReq[i], &status);
-  }
-  printf("Debug ]> Father out_sended = %d\n", out_sended);
-*/
+  mpi_lsa_com_type_send(&COMM_LS, &exit_type);
+
+  printf("Info ]> Father send exit type to ERAM and LS Component\n");
+
+
   MPI_Finalize();
 
   return 0;

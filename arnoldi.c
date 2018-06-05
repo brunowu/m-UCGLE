@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <mpi.h>
-#include "../mpi_lsa_com.h"
+#include "Libs/mpi_lsa_com.h"
 
 int main( int argc, char *argv[] ){
   MPI_Init( &argc, &argv );
@@ -21,30 +21,12 @@ int main( int argc, char *argv[] ){
   }
 
   //check if any type to receive
+  mpi_lsa_com_type_recv(&COMM_FATHER, &exit_type);
 
-  int flag = 0, count;
-  MPI_Status status;
-  MPI_Request request;
-
-  while(!flag){
-    MPI_Iprobe(MPI_ANY_SOURCE,MPI_ANY_TAG,COMM_FATHER, &flag, &status);
-  }
-
-  if(flag){
-    MPI_Get_count(&status,MPI_INT,&count);
-
-    printf("Debug ]> Rank %d on ERAM: size = %d \n",arank, count );
-
-    if(count == 1){
-      MPI_Recv(&exit_type, 1, MPI_INT, status.MPI_SOURCE, status.MPI_TAG, COMM_FATHER, &status);
-    }
-
-    printf("Debug ]> Rank %d on ERAM: receive exit type = %d \n", arank, exit_type);
-  }
-
+  //exit if receive the exit signal
   if(exit_type == 666){
     if(arank == 0){
-      printf("Info ]> ERAM Receive quit information and then exit\n");
+      printf("Info ]> ERAM Receive quit information from Father and then exit\n");
     }
   }
   MPI_Finalize();
