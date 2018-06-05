@@ -29,12 +29,31 @@ int main( int argc, char *argv[] ) {
   //receive exit type from GMRES Componet
   mpi_lsa_com_type_recv(&COMM_GMRES, &exit_type);
 
+  int out_sended_type_a = 0, out_sended_type_l = 0;
   //send exit type to LS and ERAM Components
-  mpi_lsa_com_type_send(&COMM_ARNOLDI, &exit_type);
-  mpi_lsa_com_type_send(&COMM_LS, &exit_type);
+  mpi_lsa_com_type_send(&COMM_ARNOLDI, &exit_type, &out_sended_type_a);
+  mpi_lsa_com_type_send(&COMM_LS, &exit_type, &out_sended_type_l);
 
   printf("Info ]> Father send exit type to ERAM and LS Component\n");
+  printf("Debug ]> out_sended_type_a = %d / out_sended_type_l = %d \n", out_sended_type_a, out_sended_type_l);
 
+  double *data;
+  int length = 5;
+
+  data = (double *)malloc(length*sizeof(double));
+  double set[5] = {1,2,3,4,5};
+  
+  for(int i = 0; i < length; i++){
+    data[i] = set[i];
+  }
+
+  mpi_lsa_com_array_send(&COMM_GMRES, &length, data);
+
+  for(int i = 0; i < length; i++){
+    printf("Debug ]>: Father send data[%d] = %f\n", i, data[i] );
+  }
+
+  free(data);
 
   MPI_Finalize();
 
