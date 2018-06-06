@@ -20,15 +20,36 @@ int main( int argc, char *argv[] ){
     printf("Info ]> The Comm world size of ERAM is %d \n", asize);
   }
 
+  double *data;
+  int length = 5;
+  int i;
+
+  data = (double *)malloc(length*sizeof(double));
+  double set[5] = {1,2,3,4,5};
+
+  for(i = 0; i < length; i++){
+    data[i] = set[i];
+  }
+
+  mpi_lsa_com_array_send(&COMM_FATHER, &length, data);
+
   //check if any type to receive
-  mpi_lsa_com_type_recv(&COMM_FATHER, &exit_type);
+
+  //check if any type to receive
+  if(!mpi_lsa_com_type_recv(&COMM_FATHER, &exit_type)){
+    if(arank == 0){
+      printf("Info ]> ERAM Receive signal information from Father\n");
+    }
+  }
 
   //exit if receive the exit signal
   if(exit_type == 666){
     if(arank == 0){
-      printf("Info ]> ERAM Receive quit information from Father and then exit\n");
+      printf("Info ]> ERAM exit\n");
     }
   }
+
+  free(data);
   MPI_Finalize();
 
   return 0;

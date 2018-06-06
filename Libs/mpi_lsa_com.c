@@ -28,15 +28,17 @@ int mpi_lsa_com_type_send(MPI_Comm * com, int * type, int *count){
   MPI_Request aReq[remote_size];
   MPI_Status status;
 
+  int i;
+
   //check if previous requests where completed, if no, cancel it then
-  for(int i = 0; i < *count; i++){
+  for(i = 0; i < *count; i++){
     MPI_Test(&aReq[i],&flag,&status);
     // if not cancel it
     if(!flag){
       MPI_Cancel(&aReq[i]);
     }
   }
-  for(int i = 0; i < remote_size; i++){
+  for(i = 0; i < remote_size; i++){
     MPI_Isend(type, 1, MPI_INT, i, i,*com, &aReq[i]);
     MPI_Wait(&aReq[i], &status);
     *count = *count+1;
@@ -50,16 +52,20 @@ int mpi_lsa_com_array_send(MPI_Comm * com, int * size, double * data){
   int remote_size;
   MPI_Comm_remote_size(* com, &remote_size);
 
+  int i;
+
   MPI_Request array_Req[remote_size];
   MPI_Status status;
+
   double *array_out_sended_buffer;
   array_out_sended_buffer = (double *) malloc(*size*sizeof(double));
 
-  for(int i = 0; i < * size; i++){
+
+  for(i = 0; i < * size; i++){
     array_out_sended_buffer[i] = data[i];
   }
 
-  for(int i = 0; i < remote_size; i++){
+  for(i = 0; i < remote_size; i++){
     MPI_Isend(array_out_sended_buffer, *size, MPI_DOUBLE, i, i, *com, &array_Req[i]);
     MPI_Wait(&array_Req[i], &status);
   }
@@ -73,16 +79,20 @@ int mpi_lsa_com_array_recv(MPI_Comm * com, int * size, double * data){
   int flag = 0;
   MPI_Status status;
   MPI_Request request;
+  int i;
+
 
   while(!flag){
     MPI_Iprobe(MPI_ANY_SOURCE,MPI_ANY_TAG, *com, &flag, &status);
   }
 
   if(flag){
+
     MPI_Get_count(&status,MPI_INT,size);
     if(*size == 1){
       return 1;
     }
+  
     //how large the array to receive is
     MPI_Get_count(&status,MPI_DOUBLE,size);
 
@@ -90,5 +100,6 @@ int mpi_lsa_com_array_recv(MPI_Comm * com, int * size, double * data){
       MPI_Recv(data, *size, MPI_DOUBLE, status.MPI_SOURCE, status.MPI_TAG, * com, &status);
     }
   }
+
   return 0;
 }

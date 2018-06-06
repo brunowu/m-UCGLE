@@ -19,25 +19,27 @@ int main( int argc, char *argv[] ){
     printf("Info ]> The Comm world size of GMRES is %d \n", gsize);
   }
 
+  double *data_recv;
+  int length = 5;
+  int i;
+
+  data_recv = (double *)malloc(length*sizeof(double));
+
+  if(!mpi_lsa_com_array_recv(&COMM_FATHER, &length, data_recv)){
+    printf("done\n");
+    for(i = 0; i < length; i++){
+      printf("Debug ]>: GMRES rank = %d, data[%d] = %f\n",grank, i, data_recv[i] );
+    }
+  }
+
   int out_sended_type = 0;
   mpi_lsa_com_type_send(&COMM_FATHER, &type, &out_sended_type);
   if(grank == 0){
     printf("Debug ]> out_sended_type = %d\n", out_sended_type);
-
-  }
-  double *data;
-  int length = 5;
-  MPI_Request mq;
-  data = (double *)malloc(length*sizeof(length));
-
-  mpi_lsa_com_array_recv(&COMM_FATHER, &length, data);
-
-
-  for(int i = 0; i < length; i++){
-    printf("Debug ]>: GMRES rank = %d, data[%d] = %f\n",grank, i, data[i] );
   }
 
-  free(data);
+  free(data_recv);
+
   MPI_Finalize();
 
   return 0;
