@@ -50,6 +50,9 @@ int main( int argc, char *argv[] ){
 
   free(data_recv);
   free(data_send);
+
+  MPI_Comm_free(&COMM_FATHER);
+
   MPI_Finalize();
 
   return 0;

@@ -50,6 +50,7 @@ int main( int argc, char *argv[] ){
   }
 
   free(data);
+
   MPI_Finalize();
 
   return 0;

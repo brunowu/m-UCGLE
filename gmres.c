@@ -26,7 +26,6 @@ int main( int argc, char *argv[] ){
   data_recv = (double *)malloc(length*sizeof(double));
 
   if(!mpi_lsa_com_array_recv(&COMM_FATHER, &length, data_recv)){
-    printf("done\n");
     for(i = 0; i < length; i++){
       printf("Debug ]>: GMRES rank = %d, data[%d] = %f\n",grank, i, data_recv[i] );
     }
@@ -39,7 +38,7 @@ int main( int argc, char *argv[] ){
   }
 
   free(data_recv);
-
+  MPI_Comm_free(&COMM_FATHER);
   MPI_Finalize();
 
   return 0;

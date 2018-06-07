@@ -1,47 +1,64 @@
 #include <stdio.h>
 #include <mpi.h>
 #include "Libs/mpi_lsa_com.h"
+#include "Libs/args_parser.h"
+#include "utils/logo.h"
 
 int main( int argc, char *argv[] ) {
+
+  int gmres_nb, arnoldi_nb, gmres_proc, arnoldi_proc, ls_proc = 1;
+  char **gmres_cmds;
+  char **arnoldi_cmds;
+  char *lsqr_cmd;
 
   MPI_Init( &argc, &argv );
 
   int size, rank;
   int i, j;
 
+  logo();
+
   MPI_Comm_size( MPI_COMM_WORLD, &size );
   MPI_Comm_rank( MPI_COMM_WORLD, &rank );
 
-  int gmres_nb = 2; //gmres number = spawn
-
-  int arnoldi_nb = 2;
-
-  char gmres_cmds[][20] = {"./gmres.exe", "./gmres2.exe"};
-
-  char arnoldi_cmds[][20] = {"./arnoldi.exe", "./arnoldi2.exe"};
-
-//  gmres_cmd = (char *) malloc (gmres_nb * sizeof (char));
-
-  if(rank == 0){
-    printf("Info ]> The Comm world size of FATHER is %d \n", size);
+  //Main world of MUCGLE should be 1
+  if(size != 1){
+    printf("Error ]> The Comm world size of manager engine should be 1\n");
+    return 1;
   }
 
-  int GMRES_SIZE = 2, ARNOLDI_SIZE = 2, LS_SIZE = 1;
+  border_print2();
+  center_print("Start Initialization", 79);
+  border_print2();
+  //Parser the arguments to initialize MUCLGE
+  argsParser(argc, argv, &gmres_nb, &arnoldi_nb, &gmres_proc, &arnoldi_proc);
+
+  //Parser the executables string name for spawning
+  gmres_cmds = argsParserGmresExec(argc, argv, gmres_nb);
+  arnoldi_cmds = argsParserArnoldiExec(argc, argv, arnoldi_nb);
+  lsqr_cmd = argsParserLsqrExec(argc, argv);
 
   MPI_Comm COMM_GMRES[2], COMM_ARNOLDI[2], COMM_LS;
-  MPI_Request gReq[GMRES_SIZE], aReq[ARNOLDI_SIZE], lReq[LS_SIZE];
+  MPI_Request gReq[gmres_proc], aReq[arnoldi_proc], lReq[ls_proc];
   MPI_Status gStatus, aStatus, lStatus;
 
+  border_print2();
+  center_print("Start Spawning Executables", 79);
+  border_print2();
+
   for(i = 0; i < gmres_nb; i++){
-    MPI_Comm_spawn( gmres_cmds[i], MPI_ARGV_NULL, GMRES_SIZE, MPI_INFO_NULL, 0, MPI_COMM_WORLD, &COMM_GMRES[i], MPI_ERRCODES_IGNORE);
+    MPI_Comm_spawn( gmres_cmds[i], MPI_ARGV_NULL, gmres_proc, MPI_INFO_NULL, 0, MPI_COMM_WORLD, &COMM_GMRES[i], MPI_ERRCODES_IGNORE);
   }
-//  MPI_Comm_spawn( "./gmres2.exe", MPI_ARGV_NULL, GMRES_SIZE, MPI_INFO_NULL, 0, MPI_COMM_WORLD, &COMM_GMRES2, MPI_ERRCODES_IGNORE);
 
   for( j = 0; j < arnoldi_nb; j++){
-    MPI_Comm_spawn( arnoldi_cmds[j], MPI_ARGV_NULL, ARNOLDI_SIZE, MPI_INFO_NULL, 0, MPI_COMM_WORLD, &COMM_ARNOLDI[j], MPI_ERRCODES_IGNORE);
+    MPI_Comm_spawn( arnoldi_cmds[j], MPI_ARGV_NULL, arnoldi_proc, MPI_INFO_NULL, 0, MPI_COMM_WORLD, &COMM_ARNOLDI[j], MPI_ERRCODES_IGNORE);
   }
 
-  MPI_Comm_spawn( "./lsqr.exe", MPI_ARGV_NULL, LS_SIZE, MPI_INFO_NULL, 0, MPI_COMM_WORLD, &COMM_LS, MPI_ERRCODES_IGNORE);
+  MPI_Comm_spawn( lsqr_cmd, MPI_ARGV_NULL, ls_proc, MPI_INFO_NULL, 0, MPI_COMM_WORLD, &COMM_LS, MPI_ERRCODES_IGNORE);
+
+  border_print2();
+  center_print("Start Resolving Linear Systems by MUCGLE", 79);
+  border_print2();
 
   double *data;
   int length = 5;
@@ -99,9 +116,24 @@ int main( int argc, char *argv[] ) {
     printf("Info ]> Father send exit type to ERAM and LS Component\n");
   }
 
+  border_print2();
+  center_print("Remove Application", 79);
+  border_print2();
+
   free(data);
   free(data_recv);
+  free(gmres_cmds);
+  free(arnoldi_cmds);
+  free(lsqr_cmd);
 
+  MPI_Comm_free(&COMM_LS);
+  for(j = 0; j < arnoldi_nb; j++){
+    MPI_Comm_free(&COMM_ARNOLDI[j]);
+  }
+
+  for(j = 0; j < gmres_nb; j++){
+    MPI_Comm_free(&COMM_GMRES[j]);
+  }
   MPI_Finalize();
 
   return 0;
