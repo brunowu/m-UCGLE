@@ -3,6 +3,8 @@
 
 #include <complex>
 #include <algorithm>
+#include <cmath>
+
 
 int convhull(std::complex<double> *ab, std::complex<double> *c, std::complex<double> *d, int n, int *ne, int offset, int mu){
 

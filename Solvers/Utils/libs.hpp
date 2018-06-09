@@ -3,6 +3,8 @@
 
 #include <complex>
 #include <algorithm>
+#include <cmath>
+
 
 /* calcul de l'epsilon machine */
 double epsilon(void){

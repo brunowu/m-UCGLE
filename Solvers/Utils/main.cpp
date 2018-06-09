@@ -1,6 +1,7 @@
 #include <iostream>
 #include "libs.hpp"
 #include "convhull.hpp"
+#include "ellipse.hpp"
 
 int main()
 {
