@@ -3,11 +3,11 @@
 
 /* calcul de l'epsilon machine */
 double epsilon(void){
-	double one=(PetscReal)1.0, two=(PetscReal)2.0,temp=(PetscReal)1.0;
+	double one = 1.0, two = 2.0,temp = 1.0;
 
-	while(one+temp>one)
-		temp/=two;
-
+	while(one+temp>one){
+    temp/=two;
+  }
 	return two*temp;
 }
 
