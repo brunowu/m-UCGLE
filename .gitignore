@@ -37,6 +37,7 @@
 *.hex
 master_program
 worker_program
+blockKrylovSchur
 
 # Debug files
 *.dSYM/
