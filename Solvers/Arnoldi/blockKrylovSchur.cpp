@@ -1,21 +1,9 @@
-// ***********************************************************************
-// @HEADER
-//
-// This test is for BlockKrylovSchur solving a standard (Ax=xl) complex Hermitian
-// eigenvalue problem.
-//
-// The matrix used is from MatrixMarket:
-// Name: MHD1280B: Alfven Spectra in Magnetohydrodynamics
-// Source: Source: A. Booten, M.N. Kooper, H.A. van der Vorst, S. Poedts and J.P. Goedbloed University of Utrecht, the Netherlands
-// Discipline: Plasma physics
-// URL: http://math.nist.gov/MatrixMarket/data/NEP/mhd/mhd1280b.html
-// Size: 1280 x 1280
-// NNZ: 22778 entries
+//Block KrylovSchur METHODs to approximate the eigevalues
 
 #include "AnasaziConfigDefs.hpp"
 #include "AnasaziTypes.hpp"
 
-#include "AnasaziTpetraAdapter.hpp"
+#include "AnasaziTpetraAdapter.hpp" //Anasazi interface to Tpetra
 #include "AnasaziBasicEigenproblem.hpp"
 #include "AnasaziBlockKrylovSchurSolMgr.hpp"
 #include <Teuchos_CommandLineProcessor.hpp>
@@ -46,7 +34,7 @@ int main(int argc, char *argv[])
   typedef Teuchos::ScalarTraits<ST>          SCT;
   typedef SCT::magnitudeType                  MT;
   typedef Tpetra::MultiVector<ST>             MV;
-  typedef MV::global_ordinal_type             GO;
+  typedef MV::global_ordinal_type             GO; //global indices for matrices
   typedef Tpetra::Operator<ST>                OP;
   typedef Anasazi::MultiVecTraits<ST,MV>     MVT;
   typedef Anasazi::OperatorTraits<ST,MV,OP>  OPT;
@@ -63,6 +51,12 @@ int main(int argc, char *argv[])
     Tpetra::DefaultPlatform::getDefaultPlatform ().getComm ();
 
   const int MyPID = comm->getRank ();
+
+  /*stantard MPI functionality*/
+  int rank;
+  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+  std::cout << "my rank = " << rank << "\n";
+  ///////////////////////////////
 
   bool verbose = false;
   bool debug = false;
@@ -111,6 +105,7 @@ int main(int argc, char *argv[])
   if (MyPID == 0) {
     info = readHB_newmat_double(filename.c_str(),&dim,&dim2,&nnz,&colptr,&rowind,&dvals);
     // find maximum NNZ over all rows
+    cout << "Matrix Info: Row Num = " << dim << ", Col Num = " << dim2 << ", nnz = " << nnz << "\n";
     vector<int> rnnz(dim,0);
     for (int *ri=rowind; ri<rowind+nnz; ++ri) {
       ++rnnz[*ri-1];
@@ -123,6 +118,7 @@ int main(int argc, char *argv[])
     colptr = NULL;
     rowind = NULL;
   }
+
   Teuchos::broadcast(*comm,0,&info);
   Teuchos::broadcast(*comm,0,&nnz);
   Teuchos::broadcast(*comm,0,&dim);
@@ -219,6 +215,7 @@ int main(int argc, char *argv[])
   Anasazi::Eigensolution<ST,MV> sol = problem->getSolution();
   RCP<MV> evecs = sol.Evecs;
   int numev = sol.numVecs;
+  ST *data  = new ST [numev];
 
   if (numev > 0) {
     std::ostringstream os;
@@ -230,6 +227,11 @@ int main(int argc, char *argv[])
     Teuchos::SerialDenseMatrix<int,ST> T (numev, numev);
     for (int i=0; i<numev; i++) {
       T(i,i) = ST(sol.Evals[i].realpart,sol.Evals[i].imagpart);
+      data[i] = ST(sol.Evals[i].realpart,sol.Evals[i].imagpart);
+    }
+
+    for (int i=0; i<numev; i++) {
+      cout << "data[" << i << "] = " << data[i] << "\n";
     }
     RCP<MV> Kvecs = MVT::Clone( *evecs, numev );
 

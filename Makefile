@@ -520,6 +520,19 @@ blockKrylovSchur/fast:
 	$(MAKE) -f Solvers/Arnoldi/CMakeFiles/blockKrylovSchur.dir/build.make Solvers/Arnoldi/CMakeFiles/blockKrylovSchur.dir/build
 .PHONY : blockKrylovSchur/fast
 
+#=============================================================================
+# Target rules for targets named Teuchos_LAPACK
+
+# Build rule for target.
+Teuchos_LAPACK: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Teuchos_LAPACK
+.PHONY : Teuchos_LAPACK
+
+# fast build rule for target.
+Teuchos_LAPACK/fast:
+	$(MAKE) -f Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/build.make Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/build
+.PHONY : Teuchos_LAPACK/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -560,6 +573,7 @@ help:
 	@echo "... Continuous"
 	@echo "... Experimental"
 	@echo "... blockKrylovSchur"
+	@echo "... Teuchos_LAPACK"
 .PHONY : help
 
 

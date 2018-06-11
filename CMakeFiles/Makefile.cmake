@@ -13,6 +13,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeLists.txt"
   "Solvers/Arnoldi/CMakeLists.txt"
   "Solvers/CMakeLists.txt"
+  "Solvers/LS/CMakeLists.txt"
   "/Users/xwu/phd_xwu/trilinos-12.12.1-Source/installation/lib/cmake/Amesos/AmesosConfig.cmake"
   "/Users/xwu/phd_xwu/trilinos-12.12.1-Source/installation/lib/cmake/Amesos/AmesosTargets-debug.cmake"
   "/Users/xwu/phd_xwu/trilinos-12.12.1-Source/installation/lib/cmake/Amesos/AmesosTargets.cmake"
@@ -189,6 +190,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "Solvers/CMakeFiles/CMakeDirectoryInformation.cmake"
   "Solvers/Arnoldi/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "Solvers/LS/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -222,4 +224,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/Continuous.dir/DependInfo.cmake"
   "CMakeFiles/Experimental.dir/DependInfo.cmake"
   "Solvers/Arnoldi/CMakeFiles/blockKrylovSchur.dir/DependInfo.cmake"
+  "Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/DependInfo.cmake"
   )

@@ -960,16 +960,19 @@ clean: CMakeFiles/Experimental.dir/clean
 
 # Convenience name for "all" pass in the directory.
 Solvers/all: Solvers/Arnoldi/all
+Solvers/all: Solvers/LS/all
 
 .PHONY : Solvers/all
 
 # Convenience name for "clean" pass in the directory.
 Solvers/clean: Solvers/Arnoldi/clean
+Solvers/clean: Solvers/LS/clean
 
 .PHONY : Solvers/clean
 
 # Convenience name for "preinstall" pass in the directory.
 Solvers/preinstall: Solvers/Arnoldi/preinstall
+Solvers/preinstall: Solvers/LS/preinstall
 
 .PHONY : Solvers/preinstall
 
@@ -998,7 +1001,7 @@ Solvers/Arnoldi/preinstall:
 Solvers/Arnoldi/CMakeFiles/blockKrylovSchur.dir/all:
 	$(MAKE) -f Solvers/Arnoldi/CMakeFiles/blockKrylovSchur.dir/build.make Solvers/Arnoldi/CMakeFiles/blockKrylovSchur.dir/depend
 	$(MAKE) -f Solvers/Arnoldi/CMakeFiles/blockKrylovSchur.dir/build.make Solvers/Arnoldi/CMakeFiles/blockKrylovSchur.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num=1,2 "Built target blockKrylovSchur"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num=3,4 "Built target blockKrylovSchur"
 .PHONY : Solvers/Arnoldi/CMakeFiles/blockKrylovSchur.dir/all
 
 # Include target in all.
@@ -1025,6 +1028,61 @@ Solvers/Arnoldi/CMakeFiles/blockKrylovSchur.dir/clean:
 
 # clean rule for target.
 clean: Solvers/Arnoldi/CMakeFiles/blockKrylovSchur.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory Solvers/LS
+
+# Convenience name for "all" pass in the directory.
+Solvers/LS/all: Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/all
+
+.PHONY : Solvers/LS/all
+
+# Convenience name for "clean" pass in the directory.
+Solvers/LS/clean: Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/clean
+
+.PHONY : Solvers/LS/clean
+
+# Convenience name for "preinstall" pass in the directory.
+Solvers/LS/preinstall:
+
+.PHONY : Solvers/LS/preinstall
+
+#=============================================================================
+# Target rules for target Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir
+
+# All Build rule for target.
+Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/all:
+	$(MAKE) -f Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/build.make Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/depend
+	$(MAKE) -f Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/build.make Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num=1,2 "Built target Teuchos_LAPACK"
+.PHONY : Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/all
+
+# Include target in all.
+all: Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/xwu/phd_xwu/UCMGEL/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/xwu/phd_xwu/UCMGEL/CMakeFiles 0
+.PHONY : Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/rule
+
+# Convenience name for target.
+Teuchos_LAPACK: Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/rule
+
+.PHONY : Teuchos_LAPACK
+
+# clean rule for target.
+Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/clean:
+	$(MAKE) -f Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/build.make Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/clean
+.PHONY : Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/clean
+
+# clean rule for target.
+clean: Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/clean
 
 .PHONY : clean
 

@@ -38,6 +38,7 @@
 master_program
 worker_program
 blockKrylovSchur
+Teuchos_LAPACK
 
 # Debug files
 *.dSYM/

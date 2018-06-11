@@ -1,4 +1,4 @@
-# Install script for directory: /Users/xwu/phd_xwu/UCMGEL/Solvers
+# Install script for directory: /Users/xwu/phd_xwu/UCMGEL/Solvers/LS
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -25,12 +25,5 @@ if(NOT CMAKE_INSTALL_COMPONENT)
   else()
     set(CMAKE_INSTALL_COMPONENT)
   endif()
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for each subdirectory.
-  include("/Users/xwu/phd_xwu/UCMGEL/Solvers/Arnoldi/cmake_install.cmake")
-  include("/Users/xwu/phd_xwu/UCMGEL/Solvers/LS/cmake_install.cmake")
-
 endif()
 
