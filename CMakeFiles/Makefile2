@@ -959,22 +959,80 @@ clean: CMakeFiles/Experimental.dir/clean
 # Directory level rules for directory Solvers
 
 # Convenience name for "all" pass in the directory.
+Solvers/all: Solvers/GMRES/all
 Solvers/all: Solvers/Arnoldi/all
 Solvers/all: Solvers/LS/all
 
 .PHONY : Solvers/all
 
 # Convenience name for "clean" pass in the directory.
+Solvers/clean: Solvers/GMRES/clean
 Solvers/clean: Solvers/Arnoldi/clean
 Solvers/clean: Solvers/LS/clean
 
 .PHONY : Solvers/clean
 
 # Convenience name for "preinstall" pass in the directory.
+Solvers/preinstall: Solvers/GMRES/preinstall
 Solvers/preinstall: Solvers/Arnoldi/preinstall
 Solvers/preinstall: Solvers/LS/preinstall
 
 .PHONY : Solvers/preinstall
+
+#=============================================================================
+# Directory level rules for directory Solvers/GMRES
+
+# Convenience name for "all" pass in the directory.
+Solvers/GMRES/all: Solvers/GMRES/CMakeFiles/blockGMRES.dir/all
+
+.PHONY : Solvers/GMRES/all
+
+# Convenience name for "clean" pass in the directory.
+Solvers/GMRES/clean: Solvers/GMRES/CMakeFiles/blockGMRES.dir/clean
+
+.PHONY : Solvers/GMRES/clean
+
+# Convenience name for "preinstall" pass in the directory.
+Solvers/GMRES/preinstall:
+
+.PHONY : Solvers/GMRES/preinstall
+
+#=============================================================================
+# Target rules for target Solvers/GMRES/CMakeFiles/blockGMRES.dir
+
+# All Build rule for target.
+Solvers/GMRES/CMakeFiles/blockGMRES.dir/all:
+	$(MAKE) -f Solvers/GMRES/CMakeFiles/blockGMRES.dir/build.make Solvers/GMRES/CMakeFiles/blockGMRES.dir/depend
+	$(MAKE) -f Solvers/GMRES/CMakeFiles/blockGMRES.dir/build.make Solvers/GMRES/CMakeFiles/blockGMRES.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num=3,4 "Built target blockGMRES"
+.PHONY : Solvers/GMRES/CMakeFiles/blockGMRES.dir/all
+
+# Include target in all.
+all: Solvers/GMRES/CMakeFiles/blockGMRES.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+Solvers/GMRES/CMakeFiles/blockGMRES.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/xwu/phd_xwu/UCMGEL/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 Solvers/GMRES/CMakeFiles/blockGMRES.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/xwu/phd_xwu/UCMGEL/CMakeFiles 0
+.PHONY : Solvers/GMRES/CMakeFiles/blockGMRES.dir/rule
+
+# Convenience name for target.
+blockGMRES: Solvers/GMRES/CMakeFiles/blockGMRES.dir/rule
+
+.PHONY : blockGMRES
+
+# clean rule for target.
+Solvers/GMRES/CMakeFiles/blockGMRES.dir/clean:
+	$(MAKE) -f Solvers/GMRES/CMakeFiles/blockGMRES.dir/build.make Solvers/GMRES/CMakeFiles/blockGMRES.dir/clean
+.PHONY : Solvers/GMRES/CMakeFiles/blockGMRES.dir/clean
+
+# clean rule for target.
+clean: Solvers/GMRES/CMakeFiles/blockGMRES.dir/clean
+
+.PHONY : clean
 
 #=============================================================================
 # Directory level rules for directory Solvers/Arnoldi
@@ -1001,7 +1059,7 @@ Solvers/Arnoldi/preinstall:
 Solvers/Arnoldi/CMakeFiles/blockKrylovSchur.dir/all:
 	$(MAKE) -f Solvers/Arnoldi/CMakeFiles/blockKrylovSchur.dir/build.make Solvers/Arnoldi/CMakeFiles/blockKrylovSchur.dir/depend
 	$(MAKE) -f Solvers/Arnoldi/CMakeFiles/blockKrylovSchur.dir/build.make Solvers/Arnoldi/CMakeFiles/blockKrylovSchur.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num=3,4 "Built target blockKrylovSchur"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num=5,6 "Built target blockKrylovSchur"
 .PHONY : Solvers/Arnoldi/CMakeFiles/blockKrylovSchur.dir/all
 
 # Include target in all.

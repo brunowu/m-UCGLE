@@ -508,6 +508,19 @@ Experimental/fast:
 .PHONY : Experimental/fast
 
 #=============================================================================
+# Target rules for targets named blockGMRES
+
+# Build rule for target.
+blockGMRES: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 blockGMRES
+.PHONY : blockGMRES
+
+# fast build rule for target.
+blockGMRES/fast:
+	$(MAKE) -f Solvers/GMRES/CMakeFiles/blockGMRES.dir/build.make Solvers/GMRES/CMakeFiles/blockGMRES.dir/build
+.PHONY : blockGMRES/fast
+
+#=============================================================================
 # Target rules for targets named blockKrylovSchur
 
 # Build rule for target.
@@ -572,6 +585,7 @@ help:
 	@echo "... ExperimentalMemCheck"
 	@echo "... Continuous"
 	@echo "... Experimental"
+	@echo "... blockGMRES"
 	@echo "... blockKrylovSchur"
 	@echo "... Teuchos_LAPACK"
 .PHONY : help

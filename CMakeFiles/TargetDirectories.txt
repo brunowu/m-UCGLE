@@ -36,6 +36,12 @@
 /Users/xwu/phd_xwu/UCMGEL/Solvers/CMakeFiles/edit_cache.dir
 /Users/xwu/phd_xwu/UCMGEL/Solvers/CMakeFiles/rebuild_cache.dir
 /Users/xwu/phd_xwu/UCMGEL/Solvers/CMakeFiles/test.dir
+/Users/xwu/phd_xwu/UCMGEL/Solvers/GMRES/CMakeFiles/package.dir
+/Users/xwu/phd_xwu/UCMGEL/Solvers/GMRES/CMakeFiles/rebuild_cache.dir
+/Users/xwu/phd_xwu/UCMGEL/Solvers/GMRES/CMakeFiles/package_source.dir
+/Users/xwu/phd_xwu/UCMGEL/Solvers/GMRES/CMakeFiles/edit_cache.dir
+/Users/xwu/phd_xwu/UCMGEL/Solvers/GMRES/CMakeFiles/test.dir
+/Users/xwu/phd_xwu/UCMGEL/Solvers/GMRES/CMakeFiles/blockGMRES.dir
 /Users/xwu/phd_xwu/UCMGEL/Solvers/Arnoldi/CMakeFiles/package.dir
 /Users/xwu/phd_xwu/UCMGEL/Solvers/Arnoldi/CMakeFiles/rebuild_cache.dir
 /Users/xwu/phd_xwu/UCMGEL/Solvers/Arnoldi/CMakeFiles/package_source.dir
