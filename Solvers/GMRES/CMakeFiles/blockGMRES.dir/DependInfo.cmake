@@ -12,7 +12,7 @@ set(CMAKE_CXX_COMPILER_ID "Clang")
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "Solvers"
   "Solvers/GMRES"
-  "/Users/xwu/phd_xwu/trilinos-12.12.1-Source/installation/include"
+  "/Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include"
   )
 
 # Targets to which this target links.

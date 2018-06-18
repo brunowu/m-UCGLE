@@ -20,9 +20,6 @@ BUILD_TESTING:BOOL=ON
 //Path to a program.
 BZRCOMMAND:FILEPATH=BZRCOMMAND-NOTFOUND
 
-//Path to a program.
-CMAKE_AR:FILEPATH=/usr/bin/ar
-
 //Choose the type of build, options are: None(CMAKE_CXX_FLAGS or
 // CMAKE_C_FLAGS used) Debug Release RelWithDebInfo MinSizeRel.
 CMAKE_BUILD_TYPE:STRING=
@@ -87,9 +84,6 @@ CMAKE_INSTALL_NAME_TOOL:FILEPATH=/usr/bin/install_name_tool
 CMAKE_INSTALL_PREFIX:PATH=/usr/local
 
 //Path to a program.
-CMAKE_LINKER:FILEPATH=
-
-//Path to a program.
 CMAKE_MAKE_PROGRAM:FILEPATH=/usr/bin/make
 
 //Flags used by the linker during the creation of modules.
@@ -107,15 +101,6 @@ CMAKE_MODULE_LINKER_FLAGS_RELEASE:STRING=
 //Flags used by the linker during Release with Debug Info builds.
 CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
-//Path to a program.
-CMAKE_NM:FILEPATH=/usr/bin/nm
-
-//Path to a program.
-CMAKE_OBJCOPY:FILEPATH=CMAKE_OBJCOPY-NOTFOUND
-
-//Path to a program.
-CMAKE_OBJDUMP:FILEPATH=/usr/bin/objdump
-
 //Build architectures for OSX
 CMAKE_OSX_ARCHITECTURES:STRING=
 
@@ -129,9 +114,6 @@ CMAKE_OSX_SYSROOT:STRING=
 
 //Value Computed by CMake
 CMAKE_PROJECT_NAME:STATIC=trilinos_tutorial
-
-//Path to a program.
-CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
 
 //Flags used by the linker during the creation of dll's.
 CMAKE_SHARED_LINKER_FLAGS:STRING=
@@ -169,9 +151,6 @@ CMAKE_STATIC_LINKER_FLAGS_RELEASE:STRING=
 
 //Flags used by the linker during Release with Debug Info builds.
 CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO:STRING=
-
-//Path to a program.
-CMAKE_STRIP:FILEPATH=/usr/bin/strip
 
 //If this value is on, makefiles will be generated without the
 // .SILENT directive, and all commands will be echoed to the console
@@ -317,7 +296,7 @@ SVNCOMMAND:FILEPATH=/usr/bin/svn
 TRILINOS_PATH:FILEPATH=
 
 //The directory containing a CMake configuration file for Trilinos.
-Trilinos_DIR:PATH=/Users/xwu/phd_xwu/trilinos-12.12.1-Source/installation/lib/cmake/Trilinos
+Trilinos_DIR:PATH=/Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/lib/cmake/Trilinos
 
 //Value Computed by CMake
 trilinos_tutorial_BINARY_DIR:STATIC=/Users/xwu/phd_xwu/UCMGEL
@@ -332,8 +311,6 @@ trilinos_tutorial_SOURCE_DIR:STATIC=/Users/xwu/phd_xwu/UCMGEL
 
 //ADVANCED property for variable: BZRCOMMAND
 BZRCOMMAND-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_AR
-CMAKE_AR-ADVANCED:INTERNAL=1
 //This is the directory where this CMakeCache.txt was created
 CMAKE_CACHEFILE_DIR:INTERNAL=/Users/xwu/phd_xwu/UCMGEL
 //Major version of cmake used to create the current loaded cache
@@ -374,8 +351,6 @@ CMAKE_C_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 CMAKE_C_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //Path to cache edit program executable.
 CMAKE_EDIT_COMMAND:INTERNAL=/usr/local/Cellar/cmake/3.6.0/bin/ccmake
-//Executable file format
-CMAKE_EXECUTABLE_FORMAT:INTERNAL=Unknown
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS
 CMAKE_EXE_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_DEBUG
@@ -401,8 +376,6 @@ CMAKE_GENERATOR_TOOLSET:INTERNAL=
 CMAKE_HOME_DIRECTORY:INTERNAL=/Users/xwu/phd_xwu/UCMGEL
 //ADVANCED property for variable: CMAKE_INSTALL_NAME_TOOL
 CMAKE_INSTALL_NAME_TOOL-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_LINKER
-CMAKE_LINKER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MAKE_PROGRAM
 CMAKE_MAKE_PROGRAM-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS
@@ -415,16 +388,8 @@ CMAKE_MODULE_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_MODULE_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO
 CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_NM
-CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
 CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=5
-//ADVANCED property for variable: CMAKE_OBJCOPY
-CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_OBJDUMP
-CMAKE_OBJDUMP-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_RANLIB
-CMAKE_RANLIB-ADVANCED:INTERNAL=1
 //Path to CMake installation.
 CMAKE_ROOT:INTERNAL=/usr/local/Cellar/cmake/3.6.0/share/cmake
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS
@@ -451,10 +416,6 @@ CMAKE_STATIC_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_STATIC_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO
 CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_STRIP
-CMAKE_STRIP-ADVANCED:INTERNAL=1
-//uname command
-CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: COMPRESSIONCOMMAND

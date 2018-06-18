@@ -6,5 +6,5 @@ CXX_FLAGS =  -std=c++11 -g
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/xwu/phd_xwu/UCMGEL/Solvers -I/Users/xwu/phd_xwu/UCMGEL/Solvers/GMRES -I/Users/xwu/phd_xwu/trilinos-12.12.1-Source/installation/include 
+CXX_INCLUDES = -I/Users/xwu/phd_xwu/UCMGEL/Solvers -I/Users/xwu/phd_xwu/UCMGEL/Solvers/GMRES -I/Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include 
 

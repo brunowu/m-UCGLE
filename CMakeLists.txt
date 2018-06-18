@@ -3,7 +3,8 @@ cmake_minimum_required(VERSION 2.6)
 MESSAGE("Starting configure")
 
 #set TRILINOS_PATH of the platform
-set(TRILINOS_PATH /Users/xwu/phd_xwu/trilinos-12.12.1-Source/installation)
+#set(TRILINOS_PATH /Users/xwu/phd_xwu/trilinos-12.12.1-Source/installation)
+set(TRILINOS_PATH /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2)
 
 SET(CMAKE_PREFIX_PATH ${TRILINOS_PATH} ${CMAKE_PREFIX_PATH})
 

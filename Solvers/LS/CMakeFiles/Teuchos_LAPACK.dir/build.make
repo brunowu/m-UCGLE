@@ -90,14 +90,14 @@ Teuchos_LAPACK_EXTERNAL_OBJECTS =
 
 Solvers/LS/Teuchos_LAPACK: Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/Teuchos_LAPACK.cpp.o
 Solvers/LS/Teuchos_LAPACK: Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/build.make
-Solvers/LS/Teuchos_LAPACK: /Users/xwu/phd_xwu/trilinos-12.12.1-Source/installation/lib/libteuchoskokkoscomm.a
-Solvers/LS/Teuchos_LAPACK: /Users/xwu/phd_xwu/trilinos-12.12.1-Source/installation/lib/libteuchoskokkoscompat.a
-Solvers/LS/Teuchos_LAPACK: /Users/xwu/phd_xwu/trilinos-12.12.1-Source/installation/lib/libteuchosremainder.a
-Solvers/LS/Teuchos_LAPACK: /Users/xwu/phd_xwu/trilinos-12.12.1-Source/installation/lib/libteuchosnumerics.a
-Solvers/LS/Teuchos_LAPACK: /Users/xwu/phd_xwu/trilinos-12.12.1-Source/installation/lib/libteuchoscomm.a
-Solvers/LS/Teuchos_LAPACK: /Users/xwu/phd_xwu/trilinos-12.12.1-Source/installation/lib/libteuchosparameterlist.a
-Solvers/LS/Teuchos_LAPACK: /Users/xwu/phd_xwu/trilinos-12.12.1-Source/installation/lib/libteuchoscore.a
-Solvers/LS/Teuchos_LAPACK: /Users/xwu/phd_xwu/trilinos-12.12.1-Source/installation/lib/libkokkoscore.a
+Solvers/LS/Teuchos_LAPACK: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/lib/libteuchoskokkoscomm.a
+Solvers/LS/Teuchos_LAPACK: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/lib/libteuchoskokkoscompat.a
+Solvers/LS/Teuchos_LAPACK: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/lib/libteuchosremainder.a
+Solvers/LS/Teuchos_LAPACK: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/lib/libteuchosnumerics.a
+Solvers/LS/Teuchos_LAPACK: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/lib/libteuchoscomm.a
+Solvers/LS/Teuchos_LAPACK: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/lib/libteuchosparameterlist.a
+Solvers/LS/Teuchos_LAPACK: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/lib/libteuchoscore.a
+Solvers/LS/Teuchos_LAPACK: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/lib/libkokkoscore.a
 Solvers/LS/Teuchos_LAPACK: /usr/lib/libdl.dylib
 Solvers/LS/Teuchos_LAPACK: /usr/lib/liblapack.dylib
 Solvers/LS/Teuchos_LAPACK: /usr/lib/libblas.dylib

@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
   bool herm = false;
   std::string which("LM");
   std::string filename;
-  int nev = 4;
+  int nev = 5;
   int blockSize = 4;
   MT tol = 1.0e-6;
 
