@@ -9,6 +9,6 @@
 
 #SBATCH -n 8
 
-mpirun -np 8 ./blockGMRES --verbose --tol=1e-06 --block-size=2 --num-blocks=200 --frequency=10 --num-rhs=2 #--filename="mhd1280b.cua"
+mpirun -np 8 ./blockGMRES --verbose --tol=1e-06 --block-size=2 --num-blocks=200 --frequency=10 --num-rhs=2 --dump-data #--filename="mhd1280b.cua"
 
 
