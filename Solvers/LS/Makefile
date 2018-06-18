@@ -67,6 +67,17 @@ package/fast: package
 
 .PHONY : package/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/local/Cellar/cmake/3.6.0/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -99,17 +110,6 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/local/Cellar/cmake/3.6.0/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -144,46 +144,46 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/rule:
-	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f CMakeFiles/Makefile2 Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/rule
-.PHONY : Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/rule
+Solvers/LS/CMakeFiles/POTRF.dir/rule:
+	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f CMakeFiles/Makefile2 Solvers/LS/CMakeFiles/POTRF.dir/rule
+.PHONY : Solvers/LS/CMakeFiles/POTRF.dir/rule
 
 # Convenience name for target.
-Teuchos_LAPACK: Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/rule
+POTRF: Solvers/LS/CMakeFiles/POTRF.dir/rule
 
-.PHONY : Teuchos_LAPACK
+.PHONY : POTRF
 
 # fast build rule for target.
-Teuchos_LAPACK/fast:
-	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/build.make Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/build
-.PHONY : Teuchos_LAPACK/fast
+POTRF/fast:
+	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/LS/CMakeFiles/POTRF.dir/build.make Solvers/LS/CMakeFiles/POTRF.dir/build
+.PHONY : POTRF/fast
 
-Teuchos_LAPACK.o: Teuchos_LAPACK.cpp.o
+POTRF.o: POTRF.cpp.o
 
-.PHONY : Teuchos_LAPACK.o
+.PHONY : POTRF.o
 
 # target to build an object file
-Teuchos_LAPACK.cpp.o:
-	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/build.make Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/Teuchos_LAPACK.cpp.o
-.PHONY : Teuchos_LAPACK.cpp.o
+POTRF.cpp.o:
+	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/LS/CMakeFiles/POTRF.dir/build.make Solvers/LS/CMakeFiles/POTRF.dir/POTRF.cpp.o
+.PHONY : POTRF.cpp.o
 
-Teuchos_LAPACK.i: Teuchos_LAPACK.cpp.i
+POTRF.i: POTRF.cpp.i
 
-.PHONY : Teuchos_LAPACK.i
+.PHONY : POTRF.i
 
 # target to preprocess a source file
-Teuchos_LAPACK.cpp.i:
-	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/build.make Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/Teuchos_LAPACK.cpp.i
-.PHONY : Teuchos_LAPACK.cpp.i
+POTRF.cpp.i:
+	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/LS/CMakeFiles/POTRF.dir/build.make Solvers/LS/CMakeFiles/POTRF.dir/POTRF.cpp.i
+.PHONY : POTRF.cpp.i
 
-Teuchos_LAPACK.s: Teuchos_LAPACK.cpp.s
+POTRF.s: POTRF.cpp.s
 
-.PHONY : Teuchos_LAPACK.s
+.PHONY : POTRF.s
 
 # target to generate assembly for a file
-Teuchos_LAPACK.cpp.s:
-	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/build.make Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/Teuchos_LAPACK.cpp.s
-.PHONY : Teuchos_LAPACK.cpp.s
+POTRF.cpp.s:
+	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/LS/CMakeFiles/POTRF.dir/build.make Solvers/LS/CMakeFiles/POTRF.dir/POTRF.cpp.s
+.PHONY : POTRF.cpp.s
 
 # Help Target
 help:
@@ -192,14 +192,14 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... package"
+	@echo "... test"
 	@echo "... rebuild_cache"
 	@echo "... package_source"
-	@echo "... Teuchos_LAPACK"
 	@echo "... edit_cache"
-	@echo "... test"
-	@echo "... Teuchos_LAPACK.o"
-	@echo "... Teuchos_LAPACK.i"
-	@echo "... Teuchos_LAPACK.s"
+	@echo "... POTRF"
+	@echo "... POTRF.o"
+	@echo "... POTRF.i"
+	@echo "... POTRF.s"
 .PHONY : help
 
 

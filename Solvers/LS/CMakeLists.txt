@@ -9,8 +9,8 @@ link_directories(${Trilinos_LIBRARY_DIRS} ${Trilinos_TPL_LIBRARY_DIRS} )
 set(LINK_LIBRARIES ${Teuchos_LIBRARIES})
 
 #add executable
-add_executable(Teuchos_LAPACK Teuchos_LAPACK.cpp)
-target_link_libraries(Teuchos_LAPACK ${LINK_LIBRARIES})
+add_executable(POTRF POTRF.cpp)
+target_link_libraries(POTRF ${LINK_LIBRARIES})
 
 INCLUDE(CPack)
 
