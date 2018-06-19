@@ -8,6 +8,7 @@
 #include <cstring>
 #include <iostream>
 #include <complex>
+#include <cmath>
 
 #ifndef EIGEN_MIN
 #define EIGEN_MIN 5
@@ -108,26 +109,89 @@ while(!end){
       epurer(data,&data_size);
       /* add them to the accumulated eigenvalues */
       /* if full renew full eigenvalues */
-      if(eigen_total+data_size>*vector_size) eigen_total=0;
+      if(eigen_total + data_size > *vector_size) eigen_total = 0;
       /* select eigenvalues */
-      for(i=0;i<data_size;i++){
-        eigen_cumul[eigen_total+i]=data[i];
+      for(i = 0;i < data_size; i++){
+        eigen_cumul[eigen_total + i] = data[i];
       }
-      eigen_total+=data_size;
-      if(cumul<eigen_total) cumul=eigen_total;
-      for(i=0;i<cumul;i++){
-        eigen_tri[i]=eigen_cumul[i];
+      eigen_total += data_size;
+      if(cumul < eigen_total) cumul = eigen_total;
+      for(i = 0;i < cumul; i++){
+        eigen_tri[i] = eigen_cumul[i];
       }
     } else {
-        ierr=readBinaryScalarArray(load_path,&cumul, eigen_tri);CHKERRQ(ierr);
+//        ierr=readBinaryScalarArray(load_path,&cumul, eigen_tri);CHKERRQ(ierr);
+        /*to do load array from local*/
         data_load=0;
         data_load_any=0;
         data_size=cumul;
     }
+
+    eigen_received+=data_size;
+    /* if we didn't received enough eigenvalues */
+		if(eigen_received<ls_eigen_min && data){
+        continue;
+    }
+    else{
+      eigen_received = 0;
+      tri(eigen_tri,cumul,&chsign);
+      mu1=0;
+      mu2=0;
+    }
+
+    /* convex hull computation */
+		if(chsign > 0){
+		//keepPositif(eigen_tri,&cumul);
+			convhull(eigen_tri, c, d, chsign, &mu1, 0, 0);
+			printf("@} LSQR convhul negatif chsigne %d cumul %d mu1 %d\n",chsign,cumul,mu1);
+    }
+		if(chsign < cumul){
+			convhull(eigen_tri, c, d, cumul-chsign, &mu2, chsign, mu1);
+			printf("@} LSQR convhul positif chsigne %d cumul %d mu1 %d mu2 %d\n",chsign,cumul,mu1,mu2);
+	  }
+		mu = mu1 + mu2;
+
+    /* Ellipse computation */
+		ellipse(c,  d, mu+1, mu1, &c_ell, &a_ell, &d_ell, &d_reel, &info);
+    if(fabs(d_ell)<epsilon()) d_ell = 1.;
+
+    if(fabs(a_ell)<epsilon()){
+      ls_eigen=0;
+    }
+    else{
+      LSPrecond(a_ell, d_ell,c_ell,eta, &alpha, beta,
+					  delta, c, d,&mu, &ls_eigen, &ls_eigen_min, &eigen_max);
+    }
+  }
+
+  if(ls_eigen > 1){
+    /* place the computed results inside the array */
+    scalar_tmp = ls_eigen;
+    std::memcpy(&result_array[0],&scalar_tmp,1*sizeof(std::complex<double>));
+    std::memcpy(&result_array[1],&alpha,1*sizeof(std::complex<double>));
+    std::memcpy(&result_array[2],eta,ls_eigen*sizeof(std::complex<double>));
+    std::memcpy(&result_array[2 + ls_eigen],beta,ls_eigen*sizeof(std::complex<double>));
+
+    /*
+      if(continuous_export){
+        to do: data export
+      }
+      */
+
+    /* and send it */
+		result_array_size=2+3*ls_eigen;
+		mpi_lsa_com_array_send(com, &result_array_size,result_array);
+  }
+  if(ls_eigen>1){
+    ls_eigen=0;
   }
 }
 
-
+/*
+if(data_export){
+  to do: data export
+}
+*/
 delete [] eigen_tri;
 delete [] eigen_cumul;
 delete [] d;
