@@ -1,3 +1,6 @@
+#ifndef _PRECON_H_
+#define _PRECON_H_
+
 #include "../Utils/libs.hpp"
 #include <complex>
 #include "Teuchos_LAPACK.hpp"
@@ -194,3 +197,5 @@ int LSPrecond(double a_ell, double d_ell, double c_ell, std::complex<double> * e
 
   return 0;
 }
+
+#endif
