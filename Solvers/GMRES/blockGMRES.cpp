@@ -29,15 +29,15 @@ using Teuchos::tuple;
 
 bool proc_verbose = false, reduce_tol, precond = true, dumpdata = false;
 RCP<Map<int> > vmap;
-ParameterList mptestpl; 
+ParameterList mptestpl;
 int rnnzmax;
-int mptestdim, numrhs; 
-double *dvals; 
+int mptestdim, numrhs;
+double *dvals;
 int *colptr, *rowind;
 int mptestmypid = 0;
 int mptestnumimages = 1;
 
-template <class Scalar> 
+template <class Scalar>
 RCP<LinearProblem<Scalar,MultiVector<Scalar,int>,Operator<Scalar,int> > > buildProblem()
 {
   typedef ScalarTraits<Scalar>         SCT;
@@ -76,7 +76,7 @@ RCP<LinearProblem<Scalar,MultiVector<Scalar,int>,Operator<Scalar,int> > > buildP
 }
 
 template <class Scalar>
-bool runTest(double ltol, double times[], int &numIters) 
+bool runTest(double ltol, double times[], int &numIters)
 {
   typedef ScalarTraits<Scalar>         SCT;
   typedef typename SCT::magnitudeType   MT;
@@ -86,20 +86,20 @@ bool runTest(double ltol, double times[], int &numIters)
   typedef MultiVecTraits<Scalar,MV>    MVT;
 
   const Scalar ONE  = SCT::one();
-  mptestpl.set<MT>( "Convergence Tolerance", ltol );        
-  mptestpl.set( "Timer Label", typeName(ONE) );     
+  mptestpl.set<MT>( "Convergence Tolerance", ltol );
+  mptestpl.set( "Timer Label", typeName(ONE) );
   if (mptestmypid==0) cout << "Testing Scalar == " << typeName(ONE) << endl;
 
   RCP<LinearProblem<Scalar,MV,OP> > problem;
   Time btimer("Build Timer"), ctimer("Construct Timer"), stimer("Solve Timer");
   ReturnType ret;
   if (mptestmypid==0) cout << "Building problem..." << endl;
-  { 
+  {
     TimeMonitor localtimer(btimer);
     problem = buildProblem<Scalar>();
   }
   RCP<SolverManager<Scalar,MV,OP> > solver;
-  if (mptestmypid==0) cout << "Constructing solver..." << endl; 
+  if (mptestmypid==0) cout << "Constructing solver..." << endl;
   {
     TimeMonitor localtimer(ctimer);
     solver = rcp(new BlockGmresSolMgr<Scalar,MV,OP>( problem, rcp(&mptestpl,false) ));
@@ -148,19 +148,19 @@ bool runTest(double ltol, double times[], int &numIters)
 }
 
 
-int main(int argc, char *argv[]) 
+int main(int argc, char *argv[])
 {
   GlobalMPISession mpisess(&argc,&argv,&cout);
 
   RCP<const Comm<int> > comm = Tpetra::DefaultPlatform::getDefaultPlatform().getComm();
 
   bool verbose = false, debug = false;
-  int frequency = -1;  
-  numrhs = 1;      
-  int blocksize = 1;  
-  int numblocks = 5;   
+  int frequency = -1;
+  numrhs = 1;
+  int blocksize = 1;
+  int numblocks = 5;
   string filename("bcsstk17.rsa");
-  double tol = 1.0e-5;     
+  double tol = 1.0e-5;
 
   CommandLineProcessor cmdp(false,true);
   cmdp.setOption("verbose","quiet",&verbose,"Print messages and results.");
@@ -181,7 +181,7 @@ int main(int argc, char *argv[])
     verbose = true;
   }
   if (!verbose) {
-    frequency = -1; 
+    frequency = -1;
   }
 
   mptestnumimages = size(*comm);
@@ -190,7 +190,7 @@ int main(int argc, char *argv[])
   if (proc_verbose) cout << Belos_Version() << endl << endl;
   if (mptestmypid != 0) dumpdata = 0;
 
-  
+
   int nnz, info;
   nnz = -1;
   if (mptestmypid == 0) {
@@ -206,7 +206,7 @@ int main(int argc, char *argv[])
     rnnzmax = *std::max_element(rnnz.begin(),rnnz.end());
   }
   else {
-    
+
     dvals = NULL;
     colptr = NULL;
     rowind = NULL;
@@ -226,7 +226,7 @@ int main(int argc, char *argv[])
 
   vmap = rcp(new Map<int>(mptestdim,0,comm));
 
-  mptestpl.set( "Block Size", blocksize );             
+  mptestpl.set( "Block Size", blocksize );
   mptestpl.set( "Num Blocks", numblocks);
   int verbLevel = Errors + Warnings;
   if (debug) {
@@ -274,16 +274,13 @@ int main(int argc, char *argv[])
     fout.close();
   }
 
- 
+
 
   if (!dpass) {
-    if (mptestmypid==0) cout << "\nEnd Result: TEST FAILED" << endl;	
+    if (mptestmypid==0) cout << "\nEnd Result: TEST FAILED" << endl;
     return -1;
   }
 
   if (mptestmypid==0) cout << "\nEnd Result: TEST PASSED" << endl;
   return 0;
 }
-
-
-

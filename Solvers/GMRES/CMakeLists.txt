@@ -10,5 +10,7 @@ set(LINK_LIBRARIES ${Tpetra_LIBRARIES} ${Galeri_LIBRARIES} ${Teuchos_LIBRARIES} 
 #add executable
 add_executable(blockGMRES blockGMRES.cpp)
 target_link_libraries(blockGMRES ${LINK_LIBRARIES})
+#add_executable(blockGMRES2 blockGMRES.cpp)
+#target_link_libraries(blockGMRES2 ${LINK_LIBRARIES})
 
 INCLUDE(CPack)

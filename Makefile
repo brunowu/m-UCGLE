@@ -534,17 +534,17 @@ blockKrylovSchur/fast:
 .PHONY : blockKrylovSchur/fast
 
 #=============================================================================
-# Target rules for targets named Teuchos_LAPACK
+# Target rules for targets named POTRF
 
 # Build rule for target.
-Teuchos_LAPACK: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Teuchos_LAPACK
-.PHONY : Teuchos_LAPACK
+POTRF: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 POTRF
+.PHONY : POTRF
 
 # fast build rule for target.
-Teuchos_LAPACK/fast:
-	$(MAKE) -f Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/build.make Solvers/LS/CMakeFiles/Teuchos_LAPACK.dir/build
-.PHONY : Teuchos_LAPACK/fast
+POTRF/fast:
+	$(MAKE) -f Solvers/LS/CMakeFiles/POTRF.dir/build.make Solvers/LS/CMakeFiles/POTRF.dir/build
+.PHONY : POTRF/fast
 
 # Help Target
 help:
@@ -587,7 +587,7 @@ help:
 	@echo "... Experimental"
 	@echo "... blockGMRES"
 	@echo "... blockKrylovSchur"
-	@echo "... Teuchos_LAPACK"
+	@echo "... POTRF"
 .PHONY : help
 
 

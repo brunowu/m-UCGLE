@@ -48,12 +48,14 @@ int convhull(std::complex<double> *ab, std::complex<double> *c, std::complex<dou
   for(i = 1; i <= n; ++i){
     s = -1.0;
     m = m1;
-    for(j = 0; j < n; j++){
+
+    for(j = 0; j < n; ++j){
       if(l[j]){
         cs = sqrt(std::pow(ab[j + offset].real() - hk[i - 1].real(),2) +
                   std::pow(ab[j + offset].imag() - hk[i - 1].imag(),2));
         if(cs >= deps){
-          cs = ab[j + offset].imag() - ( hk[i - 1].imag() ) / cs;
+          cs = (ab[j + offset].imag() -  hk[i - 1].imag() ) / cs;
+
         } else {
           continue;
         }
@@ -71,29 +73,30 @@ int convhull(std::complex<double> *ab, std::complex<double> *c, std::complex<dou
           }
         }
       }
-      if( m == m1){
-        break;
-      } else{
-        hk[i] = ab[m + offset];
-        l[m] = 0;
-        *ne = i;
-        c[i - 1 + mu].real((hk[i].real() + hk[i - 1].real()) / 2);
-        c[i - 1 + mu].imag((hk[i].imag() + hk[i - 1].imag()) / 2);
+    }
 
-        d[i - 1 + mu].real((hk[i].real() - hk[i - 1].real()) / 2);
-        d[i - 1 + mu].imag((hk[i].imag() - hk[i - 1].imag()) / 2);
+    if( m == m1){
+      break;
+    } else{
+      hk[i] = ab[m + offset];
+      l[m] = 0;
+      *ne = i;
+      c[i - 1 + mu].real((hk[i].real() + hk[i - 1].real()) / 2);
+      c[i - 1 + mu].imag((hk[i].imag() + hk[i - 1].imag()) / 2);
 
-        for(j = 0; j < n; j++){
-          if(l[j]){
-            if(ab[j + offset].real() <= hk[i].real()){
-              l[j] = 0;
-            }
+      d[i - 1 + mu].real((hk[i].real() - hk[i - 1].real()) / 2);
+      d[i - 1 + mu].imag((hk[i].imag() - hk[i - 1].imag()) / 2);
+
+      for(j = 0; j < n; j++){
+        if(l[j]){
+          if(ab[j + offset].real() <= hk[i].real()){
+            l[j] = 0;
           }
         }
-       }
+      }
     }
   }
-
+  
   if(hk[*ne].imag() != dzero){
     c[(*ne) + mu].real(hk[*ne].real());
     c[(*ne) + mu].imag(hk[*ne].imag() / 2);

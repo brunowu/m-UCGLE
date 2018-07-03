@@ -82,8 +82,8 @@ int ellipse2(std::complex<double> xy1, std::complex<double> xy2, double * a2, do
 
 	*info = 1;
 	if((*a2) < 0.0 || (*b2) < 0.0) {
-    *info = 0;
-  }
+    	*info = 0;
+  	}
 	return 0;
 }
 
@@ -106,28 +106,26 @@ void ellipse(std::complex<double> * c, std::complex<double> * d, int n, int mu, 
 	int i, j, k, info1, info2;
 	std::complex<double> * hk  = new std::complex<double> [n];
 	double bo2, a2, b2, cc, aire;
+	printf("info===%d\n", *info);
 
-	#ifdef DEBUG
-		std::cout << "$} Ellipse Allocating work memory " << n << "\n";
-	#endif
+	std::cout << "$} Ellipse Allocating work memory " << n << "\n";
 
-	#ifdef DEBUG
     std::cout << "$} Ellipse Computing Edges\n";
-	#endif
 	/* CALCUL DES SOMMETS A PARTIR DES CENTRES ET DES DEMI-DISTANCES */
 	for(i = 0;i < n - 1; i++){
 		hk[i] = c[i] - d[i];
+		printf("hk[%d] = %f+%fi\n",i,real(hk[i]), imag(hk[i]));
 	}
 
+	printf("----------------------\n");
 	if(mu != 0 && mu < n){
 		hk[n-1] = c[mu] + d[mu];
+		printf("hk[%d] = %f+%fi\n",n-1,real(hk[n-1]), imag(hk[n-1]));
 	}
 
 	hk[n-1] = c[n-2] + d[n-2];
 
-	#ifdef DEBUG
     std::cout << "$} Ellipse Research two points optimal ellipse\n";
-	#endif
 
 	/* Recherche de l'ellipse optimale a deux points */
 	info1 = 0;
@@ -143,9 +141,8 @@ void ellipse(std::complex<double> * c, std::complex<double> * d, int n, int mu, 
 		for(j = i + 1;j < n; j++){
 			info1 = 0;
 			ellipse2(hk[i],hk[j],&a2,&b2,&cc,&info1);
-			if(info1 == 0) continue;
+            if(info1 == 0) continue;
 			test(hk,n,a2,b2,cc,&info1);
-
 			if(info1 == 1){
 				if(a2 * b2 < aire){
 					info2 = 1;
@@ -153,17 +150,15 @@ void ellipse(std::complex<double> * c, std::complex<double> * d, int n, int mu, 
 					bo2 = b2;
 					(*co) = cc;
 					aire = (*ao2) * bo2;
+					printf("aire = %f\n", aire);
 				}
 			}
 		}
 	}
 
-	#ifdef DEBUG
     std::cout << "$} Ellipse Research three points optimal ellipse\n";
-	#endif
 
 	/* Recherche de l'ellipse optimale a trois points */
-
 	if(info2 != 1){
 		aire = 1.e16;
 
@@ -172,7 +167,6 @@ void ellipse(std::complex<double> * c, std::complex<double> * d, int n, int mu, 
 				for(k = j + 1; k < n; k++){
 					*info = 0;
 					ellipse3(hk[i],hk[j],hk[k],&a2,&b2,&cc,info);
-
 					if(*info == 0) continue;
 					test(hk,n,a2,b2,cc,info);
 					if(*info == 1){
@@ -191,6 +185,8 @@ void ellipse(std::complex<double> * c, std::complex<double> * d, int n, int mu, 
 	*do2 = (*ao2) - bo2;
 	*dr= (*ao2) >= bo2;
 	*ao2 = std::sqrt(*ao2);
+
+	printf("*info = = %d\n", *info);
 
 	delete [] hk;
 
