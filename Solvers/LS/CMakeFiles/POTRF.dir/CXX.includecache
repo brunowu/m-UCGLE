@@ -25,6 +25,26 @@ iostream
 -
 precond.hpp
 /Users/xwu/phd_xwu/UCMGEL/Solvers/LS/precond.hpp
+lsp.hpp
+/Users/xwu/phd_xwu/UCMGEL/Solvers/LS/lsp.hpp
+
+/Users/xwu/phd_xwu/UCMGEL/Solvers/LS/lsp.hpp
+../Utils/libs.hpp
+/Users/xwu/phd_xwu/UCMGEL/Solvers/Utils/libs.hpp
+../Utils/convhull.hpp
+/Users/xwu/phd_xwu/UCMGEL/Solvers/Utils/convhull.hpp
+../Utils/ellipse.hpp
+/Users/xwu/phd_xwu/UCMGEL/Solvers/Utils/ellipse.hpp
+precond.hpp
+/Users/xwu/phd_xwu/UCMGEL/Solvers/LS/precond.hpp
+cstring
+-
+iostream
+-
+complex
+-
+cmath
+-
 
 /Users/xwu/phd_xwu/UCMGEL/Solvers/LS/precond.hpp
 ../Utils/libs.hpp

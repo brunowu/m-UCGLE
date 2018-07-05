@@ -3,6 +3,7 @@
 
 Solvers/LS/CMakeFiles/POTRF.dir/POTRF.cpp.o
  /Users/xwu/phd_xwu/UCMGEL/Solvers/LS/POTRF.cpp
+ /Users/xwu/phd_xwu/UCMGEL/Solvers/LS/lsp.hpp
  /Users/xwu/phd_xwu/UCMGEL/Solvers/LS/precond.hpp
  /Users/xwu/phd_xwu/UCMGEL/Solvers/Utils/convhull.hpp
  /Users/xwu/phd_xwu/UCMGEL/Solvers/Utils/ellipse.hpp
