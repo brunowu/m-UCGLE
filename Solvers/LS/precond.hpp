@@ -8,8 +8,8 @@
 #include "Teuchos_SerialDenseVector.hpp"
 #include "Teuchos_Version.hpp"
 
-int LSPrecond(double a_ell, double d_ell, double c_ell, std::complex<double> * eta, std::complex<double> * alpha, std::complex<double> * beta,
-              std::complex<double> * delta, std::complex<double> * c, std::complex<double> * d, int * mu, int * nb_eigen, int * min_eigen,
+int LSPrecond(double a_ell, double d_ell, double c_ell, double * eta, double * alpha, double * beta,
+              double * delta, std::complex<double> * c, std::complex<double> * d, int * mu, int * nb_eigen, int * min_eigen,
               int * nb_eigen_all){
 
   std::cout << Teuchos::Teuchos_Version() << std::endl << std::endl;
@@ -18,8 +18,6 @@ int LSPrecond(double a_ell, double d_ell, double c_ell, std::complex<double> * e
   Teuchos::LAPACK<int, double> lapack;
 
   //////////////////////////////
-  std::complex<double> * fact_tmp;
-  std::complex<double> * res;
 
   int i, j, k, nu;
 
@@ -29,22 +27,24 @@ int LSPrecond(double a_ell, double d_ell, double c_ell, std::complex<double> * e
   for(i = 0; i < (*nb_eigen_all)+3; i++){
     gamma[i] = new std::complex<double> [(*nb_eigen_all)+3];
     for(j = 0; j < (*nb_eigen_all)+3; j++){
-      gamma[i][j](0.0,0.0);
+      gamma[i][j].real(0.0);
+      gamma[i][j].imag(0.0);
+
     }
   }
 
-  std::complex<double> ** mm_tmp = new std::complex<double> * [(*nb_eigen_all)+1];
+  double ** mm_tmp = new double * [(*nb_eigen_all)+1];
 
   for(i = 0; i < (*nb_eigen_all)+1; i++){
-    mm_tmp[i] = new std::complex<double> [(*nb_eigen_all)+1];
+    mm_tmp[i] = new double [(*nb_eigen_all)+1];
     for(j = 0; j < (*nb_eigen_all)+1; j++){
-      mm_tmp[i][j](0.0, 0.0);
+      mm_tmp[i][j] = 0.0;
     }
   }
 
   for(i = 0; i < *nb_eigen_all; i++){
-    beta[i](0.0, 0.0);
-    delta[i](0.0, 0.0);
+      beta[i]= 0.0;
+      delta[i] = 0.0;
   }
 
   /* begin computations */
@@ -52,9 +52,9 @@ int LSPrecond(double a_ell, double d_ell, double c_ell, std::complex<double> * e
   *nb_eigen = *nb_eigen_all;
 
   for(i = 0; i < *nb_eigen_all; i++){
-    delta[i + 1] = (d_ell) / (4 * beta[i]);
+    delta[i + 1] = (d_ell) / (4.0 * beta[i]);
     beta[i + 1] = (a_ell) - delta[i + 1];
-    if(std::norm(beta[i + 1]) < epsilon()){
+    if(std::abs(beta[i + 1]) < epsilon()){
       *nb_eigen = i;
       if(*nb_eigen < * min_eigen){
         return 0;
@@ -68,27 +68,31 @@ int LSPrecond(double a_ell, double d_ell, double c_ell, std::complex<double> * e
   for(nu = 0; nu < *mu; nu++){
     for(i = 0; i < * nb_eigen_all + 1; i++){
       for(j =0; j < * nb_eigen_all + 1; j++){
-        gamma[i][j] (0.0,0.0);
+        gamma[i][j].real(0.0);
+        gamma[i][j].imag(0.0);
       }
     }
-    gamma[1][1](1.0,0.0);
+      gamma[1][1].real(1.0);
+      gamma[1][1].imag(0.0);
 
     for(j = 1; j < *nb_eigen_all; j++){
       for(i = 1; i < j + 1; i++){
-        gamma[i][j + 1](d[nu].real()/2.0 * gamma[i + 1][j].real() + gamma[i - 1][j].real()
+        gamma[i][j + 1].real(d[nu].real()/2.0 * gamma[i + 1][j].real() + gamma[i - 1][j].real()
                         -(d[nu].imag()/2.0 + gamma[i + 1][j].imag()) + gamma[i - 1][j].imag()
-                        +((c[nu]) - *alpha).real() * gamma[i][j].real() - (c[nu]).imag() * gamma[i][j].imag()
-                        -delta[j - 1].real() * (gamma[i][j - 1].real()) / (beta[j - 1]).real(),
+                        +((c[nu]).real() - *alpha) * gamma[i][j].real() - (c[nu]).imag() * gamma[i][j].imag()
+                        -delta[j - 1] * (gamma[i][j - 1].real()) / beta[j - 1]);
 
-                        gamma[i][j + 1].imag());
+        gamma[i][j + 1].imag(gamma[i][j + 1].imag());
 
-      gamma[i][j + 1](gamma[i][j + 1].real(),
 
-                      d[nu].real() / 2.0 * (gamma[i + 1][j].imag() + gamma[i - 1][j].imag())
-                      + d[nu].imag() / 2.0 * (gamma[i + 1][j]).real() + gamma[i - 1][j].real()
-                      + (c[nu] - *alpha).real() * (gamma[i][j]).imag()
-                      + (c[nu].imag() * gamma[i][j].real())
-                      - (delta[j - 1].real() + gamma[i][j - 1].imag() / beta[j - 1]));
+        gamma[i][j + 1].real(gamma[i][j + 1].real());
+
+        gamma[i][j + 1].imag((d[nu].real()/2.0*(gamma[i+1][j].imag()+gamma[i-1][j].imag())
+        + d[nu].imag()/2.0*(gamma[i+1][j].real()+gamma[i-1][j].real())
+        + ((c[nu]).real() - *alpha)*gamma[i][j].imag()
+        + c[nu].imag()*gamma[i][j].real()
+        - delta[j-1]*gamma[i][j-1].imag())/ beta[j-1]);
+
       }
       gamma[0][j + 1] = gamma[2][j + 1];
     }
@@ -113,8 +117,8 @@ int LSPrecond(double a_ell, double d_ell, double c_ell, std::complex<double> * e
   /* Filling of the lower triangular part */
   for(j = 0; j <= *nb_eigen_all; j++){
     for(i = 0; i <= j; i++){
-      MM(i, j) = mm_tmp[i][j].real();
-      MM(j, i) = mm_tmp[i][j].real();
+      MM(i, j) = mm_tmp[i][j];
+      MM(j, i) = mm_tmp[i][j];
     }
   }
 
@@ -135,6 +139,7 @@ int LSPrecond(double a_ell, double d_ell, double c_ell, std::complex<double> * e
 
   /*Create the matrix operator F that will be used in the QR factorization*/
   Teuchos::SerialDenseMatrix<int, double> F((*nb_eigen) + 1,(*nb_eigen) + 1);
+
   F(0, 0) = (*alpha) * (fact.values())[0] + beta[0] * (fact.values())[1];
   F(1, 0) = beta[0] * (fact.values())[1 + (( *nb_eigen_all) + 1)];
 
@@ -157,7 +162,7 @@ int LSPrecond(double a_ell, double d_ell, double c_ell, std::complex<double> * e
   Teuchos::SerialDenseVector<int, double> rhs((*nb_eigen) + 1);
 
   /*set the solution to zero*/
-  rhs = 0.0;
+  //rhs = 0.0;
   /* rhs[0] must be setted to beta*/
   rhs(0) = (fact.values())[0];
 
@@ -177,7 +182,7 @@ int LSPrecond(double a_ell, double d_ell, double c_ell, std::complex<double> * e
 
   //rhs sequence vector store the solution of least squares problem
   for(i = 0; i < *nb_eigen_all; i++){
-    eta[i] = rhs.values[i];
+    eta[i] = (rhs.values())[i];
   }
 
   //free the allocate memory

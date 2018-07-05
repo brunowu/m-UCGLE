@@ -3,6 +3,10 @@
 
 Solvers/LS/CMakeFiles/POTRF.dir/POTRF.cpp.o
  /Users/xwu/phd_xwu/UCMGEL/Solvers/LS/POTRF.cpp
+ /Users/xwu/phd_xwu/UCMGEL/Solvers/LS/precond.hpp
+ /Users/xwu/phd_xwu/UCMGEL/Solvers/Utils/convhull.hpp
+ /Users/xwu/phd_xwu/UCMGEL/Solvers/Utils/ellipse.hpp
+ /Users/xwu/phd_xwu/UCMGEL/Solvers/Utils/libs.hpp
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/TeuchosCore_config.h
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_Assert.hpp
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_BLAS.hpp
