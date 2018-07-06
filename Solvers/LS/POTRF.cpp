@@ -28,6 +28,17 @@ int main(int argc, char* argv[])
 
     int i;
 
+    int eigen_max = 10, ls_eigen = 10, ls_eigen_min = 10;
+
+    double *delta = new double [eigen_max + 1];
+    double *eta = new double [eigen_max + 1];
+    double *beta = new double [eigen_max + 1];
+
+    double alpha;
+
+    int mu;
+
+
     arr2[0].real(-0.830999);
     arr2[0].imag(0.514128);
 
@@ -67,100 +78,22 @@ int main(int argc, char* argv[])
 
     std::cout << "mu1 = " << mu1 << '\n';
 
-/*
-    for(i = 0; i < 20; i++){
-        printf("c[%d] = %f + %fi, d[%d] = %f + %fi\n", i, c[i].real(), c[i].imag(),i, d[i].real(), d[i].imag());
-    }
-*/
-
     double a_ell, c_ell, d_ell, d_reel;
     int info3;
 
     ellipse(c, d, mu1 + 1, mu1, &c_ell, &a_ell, &d_ell, &d_reel, &info3);
     printf("info3 = %d, c_ell = %f, a_ell = %f, d_ell = %f, d_reel = %f \n", info3, c_ell, a_ell, d_ell,d_reel);
 
-    //LSPrecond(a_ell, d_ell,c_ell,eta, &alpha, beta, delta, c, d,&mu, &ls_eigen, &ls_eigen_min, &eigen_max);
+    mu = mu1;
 
 
-  // Creating an instance of the LAPACK class for double-precision routines looks like:
-  Teuchos::LAPACK<int, double> lapack;
+    std::cout << "mu = " << mu << '\n';
 
-  // This instance provides the access to all the LAPACK routines.
+    LSPrecond(a_ell, d_ell,c_ell,eta, &alpha, beta, delta, c, d,&mu, &ls_eigen, &ls_eigen_min, &eigen_max);
 
-  Teuchos::SerialDenseMatrix<int, double> My_Matrix(3,3);
-  Teuchos::SerialDenseVector<int, double> My_Vector(3);
-
-  My_Vector.random();
-
-  // Print out the original linear system.
-  std::cout << "ORIGINAL MATRIX:" << std::endl;
-
-  //row 0
-  My_Matrix(0,0) = 4.0; My_Matrix(0,1) = 12.0; My_Matrix(0,2) = -16.0;
-
-  My_Matrix(1,0) = 12.0; My_Matrix(1,1) = 37.0; My_Matrix(1,2) = -43.0;
-
-  My_Matrix(2,0) = -16.0; My_Matrix(2,1) = -43.0; My_Matrix(2,2) = 98;
-
-  std::cout << My_Matrix << std::endl;
-
-  int info;
-  char UPLO = 'L';
-  lapack.POTRF(UPLO,3,My_Matrix.values(),My_Matrix.stride(),&info );
-
-  // Print out the solution.
-  std::cout << "CHOLESKY FACTORIZED MATRIX FROM LAPACK:" << std::endl;
-
-  std::cout << My_Matrix << std::endl;
-
-/*
-  Teuchos in Trilinos 12.12.1
-
-  ORIGINAL MATRIX:
-
-
-  Values_copied : yes
-  Rows : 3
-  Columns : 3
-  LDA : 3
-  4 12 -16
-  12 37 -43
-  -16 -43 98
-
-  CHOLESKY FACTORIZED MATRIX FROM LAPACK:
-
-
-  Values_copied : yes
-  Rows : 3
-  Columns : 3
-  LDA : 3
-  2 12 -16
-  6 1 -43
-  -8 5 3
-
-  The upper part of my_matrix is its cholesky facotrization
-  */
-
-  /*Solve a least square problem*/
-  
-  std::cout << "The given right hand side is :" << std::endl;
-
-  std::cout << My_Vector << std::endl;
-
-  int info2;
-  int rank;
-  char TRANS = 'N';
-  int lwork;
-  double* work;
-  double wkopt;
-
-  lapack.GELS(TRANS,3,3,1,My_Matrix.values(),My_Matrix.stride(),My_Vector.values(), My_Vector.stride(), &wkopt, -1, &info2);
-  lwork = (int)wkopt;
-  work = (double*)malloc( lwork*sizeof(double) );
-  lapack.GELS(TRANS,3,3,1,My_Matrix.values(),My_Matrix.stride(),My_Vector.values(), My_Vector.stride(), work, lwork, &info2);
-
-  std::cout << My_Vector << std::endl;
-
+    for(i = 0; i < eigen_max; i++){
+      printf("eta[%d] = %f, alpha = %f, beta[%d] = %f, deta[%d] =  %f\n", i, eta[i], alpha, i, beta[i],i, delta[i]);
+    }
 
   return 0;
 }
