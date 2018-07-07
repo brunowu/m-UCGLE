@@ -1,4 +1,9 @@
-#include "mpi_lsa_com.h"
+#ifndef _MPI_LSA_COM_H_
+#define _MPI_LSA_COM_H_
+
+#include <stdio.h>
+#include <mpi.h>
+#include <stdlib.h>
 
 /*send type information functionality*/
 int mpi_lsa_com_type_recv(MPI_Comm * com, int * type){
@@ -57,9 +62,7 @@ int mpi_lsa_com_array_send(MPI_Comm * com, int * size, double * data){
   MPI_Request array_Req[remote_size];
   MPI_Status status;
 
-  double *array_out_sended_buffer;
-  array_out_sended_buffer = (double *) malloc(*size*sizeof(double));
-
+  double *array_out_sended_buffer = new double [*size];
 
   for(i = 0; i < * size; i++){
     array_out_sended_buffer[i] = data[i];
@@ -103,3 +106,5 @@ int mpi_lsa_com_array_recv(MPI_Comm * com, int * size, double * data){
 
   return 0;
 }
+
+#endif

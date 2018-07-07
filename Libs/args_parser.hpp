@@ -1,4 +1,10 @@
-#include "args_parser.h"
+#ifndef _ARGS_PARSER_H_
+#define _ARGS_PARSER_H_
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include "mpi.h"
 
 // -nb_gmres ${GNB} -proc_gmres ${GPNB}
 /*function to parser the args to setup the method*/
@@ -59,11 +65,9 @@ char **argsParserGmresExec(int argc, char ** argv, int gmres_nb){
 
   int cnt5 = 0;
   int i, j;
-  char **gmres_cmds;
+  char **gmres_cmds = new char* [gmres_nb];
 
   //string parser
-  gmres_cmds = (char **)malloc(gmres_nb*sizeof(char*)); //gmres executable name
-
 
     for(i =0; i < argc; i++){
       //parse gmres executable name char
@@ -71,7 +75,7 @@ char **argsParserGmresExec(int argc, char ** argv, int gmres_nb){
         cnt5 = 1;
         if(i + gmres_nb < argc){
           for(j = 1; j <= gmres_nb; j++){
-            gmres_cmds[j - 1] = (char *)malloc(20*sizeof(char));
+            gmres_cmds[j - 1] = new char [20];
             strcpy(gmres_cmds[j - 1], argv[i + j]);
           }
         }
@@ -95,11 +99,9 @@ char **argsParserArnoldiExec(int argc, char ** argv, int arnoldi_nb){
 
   int cnt6 = 0;
   int i, j;
-  char **arnoldi_cmds;
+  char **arnoldi_cmds = new char* [arnoldi_nb]; //arnoldi executable name
 
   //string parser
-  arnoldi_cmds = (char **)malloc(arnoldi_nb*sizeof(char*)); //arnoldi executable name
-
 
     for(i =0; i < argc; i++){
       //parse arnoldi executable name char
@@ -107,7 +109,7 @@ char **argsParserArnoldiExec(int argc, char ** argv, int arnoldi_nb){
         cnt6 = 1;
         if(i + arnoldi_nb < argc){
           for(j = 1; j <= arnoldi_nb; j++){
-            arnoldi_cmds[j - 1] = (char *)malloc(20*sizeof(char));
+            arnoldi_cmds[j - 1] = new char [20];
             strcpy(arnoldi_cmds[j - 1], argv[i + j]);
           }
         }
@@ -130,10 +132,9 @@ char **argsParserArnoldiExec(int argc, char ** argv, int arnoldi_nb){
 char *argsParserLsqrExec(int argc, char ** argv){
   int cnt7 = 0;
   int i;
-  char *lsqr_cmd;
+  char *lsqr_cmd = new char [20];//lsqr executable name
 
   //string parser
-  lsqr_cmd = (char *)malloc(20*sizeof(char)); //lsqr executable name
 
     for(i =0; i < argc; i++){
       //parse lsqr executable name char
@@ -155,3 +156,5 @@ char *argsParserLsqrExec(int argc, char ** argv){
   return lsqr_cmd;
 
 }
+
+#endif

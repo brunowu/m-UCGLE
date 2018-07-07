@@ -1,7 +1,7 @@
-#include <stdio.h>
+#include <cstdio>
 #include <mpi.h>
-#include "Libs/mpi_lsa_com.h"
-#include "Libs/args_parser.h"
+#include "Libs/mpi_lsa_com.hpp"
+#include "Libs/args_parser.hpp"
 #include "utils/logo.h"
 
 int main( int argc, char *argv[] ) {
@@ -60,13 +60,11 @@ int main( int argc, char *argv[] ) {
   center_print("Start Resolving Linear Systems by MUCGLE", 79);
   border_print2();
 
-  double *data;
   int length = 5;
 
-  double *data_recv;
+  double *data = new double [length];
 
-  data = (double *)malloc(length*sizeof(double));
-  data_recv = (double *)malloc(length*sizeof(double));
+  double *data_recv = new double [length];
 
   //receive data from ERAM
   for(j = 0; j < arnoldi_nb; j++){

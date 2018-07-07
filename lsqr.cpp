@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include <cstdio>
 #include <mpi.h>
-#include "Libs/mpi_lsa_com.h"
+#include "Libs/mpi_lsa_com.hpp"
 
 int main( int argc, char *argv[] ){
 
@@ -20,13 +21,11 @@ int main( int argc, char *argv[] ){
     printf("Info ]> The Comm world size of LS is %d \n", lsize);
   }
 
-  double *data_recv;
   int length = 5;
   int i;
-  double *data_send;
 
-  data_recv = (double *)malloc(length*sizeof(double));
-  data_send = (double *)malloc(length*sizeof(double));
+  double *data_recv = new double [length];
+  double *data_send = new double [length];
 
   if(!mpi_lsa_com_array_recv(&COMM_FATHER, &length, data_recv)){
     for(i = 0; i < length; i++){

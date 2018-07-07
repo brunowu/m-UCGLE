@@ -1,6 +1,6 @@
-#include <stdio.h>
+#include <cstdio>
 #include <mpi.h>
-#include "Libs/mpi_lsa_com.h"
+#include "Libs/mpi_lsa_com.hpp"
 
 int main( int argc, char *argv[] ){
   MPI_Init( &argc, &argv );
@@ -20,11 +20,11 @@ int main( int argc, char *argv[] ){
     printf("Info ]> The Comm world size of ERAM is %d \n", asize);
   }
 
-  double *data;
   int length = 5;
   int i;
 
-  data = (double *)malloc(length*sizeof(double));
+  double *data = new double [length];
+
   double set[5] = {1,2,3,4,5};
 
   for(i = 0; i < length; i++){
