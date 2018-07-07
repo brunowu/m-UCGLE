@@ -1,7 +1,8 @@
 #include "BelosConfigDefs.hpp"
 #include "BelosLinearProblem.hpp"
 #include "BelosTpetraAdapter.hpp"
-#include "BelosBlockGmresSolMgr.hpp"
+//#include "BelosBlockGmresSolMgr.hpp"
+#include "BelosBlockGmresLsSolMgr.hpp"
 
 #include <Trilinos_Util_iohb.h>
 

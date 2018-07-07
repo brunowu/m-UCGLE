@@ -7,7 +7,6 @@
 #include "../Utils/ellipse.hpp"
 #include <iostream>
 #include "precond.hpp"
-#include "lsp.hpp"
 
 
 int main(int argc, char* argv[])

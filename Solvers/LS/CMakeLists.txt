@@ -10,7 +10,9 @@ set(LINK_LIBRARIES ${Teuchos_LIBRARIES})
 
 #add executable
 add_executable(POTRF POTRF.cpp)
+add_executable(lsp lsp.cpp)
 target_link_libraries(POTRF ${LINK_LIBRARIES})
+target_link_libraries(lsp ${LINK_LIBRARIES})
 
 INCLUDE(CPack)
 

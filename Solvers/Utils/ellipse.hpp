@@ -4,6 +4,8 @@
 #include <complex>
 #include <algorithm>
 #include <cmath>
+#include <iostream>
+
 
 
 int ellipse3(std::complex<double> xy1, std::complex<double> xy2, std::complex<double> xy3, double * a2, double * b2, double * c, int * info){

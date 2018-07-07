@@ -78,16 +78,16 @@ test/fast: test
 
 .PHONY : test/fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/local/Cellar/cmake/3.6.0/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/local/Cellar/cmake/3.6.0/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
 
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
 
-.PHONY : rebuild_cache/fast
+.PHONY : edit_cache/fast
 
 # Special rule for the target package_source
 package_source:
@@ -100,16 +100,16 @@ package_source/fast: package_source
 
 .PHONY : package_source/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/local/Cellar/cmake/3.6.0/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/local/Cellar/cmake/3.6.0/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
 
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
 
-.PHONY : edit_cache/fast
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -142,6 +142,21 @@ preinstall/fast:
 depend:
 	cd /Users/xwu/phd_xwu/UCMGEL && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+# Convenience name for target.
+Solvers/LS/CMakeFiles/lsp.dir/rule:
+	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f CMakeFiles/Makefile2 Solvers/LS/CMakeFiles/lsp.dir/rule
+.PHONY : Solvers/LS/CMakeFiles/lsp.dir/rule
+
+# Convenience name for target.
+lsp: Solvers/LS/CMakeFiles/lsp.dir/rule
+
+.PHONY : lsp
+
+# fast build rule for target.
+lsp/fast:
+	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/LS/CMakeFiles/lsp.dir/build.make Solvers/LS/CMakeFiles/lsp.dir/build
+.PHONY : lsp/fast
 
 # Convenience name for target.
 Solvers/LS/CMakeFiles/POTRF.dir/rule:
@@ -185,6 +200,33 @@ POTRF.cpp.s:
 	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/LS/CMakeFiles/POTRF.dir/build.make Solvers/LS/CMakeFiles/POTRF.dir/POTRF.cpp.s
 .PHONY : POTRF.cpp.s
 
+lsp.o: lsp.cpp.o
+
+.PHONY : lsp.o
+
+# target to build an object file
+lsp.cpp.o:
+	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/LS/CMakeFiles/lsp.dir/build.make Solvers/LS/CMakeFiles/lsp.dir/lsp.cpp.o
+.PHONY : lsp.cpp.o
+
+lsp.i: lsp.cpp.i
+
+.PHONY : lsp.i
+
+# target to preprocess a source file
+lsp.cpp.i:
+	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/LS/CMakeFiles/lsp.dir/build.make Solvers/LS/CMakeFiles/lsp.dir/lsp.cpp.i
+.PHONY : lsp.cpp.i
+
+lsp.s: lsp.cpp.s
+
+.PHONY : lsp.s
+
+# target to generate assembly for a file
+lsp.cpp.s:
+	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/LS/CMakeFiles/lsp.dir/build.make Solvers/LS/CMakeFiles/lsp.dir/lsp.cpp.s
+.PHONY : lsp.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -193,13 +235,17 @@ help:
 	@echo "... depend"
 	@echo "... package"
 	@echo "... test"
-	@echo "... rebuild_cache"
-	@echo "... package_source"
-	@echo "... edit_cache"
+	@echo "... lsp"
 	@echo "... POTRF"
+	@echo "... edit_cache"
+	@echo "... package_source"
+	@echo "... rebuild_cache"
 	@echo "... POTRF.o"
 	@echo "... POTRF.i"
 	@echo "... POTRF.s"
+	@echo "... lsp.o"
+	@echo "... lsp.i"
+	@echo "... lsp.s"
 .PHONY : help
 
 

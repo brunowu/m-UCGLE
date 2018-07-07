@@ -50,7 +50,8 @@
 /Users/xwu/phd_xwu/UCMGEL/Solvers/Arnoldi/CMakeFiles/blockKrylovSchur.dir
 /Users/xwu/phd_xwu/UCMGEL/Solvers/LS/CMakeFiles/package.dir
 /Users/xwu/phd_xwu/UCMGEL/Solvers/LS/CMakeFiles/test.dir
-/Users/xwu/phd_xwu/UCMGEL/Solvers/LS/CMakeFiles/rebuild_cache.dir
-/Users/xwu/phd_xwu/UCMGEL/Solvers/LS/CMakeFiles/package_source.dir
-/Users/xwu/phd_xwu/UCMGEL/Solvers/LS/CMakeFiles/edit_cache.dir
+/Users/xwu/phd_xwu/UCMGEL/Solvers/LS/CMakeFiles/lsp.dir
 /Users/xwu/phd_xwu/UCMGEL/Solvers/LS/CMakeFiles/POTRF.dir
+/Users/xwu/phd_xwu/UCMGEL/Solvers/LS/CMakeFiles/edit_cache.dir
+/Users/xwu/phd_xwu/UCMGEL/Solvers/LS/CMakeFiles/package_source.dir
+/Users/xwu/phd_xwu/UCMGEL/Solvers/LS/CMakeFiles/rebuild_cache.dir

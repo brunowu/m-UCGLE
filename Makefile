@@ -534,6 +534,19 @@ blockKrylovSchur/fast:
 .PHONY : blockKrylovSchur/fast
 
 #=============================================================================
+# Target rules for targets named lsp
+
+# Build rule for target.
+lsp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 lsp
+.PHONY : lsp
+
+# fast build rule for target.
+lsp/fast:
+	$(MAKE) -f Solvers/LS/CMakeFiles/lsp.dir/build.make Solvers/LS/CMakeFiles/lsp.dir/build
+.PHONY : lsp/fast
+
+#=============================================================================
 # Target rules for targets named POTRF
 
 # Build rule for target.
@@ -587,6 +600,7 @@ help:
 	@echo "... Experimental"
 	@echo "... blockGMRES"
 	@echo "... blockKrylovSchur"
+	@echo "... lsp"
 	@echo "... POTRF"
 .PHONY : help
 
