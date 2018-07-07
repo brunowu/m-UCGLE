@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <mpi.h>
 #include <stdlib.h>
+#include <complex>
 
 /*send type information functionality*/
 int mpi_lsa_com_type_recv(MPI_Comm * com, int * type){
@@ -52,7 +53,7 @@ int mpi_lsa_com_type_send(MPI_Comm * com, int * type, int *count){
   return 0;
 }
 
-/*send array functionality*/
+/*send double array functionality*/
 int mpi_lsa_com_array_send(MPI_Comm * com, int * size, double * data){
   int remote_size;
   MPI_Comm_remote_size(* com, &remote_size);
@@ -76,7 +77,7 @@ int mpi_lsa_com_array_send(MPI_Comm * com, int * size, double * data){
   return 0;
 }
 
-/*receive array functionality*/
+/*receive double array functionality*/
 int mpi_lsa_com_array_recv(MPI_Comm * com, int * size, double * data){
   //check if any array to receive
   int flag = 0;
@@ -98,6 +99,66 @@ int mpi_lsa_com_array_recv(MPI_Comm * com, int * size, double * data){
   
     //how large the array to receive is
     MPI_Get_count(&status,MPI_DOUBLE,size);
+
+    if(*size >= 1){
+      MPI_Recv(data, *size, MPI_DOUBLE, status.MPI_SOURCE, status.MPI_TAG, * com, &status);
+    }
+  }
+
+  return 0;
+}
+
+
+/*send complex double array functionality*/
+int mpi_lsa_com_cplx_array_send(MPI_Comm * com, int * size, std::complex<double> * data){
+
+  int remote_size;
+
+  MPI_Comm_remote_size(* com, &remote_size);
+
+  int i;
+
+  MPI_Request array_Req[remote_size];
+  MPI_Status status;
+
+  double *array_out_sended_buffer = new double [*size*2];
+
+  for(i = 0; i < * size*2; i++){
+    array_out_sended_buffer[i] = data[i].real();
+    array_out_sended_buffer[i + 1] = data[i].imag();
+    i = i + 2;
+  }
+
+  for(i = 0; i < remote_size; i++){
+    MPI_Isend(array_out_sended_buffer, *size*2, MPI_DOUBLE, i, i, *com, &array_Req[i]);
+    MPI_Wait(&array_Req[i], &status);
+  }
+
+  return 0;
+}
+
+/*receive complex double array functionality*/
+int mpi_lsa_com_cplx_array_recv(MPI_Comm * com, int * size, std::complex<double> * data){
+  //check if any array to receive
+  int flag = 0;
+
+  MPI_Status status;
+  MPI_Request request;
+  int i;
+
+  while(!flag){
+    MPI_Iprobe(MPI_ANY_SOURCE,MPI_ANY_TAG, *com, &flag, &status);
+  }
+
+  if(flag){
+
+    MPI_Get_count(&status,MPI_DOUBLE,size);
+    if(*size == 1){
+      return 1;
+    }
+  
+    //how large the array to receive is
+    MPI_Get_count(&status,MPI_COMPLEX,size);
 
     if(*size >= 1){
       MPI_Recv(data, *size, MPI_DOUBLE, status.MPI_SOURCE, status.MPI_TAG, * com, &status);
