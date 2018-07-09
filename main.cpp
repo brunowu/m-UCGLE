@@ -5,6 +5,11 @@
 #include "utils/logo.h"
 #include <complex>
 
+#ifndef EIGEN_ALL
+#define EIGEN_ALL 1000
+#endif
+
+
 int main( int argc, char *argv[] ) {
 
   int gmres_nb, arnoldi_nb, gmres_proc, arnoldi_proc, ls_proc = 1;
@@ -63,8 +68,6 @@ int main( int argc, char *argv[] ) {
 
   int length = 5;
 
-  double *data = new double [length];
-
   std::complex<double> *data_recv = new std::complex<double> [length];
 
   //receive data from ERAM
@@ -78,6 +81,7 @@ int main( int argc, char *argv[] ) {
   mpi_lsa_com_cplx_array_send(&COMM_LS, &length, data_recv);
   printf("Info ]> Father send array to LS\n");
   //receive new array from LS
+  double *data = new double [EIGEN_ALL];
   if(!mpi_lsa_com_array_recv(&COMM_LS, &length, data)){
     printf("Info ]> Father has Array received from LS Component\n" );
     for(i = 0; i < length; i++){

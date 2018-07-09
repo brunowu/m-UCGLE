@@ -240,7 +240,7 @@ int main( int argc, char *argv[] ){
 
       /* and send it */
       result_array_size=2+3*ls_eigen;
- //     mpi_lsa_com_array_send(&COMM_FATHER, &result_array_size,result_array);
+      mpi_lsa_com_array_send(&COMM_FATHER, &result_array_size,result_array);
       printf("LS send array\n");
     }
 
