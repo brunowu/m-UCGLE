@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <mpi.h>
 #include "Libs/mpi_lsa_com.hpp"
+#include <complex>
 
 int main( int argc, char *argv[] ){
   MPI_Init( &argc, &argv );
@@ -23,17 +24,18 @@ int main( int argc, char *argv[] ){
   int length = 5;
   int i;
 
-  double *data = new double [length];
 
-  double set[5] = {1,2,3,4,5};
+  std::complex<double> *data = new std::complex<double> [length];
+
+  double real[5] = {-0.830999, -0.774165, -0.463353, -0.444916, -0.287419};
+  double imag[5] = {0.514128, 0.424414, 0.363388, 0.517988, 0.356902};
 
   for(i = 0; i < length; i++){
-    data[i] = set[i];
+    data[i].real(real[i]);
+    data[i].imag(imag[i]);
   }
 
-  mpi_lsa_com_array_send(&COMM_FATHER, &length, data);
-
-  //check if any type to receive
+  mpi_lsa_com_cplx_array_send(&COMM_FATHER, &length, data);
 
   //check if any type to receive
   if(!mpi_lsa_com_type_recv(&COMM_FATHER, &exit_type)){
@@ -49,7 +51,9 @@ int main( int argc, char *argv[] ){
     }
   }
 
-  free(data);
+  delete [] data;
+
+  MPI_Comm_free(&COMM_FATHER);
 
   MPI_Finalize();
 

@@ -3,6 +3,7 @@
 #include "Libs/mpi_lsa_com.hpp"
 #include "Libs/args_parser.hpp"
 #include "utils/logo.h"
+#include <complex>
 
 int main( int argc, char *argv[] ) {
 
@@ -64,23 +65,23 @@ int main( int argc, char *argv[] ) {
 
   double *data = new double [length];
 
-  double *data_recv = new double [length];
+  std::complex<double> *data_recv = new std::complex<double> [length];
 
   //receive data from ERAM
   for(j = 0; j < arnoldi_nb; j++){
-    if(!mpi_lsa_com_array_recv(&COMM_ARNOLDI[j], &length, data_recv)){
+    if(!mpi_lsa_com_cplx_array_recv(&COMM_ARNOLDI[j], &length, data_recv)){
       printf("Info ]> Array receive from ERAM %d Component\n", j);
     }
   }
 
   //send this array to LS
-  mpi_lsa_com_array_send(&COMM_LS, &length, data_recv);
+  mpi_lsa_com_cplx_array_send(&COMM_LS, &length, data_recv);
   printf("Info ]> Father send array to LS\n");
   //receive new array from LS
   if(!mpi_lsa_com_array_recv(&COMM_LS, &length, data)){
     printf("Info ]> Father has Array received from LS Component\n" );
     for(i = 0; i < length; i++){
-      printf("Debug ]>: Father send data[%d] = %f to GMRES\n", i, data[i] );
+      //printf("Debug ]>: Father send data[%d] = %f to GMRES\n", i, data[i] );
     }
     //send new array to multiples GMRES
     for(i = 0; i < gmres_nb; i++){
@@ -109,6 +110,7 @@ int main( int argc, char *argv[] ) {
     for(j = 0; j < arnoldi_nb; j++){
       mpi_lsa_com_type_send(&COMM_ARNOLDI[j], &exit_signal, &out_sended_type_a[j]);
     }
+
     mpi_lsa_com_type_send(&COMM_LS, &exit_signal, &out_sended_type_l);
 
     printf("Info ]> Father send exit type to ERAM and LS Component\n");
@@ -118,20 +120,29 @@ int main( int argc, char *argv[] ) {
   center_print("Remove Application", 79);
   border_print2();
 
-  free(data);
-  free(data_recv);
-  free(gmres_cmds);
-  free(arnoldi_cmds);
-  free(lsqr_cmd);
+  delete [] data;
+  delete [] data_recv;
 
-  MPI_Comm_free(&COMM_LS);
-  for(j = 0; j < arnoldi_nb; j++){
-    MPI_Comm_free(&COMM_ARNOLDI[j]);
+  for(i = 0; i < gmres_nb; i++){
+      delete [] gmres_cmds[i];
   }
+
+  for(i = 0; i < arnoldi_nb; i++){
+      delete [] arnoldi_cmds[i];
+  }
+
+  delete [] lsqr_cmd;
 
   for(j = 0; j < gmres_nb; j++){
     MPI_Comm_free(&COMM_GMRES[j]);
   }
+
+  for(j = 0; j < arnoldi_nb; j++){
+    MPI_Comm_free(&COMM_ARNOLDI[j]);
+  }
+
+  MPI_Comm_free(&COMM_LS);
+
   MPI_Finalize();
 
   return 0;

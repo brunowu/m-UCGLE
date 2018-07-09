@@ -57,24 +57,28 @@ void tri(std::complex<double> *vp, int nValues, int *ch_signe){
 void epurer(std::complex<double> *vp, int *nValues){
 	int i, nKeep = 0;
 	double tmp;
-	std::complex<double> *eigen_keep = new 	std::complex<double> [*nValues];
+	std::complex<double> *eigen_keep = new std::complex<double> [*nValues];
 
 	for(i = 0; i < *nValues; i++){
 		if(vp[i].real() < 0.0){
 			tmp = -vp[i].real();
+			printf("tmp = %f, i = %d\n", tmp, i);
 		}
 		else{
 			tmp = vp[i].real();
 		}
 
 		if(vp[i].imag() >= 0.0 && tmp != 0.0 && tmp > 1e-06){
-			eigen_keep[nKeep] = vp[i];
+			eigen_keep[nKeep].real(vp[i].real());
+			eigen_keep[nKeep].imag(vp[i].imag());
+
 			nKeep++;
 		}
 	}
 
 	for(i = 0; i < nKeep; i++){
-		vp[i] = eigen_keep[i];
+		vp[i].real(eigen_keep[i].real());
+		vp[i].imag(eigen_keep[i].imag());
 	}
 
 	*nValues = nKeep;

@@ -6,7 +6,7 @@
 #include <iostream>
 #include <complex>
 #include <cmath>
-#include "../../Libs/mpi_lsa_com.h"
+#include "../../Libs/mpi_lsa_com.hpp"
 
 #ifndef EIGEN_MIN
 #define EIGEN_MIN 10
@@ -68,19 +68,19 @@ int main(int argc, char* argv[]){
   result_array_size=2+3*eigen_max;
 
   for(i = 0; i < (vector_size); i++){
-    eigen_tri[i].real() = 0.0;
-    eigen_cumul[i].real() = 0.0;
+    eigen_tri[i].real(0.0);
+    eigen_cumul[i].real(0.0);
 
-    eigen_tri[i].imag() = 0.0;
-    eigen_cumul[i].imag() = 0.0;
+    eigen_tri[i].imag(0.0);
+    eigen_cumul[i].imag(0.0);
   }
 
   for(i = 0;i < (vector_size) + 1; i++){
-    d[i].real() = 0.0;
-    c[i].real() = 0.0;
+    d[i].real(0.0);
+    c[i].real(0.0);
 
-    d[i].imag() = 0.0;
-    c[i].imag() = 0.0;
+    d[i].imag(0.0);
+    c[i].imag(0.0);
   }
 
   cumul = 0;

@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/Users/xwu/phd_xwu/UCMGEL/Libs/mpi_lsa_com.hpp
+stdio.h
+-
+mpi.h
+-
+stdlib.h
+-
+complex
+-
+
 /Users/xwu/phd_xwu/UCMGEL/Solvers/LS/lsp.cpp
 ../Utils/libs.hpp
 /Users/xwu/phd_xwu/UCMGEL/Solvers/Utils/libs.hpp
@@ -23,6 +33,8 @@ complex
 -
 cmath
 -
+../../Libs/mpi_lsa_com.hpp
+/Users/xwu/phd_xwu/UCMGEL/Libs/mpi_lsa_com.hpp
 
 /Users/xwu/phd_xwu/UCMGEL/Solvers/LS/precond.hpp
 ../Utils/libs.hpp

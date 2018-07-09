@@ -183,6 +183,19 @@ ContinuousBuild/fast:
 .PHONY : ContinuousBuild/fast
 
 #=============================================================================
+# Target rules for targets named ContinuousUpdate
+
+# Build rule for target.
+ContinuousUpdate: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ContinuousUpdate
+.PHONY : ContinuousUpdate
+
+# fast build rule for target.
+ContinuousUpdate/fast:
+	$(MAKE) -f CMakeFiles/ContinuousUpdate.dir/build.make CMakeFiles/ContinuousUpdate.dir/build
+.PHONY : ContinuousUpdate/fast
+
+#=============================================================================
 # Target rules for targets named ContinuousStart
 
 # Build rule for target.
@@ -196,30 +209,17 @@ ContinuousStart/fast:
 .PHONY : ContinuousStart/fast
 
 #=============================================================================
-# Target rules for targets named ExperimentalBuild
+# Target rules for targets named ExperimentalMemCheck
 
 # Build rule for target.
-ExperimentalBuild: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ExperimentalBuild
-.PHONY : ExperimentalBuild
+ExperimentalMemCheck: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ExperimentalMemCheck
+.PHONY : ExperimentalMemCheck
 
 # fast build rule for target.
-ExperimentalBuild/fast:
-	$(MAKE) -f CMakeFiles/ExperimentalBuild.dir/build.make CMakeFiles/ExperimentalBuild.dir/build
-.PHONY : ExperimentalBuild/fast
-
-#=============================================================================
-# Target rules for targets named ExperimentalCoverage
-
-# Build rule for target.
-ExperimentalCoverage: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ExperimentalCoverage
-.PHONY : ExperimentalCoverage
-
-# fast build rule for target.
-ExperimentalCoverage/fast:
-	$(MAKE) -f CMakeFiles/ExperimentalCoverage.dir/build.make CMakeFiles/ExperimentalCoverage.dir/build
-.PHONY : ExperimentalCoverage/fast
+ExperimentalMemCheck/fast:
+	$(MAKE) -f CMakeFiles/ExperimentalMemCheck.dir/build.make CMakeFiles/ExperimentalMemCheck.dir/build
+.PHONY : ExperimentalMemCheck/fast
 
 #=============================================================================
 # Target rules for targets named ExperimentalSubmit
@@ -235,30 +235,30 @@ ExperimentalSubmit/fast:
 .PHONY : ExperimentalSubmit/fast
 
 #=============================================================================
-# Target rules for targets named ContinuousUpdate
+# Target rules for targets named ExperimentalCoverage
 
 # Build rule for target.
-ContinuousUpdate: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ContinuousUpdate
-.PHONY : ContinuousUpdate
+ExperimentalCoverage: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ExperimentalCoverage
+.PHONY : ExperimentalCoverage
 
 # fast build rule for target.
-ContinuousUpdate/fast:
-	$(MAKE) -f CMakeFiles/ContinuousUpdate.dir/build.make CMakeFiles/ContinuousUpdate.dir/build
-.PHONY : ContinuousUpdate/fast
+ExperimentalCoverage/fast:
+	$(MAKE) -f CMakeFiles/ExperimentalCoverage.dir/build.make CMakeFiles/ExperimentalCoverage.dir/build
+.PHONY : ExperimentalCoverage/fast
 
 #=============================================================================
-# Target rules for targets named ExperimentalUpdate
+# Target rules for targets named ExperimentalBuild
 
 # Build rule for target.
-ExperimentalUpdate: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ExperimentalUpdate
-.PHONY : ExperimentalUpdate
+ExperimentalBuild: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ExperimentalBuild
+.PHONY : ExperimentalBuild
 
 # fast build rule for target.
-ExperimentalUpdate/fast:
-	$(MAKE) -f CMakeFiles/ExperimentalUpdate.dir/build.make CMakeFiles/ExperimentalUpdate.dir/build
-.PHONY : ExperimentalUpdate/fast
+ExperimentalBuild/fast:
+	$(MAKE) -f CMakeFiles/ExperimentalBuild.dir/build.make CMakeFiles/ExperimentalBuild.dir/build
+.PHONY : ExperimentalBuild/fast
 
 #=============================================================================
 # Target rules for targets named ExperimentalStart
@@ -391,69 +391,17 @@ NightlyBuild/fast:
 .PHONY : NightlyBuild/fast
 
 #=============================================================================
-# Target rules for targets named NightlyConfigure
+# Target rules for targets named Continuous
 
 # Build rule for target.
-NightlyConfigure: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 NightlyConfigure
-.PHONY : NightlyConfigure
+Continuous: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Continuous
+.PHONY : Continuous
 
 # fast build rule for target.
-NightlyConfigure/fast:
-	$(MAKE) -f CMakeFiles/NightlyConfigure.dir/build.make CMakeFiles/NightlyConfigure.dir/build
-.PHONY : NightlyConfigure/fast
-
-#=============================================================================
-# Target rules for targets named NightlyUpdate
-
-# Build rule for target.
-NightlyUpdate: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 NightlyUpdate
-.PHONY : NightlyUpdate
-
-# fast build rule for target.
-NightlyUpdate/fast:
-	$(MAKE) -f CMakeFiles/NightlyUpdate.dir/build.make CMakeFiles/NightlyUpdate.dir/build
-.PHONY : NightlyUpdate/fast
-
-#=============================================================================
-# Target rules for targets named NightlyMemoryCheck
-
-# Build rule for target.
-NightlyMemoryCheck: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 NightlyMemoryCheck
-.PHONY : NightlyMemoryCheck
-
-# fast build rule for target.
-NightlyMemoryCheck/fast:
-	$(MAKE) -f CMakeFiles/NightlyMemoryCheck.dir/build.make CMakeFiles/NightlyMemoryCheck.dir/build
-.PHONY : NightlyMemoryCheck/fast
-
-#=============================================================================
-# Target rules for targets named ContinuousConfigure
-
-# Build rule for target.
-ContinuousConfigure: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ContinuousConfigure
-.PHONY : ContinuousConfigure
-
-# fast build rule for target.
-ContinuousConfigure/fast:
-	$(MAKE) -f CMakeFiles/ContinuousConfigure.dir/build.make CMakeFiles/ContinuousConfigure.dir/build
-.PHONY : ContinuousConfigure/fast
-
-#=============================================================================
-# Target rules for targets named Nightly
-
-# Build rule for target.
-Nightly: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Nightly
-.PHONY : Nightly
-
-# fast build rule for target.
-Nightly/fast:
-	$(MAKE) -f CMakeFiles/Nightly.dir/build.make CMakeFiles/Nightly.dir/build
-.PHONY : Nightly/fast
+Continuous/fast:
+	$(MAKE) -f CMakeFiles/Continuous.dir/build.make CMakeFiles/Continuous.dir/build
+.PHONY : Continuous/fast
 
 #=============================================================================
 # Target rules for targets named NightlyStart
@@ -469,30 +417,108 @@ NightlyStart/fast:
 .PHONY : NightlyStart/fast
 
 #=============================================================================
-# Target rules for targets named ExperimentalMemCheck
+# Target rules for targets named lsqr.exe
 
 # Build rule for target.
-ExperimentalMemCheck: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ExperimentalMemCheck
-.PHONY : ExperimentalMemCheck
+lsqr.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 lsqr.exe
+.PHONY : lsqr.exe
 
 # fast build rule for target.
-ExperimentalMemCheck/fast:
-	$(MAKE) -f CMakeFiles/ExperimentalMemCheck.dir/build.make CMakeFiles/ExperimentalMemCheck.dir/build
-.PHONY : ExperimentalMemCheck/fast
+lsqr.exe/fast:
+	$(MAKE) -f CMakeFiles/lsqr.exe.dir/build.make CMakeFiles/lsqr.exe.dir/build
+.PHONY : lsqr.exe/fast
 
 #=============================================================================
-# Target rules for targets named Continuous
+# Target rules for targets named Nightly
 
 # Build rule for target.
-Continuous: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Continuous
-.PHONY : Continuous
+Nightly: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Nightly
+.PHONY : Nightly
 
 # fast build rule for target.
-Continuous/fast:
-	$(MAKE) -f CMakeFiles/Continuous.dir/build.make CMakeFiles/Continuous.dir/build
-.PHONY : Continuous/fast
+Nightly/fast:
+	$(MAKE) -f CMakeFiles/Nightly.dir/build.make CMakeFiles/Nightly.dir/build
+.PHONY : Nightly/fast
+
+#=============================================================================
+# Target rules for targets named ExperimentalUpdate
+
+# Build rule for target.
+ExperimentalUpdate: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ExperimentalUpdate
+.PHONY : ExperimentalUpdate
+
+# fast build rule for target.
+ExperimentalUpdate/fast:
+	$(MAKE) -f CMakeFiles/ExperimentalUpdate.dir/build.make CMakeFiles/ExperimentalUpdate.dir/build
+.PHONY : ExperimentalUpdate/fast
+
+#=============================================================================
+# Target rules for targets named POTRF
+
+# Build rule for target.
+POTRF: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 POTRF
+.PHONY : POTRF
+
+# fast build rule for target.
+POTRF/fast:
+	$(MAKE) -f CMakeFiles/POTRF.dir/build.make CMakeFiles/POTRF.dir/build
+.PHONY : POTRF/fast
+
+#=============================================================================
+# Target rules for targets named gmres2.exe
+
+# Build rule for target.
+gmres2.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gmres2.exe
+.PHONY : gmres2.exe
+
+# fast build rule for target.
+gmres2.exe/fast:
+	$(MAKE) -f CMakeFiles/gmres2.exe.dir/build.make CMakeFiles/gmres2.exe.dir/build
+.PHONY : gmres2.exe/fast
+
+#=============================================================================
+# Target rules for targets named arnoldi.exe
+
+# Build rule for target.
+arnoldi.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 arnoldi.exe
+.PHONY : arnoldi.exe
+
+# fast build rule for target.
+arnoldi.exe/fast:
+	$(MAKE) -f CMakeFiles/arnoldi.exe.dir/build.make CMakeFiles/arnoldi.exe.dir/build
+.PHONY : arnoldi.exe/fast
+
+#=============================================================================
+# Target rules for targets named test.exe
+
+# Build rule for target.
+test.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test.exe
+.PHONY : test.exe
+
+# fast build rule for target.
+test.exe/fast:
+	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/build
+.PHONY : test.exe/fast
+
+#=============================================================================
+# Target rules for targets named gmres.exe
+
+# Build rule for target.
+gmres.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gmres.exe
+.PHONY : gmres.exe
+
+# fast build rule for target.
+gmres.exe/fast:
+	$(MAKE) -f CMakeFiles/gmres.exe.dir/build.make CMakeFiles/gmres.exe.dir/build
+.PHONY : gmres.exe/fast
 
 #=============================================================================
 # Target rules for targets named Experimental
@@ -508,56 +534,194 @@ Experimental/fast:
 .PHONY : Experimental/fast
 
 #=============================================================================
-# Target rules for targets named blockGMRES
+# Target rules for targets named NightlyConfigure
 
 # Build rule for target.
-blockGMRES: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 blockGMRES
-.PHONY : blockGMRES
+NightlyConfigure: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 NightlyConfigure
+.PHONY : NightlyConfigure
 
 # fast build rule for target.
-blockGMRES/fast:
-	$(MAKE) -f Solvers/GMRES/CMakeFiles/blockGMRES.dir/build.make Solvers/GMRES/CMakeFiles/blockGMRES.dir/build
-.PHONY : blockGMRES/fast
+NightlyConfigure/fast:
+	$(MAKE) -f CMakeFiles/NightlyConfigure.dir/build.make CMakeFiles/NightlyConfigure.dir/build
+.PHONY : NightlyConfigure/fast
 
 #=============================================================================
-# Target rules for targets named blockKrylovSchur
+# Target rules for targets named ContinuousConfigure
 
 # Build rule for target.
-blockKrylovSchur: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 blockKrylovSchur
-.PHONY : blockKrylovSchur
+ContinuousConfigure: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ContinuousConfigure
+.PHONY : ContinuousConfigure
 
 # fast build rule for target.
-blockKrylovSchur/fast:
-	$(MAKE) -f Solvers/Arnoldi/CMakeFiles/blockKrylovSchur.dir/build.make Solvers/Arnoldi/CMakeFiles/blockKrylovSchur.dir/build
-.PHONY : blockKrylovSchur/fast
+ContinuousConfigure/fast:
+	$(MAKE) -f CMakeFiles/ContinuousConfigure.dir/build.make CMakeFiles/ContinuousConfigure.dir/build
+.PHONY : ContinuousConfigure/fast
 
 #=============================================================================
-# Target rules for targets named lsp
+# Target rules for targets named NightlyMemoryCheck
 
 # Build rule for target.
-lsp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 lsp
-.PHONY : lsp
+NightlyMemoryCheck: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 NightlyMemoryCheck
+.PHONY : NightlyMemoryCheck
 
 # fast build rule for target.
-lsp/fast:
-	$(MAKE) -f Solvers/LS/CMakeFiles/lsp.dir/build.make Solvers/LS/CMakeFiles/lsp.dir/build
-.PHONY : lsp/fast
+NightlyMemoryCheck/fast:
+	$(MAKE) -f CMakeFiles/NightlyMemoryCheck.dir/build.make CMakeFiles/NightlyMemoryCheck.dir/build
+.PHONY : NightlyMemoryCheck/fast
 
 #=============================================================================
-# Target rules for targets named POTRF
+# Target rules for targets named NightlyUpdate
 
 # Build rule for target.
-POTRF: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 POTRF
-.PHONY : POTRF
+NightlyUpdate: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 NightlyUpdate
+.PHONY : NightlyUpdate
 
 # fast build rule for target.
-POTRF/fast:
-	$(MAKE) -f Solvers/LS/CMakeFiles/POTRF.dir/build.make Solvers/LS/CMakeFiles/POTRF.dir/build
-.PHONY : POTRF/fast
+NightlyUpdate/fast:
+	$(MAKE) -f CMakeFiles/NightlyUpdate.dir/build.make CMakeFiles/NightlyUpdate.dir/build
+.PHONY : NightlyUpdate/fast
+
+POTRF.o: POTRF.cpp.o
+
+.PHONY : POTRF.o
+
+# target to build an object file
+POTRF.cpp.o:
+	$(MAKE) -f CMakeFiles/POTRF.dir/build.make CMakeFiles/POTRF.dir/POTRF.cpp.o
+.PHONY : POTRF.cpp.o
+
+POTRF.i: POTRF.cpp.i
+
+.PHONY : POTRF.i
+
+# target to preprocess a source file
+POTRF.cpp.i:
+	$(MAKE) -f CMakeFiles/POTRF.dir/build.make CMakeFiles/POTRF.dir/POTRF.cpp.i
+.PHONY : POTRF.cpp.i
+
+POTRF.s: POTRF.cpp.s
+
+.PHONY : POTRF.s
+
+# target to generate assembly for a file
+POTRF.cpp.s:
+	$(MAKE) -f CMakeFiles/POTRF.dir/build.make CMakeFiles/POTRF.dir/POTRF.cpp.s
+.PHONY : POTRF.cpp.s
+
+arnoldi.o: arnoldi.cpp.o
+
+.PHONY : arnoldi.o
+
+# target to build an object file
+arnoldi.cpp.o:
+	$(MAKE) -f CMakeFiles/arnoldi.exe.dir/build.make CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o
+.PHONY : arnoldi.cpp.o
+
+arnoldi.i: arnoldi.cpp.i
+
+.PHONY : arnoldi.i
+
+# target to preprocess a source file
+arnoldi.cpp.i:
+	$(MAKE) -f CMakeFiles/arnoldi.exe.dir/build.make CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.i
+.PHONY : arnoldi.cpp.i
+
+arnoldi.s: arnoldi.cpp.s
+
+.PHONY : arnoldi.s
+
+# target to generate assembly for a file
+arnoldi.cpp.s:
+	$(MAKE) -f CMakeFiles/arnoldi.exe.dir/build.make CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.s
+.PHONY : arnoldi.cpp.s
+
+gmres.o: gmres.cpp.o
+
+.PHONY : gmres.o
+
+# target to build an object file
+gmres.cpp.o:
+	$(MAKE) -f CMakeFiles/gmres2.exe.dir/build.make CMakeFiles/gmres2.exe.dir/gmres.cpp.o
+	$(MAKE) -f CMakeFiles/gmres.exe.dir/build.make CMakeFiles/gmres.exe.dir/gmres.cpp.o
+.PHONY : gmres.cpp.o
+
+gmres.i: gmres.cpp.i
+
+.PHONY : gmres.i
+
+# target to preprocess a source file
+gmres.cpp.i:
+	$(MAKE) -f CMakeFiles/gmres2.exe.dir/build.make CMakeFiles/gmres2.exe.dir/gmres.cpp.i
+	$(MAKE) -f CMakeFiles/gmres.exe.dir/build.make CMakeFiles/gmres.exe.dir/gmres.cpp.i
+.PHONY : gmres.cpp.i
+
+gmres.s: gmres.cpp.s
+
+.PHONY : gmres.s
+
+# target to generate assembly for a file
+gmres.cpp.s:
+	$(MAKE) -f CMakeFiles/gmres2.exe.dir/build.make CMakeFiles/gmres2.exe.dir/gmres.cpp.s
+	$(MAKE) -f CMakeFiles/gmres.exe.dir/build.make CMakeFiles/gmres.exe.dir/gmres.cpp.s
+.PHONY : gmres.cpp.s
+
+lsqr.o: lsqr.cpp.o
+
+.PHONY : lsqr.o
+
+# target to build an object file
+lsqr.cpp.o:
+	$(MAKE) -f CMakeFiles/lsqr.exe.dir/build.make CMakeFiles/lsqr.exe.dir/lsqr.cpp.o
+.PHONY : lsqr.cpp.o
+
+lsqr.i: lsqr.cpp.i
+
+.PHONY : lsqr.i
+
+# target to preprocess a source file
+lsqr.cpp.i:
+	$(MAKE) -f CMakeFiles/lsqr.exe.dir/build.make CMakeFiles/lsqr.exe.dir/lsqr.cpp.i
+.PHONY : lsqr.cpp.i
+
+lsqr.s: lsqr.cpp.s
+
+.PHONY : lsqr.s
+
+# target to generate assembly for a file
+lsqr.cpp.s:
+	$(MAKE) -f CMakeFiles/lsqr.exe.dir/build.make CMakeFiles/lsqr.exe.dir/lsqr.cpp.s
+.PHONY : lsqr.cpp.s
+
+main.o: main.cpp.o
+
+.PHONY : main.o
+
+# target to build an object file
+main.cpp.o:
+	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/main.cpp.o
+.PHONY : main.cpp.o
+
+main.i: main.cpp.i
+
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cpp.i:
+	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/main.cpp.i
+.PHONY : main.cpp.i
+
+main.s: main.cpp.s
+
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cpp.s:
+	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -570,12 +734,12 @@ help:
 	@echo "... ContinuousCoverage"
 	@echo "... ContinuousTest"
 	@echo "... ContinuousBuild"
-	@echo "... ContinuousStart"
-	@echo "... ExperimentalBuild"
-	@echo "... ExperimentalCoverage"
-	@echo "... ExperimentalSubmit"
 	@echo "... ContinuousUpdate"
-	@echo "... ExperimentalUpdate"
+	@echo "... ContinuousStart"
+	@echo "... ExperimentalMemCheck"
+	@echo "... ExperimentalSubmit"
+	@echo "... ExperimentalCoverage"
+	@echo "... ExperimentalBuild"
 	@echo "... ExperimentalStart"
 	@echo "... ContinuousSubmit"
 	@echo "... ExperimentalTest"
@@ -588,20 +752,37 @@ help:
 	@echo "... NightlyTest"
 	@echo "... ContinuousMemCheck"
 	@echo "... NightlyBuild"
-	@echo "... NightlyConfigure"
-	@echo "... NightlyUpdate"
-	@echo "... edit_cache"
-	@echo "... NightlyMemoryCheck"
-	@echo "... ContinuousConfigure"
-	@echo "... Nightly"
-	@echo "... NightlyStart"
-	@echo "... ExperimentalMemCheck"
 	@echo "... Continuous"
-	@echo "... Experimental"
-	@echo "... blockGMRES"
-	@echo "... blockKrylovSchur"
-	@echo "... lsp"
+	@echo "... NightlyStart"
+	@echo "... lsqr.exe"
+	@echo "... Nightly"
+	@echo "... ExperimentalUpdate"
 	@echo "... POTRF"
+	@echo "... gmres2.exe"
+	@echo "... arnoldi.exe"
+	@echo "... test.exe"
+	@echo "... gmres.exe"
+	@echo "... Experimental"
+	@echo "... NightlyConfigure"
+	@echo "... edit_cache"
+	@echo "... ContinuousConfigure"
+	@echo "... NightlyMemoryCheck"
+	@echo "... NightlyUpdate"
+	@echo "... POTRF.o"
+	@echo "... POTRF.i"
+	@echo "... POTRF.s"
+	@echo "... arnoldi.o"
+	@echo "... arnoldi.i"
+	@echo "... arnoldi.s"
+	@echo "... gmres.o"
+	@echo "... gmres.i"
+	@echo "... gmres.s"
+	@echo "... lsqr.o"
+	@echo "... lsqr.i"
+	@echo "... lsqr.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 

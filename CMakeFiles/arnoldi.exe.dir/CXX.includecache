@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/xwu/phd_xwu/UCMGEL/Libs/mpi_lsa_com.hpp
+stdio.h
+-
+mpi.h
+-
+stdlib.h
+-
+complex
+-
+
+/Users/xwu/phd_xwu/UCMGEL/arnoldi.cpp
+cstdio
+-
+mpi.h
+-
+Libs/mpi_lsa_com.hpp
+/Users/xwu/phd_xwu/UCMGEL/Libs/mpi_lsa_com.hpp
+complex
+-
+

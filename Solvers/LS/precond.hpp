@@ -166,10 +166,6 @@ int LSPrecond(double a_ell, double d_ell, double c_ell, double * eta, double * a
     }
 */
 
-    std::cout << MM << std::endl;
-
-    std::cout << F << std::endl;
-
   /* set the vectors*/
 
   Teuchos::SerialDenseVector<int, double> rhs((*nb_eigen) + 1);
@@ -178,7 +174,6 @@ int LSPrecond(double a_ell, double d_ell, double c_ell, double * eta, double * a
   rhs = 0.0;
   /* rhs[0] must be setted to beta*/
   rhs[0] = (MM.values())[0];
-
 
   /*create the lsqr solver context and set it up*/
 
@@ -198,8 +193,6 @@ int LSPrecond(double a_ell, double d_ell, double c_ell, double * eta, double * a
   for(i = 0; i < *nb_eigen_all + 1; i++){
     eta[i] = (rhs.values())[i];
   }
-
-  std::cout << rhs << std::endl;
 
   //free the allocate memory
   for(i = 0; i < (*nb_eigen_all) + 3; i++){

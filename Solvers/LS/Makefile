@@ -67,27 +67,16 @@ package/fast: package
 
 .PHONY : package/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/local/Cellar/cmake/3.6.0/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/local/Cellar/cmake/3.6.0/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
 
-# Special rule for the target test
-test/fast: test
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
 
-.PHONY : test/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/local/Cellar/cmake/3.6.0/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
+.PHONY : rebuild_cache/fast
 
 # Special rule for the target package_source
 package_source:
@@ -100,16 +89,27 @@ package_source/fast: package_source
 
 .PHONY : package_source/fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/local/Cellar/cmake/3.6.0/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/local/Cellar/cmake/3.6.0/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
 
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
 
-.PHONY : rebuild_cache/fast
+.PHONY : edit_cache/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/local/Cellar/cmake/3.6.0/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -158,48 +158,6 @@ lsp/fast:
 	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/LS/CMakeFiles/lsp.dir/build.make Solvers/LS/CMakeFiles/lsp.dir/build
 .PHONY : lsp/fast
 
-# Convenience name for target.
-Solvers/LS/CMakeFiles/POTRF.dir/rule:
-	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f CMakeFiles/Makefile2 Solvers/LS/CMakeFiles/POTRF.dir/rule
-.PHONY : Solvers/LS/CMakeFiles/POTRF.dir/rule
-
-# Convenience name for target.
-POTRF: Solvers/LS/CMakeFiles/POTRF.dir/rule
-
-.PHONY : POTRF
-
-# fast build rule for target.
-POTRF/fast:
-	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/LS/CMakeFiles/POTRF.dir/build.make Solvers/LS/CMakeFiles/POTRF.dir/build
-.PHONY : POTRF/fast
-
-POTRF.o: POTRF.cpp.o
-
-.PHONY : POTRF.o
-
-# target to build an object file
-POTRF.cpp.o:
-	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/LS/CMakeFiles/POTRF.dir/build.make Solvers/LS/CMakeFiles/POTRF.dir/POTRF.cpp.o
-.PHONY : POTRF.cpp.o
-
-POTRF.i: POTRF.cpp.i
-
-.PHONY : POTRF.i
-
-# target to preprocess a source file
-POTRF.cpp.i:
-	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/LS/CMakeFiles/POTRF.dir/build.make Solvers/LS/CMakeFiles/POTRF.dir/POTRF.cpp.i
-.PHONY : POTRF.cpp.i
-
-POTRF.s: POTRF.cpp.s
-
-.PHONY : POTRF.s
-
-# target to generate assembly for a file
-POTRF.cpp.s:
-	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/LS/CMakeFiles/POTRF.dir/build.make Solvers/LS/CMakeFiles/POTRF.dir/POTRF.cpp.s
-.PHONY : POTRF.cpp.s
-
 lsp.o: lsp.cpp.o
 
 .PHONY : lsp.o
@@ -234,15 +192,11 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... package"
+	@echo "... rebuild_cache"
+	@echo "... package_source"
+	@echo "... edit_cache"
 	@echo "... test"
 	@echo "... lsp"
-	@echo "... POTRF"
-	@echo "... edit_cache"
-	@echo "... package_source"
-	@echo "... rebuild_cache"
-	@echo "... POTRF.o"
-	@echo "... POTRF.i"
-	@echo "... POTRF.s"
 	@echo "... lsp.o"
 	@echo "... lsp.i"
 	@echo "... lsp.s"

@@ -1,0 +1,1 @@
+/Users/xwu/software/openmp/bin/mpicxx    -std=c++11 -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o  -o arnoldi.exe  -L/Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/lib  

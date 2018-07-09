@@ -116,17 +116,17 @@ int mpi_lsa_com_cplx_array_send(MPI_Comm * com, int * size, std::complex<double>
 
   MPI_Comm_remote_size(* com, &remote_size);
 
-  int i;
+  int i , j;
 
   MPI_Request array_Req[remote_size];
   MPI_Status status;
 
   double *array_out_sended_buffer = new double [*size*2];
 
-  for(i = 0; i < * size*2; i++){
-    array_out_sended_buffer[i] = data[i].real();
-    array_out_sended_buffer[i + 1] = data[i].imag();
-    i = i + 2;
+  for(i = 0; i < * size*2; i = i+2){
+    j = (int) i / 2;
+    array_out_sended_buffer[i] = data[j].real();
+    array_out_sended_buffer[i + 1] = data[j].imag();
   }
 
   for(i = 0; i < remote_size; i++){
@@ -142,9 +142,12 @@ int mpi_lsa_com_cplx_array_recv(MPI_Comm * com, int * size, std::complex<double>
   //check if any array to receive
   int flag = 0;
 
+  int double_size;
+
   MPI_Status status;
   MPI_Request request;
-  int i;
+
+  int i, j;
 
   while(!flag){
     MPI_Iprobe(MPI_ANY_SOURCE,MPI_ANY_TAG, *com, &flag, &status);
@@ -152,16 +155,26 @@ int mpi_lsa_com_cplx_array_recv(MPI_Comm * com, int * size, std::complex<double>
 
   if(flag){
 
-    MPI_Get_count(&status,MPI_DOUBLE,size);
+    MPI_Get_count(&status,MPI_DOUBLE,&double_size);
     if(*size == 1){
       return 1;
     }
-  
+    
     //how large the array to receive is
-    MPI_Get_count(&status,MPI_COMPLEX,size);
+    MPI_Get_count(&status,MPI_DOUBLE,&double_size);
+
+    double *array_out_recv_buffer = new double [double_size];
+
+    *size = (int) double_size/2;
 
     if(*size >= 1){
-      MPI_Recv(data, *size, MPI_DOUBLE, status.MPI_SOURCE, status.MPI_TAG, * com, &status);
+      MPI_Recv(array_out_recv_buffer,double_size, MPI_DOUBLE, status.MPI_SOURCE, status.MPI_TAG, * com, &status);
+      
+      for(i = 0; i < *size; i++ ){
+        j = (int) 2 * i;
+        data[i].real(array_out_recv_buffer[j]);
+        data[i].imag(array_out_recv_buffer[j+1]);
+      }
     }
   }
 
