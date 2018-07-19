@@ -62,7 +62,7 @@ void epurer(std::complex<double> *vp, int *nValues){
 	for(i = 0; i < *nValues; i++){
 		if(vp[i].real() < 0.0){
 			tmp = -vp[i].real();
-			printf("tmp = %f, i = %d\n", tmp, i);
+			//printf("tmp = %f, i = %d\n", tmp, i);
 		}
 		else{
 			tmp = vp[i].real();

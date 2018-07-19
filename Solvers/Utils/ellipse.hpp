@@ -122,7 +122,7 @@ void ellipse(std::complex<double> * c, std::complex<double> * d, int n, int mu, 
 	printf("----------------------\n");
 	if(mu != 0 && mu < n){
 		hk[n-1] = c[mu] + d[mu];
-		printf("hk[%d] = %f+%fi\n",n-1,real(hk[n-1]), imag(hk[n-1]));
+		//printf("hk[%d] = %f+%fi\n",n-1,real(hk[n-1]), imag(hk[n-1]));
 	}
 
 	hk[n-1] = c[n-2] + d[n-2];

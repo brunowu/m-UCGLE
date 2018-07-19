@@ -668,6 +668,102 @@ clean: CMakeFiles/NightlyBuild.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/NightlyUpdate.dir
+
+# All Build rule for target.
+CMakeFiles/NightlyUpdate.dir/all:
+	$(MAKE) -f CMakeFiles/NightlyUpdate.dir/build.make CMakeFiles/NightlyUpdate.dir/depend
+	$(MAKE) -f CMakeFiles/NightlyUpdate.dir/build.make CMakeFiles/NightlyUpdate.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num= "Built target NightlyUpdate"
+.PHONY : CMakeFiles/NightlyUpdate.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/NightlyUpdate.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/xwu/phd_xwu/UCMGEL/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/NightlyUpdate.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/xwu/phd_xwu/UCMGEL/CMakeFiles 0
+.PHONY : CMakeFiles/NightlyUpdate.dir/rule
+
+# Convenience name for target.
+NightlyUpdate: CMakeFiles/NightlyUpdate.dir/rule
+
+.PHONY : NightlyUpdate
+
+# clean rule for target.
+CMakeFiles/NightlyUpdate.dir/clean:
+	$(MAKE) -f CMakeFiles/NightlyUpdate.dir/build.make CMakeFiles/NightlyUpdate.dir/clean
+.PHONY : CMakeFiles/NightlyUpdate.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/NightlyUpdate.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ContinuousConfigure.dir
+
+# All Build rule for target.
+CMakeFiles/ContinuousConfigure.dir/all:
+	$(MAKE) -f CMakeFiles/ContinuousConfigure.dir/build.make CMakeFiles/ContinuousConfigure.dir/depend
+	$(MAKE) -f CMakeFiles/ContinuousConfigure.dir/build.make CMakeFiles/ContinuousConfigure.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num= "Built target ContinuousConfigure"
+.PHONY : CMakeFiles/ContinuousConfigure.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/ContinuousConfigure.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/xwu/phd_xwu/UCMGEL/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ContinuousConfigure.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/xwu/phd_xwu/UCMGEL/CMakeFiles 0
+.PHONY : CMakeFiles/ContinuousConfigure.dir/rule
+
+# Convenience name for target.
+ContinuousConfigure: CMakeFiles/ContinuousConfigure.dir/rule
+
+.PHONY : ContinuousConfigure
+
+# clean rule for target.
+CMakeFiles/ContinuousConfigure.dir/clean:
+	$(MAKE) -f CMakeFiles/ContinuousConfigure.dir/build.make CMakeFiles/ContinuousConfigure.dir/clean
+.PHONY : CMakeFiles/ContinuousConfigure.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/ContinuousConfigure.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/NightlyMemoryCheck.dir
+
+# All Build rule for target.
+CMakeFiles/NightlyMemoryCheck.dir/all:
+	$(MAKE) -f CMakeFiles/NightlyMemoryCheck.dir/build.make CMakeFiles/NightlyMemoryCheck.dir/depend
+	$(MAKE) -f CMakeFiles/NightlyMemoryCheck.dir/build.make CMakeFiles/NightlyMemoryCheck.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num= "Built target NightlyMemoryCheck"
+.PHONY : CMakeFiles/NightlyMemoryCheck.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/NightlyMemoryCheck.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/xwu/phd_xwu/UCMGEL/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/NightlyMemoryCheck.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/xwu/phd_xwu/UCMGEL/CMakeFiles 0
+.PHONY : CMakeFiles/NightlyMemoryCheck.dir/rule
+
+# Convenience name for target.
+NightlyMemoryCheck: CMakeFiles/NightlyMemoryCheck.dir/rule
+
+.PHONY : NightlyMemoryCheck
+
+# clean rule for target.
+CMakeFiles/NightlyMemoryCheck.dir/clean:
+	$(MAKE) -f CMakeFiles/NightlyMemoryCheck.dir/build.make CMakeFiles/NightlyMemoryCheck.dir/clean
+.PHONY : CMakeFiles/NightlyMemoryCheck.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/NightlyMemoryCheck.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/Continuous.dir
 
 # All Build rule for target.
@@ -738,7 +834,7 @@ clean: CMakeFiles/NightlyStart.dir/clean
 CMakeFiles/lsqr.exe.dir/all:
 	$(MAKE) -f CMakeFiles/lsqr.exe.dir/build.make CMakeFiles/lsqr.exe.dir/depend
 	$(MAKE) -f CMakeFiles/lsqr.exe.dir/build.make CMakeFiles/lsqr.exe.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num=9,10 "Built target lsqr.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num=7,8 "Built target lsqr.exe"
 .PHONY : CMakeFiles/lsqr.exe.dir/all
 
 # Include target in all.
@@ -801,82 +897,13 @@ clean: CMakeFiles/Nightly.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/ExperimentalUpdate.dir
-
-# All Build rule for target.
-CMakeFiles/ExperimentalUpdate.dir/all:
-	$(MAKE) -f CMakeFiles/ExperimentalUpdate.dir/build.make CMakeFiles/ExperimentalUpdate.dir/depend
-	$(MAKE) -f CMakeFiles/ExperimentalUpdate.dir/build.make CMakeFiles/ExperimentalUpdate.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num= "Built target ExperimentalUpdate"
-.PHONY : CMakeFiles/ExperimentalUpdate.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/ExperimentalUpdate.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/xwu/phd_xwu/UCMGEL/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ExperimentalUpdate.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/xwu/phd_xwu/UCMGEL/CMakeFiles 0
-.PHONY : CMakeFiles/ExperimentalUpdate.dir/rule
-
-# Convenience name for target.
-ExperimentalUpdate: CMakeFiles/ExperimentalUpdate.dir/rule
-
-.PHONY : ExperimentalUpdate
-
-# clean rule for target.
-CMakeFiles/ExperimentalUpdate.dir/clean:
-	$(MAKE) -f CMakeFiles/ExperimentalUpdate.dir/build.make CMakeFiles/ExperimentalUpdate.dir/clean
-.PHONY : CMakeFiles/ExperimentalUpdate.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/ExperimentalUpdate.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/POTRF.dir
-
-# All Build rule for target.
-CMakeFiles/POTRF.dir/all:
-	$(MAKE) -f CMakeFiles/POTRF.dir/build.make CMakeFiles/POTRF.dir/depend
-	$(MAKE) -f CMakeFiles/POTRF.dir/build.make CMakeFiles/POTRF.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num=1,2 "Built target POTRF"
-.PHONY : CMakeFiles/POTRF.dir/all
-
-# Include target in all.
-all: CMakeFiles/POTRF.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/POTRF.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/xwu/phd_xwu/UCMGEL/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/POTRF.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/xwu/phd_xwu/UCMGEL/CMakeFiles 0
-.PHONY : CMakeFiles/POTRF.dir/rule
-
-# Convenience name for target.
-POTRF: CMakeFiles/POTRF.dir/rule
-
-.PHONY : POTRF
-
-# clean rule for target.
-CMakeFiles/POTRF.dir/clean:
-	$(MAKE) -f CMakeFiles/POTRF.dir/build.make CMakeFiles/POTRF.dir/clean
-.PHONY : CMakeFiles/POTRF.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/POTRF.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
 # Target rules for target CMakeFiles/gmres2.exe.dir
 
 # All Build rule for target.
 CMakeFiles/gmres2.exe.dir/all:
 	$(MAKE) -f CMakeFiles/gmres2.exe.dir/build.make CMakeFiles/gmres2.exe.dir/depend
 	$(MAKE) -f CMakeFiles/gmres2.exe.dir/build.make CMakeFiles/gmres2.exe.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num=7,8 "Built target gmres2.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num=5,6 "Built target gmres2.exe"
 .PHONY : CMakeFiles/gmres2.exe.dir/all
 
 # Include target in all.
@@ -913,7 +940,7 @@ clean: CMakeFiles/gmres2.exe.dir/clean
 CMakeFiles/arnoldi.exe.dir/all:
 	$(MAKE) -f CMakeFiles/arnoldi.exe.dir/build.make CMakeFiles/arnoldi.exe.dir/depend
 	$(MAKE) -f CMakeFiles/arnoldi.exe.dir/build.make CMakeFiles/arnoldi.exe.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num=3,4 "Built target arnoldi.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num=1,2 "Built target arnoldi.exe"
 .PHONY : CMakeFiles/arnoldi.exe.dir/all
 
 # Include target in all.
@@ -950,7 +977,7 @@ clean: CMakeFiles/arnoldi.exe.dir/clean
 CMakeFiles/test.exe.dir/all:
 	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/depend
 	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num=11,12 "Built target test.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num=9,10 "Built target test.exe"
 .PHONY : CMakeFiles/test.exe.dir/all
 
 # Include target in all.
@@ -987,7 +1014,7 @@ clean: CMakeFiles/test.exe.dir/clean
 CMakeFiles/gmres.exe.dir/all:
 	$(MAKE) -f CMakeFiles/gmres.exe.dir/build.make CMakeFiles/gmres.exe.dir/depend
 	$(MAKE) -f CMakeFiles/gmres.exe.dir/build.make CMakeFiles/gmres.exe.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num=5,6 "Built target gmres.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num=3,4 "Built target gmres.exe"
 .PHONY : CMakeFiles/gmres.exe.dir/all
 
 # Include target in all.
@@ -1014,6 +1041,38 @@ CMakeFiles/gmres.exe.dir/clean:
 
 # clean rule for target.
 clean: CMakeFiles/gmres.exe.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ExperimentalUpdate.dir
+
+# All Build rule for target.
+CMakeFiles/ExperimentalUpdate.dir/all:
+	$(MAKE) -f CMakeFiles/ExperimentalUpdate.dir/build.make CMakeFiles/ExperimentalUpdate.dir/depend
+	$(MAKE) -f CMakeFiles/ExperimentalUpdate.dir/build.make CMakeFiles/ExperimentalUpdate.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num= "Built target ExperimentalUpdate"
+.PHONY : CMakeFiles/ExperimentalUpdate.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/ExperimentalUpdate.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/xwu/phd_xwu/UCMGEL/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ExperimentalUpdate.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/xwu/phd_xwu/UCMGEL/CMakeFiles 0
+.PHONY : CMakeFiles/ExperimentalUpdate.dir/rule
+
+# Convenience name for target.
+ExperimentalUpdate: CMakeFiles/ExperimentalUpdate.dir/rule
+
+.PHONY : ExperimentalUpdate
+
+# clean rule for target.
+CMakeFiles/ExperimentalUpdate.dir/clean:
+	$(MAKE) -f CMakeFiles/ExperimentalUpdate.dir/build.make CMakeFiles/ExperimentalUpdate.dir/clean
+.PHONY : CMakeFiles/ExperimentalUpdate.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/ExperimentalUpdate.dir/clean
 
 .PHONY : clean
 
@@ -1078,102 +1137,6 @@ CMakeFiles/NightlyConfigure.dir/clean:
 
 # clean rule for target.
 clean: CMakeFiles/NightlyConfigure.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/ContinuousConfigure.dir
-
-# All Build rule for target.
-CMakeFiles/ContinuousConfigure.dir/all:
-	$(MAKE) -f CMakeFiles/ContinuousConfigure.dir/build.make CMakeFiles/ContinuousConfigure.dir/depend
-	$(MAKE) -f CMakeFiles/ContinuousConfigure.dir/build.make CMakeFiles/ContinuousConfigure.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num= "Built target ContinuousConfigure"
-.PHONY : CMakeFiles/ContinuousConfigure.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/ContinuousConfigure.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/xwu/phd_xwu/UCMGEL/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ContinuousConfigure.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/xwu/phd_xwu/UCMGEL/CMakeFiles 0
-.PHONY : CMakeFiles/ContinuousConfigure.dir/rule
-
-# Convenience name for target.
-ContinuousConfigure: CMakeFiles/ContinuousConfigure.dir/rule
-
-.PHONY : ContinuousConfigure
-
-# clean rule for target.
-CMakeFiles/ContinuousConfigure.dir/clean:
-	$(MAKE) -f CMakeFiles/ContinuousConfigure.dir/build.make CMakeFiles/ContinuousConfigure.dir/clean
-.PHONY : CMakeFiles/ContinuousConfigure.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/ContinuousConfigure.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/NightlyMemoryCheck.dir
-
-# All Build rule for target.
-CMakeFiles/NightlyMemoryCheck.dir/all:
-	$(MAKE) -f CMakeFiles/NightlyMemoryCheck.dir/build.make CMakeFiles/NightlyMemoryCheck.dir/depend
-	$(MAKE) -f CMakeFiles/NightlyMemoryCheck.dir/build.make CMakeFiles/NightlyMemoryCheck.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num= "Built target NightlyMemoryCheck"
-.PHONY : CMakeFiles/NightlyMemoryCheck.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/NightlyMemoryCheck.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/xwu/phd_xwu/UCMGEL/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/NightlyMemoryCheck.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/xwu/phd_xwu/UCMGEL/CMakeFiles 0
-.PHONY : CMakeFiles/NightlyMemoryCheck.dir/rule
-
-# Convenience name for target.
-NightlyMemoryCheck: CMakeFiles/NightlyMemoryCheck.dir/rule
-
-.PHONY : NightlyMemoryCheck
-
-# clean rule for target.
-CMakeFiles/NightlyMemoryCheck.dir/clean:
-	$(MAKE) -f CMakeFiles/NightlyMemoryCheck.dir/build.make CMakeFiles/NightlyMemoryCheck.dir/clean
-.PHONY : CMakeFiles/NightlyMemoryCheck.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/NightlyMemoryCheck.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/NightlyUpdate.dir
-
-# All Build rule for target.
-CMakeFiles/NightlyUpdate.dir/all:
-	$(MAKE) -f CMakeFiles/NightlyUpdate.dir/build.make CMakeFiles/NightlyUpdate.dir/depend
-	$(MAKE) -f CMakeFiles/NightlyUpdate.dir/build.make CMakeFiles/NightlyUpdate.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num= "Built target NightlyUpdate"
-.PHONY : CMakeFiles/NightlyUpdate.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/NightlyUpdate.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/xwu/phd_xwu/UCMGEL/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/NightlyUpdate.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/xwu/phd_xwu/UCMGEL/CMakeFiles 0
-.PHONY : CMakeFiles/NightlyUpdate.dir/rule
-
-# Convenience name for target.
-NightlyUpdate: CMakeFiles/NightlyUpdate.dir/rule
-
-.PHONY : NightlyUpdate
-
-# clean rule for target.
-CMakeFiles/NightlyUpdate.dir/clean:
-	$(MAKE) -f CMakeFiles/NightlyUpdate.dir/build.make CMakeFiles/NightlyUpdate.dir/clean
-.PHONY : CMakeFiles/NightlyUpdate.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/NightlyUpdate.dir/clean
 
 .PHONY : clean
 

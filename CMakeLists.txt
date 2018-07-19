@@ -5,6 +5,7 @@ MESSAGE("Starting configure")
 #set TRILINOS_PATH of the platform
 #set(TRILINOS_PATH /Users/xwu/phd_xwu/trilinos-12.12.1-Source/installation)
 set(TRILINOS_PATH /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2)
+#set(TRILINOS_PATH /home/xinzhewu/workstations/trilinos/install)
 
 SET(CMAKE_PREFIX_PATH ${TRILINOS_PATH} ${CMAKE_PREFIX_PATH})
 
@@ -95,15 +96,12 @@ link_directories(${Trilinos_LIBRARY_DIRS} ${Trilinos_TPL_LIBRARY_DIRS} )
 set(LINK_LIBRARIES ${Teuchos_LIBRARIES})
 
 #add executable
-add_executable(POTRF POTRF.cpp)
 add_executable(test.exe main.cpp)
 add_executable(gmres.exe gmres.cpp)
 add_executable(gmres2.exe gmres.cpp)
 add_executable(arnoldi.exe arnoldi.cpp)
 add_executable(lsqr.exe lsqr.cpp)
 target_link_libraries(lsqr.exe ${LINK_LIBRARIES})
-
-target_link_libraries(POTRF ${LINK_LIBRARIES})
 
 
 

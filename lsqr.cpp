@@ -114,21 +114,6 @@ int main( int argc, char *argv[] ){
   int length = 5;
 
   while(!end){
-
-    //exit type receiving and sending operation
-    //check if any type to receive
-    if(!mpi_lsa_com_type_recv(&COMM_FATHER, &exit_type)){
-      printf("Info ]> LS Receive signal information from Father\n");
-    }
-
-    //exit if receive the exit signal
-    if(exit_type == 666){
-      if(lrank == 0){
-        printf("Info ]> LS exit\n");
-      }
-      end  = 1;
-      break;
-    }
     /*in any case clear data array*/
     for(i = 0;i < eigen_max; i++){
       data[i].real(0.0);
@@ -137,6 +122,7 @@ int main( int argc, char *argv[] ){
 
     if(!mpi_lsa_com_cplx_array_recv(&COMM_FATHER, &data_size, data) || data_load || data_load_any){
       /* we received data or load it depending on the flags (for first step only*/
+
       if(data_load&&data_load_any){
         data_load_any = 0;
         data_load = 1;
@@ -147,7 +133,7 @@ int main( int argc, char *argv[] ){
         epurer(data,&data_size);
 
         for(i = 0;i < data_size; i++){
-          printf("data[%d] = %f+i%f\n",i,data[i].real(), data[i].imag() );
+          //printf("data[%d] = %f+i%f\n",i,data[i].real(), data[i].imag() );
         }
 
         /* add them to the accumulated eigenvalues */
@@ -217,7 +203,7 @@ int main( int argc, char *argv[] ){
         }
 
         for(i = 0; i < eigen_max; i++){
-          printf("eta[%d] = %f, alpha = %f, beta[%d] = %f, deta[%d] =  %f\n", i, eta[i], alpha, i, beta[i],i, delta[i]);
+          //printf("eta[%d] = %f, alpha = %f, beta[%d] = %f, deta[%d] =  %f\n", i, eta[i], alpha, i, beta[i],i, delta[i]);
         }
 
       }
@@ -237,15 +223,30 @@ int main( int argc, char *argv[] ){
           to do: data export
         }
         */
-
       /* and send it */
       result_array_size=2+3*ls_eigen;
-      mpi_lsa_com_array_send(&COMM_FATHER, &result_array_size,result_array);
-      printf("LS send array\n");
+
+      MPI_Request rq[1];
+      mpi_lsa_com_array_send(&COMM_FATHER, &result_array_size,result_array, rq);
+      printf("LS ]> LS send array\n");
     }
 
     if(ls_eigen>1){
       ls_eigen=0;
+    }
+
+    //exit type receiving and sending operation
+    //check if any type to receive
+    if(!mpi_lsa_com_type_recv(&COMM_FATHER, &exit_type)){
+          //exit if receive the exit signal
+      if(exit_type == 666){
+        if(lrank == 0){
+          printf("Info ]> LS Receive signal information from Father\n");
+          printf("Info ]> LS exit\n");
+        }
+        end  = 1;
+        break;
+      }
     }
   }
 
@@ -254,8 +255,6 @@ int main( int argc, char *argv[] ){
     to do: data export
   }
   */
-
-  MPI_Comm_free(&COMM_FATHER);
 
   delete [] eigen_tri;
   delete [] eigen_cumul;
@@ -268,6 +267,7 @@ int main( int argc, char *argv[] ){
   delete [] delta;
   delete [] result_array;
 
+  MPI_Comm_free(&COMM_FATHER);
   MPI_Finalize();
 
   return 0;
