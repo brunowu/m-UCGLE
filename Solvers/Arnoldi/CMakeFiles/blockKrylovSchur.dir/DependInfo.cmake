@@ -10,7 +10,6 @@ set(CMAKE_CXX_COMPILER_ID "Clang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "Solvers"
   "Solvers/Arnoldi"
   "/Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include"
   )

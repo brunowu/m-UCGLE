@@ -4,8 +4,32 @@
 #include <complex>
 #include <unistd.h>
 
+
+//Block KrylovSchur METHODs to approximate the eigevalues
+
+#include "AnasaziConfigDefs.hpp"
+#include "AnasaziTypes.hpp"
+
+#include "AnasaziTpetraAdapter.hpp" //Anasazi interface to Tpetra
+#include "AnasaziBasicEigenproblem.hpp"
+#include "AnasaziBlockKrylovSchurSolMgr.hpp"
+#include <Teuchos_CommandLineProcessor.hpp>
+
+#include <Teuchos_GlobalMPISession.hpp>
+#include <Tpetra_DefaultPlatform.hpp>
+#include <Tpetra_CrsMatrix.hpp>
+
+// I/O for Harwell-Boeing files
+#include <Trilinos_Util_iohb.h>
+
+using Tpetra::CrsMatrix;
+using Tpetra::Map;
+using std::vector;
+
+
 int main( int argc, char *argv[] ){
   MPI_Init( &argc, &argv );
+
 
   int arank, asize;
 

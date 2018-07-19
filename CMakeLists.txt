@@ -86,6 +86,7 @@ ENDIF()
 ENABLE_TESTING()
 
 #ADD_SUBDIRECTORY(Solvers)
+#ADD_SUBDIRECTORY(Solvers/Arnoldi)
 
 #Add Trilinos information to the include and link lines
 include_directories(${Trilinos_INCLUDE_DIRS} ${Trilinos_TPL_INCLUDE_DIRS} )
@@ -95,6 +96,9 @@ link_directories(${Trilinos_LIBRARY_DIRS} ${Trilinos_TPL_LIBRARY_DIRS} )
 #set trilinos libraries to link (LINK_LIBRARIES)
 set(LINK_LIBRARIES ${Teuchos_LIBRARIES})
 
+#set trilinos libraries to link (LINK_LIBRARIES)
+set(LINK_LIBRARIES_ARNOLDI ${Epetra_LIBRARIES} ${Anasazi_LIBRARIES} ${Amesos_LIBRARIES})
+
 #add executable
 add_executable(test.exe main.cpp)
 add_executable(gmres.exe gmres.cpp)
@@ -102,7 +106,7 @@ add_executable(gmres2.exe gmres.cpp)
 add_executable(arnoldi.exe arnoldi.cpp)
 add_executable(lsqr.exe lsqr.cpp)
 target_link_libraries(lsqr.exe ${LINK_LIBRARIES})
-
+target_link_libraries(arnoldi.exe ${LINK_LIBRARIES_ARNOLDI})
 
 
 include(Dart)

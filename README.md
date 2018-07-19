@@ -9,3 +9,8 @@ Here, we design a new dynamic distributed communication workflow by MPI_SPWAN. T
 Meanwhile, multiple GMRES allows to solve simultaneously non-Hermitian linear systems with multiple right-hand sides. It is comparable with deflated [Block GMRES](http://www.sam.math.ethz.ch/~mhg/pub/delhipap.pdf), but with less global communication.
 
 This software is underdevelopment by [Xinzhe Wu](https://brunowu.github.io/)...
+
+
+##### Workflow
+
+![Workflow of UCMGEL](workflow.jpg)
