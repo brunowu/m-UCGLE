@@ -67,7 +67,7 @@ int main( int argc, char *argv[] ) {
   center_print("Start Resolving Linear Systems by MUCGLE", 79);
   border_print2();
 
-  int length = 5;
+  int length = EIGEN_ALL;
 
   int exit_type[gmres_nb];
   int exit_recv[gmres_nb];

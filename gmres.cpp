@@ -34,15 +34,15 @@ int main( int argc, char *argv[] ){
   int count;
 
 
-  for(count = 0; count < 1000; count++){
+  for(count = 0; count < 10000; count++){
     
     if(!mpi_lsa_com_array_recv(&COMM_FATHER, &length, data_recv)){
       for(i = 0; i < length; i++){
-        //printf("GMRES ]>: GMRES rank = %d, data[%d] = %f\n",grank, i, data_recv[i] );
+        printf("GMRES ]>: GMRES rank = %d, data[%d] = %f\n",grank, i, data_recv[i] );
       }
     } else{
-        usleep(100000);
-        printf("GMRES NOT RECEVIECE ARRAY FROM FATHER\n");
+        usleep(1000);
+        //printf("GMRES NOT RECEVIECE ARRAY FROM FATHER\n");
     }
     
   }
@@ -59,7 +59,7 @@ int main( int argc, char *argv[] ){
     if(gmres_final_exit == 777){
       printf("GMRES is allowed to exit by FATHER now\n");
     }else{
-      usleep(10000);
+      usleep(10000000);
     }
   }
 
