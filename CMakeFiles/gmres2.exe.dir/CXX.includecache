@@ -7,11 +7,11 @@
 #IncludeRegexTransform: 
 
 /Users/xwu/phd_xwu/UCMGEL/Libs/mpi_lsa_com.hpp
-stdio.h
+cstdio
 -
 mpi.h
 -
-stdlib.h
+cstdlib
 -
 complex
 -

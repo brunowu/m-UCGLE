@@ -92,7 +92,7 @@ int main( int argc, char *argv[] ){
   std::string which("LM");
   std::string filename;
   int nev = 5;
-  int blockSize = 4;
+  int blockSize = 1;
   MT tol = 1.0e-6;
 
   Teuchos::CommandLineProcessor cmdp(false,true);
@@ -115,7 +115,7 @@ int main( int argc, char *argv[] ){
       filename = "mhd1280b.cua";
     }
     else {
-      filename = "UTM300.rua";
+      filename = "mhd1280a.cua";
     }
   }
 
@@ -242,12 +242,6 @@ int main( int argc, char *argv[] ){
   int length = 5;
   int i, end = 0;
 
-/*
-  std::complex<double> *data = new std::complex<double> [length];
-
-  double real[5] = {-0.830999, -0.774165, -0.463353, -0.444916, -0.287419};
-  double imag[5] = {0.514128, 0.424414, 0.363388, 0.517988, 0.356902};
-*/
   while(!end){
 
     // Solve the problem to the specified tolerances or length
@@ -303,6 +297,9 @@ int main( int argc, char *argv[] ){
         cout << "End Result: TEST FAILED" << endl;
     }
 
+    mpi_lsa_com_cplx_array_send(&COMM_FATHER, &numev, Evalues);
+    printf("Arnoldi send eigenvalues to FATHER\n");
+
     //check if any type to receive
     if(!mpi_lsa_com_type_recv(&COMM_FATHER, &exit_type)){
       if(arank == 0){
@@ -317,26 +314,15 @@ int main( int argc, char *argv[] ){
         break;
       }
     }
-/*
-    for(i = 0; i < length; i++){
-      data[i].real(real[i]);
-      data[i].imag(imag[i]);
-    }
-
-    usleep(100);
-
-    mpi_lsa_com_cplx_array_send(&COMM_FATHER, &length, data);
-*/
-    mpi_lsa_com_cplx_array_send(&COMM_FATHER, &numev, Evalues);
-
   }
 
-  //delete [] data;
+
+  int exit_signal = 777;
+  mpi_lsa_com_type_send(&COMM_FATHER, &exit_signal);
 
   MPI_Comm_free(&COMM_FATHER);
 
-  //MPI_Finalize();
-
-  return 0;
+  //return 0;
+  return ( success ? EXIT_SUCCESS : EXIT_FAILURE );
 
 }

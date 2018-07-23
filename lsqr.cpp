@@ -15,7 +15,7 @@
 
 
 #ifndef EIGEN_MIN
-#define EIGEN_MIN 5
+#define EIGEN_MIN 2
 #endif
 
 #ifndef EIGEN_ALL
@@ -114,59 +114,66 @@ int main( int argc, char *argv[] ){
   int length = 5;
 
   while(!end){
-    /*in any case clear data array*/
+
+    //exit type receiving and sending operation
+    //check if any type to receive
+    if(!mpi_lsa_com_type_recv(&COMM_FATHER, &exit_type)){
+          printf("faieieieieie\n");
+      printf("exit type of LS = %d\n", exit_type);
+      //exit if receive the exit signal
+      if(exit_type == 666){
+        if(lrank == 0){
+          printf("Info ]> LS Receive signal information from Father\n");
+          printf("Info ]> LS exit\n");
+        }
+        end  = 1;
+        break;
+      }
+    }
+        /*in any case clear data array*/
     for(i = 0;i < eigen_max; i++){
       data[i].real(0.0);
       data[i].imag(0.0);
     }
 
-    if(!mpi_lsa_com_cplx_array_recv(&COMM_FATHER, &data_size, data) || data_load || data_load_any){
+    if(!mpi_lsa_com_cplx_array_recv(&COMM_FATHER, &data_size, data)){
       /* we received data or load it depending on the flags (for first step only*/
 
-      if(data_load&&data_load_any){
-        data_load_any = 0;
-        data_load = 1;
+      for(i = 0; i < data_size; i++){
+        printf("data[%d] = %f+%fi\n",i, data[i].real(),data[i].imag());
       }
 
-      if(!(data_load^=data_load_any)){
-        /* first we gonna remove some non-needed values */
-        epurer(data,&data_size);
+      /* first we gonna remove some non-needed values */
+      epurer(data,&data_size);
 
-        for(i = 0;i < data_size; i++){
-          //printf("data[%d] = %f+i%f\n",i,data[i].real(), data[i].imag() );
-        }
-
-        /* add them to the accumulated eigenvalues */
-        /* if full renew full eigenvalues */
-        if(eigen_total + data_size > vector_size) eigen_total = 0;
-        /* select eigenvalues */
-        for(i = 0; i < data_size; i++){
-          eigen_cumul[eigen_total + i].real(data[i].real());
-          eigen_cumul[eigen_total + i].imag(data[i].imag());
-        }
-
-        eigen_total += data_size;
-
-        if(cumul < eigen_total) cumul = eigen_total;
-
-        for(i = 0;i < cumul; i++){
-
-          eigen_tri[i].real(eigen_cumul[i].real());
-          eigen_tri[i].imag(eigen_cumul[i].imag());
-
-        }
-      } else {
-  //        ierr=readBinaryScalarArray(load_path,&cumul, eigen_tri);CHKERRQ(ierr);
-          /*to do load array from local*/
-          data_load=0;
-          data_load_any=0;
-          data_size=cumul;
+      for(i = 0;i < data_size; i++){
+        printf("data_epure[%d] = %f+i%f\n",i,data[i].real(), data[i].imag() );
       }
 
+      /* add them to the accumulated eigenvalues */
+      /* if full renew full eigenvalues */
+      if(eigen_total + data_size > vector_size) eigen_total = 0;
+      /* select eigenvalues */
+      for(i = 0; i < data_size; i++){
+        eigen_cumul[eigen_total + i].real(data[i].real());
+        eigen_cumul[eigen_total + i].imag(data[i].imag());
+      }
+
+      eigen_total += data_size;
+
+      if(cumul < eigen_total) cumul = eigen_total;
+
+      for(i = 0;i < cumul; i++){
+
+        eigen_tri[i].real(eigen_cumul[i].real());
+        eigen_tri[i].imag(eigen_cumul[i].imag());
+
+      }
+      
       eigen_received += data_size;
       /* if we didn't received enough eigenvalues */
       if(eigen_received < ls_eigen_min && data){
-
+          printf("eigen_received = %d\n",eigen_received );
           continue;
       }
       else{
@@ -176,6 +183,9 @@ int main( int argc, char *argv[] ){
         mu1=0;
 
         mu2=0;
+
+        printf("FUCKKKKKKKK  YYYYOUUUUUUUUU\n");
+
 
         /* convex hull computation */
         if(chsign > 0){
@@ -231,22 +241,10 @@ int main( int argc, char *argv[] ){
       printf("LS ]> LS send array\n");
     }
 
+    printf("didudiu\n");
+
     if(ls_eigen>1){
       ls_eigen=0;
-    }
-
-    //exit type receiving and sending operation
-    //check if any type to receive
-    if(!mpi_lsa_com_type_recv(&COMM_FATHER, &exit_type)){
-          //exit if receive the exit signal
-      if(exit_type == 666){
-        if(lrank == 0){
-          printf("Info ]> LS Receive signal information from Father\n");
-          printf("Info ]> LS exit\n");
-        }
-        end  = 1;
-        break;
-      }
     }
   }
 

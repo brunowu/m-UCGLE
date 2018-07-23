@@ -54,9 +54,12 @@ void tri(std::complex<double> *vp, int nValues, int *ch_signe){
 }
 
 /*remove the eigenvalues whose imaginairy part is negetif*/
-void epurer(std::complex<double> *vp, int *nValues){
+int epurer(std::complex<double> *vp, int *nValues){
 	int i, nKeep = 0;
 	double tmp;
+	printf("EPURE FUNC with *nVlaues = %d\n",*nValues);
+
+	if(*nValues <= 0){return 1;}
 	std::complex<double> *eigen_keep = new std::complex<double> [*nValues];
 
 	for(i = 0; i < *nValues; i++){
@@ -84,5 +87,7 @@ void epurer(std::complex<double> *vp, int *nValues){
 	*nValues = nKeep;
 
 	delete [] eigen_keep;
+
+	return 0;
 }
 #endif

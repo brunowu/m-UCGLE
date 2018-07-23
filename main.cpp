@@ -113,12 +113,13 @@ int main( int argc, char *argv[] ) {
     if(exit == gmres_nb){
       exit_signal = 666;
       //send exit type to LS and ERAM Components
-      printf("Main ]> Father send exit type to ERAM and LS Component\n");
 
       for(j = 0; j < arnoldi_nb; j++){
         mpi_lsa_com_type_send(&COMM_ARNOLDI[j], &exit_signal);
       }
       mpi_lsa_com_type_send(&COMM_LS, &exit_signal);
+      printf("Main ]> Father send exit type to ERAM and LS Component\n");
+
       end = 1;
       break;
     }
@@ -127,12 +128,13 @@ int main( int argc, char *argv[] ) {
     for(j = 0; j < arnoldi_nb; j++){
       if(!mpi_lsa_com_cplx_array_recv(&COMM_ARNOLDI[j], &length, data_recv)){
         printf("Main ]> Array receive from ERAM %d Component\n", j);
+          //send this array to LS
+        mpi_lsa_com_cplx_array_send(&COMM_LS, &length, data_recv);
+        printf("Main ]> Father send array to LS, length = %d\n",length);
+
       }
     }
 
-    //send this array to LS
-    mpi_lsa_com_cplx_array_send(&COMM_LS, &length, data_recv);
-    printf("Main ]> Father send array to LS\n");
     //receive new array from LS
     if(!mpi_lsa_com_array_recv(&COMM_LS, &length, data)){
       printf("Main ]> Father has Array received from LS Component\n" );
@@ -143,12 +145,27 @@ int main( int argc, char *argv[] ) {
       for(i = 0; i < gmres_nb; i++){
         mpi_lsa_com_array_send(&COMM_GMRES[i], &length, data, rq);
         printf("Main ]> Father has sent preconditioned parameters to GMRES Component\n" );
+
       }
     }
   }
 
+  int exit_signal_arnoldi[arnoldi_nb];
+  int arnoldi_exit = 0;
+
+  for(i = 0; i < arnoldi_nb; i++){
+    if(!mpi_lsa_com_type_recv(&COMM_ARNOLDI[i], &exit_signal_arnoldi[i])){
+      if (exit_signal_arnoldi[i] == 777){
+        printf("exit_signal = %d\n", exit_signal_arnoldi[i]);
+        arnoldi_exit = arnoldi_exit + 1;
+      }
+      else{printf("donenenenenenennene\n");}
+    }
+  }
+
+
   for(i = 0; i < gmres_nb; i++){
-    mpi_lsa_com_type_send(&COMM_ARNOLDI[i], &exit_signal_gmres);
+    mpi_lsa_com_type_send(&COMM_GMRES[i], &exit_signal_gmres);
     printf("Main ]> Father has final exit signal to GMRES Component\n" );
   }
   
@@ -156,16 +173,30 @@ int main( int argc, char *argv[] ) {
   center_print("Remove Application", 79);
   border_print2();
 
+  if(arnoldi_exit == arnoldi_nb){
+    for(j = 0; j < arnoldi_nb; j++){
+      delete [] arnoldi_cmds[j];
+      MPI_Comm_free(&COMM_ARNOLDI[j]);
+      printf("Main ]> Main Free the Arnoldi Components\n" );
+    }
+  }else{
+    usleep(1000000);
+  }
+  
+
   delete [] data;
   delete [] data_recv;
 
   for(i = 0; i < gmres_nb; i++){
       delete [] gmres_cmds[i];
   }
-
-  for(i = 0; i < arnoldi_nb; i++){
-      delete [] arnoldi_cmds[i];
+/*
+  for(j = 0; j < arnoldi_nb; j++){
+      delete [] arnoldi_cmds[j];
+      MPI_Comm_free(&COMM_ARNOLDI[j]);
+      printf("Main ]> Main Free the Arnoldi Components\n" );
   }
+*/
 
   delete [] lsqr_cmd;
 
@@ -173,9 +204,6 @@ int main( int argc, char *argv[] ) {
     MPI_Comm_free(&COMM_GMRES[j]);
   }
 
-  for(j = 0; j < arnoldi_nb; j++){
-    MPI_Comm_free(&COMM_ARNOLDI[j]);
-  }
 
   MPI_Comm_free(&COMM_LS);
 
