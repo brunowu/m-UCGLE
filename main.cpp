@@ -98,7 +98,6 @@ int main( int argc, char *argv[] ) {
     for(i = 0; i < gmres_nb; i++){
       if(!mpi_lsa_com_type_recv(&COMM_GMRES[i], &tmp)){
         exit_type[i] = tmp;
-        printf("tmp = %d\n", tmp);
         printf("Main ]> Father Receive exit type from GMRES %d Component = %d\n", i, exit_type[i]);
         if (exit_type[i] == 666){
           exit = exit + 1;
@@ -159,7 +158,6 @@ int main( int argc, char *argv[] ) {
         printf("exit_signal = %d\n", exit_signal_arnoldi[i]);
         arnoldi_exit = arnoldi_exit + 1;
       }
-      else{printf("donenenenenenennene\n");}
     }
   }
 
@@ -181,6 +179,11 @@ int main( int argc, char *argv[] ) {
     }
   }else{
     usleep(1000000);
+    for(j = 0; j < arnoldi_nb; j++){
+      delete [] arnoldi_cmds[j];
+      MPI_Comm_free(&COMM_ARNOLDI[j]);
+      printf("Main ]> Main Free the Arnoldi Components after waiting a little instant\n" );
+    }
   }
   
 

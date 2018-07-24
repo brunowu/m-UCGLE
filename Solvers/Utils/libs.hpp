@@ -57,7 +57,6 @@ void tri(std::complex<double> *vp, int nValues, int *ch_signe){
 int epurer(std::complex<double> *vp, int *nValues){
 	int i, nKeep = 0;
 	double tmp;
-	printf("EPURE FUNC with *nVlaues = %d\n",*nValues);
 
 	if(*nValues <= 0){return 1;}
 	std::complex<double> *eigen_keep = new std::complex<double> [*nValues];

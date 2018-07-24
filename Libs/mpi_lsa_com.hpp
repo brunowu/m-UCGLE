@@ -24,13 +24,9 @@ int mpi_lsa_com_type_recv(MPI_Comm * com, int * type){
 
   MPI_Get_count(&status,MPI_INT,&count);
 
-  printf("count = %d\n",count);
-
   if(count != 1) return 1;
 
   MPI_Recv(type, count, MPI_INT, status.MPI_SOURCE, status.MPI_TAG, * com, &status);
-
-  printf("type == %d\n", *type);
 
   return 0;
 }

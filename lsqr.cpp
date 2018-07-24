@@ -118,8 +118,7 @@ int main( int argc, char *argv[] ){
     //exit type receiving and sending operation
     //check if any type to receive
     if(!mpi_lsa_com_type_recv(&COMM_FATHER, &exit_type)){
-          printf("faieieieieie\n");
-      printf("exit type of LS = %d\n", exit_type);
+      //printf("exit type of LS = %d\n", exit_type);
       //exit if receive the exit signal
       if(exit_type == 666){
         if(lrank == 0){
@@ -138,18 +137,18 @@ int main( int argc, char *argv[] ){
 
     if(!mpi_lsa_com_cplx_array_recv(&COMM_FATHER, &data_size, data)){
       /* we received data or load it depending on the flags (for first step only*/
-
+/*
       for(i = 0; i < data_size; i++){
         printf("data[%d] = %f+%fi\n",i, data[i].real(),data[i].imag());
       }
-
+*/
       /* first we gonna remove some non-needed values */
       epurer(data,&data_size);
-
+/*
       for(i = 0;i < data_size; i++){
         printf("data_epure[%d] = %f+i%f\n",i,data[i].real(), data[i].imag() );
       }
-
+*/
       /* add them to the accumulated eigenvalues */
       /* if full renew full eigenvalues */
       if(eigen_total + data_size > vector_size) eigen_total = 0;
@@ -173,7 +172,7 @@ int main( int argc, char *argv[] ){
       eigen_received += data_size;
       /* if we didn't received enough eigenvalues */
       if(eigen_received < ls_eigen_min && data){
-          printf("eigen_received = %d\n",eigen_received );
+          //printf("eigen_received = %d\n",eigen_received );
           continue;
       }
       else{
@@ -183,9 +182,6 @@ int main( int argc, char *argv[] ){
         mu1=0;
 
         mu2=0;
-
-        printf("FUCKKKKKKKK  YYYYOUUUUUUUUU\n");
-
 
         /* convex hull computation */
         if(chsign > 0){
@@ -238,10 +234,8 @@ int main( int argc, char *argv[] ){
 
       MPI_Request rq[1];
       mpi_lsa_com_array_send(&COMM_FATHER, &result_array_size,result_array, rq);
-      printf("LS ]> LS send array\n");
+      printf("LS ]> LS send array to Father\n");
     }
-
-    printf("didudiu\n");
 
     if(ls_eigen>1){
       ls_eigen=0;

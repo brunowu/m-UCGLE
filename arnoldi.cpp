@@ -181,7 +181,7 @@ int main( int argc, char *argv[] ){
     free( rowind );
   }
   K->fillComplete();
-  cout << "Matrix read by Arnoldi: \n" << *K << endl;
+  //cout << "Matrix read by Arnoldi: \n" << *K << endl;
 
 
 
@@ -211,10 +211,13 @@ int main( int argc, char *argv[] ){
 
 
   // Set verbosity level
+  int verbosity = Anasazi::Errors + Anasazi::Warnings;
+  /*
   int verbosity = Anasazi::Errors + Anasazi::Warnings + Anasazi::FinalSummary + Anasazi::TimingDetails;
   if (verbose) {
     verbosity += Anasazi::IterationDetails;
   }
+  */
   if (debug) {
     verbosity += Anasazi::Debug;
   }

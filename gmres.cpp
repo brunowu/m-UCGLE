@@ -73,7 +73,6 @@ int main( int argc, char *argv[] ){
   int gmres_final_exit;
 
   if(!mpi_lsa_com_type_recv(&COMM_FATHER, &gmres_final_exit)){
-    printf("hekkk\n");
     if(gmres_final_exit == 777){
       printf("GMRES is allowed to exit by FATHER now\n");
     }else{
@@ -87,7 +86,7 @@ int main( int argc, char *argv[] ){
 
   MPI_Comm_free(&COMM_FATHER);
 
-  printf("fin of gmres\n");
+  printf("GMRES ]> Close of GMRES after waiting a little instant\n");
   MPI_Finalize();
 
 
