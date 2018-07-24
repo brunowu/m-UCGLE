@@ -86,7 +86,7 @@ ENDIF()
 ENABLE_TESTING()
 
 #ADD_SUBDIRECTORY(Solvers)
-#ADD_SUBDIRECTORY(Solvers/Arnoldi)
+ADD_SUBDIRECTORY(Solvers/GMRES)
 
 #Add Trilinos information to the include and link lines
 include_directories(${Trilinos_INCLUDE_DIRS} ${Trilinos_TPL_INCLUDE_DIRS} )

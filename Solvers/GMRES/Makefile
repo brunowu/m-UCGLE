@@ -144,46 +144,46 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-Solvers/GMRES/CMakeFiles/blockGMRES.dir/rule:
-	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f CMakeFiles/Makefile2 Solvers/GMRES/CMakeFiles/blockGMRES.dir/rule
-.PHONY : Solvers/GMRES/CMakeFiles/blockGMRES.dir/rule
+Solvers/GMRES/CMakeFiles/precond.exe.dir/rule:
+	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f CMakeFiles/Makefile2 Solvers/GMRES/CMakeFiles/precond.exe.dir/rule
+.PHONY : Solvers/GMRES/CMakeFiles/precond.exe.dir/rule
 
 # Convenience name for target.
-blockGMRES: Solvers/GMRES/CMakeFiles/blockGMRES.dir/rule
+precond.exe: Solvers/GMRES/CMakeFiles/precond.exe.dir/rule
 
-.PHONY : blockGMRES
+.PHONY : precond.exe
 
 # fast build rule for target.
-blockGMRES/fast:
-	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/GMRES/CMakeFiles/blockGMRES.dir/build.make Solvers/GMRES/CMakeFiles/blockGMRES.dir/build
-.PHONY : blockGMRES/fast
+precond.exe/fast:
+	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/GMRES/CMakeFiles/precond.exe.dir/build.make Solvers/GMRES/CMakeFiles/precond.exe.dir/build
+.PHONY : precond.exe/fast
 
-blockGMRES.o: blockGMRES.cpp.o
+main.o: main.cpp.o
 
-.PHONY : blockGMRES.o
+.PHONY : main.o
 
 # target to build an object file
-blockGMRES.cpp.o:
-	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/GMRES/CMakeFiles/blockGMRES.dir/build.make Solvers/GMRES/CMakeFiles/blockGMRES.dir/blockGMRES.cpp.o
-.PHONY : blockGMRES.cpp.o
+main.cpp.o:
+	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/GMRES/CMakeFiles/precond.exe.dir/build.make Solvers/GMRES/CMakeFiles/precond.exe.dir/main.cpp.o
+.PHONY : main.cpp.o
 
-blockGMRES.i: blockGMRES.cpp.i
+main.i: main.cpp.i
 
-.PHONY : blockGMRES.i
+.PHONY : main.i
 
 # target to preprocess a source file
-blockGMRES.cpp.i:
-	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/GMRES/CMakeFiles/blockGMRES.dir/build.make Solvers/GMRES/CMakeFiles/blockGMRES.dir/blockGMRES.cpp.i
-.PHONY : blockGMRES.cpp.i
+main.cpp.i:
+	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/GMRES/CMakeFiles/precond.exe.dir/build.make Solvers/GMRES/CMakeFiles/precond.exe.dir/main.cpp.i
+.PHONY : main.cpp.i
 
-blockGMRES.s: blockGMRES.cpp.s
+main.s: main.cpp.s
 
-.PHONY : blockGMRES.s
+.PHONY : main.s
 
 # target to generate assembly for a file
-blockGMRES.cpp.s:
-	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/GMRES/CMakeFiles/blockGMRES.dir/build.make Solvers/GMRES/CMakeFiles/blockGMRES.dir/blockGMRES.cpp.s
-.PHONY : blockGMRES.cpp.s
+main.cpp.s:
+	cd /Users/xwu/phd_xwu/UCMGEL && $(MAKE) -f Solvers/GMRES/CMakeFiles/precond.exe.dir/build.make Solvers/GMRES/CMakeFiles/precond.exe.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -192,14 +192,14 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... package"
+	@echo "... precond.exe"
 	@echo "... rebuild_cache"
 	@echo "... package_source"
 	@echo "... edit_cache"
 	@echo "... test"
-	@echo "... blockGMRES"
-	@echo "... blockGMRES.o"
-	@echo "... blockGMRES.i"
-	@echo "... blockGMRES.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 

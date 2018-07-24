@@ -5,11 +5,17 @@ include_directories(${Trilinos_INCLUDE_DIRS} ${Trilinos_TPL_INCLUDE_DIRS} )
 link_directories(${Trilinos_LIBRARY_DIRS} ${Trilinos_TPL_LIBRARY_DIRS} )
 
 #set trilinos libraries to link (LINK_LIBRARIES)
-set(LINK_LIBRARIES ${Tpetra_LIBRARIES} ${Galeri_LIBRARIES} ${Teuchos_LIBRARIES} ${Belos_LIBRARIES})
+#set(LINK_LIBRARIES ${Tpetra_LIBRARIES} ${Galeri_LIBRARIES} ${Teuchos_LIBRARIES} ${Belos_LIBRARIES})
+
+set(LINK_LIBRARIES ${Tpetra_LIBRARIES} ${Teuchos_LIBRARIES} ${Belos_LIBRARIES})
 
 #add executable
-add_executable(blockGMRES blockGMRES.cpp)
-target_link_libraries(blockGMRES ${LINK_LIBRARIES})
+#add_executable(blockGMRES blockGMRES.cpp)
+#target_link_libraries(blockGMRES ${LINK_LIBRARIES})
+
+add_executable(precond.exe main.cpp)
+target_link_libraries(precond.exe ${LINK_LIBRARIES})
+
 #add_executable(blockGMRES2 blockGMRES.cpp)
 #target_link_libraries(blockGMRES2 ${LINK_LIBRARIES})
 

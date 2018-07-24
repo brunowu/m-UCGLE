@@ -36,3 +36,9 @@
 /Users/xwu/phd_xwu/UCMGEL/CMakeFiles/ExperimentalUpdate.dir
 /Users/xwu/phd_xwu/UCMGEL/CMakeFiles/Experimental.dir
 /Users/xwu/phd_xwu/UCMGEL/CMakeFiles/NightlyConfigure.dir
+/Users/xwu/phd_xwu/UCMGEL/Solvers/GMRES/CMakeFiles/package.dir
+/Users/xwu/phd_xwu/UCMGEL/Solvers/GMRES/CMakeFiles/precond.exe.dir
+/Users/xwu/phd_xwu/UCMGEL/Solvers/GMRES/CMakeFiles/rebuild_cache.dir
+/Users/xwu/phd_xwu/UCMGEL/Solvers/GMRES/CMakeFiles/package_source.dir
+/Users/xwu/phd_xwu/UCMGEL/Solvers/GMRES/CMakeFiles/edit_cache.dir
+/Users/xwu/phd_xwu/UCMGEL/Solvers/GMRES/CMakeFiles/test.dir

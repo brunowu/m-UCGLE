@@ -977,7 +977,7 @@ clean: CMakeFiles/arnoldi.exe.dir/clean
 CMakeFiles/test.exe.dir/all:
 	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/depend
 	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num=9,10 "Built target test.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num=11,12 "Built target test.exe"
 .PHONY : CMakeFiles/test.exe.dir/all
 
 # Include target in all.
@@ -1137,6 +1137,61 @@ CMakeFiles/NightlyConfigure.dir/clean:
 
 # clean rule for target.
 clean: CMakeFiles/NightlyConfigure.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory Solvers/GMRES
+
+# Convenience name for "all" pass in the directory.
+Solvers/GMRES/all: Solvers/GMRES/CMakeFiles/precond.exe.dir/all
+
+.PHONY : Solvers/GMRES/all
+
+# Convenience name for "clean" pass in the directory.
+Solvers/GMRES/clean: Solvers/GMRES/CMakeFiles/precond.exe.dir/clean
+
+.PHONY : Solvers/GMRES/clean
+
+# Convenience name for "preinstall" pass in the directory.
+Solvers/GMRES/preinstall:
+
+.PHONY : Solvers/GMRES/preinstall
+
+#=============================================================================
+# Target rules for target Solvers/GMRES/CMakeFiles/precond.exe.dir
+
+# All Build rule for target.
+Solvers/GMRES/CMakeFiles/precond.exe.dir/all:
+	$(MAKE) -f Solvers/GMRES/CMakeFiles/precond.exe.dir/build.make Solvers/GMRES/CMakeFiles/precond.exe.dir/depend
+	$(MAKE) -f Solvers/GMRES/CMakeFiles/precond.exe.dir/build.make Solvers/GMRES/CMakeFiles/precond.exe.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/xwu/phd_xwu/UCMGEL/CMakeFiles --progress-num=9,10 "Built target precond.exe"
+.PHONY : Solvers/GMRES/CMakeFiles/precond.exe.dir/all
+
+# Include target in all.
+all: Solvers/GMRES/CMakeFiles/precond.exe.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+Solvers/GMRES/CMakeFiles/precond.exe.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/xwu/phd_xwu/UCMGEL/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 Solvers/GMRES/CMakeFiles/precond.exe.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/xwu/phd_xwu/UCMGEL/CMakeFiles 0
+.PHONY : Solvers/GMRES/CMakeFiles/precond.exe.dir/rule
+
+# Convenience name for target.
+precond.exe: Solvers/GMRES/CMakeFiles/precond.exe.dir/rule
+
+.PHONY : precond.exe
+
+# clean rule for target.
+Solvers/GMRES/CMakeFiles/precond.exe.dir/clean:
+	$(MAKE) -f Solvers/GMRES/CMakeFiles/precond.exe.dir/build.make Solvers/GMRES/CMakeFiles/precond.exe.dir/clean
+.PHONY : Solvers/GMRES/CMakeFiles/precond.exe.dir/clean
+
+# clean rule for target.
+clean: Solvers/GMRES/CMakeFiles/precond.exe.dir/clean
 
 .PHONY : clean
 

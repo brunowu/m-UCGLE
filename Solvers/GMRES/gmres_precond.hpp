@@ -1,3 +1,6 @@
+#ifndef _GMRES_LSA_PRECOND_H_
+#define _GMRES_LSA_PRECOND_H_
+
 #include "BelosConfigDefs.hpp"
 #include "BelosLinearProblem.hpp"
 #include "BelosTpetraAdapter.hpp"
@@ -18,5 +21,18 @@ typedef Teuchos::ScalarTraits<ScalarType> SCT;
 typedef typename SCT::magnitudeType MagnitudeType;
 
 int GmresLSAPrecond(const Teuchos::RCP<LinearProblem<ScalarType,MV,OP> > &problem){
+	RCP<const OP> Amat = problem->getOperator();
+
+	if (flag && ls){
+		perform ls part;
+		MVT::MvAddMv( 0.0, *newX, 1.0, *newX, *curX ); //update with the LS polynomial solution
+	}else{
+		Teuchos::RCP<MV> update = block_gmres_iter->getCurrentUpdate();
+		problem->updateSolution( update, true );
+		return 1;
+	}
 
 }
+
+
+#endif

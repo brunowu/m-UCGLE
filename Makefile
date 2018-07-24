@@ -572,6 +572,19 @@ NightlyConfigure/fast:
 	$(MAKE) -f CMakeFiles/NightlyConfigure.dir/build.make CMakeFiles/NightlyConfigure.dir/build
 .PHONY : NightlyConfigure/fast
 
+#=============================================================================
+# Target rules for targets named precond.exe
+
+# Build rule for target.
+precond.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 precond.exe
+.PHONY : precond.exe
+
+# fast build rule for target.
+precond.exe/fast:
+	$(MAKE) -f Solvers/GMRES/CMakeFiles/precond.exe.dir/build.make Solvers/GMRES/CMakeFiles/precond.exe.dir/build
+.PHONY : precond.exe/fast
+
 arnoldi.o: arnoldi.cpp.o
 
 .PHONY : arnoldi.o
@@ -727,6 +740,7 @@ help:
 	@echo "... ExperimentalUpdate"
 	@echo "... Experimental"
 	@echo "... NightlyConfigure"
+	@echo "... precond.exe"
 	@echo "... arnoldi.o"
 	@echo "... arnoldi.i"
 	@echo "... arnoldi.s"
