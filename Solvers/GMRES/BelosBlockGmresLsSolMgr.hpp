@@ -68,6 +68,9 @@
 #include "Teuchos_BLAS.hpp"
 #ifdef BELOS_TEUCHOS_TIME_MONITOR
 #include "Teuchos_TimeMonitor.hpp"
+
+//include LS polynomial iteration interface
+#include "LSResUpdate.hpp"
 #endif
 
 /** \example BlockGmres/BlockGmresEpetraExFile.cpp
@@ -1094,6 +1097,9 @@ ReturnType BlockGmresSolMgr<ScalarType,MV,OP>::solve() {
       block_gmres_iter->initializeGmres(newstate);
       int numRestarts = 0;
 
+      int grank;
+      MPI_Comm_rank(MPI_COMM_WORLD, &grank);
+
       while(1) {
         // tell block_gmres_iter to iterate
         try {
@@ -1148,8 +1154,13 @@ ReturnType BlockGmresSolMgr<ScalarType,MV,OP>::solve() {
               Teuchos::RCP<MV> curX = problem_->getCurrLHSVec();
               MVT::MvAddMv( 1.0, *curX, 1.0, *update, *curX );
             }
-            else
+            else{
               problem_->updateSolution( update, true );
+              LSResUpdate(problem_);
+              if(grank == 0){
+                printf("LS update the restarted residual inside GMRES\n");
+              }
+            }
 
             // Get the state.
             GmresIterationState<ScalarType,MV> oldState = block_gmres_iter->getState();

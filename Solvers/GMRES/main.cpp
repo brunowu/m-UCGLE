@@ -20,6 +20,8 @@
 #include <MatrixMarket_Tpetra.hpp>
 #include <Tpetra_Import.hpp>
 
+#include "LSResUpdate.hpp"
+
 int main(int argc, char *argv[]){
 //Tpetra::ScopeGuard tpetraScope(&argc,&argv);
 	Teuchos::GlobalMPISession mpisess (&argc, &argv, &std::cout);
@@ -58,7 +60,7 @@ int main(int argc, char *argv[]){
   	bool debug 		   = false;
   	std::string filename("utm300.mtx");
   	int frequency 	   = -1;
-  	int numVectors 	   = 1;
+  	int numVectors 	   = 2;
 	int blocksize 	   = 100;
   	int numblocks 	   = 5;
   	double tol 		   = 1.0e-5;
@@ -162,7 +164,7 @@ int main(int argc, char *argv[]){
   	RCP<MV> X = rcp(new MV(dmnmap,numVectors));
   	//X->randomize();
   	MVT::MvRandom(*X);
-  	X->describe(*fos, Teuchos::VERB_EXTREME);
+  	//X->describe(*fos, Teuchos::VERB_EXTREME);
 
   	/*generate the right hand sides B by given X and A */
   	RCP<MV> B = rcp(new MV(dmnmap,numVectors));
@@ -175,12 +177,16 @@ int main(int argc, char *argv[]){
 
 	TEUCHOS_TEST_FOR_EXCEPT(problem->setProblem() == false);
 
-  	t2 = MPI_Wtime();
+  LSResUpdate(problem);
+
+
+  t2 = MPI_Wtime();
 
 	if(myRank == 0) printf("Building TIME = %f\n", t2 - t1 ); 
-  	
+ 	
 	/////////////////////////////////////////////////
 	/*construct GMRES solver*/
+
 	RCP<Belos::SolverManager<Scalar,MV,OP> > solver;
 	if (myRank==0){
   		std::cout << "GMRES ]> Construct solver ..." << std::endl;
