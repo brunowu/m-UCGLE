@@ -1,1 +1,0 @@
-/Users/xwu/software/openmp/bin/mpicxx    -std=c++11 -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/gmres2.exe.dir/gmres.cpp.o  -o gmres2.exe  -L/Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/lib  
