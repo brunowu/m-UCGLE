@@ -125,6 +125,7 @@ CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Kokkos_Vectorization.hpp
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Kokkos_View.hpp
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Kokkos_hwloc.hpp
+ /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/MatrixMarket_Tpetra.hpp
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/MurmurHash3.hpp
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/OpenMP/Kokkos_OpenMP_Exec.hpp
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/OpenMP/Kokkos_OpenMP_Parallel.hpp
@@ -165,6 +166,15 @@ CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_GlobalMPISession.hpp
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_LAPACK.hpp
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_LabeledObject.hpp
+ /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_MatrixMarket_Banner.hpp
+ /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_MatrixMarket_CoordDataReader.hpp
+ /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_MatrixMarket_Raw_Adder.hpp
+ /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_MatrixMarket_Raw_Graph_Adder.hpp
+ /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_MatrixMarket_SetScientific.hpp
+ /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_MatrixMarket_SymmetrizingAdder.hpp
+ /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_MatrixMarket_SymmetrizingGraphAdder.hpp
+ /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_MatrixMarket_assignScalar.hpp
+ /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_MatrixMarket_generic.hpp
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_MpiReductionOpSetter.hpp
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_NullIteratorTraits.hpp
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_Object.hpp
@@ -227,6 +237,7 @@ CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/TpetraCore_config.h
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/TpetraTSQR_config.h
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Tpetra_CombineMode.hpp
+ /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Tpetra_ComputeGatherMap.hpp
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Tpetra_ConfigDefs.hpp
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Tpetra_Core.hpp
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Tpetra_CrsGraph.hpp
@@ -324,8 +335,6 @@ CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Tpetra_Vector.hpp
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Tpetra_Vector_decl.hpp
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Tpetra_Vector_def.hpp
- /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Trilinos_Util_iohb.h
- /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Triutils_config.h
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Tsqr.hpp
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Tsqr_ApplyType.hpp
  /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Tsqr_CacheBlocker.hpp

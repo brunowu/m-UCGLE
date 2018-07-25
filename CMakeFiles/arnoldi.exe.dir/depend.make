@@ -124,6 +124,7 @@ CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-So
 CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Kokkos_Vectorization.hpp
 CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Kokkos_View.hpp
 CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Kokkos_hwloc.hpp
+CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/MatrixMarket_Tpetra.hpp
 CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/MurmurHash3.hpp
 CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/OpenMP/Kokkos_OpenMP_Exec.hpp
 CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/OpenMP/Kokkos_OpenMP_Parallel.hpp
@@ -164,6 +165,15 @@ CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-So
 CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_GlobalMPISession.hpp
 CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_LAPACK.hpp
 CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_LabeledObject.hpp
+CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_MatrixMarket_Banner.hpp
+CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_MatrixMarket_CoordDataReader.hpp
+CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_MatrixMarket_Raw_Adder.hpp
+CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_MatrixMarket_Raw_Graph_Adder.hpp
+CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_MatrixMarket_SetScientific.hpp
+CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_MatrixMarket_SymmetrizingAdder.hpp
+CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_MatrixMarket_SymmetrizingGraphAdder.hpp
+CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_MatrixMarket_assignScalar.hpp
+CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_MatrixMarket_generic.hpp
 CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_MpiReductionOpSetter.hpp
 CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_NullIteratorTraits.hpp
 CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Teuchos_Object.hpp
@@ -226,6 +236,7 @@ CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-So
 CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/TpetraCore_config.h
 CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/TpetraTSQR_config.h
 CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Tpetra_CombineMode.hpp
+CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Tpetra_ComputeGatherMap.hpp
 CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Tpetra_ConfigDefs.hpp
 CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Tpetra_Core.hpp
 CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Tpetra_CrsGraph.hpp
@@ -323,8 +334,6 @@ CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-So
 CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Tpetra_Vector.hpp
 CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Tpetra_Vector_decl.hpp
 CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Tpetra_Vector_def.hpp
-CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Trilinos_Util_iohb.h
-CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Triutils_config.h
 CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Tsqr.hpp
 CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Tsqr_ApplyType.hpp
 CMakeFiles/arnoldi.exe.dir/arnoldi.cpp.o: /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2/include/Tsqr_CacheBlocker.hpp

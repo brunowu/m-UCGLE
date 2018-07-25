@@ -7,39 +7,24 @@
 
 //Block KrylovSchur METHODs to approximate the eigevalues
 
-#include <Teuchos_ScalarTraits.hpp>
-#include <Teuchos_RCP.hpp>
-#include <Teuchos_oblackholestream.hpp>
-#include <Teuchos_VerboseObject.hpp>
-#include <Teuchos_CommandLineProcessor.hpp>
-#include <Teuchos_GlobalMPISession.hpp>
-
-#include <Tpetra_DefaultPlatform.hpp>
-#include <Tpetra_CrsMatrix.hpp>
-#include <Tpetra_Core.hpp>
-#include <Tpetra_Map.hpp>
-#include <Tpetra_MultiVector.hpp>
-
 #include "AnasaziConfigDefs.hpp"
 #include "AnasaziTypes.hpp"
+
 #include "AnasaziTpetraAdapter.hpp" //Anasazi interface to Tpetra
 #include "AnasaziBasicEigenproblem.hpp"
 #include "AnasaziBlockKrylovSchurSolMgr.hpp"
+#include <Teuchos_CommandLineProcessor.hpp>
 
-// I/O for Matrix-Market files
-#include <MatrixMarket_Tpetra.hpp>
-#include <Tpetra_Import.hpp>
+#include <Teuchos_GlobalMPISession.hpp>
+#include <Tpetra_DefaultPlatform.hpp>
+#include <Tpetra_CrsMatrix.hpp>
+
+// I/O for Harwell-Boeing files
+#include <Trilinos_Util_iohb.h>
 
 using Tpetra::CrsMatrix;
 using Tpetra::Map;
 using std::vector;
-using Teuchos::RCP;
-using Teuchos::rcp;
-using Teuchos::tuple;
-using std::cout;
-using std::endl;
-using Tpetra::global_size_t;
-using Tpetra::Import;
 
 
 int main( int argc, char *argv[] ){
@@ -61,19 +46,26 @@ int main( int argc, char *argv[] ){
     printf("Info ]> The Comm world size of ERAM is %d \n", asize);
   }
 
-  typedef double                              ST;
-  typedef std::complex<double>                CST;
-  typedef Tpetra::Map<>::global_ordinal_type    GO;
-  typedef Tpetra::Map<>::local_ordinal_type     LO;
-  typedef Tpetra::MultiVector<ST,LO,GO>     MV;
-  typedef Tpetra::MultiVector<CST,LO,GO>     CMV;
+  #ifndef HAVE_TPETRA_COMPLEX_DOUBLE
+  #  error "Anasazi: This test requires Scalar = std::complex<double> to be enabled in Tpetra."
+  #else
+
+  #endif
+
+  using Teuchos::RCP;
+  using Teuchos::rcp;
+  using Teuchos::tuple;
+  using std::cout;
+  using std::endl;
+
+  typedef std::complex<double>                ST;
   typedef Teuchos::ScalarTraits<ST>          SCT;
   typedef SCT::magnitudeType                  MT;
+  typedef Tpetra::MultiVector<ST>             MV;
+  typedef MV::global_ordinal_type             GO; //global indices for matrices
   typedef Tpetra::Operator<ST>                OP;
   typedef Anasazi::MultiVecTraits<ST,MV>     MVT;
   typedef Anasazi::OperatorTraits<ST,MV,OP>  OPT;
-  typedef Tpetra::CrsMatrix<ST,LO,GO>     MAT;
-
 
 
   bool success = false;
@@ -82,20 +74,16 @@ int main( int argc, char *argv[] ){
 
   int info = 0;
 
-  //
-  // Get the default communicator
-  //
-  Teuchos::RCP<const Teuchos::Comm<int> > comm = Tpetra::getDefaultComm();
+  RCP<const Teuchos::Comm<int> > comm =
+    Tpetra::DefaultPlatform::getDefaultPlatform ().getComm ();
 
-  int MyPID = comm->getRank ();
+  const int MyPID = comm->getRank ();
 
   /*stantard MPI functionality*/
   int rank;
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
   std::cout << "Arnoldi in Trilinos said: my rank = " << rank << "\n";
   ///////////////////////////////
-
-  Teuchos::oblackholestream blackhole;
 
   bool verbose = false;
   bool debug = false;
@@ -105,11 +93,7 @@ int main( int argc, char *argv[] ){
   std::string filename;
   int nev = 5;
   int blockSize = 1;
-  MT tol = 1.0e-1;
-  bool printMatrix   = false;
-  bool allprint      = false;
-  int numBlocks = 20;
-  int maxRestarts = 100;
+  MT tol = 1.0e-6;
 
   Teuchos::CommandLineProcessor cmdp(false,true);
   cmdp.setOption("verbose","quiet",&verbose,"Print messages and results.");
@@ -121,11 +105,6 @@ int main( int argc, char *argv[] ){
   cmdp.setOption("nev",&nev,"Number of eigenvalues to compute.");
   cmdp.setOption("blockSize",&blockSize,"Block size for the algorithm.");
   cmdp.setOption("tol",&tol,"Tolerance for convergence.");
-  cmdp.setOption("print-matrix","no-print-matrix",&printMatrix,"Print the full matrix after reading it.");
-  cmdp.setOption("all-print","root-print",&allprint,"All processors print to out");
-  cmdp.setOption("numBlocks",&numBlocks,"Number of blocks in Krylov basis.");
-  cmdp.setOption("maxRestarts",&maxRestarts,"Number of restarts allowed.");
-
   if (cmdp.parse(argc,argv) != Teuchos::CommandLineProcessor::PARSE_SUCCESSFUL) {
     return -1;
   }
@@ -136,61 +115,83 @@ int main( int argc, char *argv[] ){
       filename = "mhd1280b.cua";
     }
     else {
-      filename = "utm300.mtx";
+      filename = "mhd1280a.cua";
     }
   }
-
-  std::ostream& out = ( (allprint || (MyPID == 0)) ? std::cout : blackhole );
-  RCP<Teuchos::FancyOStream> fos = Teuchos::fancyOStream(Teuchos::rcpFromRef(out));
 
   if (MyPID == 0) {
     cout << Anasazi::Anasazi_Version() << endl << endl;
   }
 
-
-  if (MyPID == 0){
-    std::cout << "Anasazi Scalar type == " << Teuchos::typeName(ONE) << std::endl;
+  // Get the data from the HB file
+  int dim,dim2,nnz;
+  int rnnzmax;
+  double *dvals;
+  int *colptr,*rowind;
+  nnz = -1;
+  if (MyPID == 0) {
+    info = readHB_newmat_double(filename.c_str(),&dim,&dim2,&nnz,&colptr,&rowind,&dvals);
+    // find maximum NNZ over all rows
+    cout << "Matrix Info: Row Num = " << dim << ", Col Num = " << dim2 << ", nnz = " << nnz << "\n";
+    vector<int> rnnz(dim,0);
+    for (int *ri=rowind; ri<rowind+nnz; ++ri) {
+      ++rnnz[*ri-1];
+    }
+    rnnzmax = *std::max_element(rnnz.begin(),rnnz.end());
   }
-  
-
-
-  if (MyPID == 0){
-    std::cout << "ERAM ]> Building problem... " << Teuchos::typeName(ONE) << std::endl;
-  }
-  
-  RCP<MAT> A = Tpetra::MatrixMarket::Reader<MAT>::readSparseFile(filename, comm);
-
-  if (MyPID == 0){
-    std::cout << "ERAM ]> Matrix Loaded ... " << Teuchos::typeName(ONE) << std::endl;
+  else {
+    // address uninitialized data warnings
+    dvals = NULL;
+    colptr = NULL;
+    rowind = NULL;
   }
 
+  Teuchos::broadcast(*comm,0,&info);
+  Teuchos::broadcast(*comm,0,&nnz);
+  Teuchos::broadcast(*comm,0,&dim);
+  Teuchos::broadcast(*comm,0,&rnnzmax);
+  if (info == 0 || nnz < 0) {
+    if (MyPID == 0) {
+      cout << "Error reading '" << filename << "'" << endl
+           << "End Result: TEST FAILED" << endl;
+    }
+    return -1;
+  }
+
+
+ // create map
+  RCP<const Map<> > map = rcp (new Map<> (dim, 0, comm));
+  RCP<CrsMatrix<ST> > K = rcp (new CrsMatrix<ST> (map, rnnzmax));
+  if (MyPID == 0) {
+    // Convert interleaved doubles to complex values
+    // HB format is compressed column. CrsMatrix is compressed row.
+    const double *dptr = dvals;
+    const int *rptr = rowind;
+    for (int c=0; c<dim; ++c) {
+      for (int colnnz=0; colnnz < colptr[c+1]-colptr[c]; ++colnnz) {
+        K->insertGlobalValues (static_cast<GO> (*rptr++ - 1), tuple<GO> (c), tuple (ST (dptr[0], dptr[1])));
+        dptr += 2;
+      }
+    }
+  }
+  if (MyPID == 0) {
+    // Clean up.
+    free( dvals );
+    free( colptr );
+    free( rowind );
+  }
+  K->fillComplete();
   //cout << "Matrix read by Arnoldi: \n" << *K << endl;
-  if( printMatrix ){
-    A->describe(*fos, Teuchos::VERB_EXTREME);
-  } else if( verbose ){
-    std::cout << std::endl << A->description() << std::endl << std::endl;
-  }
 
-  //A->describe(*fos, Teuchos::VERB_EXTREME);
-
-  // get the maps
-  RCP<const Map<LO,GO> > dmnmap = A->getDomainMap();
-  RCP<const Map<LO,GO> > rngmap = A->getRangeMap();
-
-  GO nrows = dmnmap->getGlobalNumElements();
-  RCP<Map<LO,GO> > root_map
-    = rcp( new Map<LO,GO>(nrows,MyPID == 0 ? nrows : 0,0,comm) );
-  RCP<MV> Xhat = rcp( new MV(root_map,blockSize) );
-  RCP<Import<LO,GO> > importer = rcp( new Import<LO,GO>(dmnmap,root_map) );
 
 
 // Create initial vectors
-  RCP<MV> ivec = rcp( new MV(dmnmap,blockSize) );
+  RCP<MV> ivec = rcp( new MV(map,blockSize) );
   ivec->randomize ();
 
   // Create eigenproblem
   RCP<Anasazi::BasicEigenproblem<ST,MV,OP> > problem =
-    rcp( new Anasazi::BasicEigenproblem<ST,MV,OP>(A,ivec) );
+    rcp( new Anasazi::BasicEigenproblem<ST,MV,OP>(K,ivec) );
   //
   // Inform the eigenproblem that the operator K is symmetric
   problem->setHermitian(herm);
@@ -210,13 +211,13 @@ int main( int argc, char *argv[] ){
 
 
   // Set verbosity level
-  //int verbosity = Anasazi::Errors + Anasazi::Warnings;
-  
+  int verbosity = Anasazi::Errors + Anasazi::Warnings;
+  /*
   int verbosity = Anasazi::Errors + Anasazi::Warnings + Anasazi::FinalSummary + Anasazi::TimingDetails;
   if (verbose) {
     verbosity += Anasazi::IterationDetails;
   }
-  
+  */
   if (debug) {
     verbosity += Anasazi::Debug;
   }
@@ -224,7 +225,9 @@ int main( int argc, char *argv[] ){
 
 
   // Eigensolver parameters
-
+  int numBlocks = 8;
+  int maxRestarts = 10;
+  //
   // Create parameter list to pass into the solver manager
   Teuchos::ParameterList MyPL;
   MyPL.set( "Verbosity", verbosity );
@@ -241,7 +244,6 @@ int main( int argc, char *argv[] ){
 
   int length = 5;
   int i, end = 0;
-  int numev;
 
   while(!end){
 
@@ -251,10 +253,9 @@ int main( int argc, char *argv[] ){
 
     // Get the eigenvalues and eigenvectors from the eigenproblem
     Anasazi::Eigensolution<ST,MV> sol = problem->getSolution();
-    numev = sol.numVecs;
-    printf("NUMVECS = %d\n", numev);
-
-    CST *Evalues  = new CST [numev];
+    RCP<MV> evecs = sol.Evecs;
+    int numev = sol.numVecs;
+    ST *Evalues  = new ST [numev];
 
     if (numev > 0) {
       std::ostringstream os;
@@ -263,14 +264,40 @@ int main( int argc, char *argv[] ){
 
       // Compute the direct residual
       std::vector<MT> normV( numev );
+      Teuchos::SerialDenseMatrix<int,ST> T (numev, numev);
       for (int i=0; i<numev; i++) {
-        Evalues[i] = CST(sol.Evals[i].realpart,sol.Evals[i].imagpart);
-        printf("Evals[%d] = %f + %fi\n", i+1,sol.Evals[i].realpart, sol.Evals[i].imagpart);
+        T(i,i) = ST(sol.Evals[i].realpart,sol.Evals[i].imagpart);
+        Evalues[i] = ST(sol.Evals[i].realpart,sol.Evals[i].imagpart);
       }
-   
+
+      RCP<MV> Kvecs = MVT::Clone( *evecs, numev );
+
+      OPT::Apply( *K, *evecs, *Kvecs );
+
+      MVT::MvTimesMatAddMv( -ONE, *evecs, T, ONE, *Kvecs );
+      MVT::MvNorm( *Kvecs, normV );
+
+      os << "Direct residual norms computed in BlockKrylovSchurComplex_test.exe" << endl
+         << std::setw(20) << "Eigenvalue" << std::setw(20) << "Residual  " << endl
+         << "----------------------------------------" << endl;
+      for (int i=0; i<numev; i++) {
+        if ( SCT::magnitude(T(i,i)) != SCT::zero() ) {
+          normV[i] = SCT::magnitude(normV[i]/T(i,i));
+        }
+        os << std::setw(20) << T(i,i) << std::setw(20) << normV[i] << endl;
+        success = (normV[i] < tol);
+      }
+      
       if (MyPID==0) {
         cout << endl << os.str() << endl;
       }
+    }
+
+    if (MyPID==0) {
+      if (success)
+        cout << "End Result: TEST PASSED" << endl;
+      else
+        cout << "End Result: TEST FAILED" << endl;
     }
 
     mpi_lsa_com_cplx_array_send(&COMM_FATHER, &numev, Evalues);
