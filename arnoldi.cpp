@@ -103,12 +103,12 @@ int main( int argc, char *argv[] ){
   bool herm = false;
   std::string which("LM");
   std::string filename;
-  int nev = 5;
+  int nev = 10;
   int blockSize = 1;
   MT tol = 1.0e-1;
   bool printMatrix   = false;
   bool allprint      = false;
-  int numBlocks = 20;
+  int numBlocks = 100;
   int maxRestarts = 100;
 
   Teuchos::CommandLineProcessor cmdp(false,true);

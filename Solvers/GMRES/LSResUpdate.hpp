@@ -1,6 +1,11 @@
 #ifndef _LS_RES_UPDATE_H_
 #define _LS_RES_UPDATE_H_
 
+#ifndef EIGEN_ALL
+#define EIGEN_ALL 10
+#endif
+
+
 #include "BelosConfigDefs.hpp"
 #include "BelosLinearProblem.hpp"
 #include "BelosTpetraAdapter.hpp"
@@ -15,6 +20,10 @@
 #include <Tpetra_CrsMatrix.hpp>
 #include <Teuchos_TypeNameTraits.hpp>
 #include <Teuchos_RCP.hpp>
+
+#include "../../Libs/mpi_lsa_com.hpp"
+#include <unistd.h>
+
 
 typedef double Scalar;
 typedef Teuchos::ScalarTraits<Scalar>         	SCT;
@@ -33,14 +42,56 @@ using Tpetra::Import;
 using Teuchos::RCP;
 using Teuchos::rcp;
 
+static int latency_count = 0;
+
 int LSResUpdate(const Teuchos::RCP<Belos::LinearProblem<Scalar,MV,OP> > &problem){
 	//simulation of the received data from LS
 	int rank;
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
-  	double data_tmp [32] = {10.000000,-0.720766,-1.395545,-0.660261,-0.527755,-0.457798,-0.368613,-0.319541,-0.259549,-0.189444,-0.168309
-                        -0.119417,0.326302,0.576631,0.609613,0.611939,0.612093,0.612104,0.612104,0.612104,0.612104,0.612104,0.000000,
-                        0.075973,0.042991,0.040666,0.040511,0.040501,0.040500,0.040500,0.040500,0.040500};
+  	int grank, gsize;
+  	int type = 666;
+  	int exit_type = 0;
+
+  	MPI_Comm COMM_FATHER;
+
+  	MPI_Comm_size( MPI_COMM_WORLD, &gsize );
+  	MPI_Comm_rank( MPI_COMM_WORLD, &grank );
+
+  	MPI_Comm_get_parent( &COMM_FATHER );
+
+  	double data_tmp[EIGEN_ALL*2*3];
+  	double tmp[EIGEN_ALL*2*3];
+
+  	int latency = 1;
+  	int size_data = EIGEN_ALL;
+
+  	 int i, j, k;
+
+  	latency_count++;
+
+  	if(latency_count % latency == 0){
+		usleep(100000);
+  	} else{
+  		return 1;
+  	}
+
+
+	if(!mpi_lsa_com_array_recv(&COMM_FATHER, &size_data, data_tmp)){
+		if(grank == 0){
+			printf("GMRES ]> GMRES has recived data from LS\n");
+			for(i = 0; i < size_data; i++){
+            	printf("GMRES ]>: GMRES rank = %d, data[%d] = %f\n",grank, i, data_tmp[i] );
+            }
+		}
+		if(((int)data_tmp[0]* 3 + 2) != size_data){
+			if(grank == 0){
+				printf("GMRES ]> GMRES LS polynomial preconditioned data is not consistent \n");
+			}
+		}
+	} else{
+		return 1;
+	}
 
 	Teuchos::RCP<const OP> A = problem->getOperator();
 	//std::cout <<*A << std::endl;
@@ -53,8 +104,10 @@ int LSResUpdate(const Teuchos::RCP<Belos::LinearProblem<Scalar,MV,OP> > &problem
 	int numVectors = vec_rhs->getNumVectors();
 	std::cout <<"numVectors = : " << numVectors<< std::endl;
 
-	RCP<MV> curX = MVT::Clone(*vec_rhs,numVectors); //RCP<MV> curX = problem->getCurrLHSVec();
-	curX->putScalar(0.0);
+//	RCP<MV> curX = MVT::Clone(*vec_rhs,numVectors);
+//	curX->putScalar(0.0);
+
+	RCP<MV> curX = problem->getCurrLHSVec();
 
 	RCP<MV> x_tmp = MVT::Clone(*curX,numVectors);
 	RCP<MV> r0_tmp = MVT::Clone(*curX,numVectors);
@@ -77,11 +130,16 @@ int LSResUpdate(const Teuchos::RCP<Belos::LinearProblem<Scalar,MV,OP> > &problem
 	
 	int ls_power = 2;
 
-  	int i, j;
-
   	std::vector<MT> normV( numVectors );
+    std::vector<MT> normB( numVectors );
+
+    double *normBB = new double [numVectors];
+    double *normVV = new double [numVectors];
+
+
 
 	int size = (int) data_tmp[0];
+
   	double alpha;
   	double *eta = new double [size];
   	double *beta = new double [size];
@@ -122,6 +180,7 @@ int LSResUpdate(const Teuchos::RCP<Belos::LinearProblem<Scalar,MV,OP> > &problem
 	      	/* x = x + (w0 * eta[i] ) */
 	      	MVT::MvAddMv( ONE, *x_tmp, eta[i + 1], *w0_tmp, *x_tmp );      
 	    }
+
 	    /* update solution, x1= x1+x*/
 	    MVT::MvAddMv( ONE, *sol_tmp, ONE, *w0_tmp, *sol_tmp );  
 	    /* put A*x into VEC_TEMP */
@@ -131,26 +190,27 @@ int LSResUpdate(const Teuchos::RCP<Belos::LinearProblem<Scalar,MV,OP> > &problem
 	    /* compute norm and see if it's below epsilon */
 	    MVT::MvNorm( *r1_tmp, normV);
 
+	    MVT::MvNorm( *vec_rhs, normB);
+
 	    std::vector<Scalar>::iterator iter_begin = normV.begin();
 	    std::vector<Scalar>::iterator iter_end   = normV.end();
 	    std::vector<Scalar>::iterator iter;
 
-	    for(iter = iter_begin; iter != iter_end; ++iter){
-	      std::cout << "LOOP" << j+1 << ", Rank " << rank << ": "<< *iter << std::endl;
+	    std::vector<Scalar>::iterator iterB_begin = normB.begin();
+	    std::vector<Scalar>::iterator iterB_end   = normB.end();
+	    std::vector<Scalar>::iterator iterB;
+
+	    normBB = normB.data();
+	    normVV = normV.data();
+
+	    for(k = 0; k < numVectors; k++){
+	    	std::cout << "LOOP" << j+1 << ", Rank " << rank << ": "<< normVV[k]/normBB[k] << std::endl;
 	    }
-
-	  }
-
-/*
-	if (flag && ls){
-		perform ls part;
-		MVT::MvAddMv( 0.0, *newX, 1.0, *newX, *curX ); //update with the LS polynomial solution
-	}else{
-		Teuchos::RCP<MV> update = block_gmres_iter->getCurrentUpdate();
-		problem->updateSolution( update, true );
-		return 1;
 	}
-*/
+
+	MVT::MvAddMv( ONE, *sol_tmp, -ONE, *curX, *sol_tmp );  
+	problem->updateSolution( sol_tmp, true );
+
 	delete [] eta;
 	delete [] beta;
 	delete [] delta;

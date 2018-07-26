@@ -14,13 +14,17 @@
 #include "BelosConfigDefs.hpp"
 #include "BelosLinearProblem.hpp"
 #include "BelosTpetraAdapter.hpp"
-#include "BelosBlockGmresLsSolMgr.hpp"
+
+#include "Solvers/GMRES/BelosBlockGmresLsSolMgr.hpp"
 
 // I/O for Matrix-Market files
 #include <MatrixMarket_Tpetra.hpp>
 #include <Tpetra_Import.hpp>
 
-#include "LSResUpdate.hpp"
+#include "Solvers/GMRES/LSResUpdate.hpp"
+
+#include "Libs/mpi_lsa_com.hpp"
+
 
 int main(int argc, char *argv[]){
 //Tpetra::ScopeGuard tpetraScope(&argc,&argv);
@@ -32,7 +36,7 @@ int main(int argc, char *argv[]){
 
   	typedef Tpetra::Map<>::local_ordinal_type 		LO;
   	typedef Tpetra::Map<>::global_ordinal_type 		GO;
-	typedef Tpetra::Operator<Scalar,int>         	OP;
+	  typedef Tpetra::Operator<Scalar,int>         	OP;
   	typedef Tpetra::CrsMatrix<Scalar,LO,GO> 		MAT;
   	typedef Tpetra::MultiVector<Scalar,LO,GO> 		MV;
   	typedef Belos::MultiVecTraits<Scalar,MV>    	MVT;
@@ -52,6 +56,17 @@ int main(int argc, char *argv[]){
   	Teuchos::RCP<const Teuchos::Comm<int> > comm = Tpetra::getDefaultComm();
   	int myRank = comm->getRank();
 
+    int grank, gsize;
+    int type = 666;
+    int exit_type = 0;
+
+    MPI_Comm COMM_FATHER;
+
+    MPI_Comm_size( MPI_COMM_WORLD, &gsize );
+    MPI_Comm_rank( MPI_COMM_WORLD, &grank );
+
+    MPI_Comm_get_parent( &COMM_FATHER );
+
   	Teuchos::oblackholestream blackhole;
 
   	bool printMatrix   = false;
@@ -61,8 +76,8 @@ int main(int argc, char *argv[]){
   	std::string filename("utm300.mtx");
   	int frequency 	   = -1;
   	int numVectors 	   = 2;
-	int blocksize 	   = 100;
-  	int numblocks 	   = 5;
+	  int blocksize 	   = 100;
+  	int numblocks 	   = 50;
   	double tol 		   = 1.0e-5;
   	bool precond 	   = false;
   	bool dumpdata 	   = false;
@@ -75,12 +90,12 @@ int main(int argc, char *argv[]){
   	cmdp.setOption("verbose","quiet",&verbose,"Print messages and results.");
   	cmdp.setOption("debug","nodebug",&debug,"Run debugging checks.");
   	cmdp.setOption("frequency",&frequency,"Solvers frequency for printing residuals (#iters).");
- 	cmdp.setOption("tol",&tol,"Relative residual tolerance used by solver.");
- 	cmdp.setOption("num-rhs",&numVectors,"Number of right-hand sides to be solved for.");
- 	cmdp.setOption("block-size",&blocksize,"Block size to be used by the solver.");
- 	cmdp.setOption("use-precond","no-precond",&precond,"Use a diagonal preconditioner.");
-	cmdp.setOption("num-blocks",&numblocks,"Number of blocks in the Krylov basis.");
-	cmdp.setOption("reduce-tol","fixed-tol",&reduce_tol,"Require increased accuracy from higher precision scalar types.");
+ 	  cmdp.setOption("tol",&tol,"Relative residual tolerance used by solver.");
+ 	  cmdp.setOption("num-rhs",&numVectors,"Number of right-hand sides to be solved for.");
+ 	  cmdp.setOption("block-size",&blocksize,"Block size to be used by the solver.");
+ 	  cmdp.setOption("use-precond","no-precond",&precond,"Use a diagonal preconditioner.");
+	  cmdp.setOption("num-blocks",&numblocks,"Number of blocks in the Krylov basis.");
+	  cmdp.setOption("reduce-tol","fixed-tol",&reduce_tol,"Require increased accuracy from higher precision scalar types.");
   	cmdp.setOption("filename",&filename,"Filename for Matrix-Market test matrix.");
   	cmdp.setOption("print-matrix","no-print-matrix",&printMatrix,"Print the full matrix after reading it.");
   	cmdp.setOption("all-print","root-print",&allprint,"All processors print to out");
@@ -177,7 +192,7 @@ int main(int argc, char *argv[]){
 
 	TEUCHOS_TEST_FOR_EXCEPT(problem->setProblem() == false);
 
-  LSResUpdate(problem);
+//  LSResUpdate(problem);
 
 
   t2 = MPI_Wtime();
@@ -229,6 +244,28 @@ int main(int argc, char *argv[]){
 			printf("GMRES ]> This GMRES Component cannot be converged with given parameters\n");
 		}
 	}
+
+  mpi_lsa_com_type_send(&COMM_FATHER, &type);
+
+  if(grank == 0){
+    printf("GMRES ]> GMRES send exit signal\n");
+  }
+
+  int gmres_final_exit;
+
+  if(!mpi_lsa_com_type_recv(&COMM_FATHER, &gmres_final_exit)){
+    if(gmres_final_exit == 777){
+      printf("GMRES is allowed to exit by FATHER now\n");
+    }else{
+      usleep(1000000);
+    }
+  } else{
+    usleep(10000000);
+  }
+
+  MPI_Comm_free(&COMM_FATHER);
+
+  printf("GMRES ]> Close of GMRES after waiting a little instant\n");
 
 
 	return 0;

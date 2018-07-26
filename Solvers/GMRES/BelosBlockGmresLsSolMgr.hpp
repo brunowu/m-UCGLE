@@ -1154,13 +1154,15 @@ ReturnType BlockGmresSolMgr<ScalarType,MV,OP>::solve() {
               Teuchos::RCP<MV> curX = problem_->getCurrLHSVec();
               MVT::MvAddMv( 1.0, *curX, 1.0, *update, *curX );
             }
-            else{
-              problem_->updateSolution( update, true );
-              LSResUpdate(problem_);
+            else if(!LSResUpdate(problem_)){
               if(grank == 0){
-                printf("LS update the restarted residual inside GMRES\n");
+                  printf("LS update the restarted residual inside GMRES\n");
               }
+            } else{
+                problem_->updateSolution( update, true );
             }
+                    
+            
 
             // Get the state.
             GmresIterationState<ScalarType,MV> oldState = block_gmres_iter->getState();

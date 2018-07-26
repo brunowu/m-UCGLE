@@ -1,0 +1,2975 @@
+================================================================================
+
+
+
+             MUCGLE: Multiple Unite and Conquer GMRES/LS-ERAM Method
+
+
+
+================================================================================
+            Developed by Xinzhe WU at Maison de la Simulation, France
+================================================================================
+
+
+
+--------------------------------------------------------------------------------
+                              Start Initialization
+--------------------------------------------------------------------------------
+Initialization ]> GMRES executable number is 1 
+Initialization ]> Each GMRES Proc number is 1 
+Initialization ]> ERAM executable number is 1 
+Initialization ]> Each ERAM Proc number is 1 
+Initialization ]> Thus Total proc number = 1 + 1 + 1 * 1 + 1 * 1 = 4 
+Initialization ]> GMRES executable name list is: [ ./gmres.exe  ]
+Initialization ]> ERAM executable name list is: [ ./arnoldi.exe  ]
+Initialization ]> LS executable name list is: [ ./lsqr.exe  ]
+--------------------------------------------------------------------------------
+                           Start Spawning Executables
+--------------------------------------------------------------------------------
+Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name romeo1 and rank 0!
+Testing Scalar == double
+GMRES ]> Building problem...
+GMRES ]> Load matrix: utm300.mtx from local filesystem
+
+Tpetra::CrsMatrix (Kokkos refactor): {isFillComplete: true, global dimensions: [300, 300], global number of entries: 3155}
+
+Building TIME = 0.036202
+GMRES ]> Construct solver ...
+Construct TIME = 0.000276
+GMRES ]> Solving problem ...
+HELLO, THIS IS LS PRECONDITIONGING INSIDE OF GMRES
+Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name romeo1 and rank 0!
+Info ]> The Comm world size of ERAM is 1 
+Arnoldi in Trilinos said: my rank = 0
+Anasazi Version 12.12d
+
+Anasazi Scalar type == double
+ERAM ]> Building problem... double
+ERAM ]> Matrix Loaded ... double
+--------------------------------------------------------------------------------
+                    Start Resolving Linear Systems by MUCGLE
+--------------------------------------------------------------------------------
+exit_type[0] = 0
+Info ]> The Comm world size of LS is 1 
+yo man
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 51
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 51
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595436e+00 + i   0.000000e+00        3.512699e-04
+  -1.544656e+00 + i   0.000000e+00        2.953001e-03
+  -1.487257e+00 + i   1.925128e-02        3.576838e-02
+  -1.487257e+00 - i   1.925128e-02        3.576838e-02
+  -1.430716e+00 + i   1.374216e-01        9.081543e-03
+  -1.430716e+00 - i   1.374216e-01        9.081543e-03
+  -1.407110e+00 + i   7.295013e-02        5.424618e-02
+  -1.407110e+00 - i   7.295013e-02        5.424618e-02
+  -1.397670e+00 + i   1.218988e-01        4.306554e-02
+  -1.397670e+00 - i   1.218988e-01        4.306554e-02
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.003838 (1)               
+Anasazi: BlockKrylovSchur::Computing Schur form      0.001685 (4)               
+Anasazi: BlockKrylovSchur::Operation Op*x            0.008706 (51)              
+Anasazi: BlockKrylovSchur::Orthogonalization         0.06973 (52)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.0001454 (4)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.0004867 (4)              
+Anasazi: BlockKrylovSchurSolMgr restarting           0.00232 (3)                
+Anasazi: BlockKrylovSchurSolMgr::solve()             0.09564 (1)                
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595436 + 0.000000i
+Evals[2] = -1.544656 + 0.000000i
+Evals[3] = -1.487257 + 0.019251i
+Evals[4] = -1.487257 + -0.019251i
+Evals[5] = -1.430716 + 0.137422i
+Evals[6] = -1.430716 + -0.137422i
+Evals[7] = -1.407110 + 0.072950i
+Evals[8] = -1.407110 + -0.072950i
+Evals[9] = -1.397670 + 0.121899i
+Evals[10] = -1.397670 + -0.121899i
+
+
+HELLO, THIS IS LS PRECONDITIONGING INSIDE OF GMRES
+Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 51
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 51
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595436e+00 + i   0.000000e+00        3.512699e-04
+  -1.544656e+00 + i   0.000000e+00        2.953001e-03
+  -1.487257e+00 + i   1.925128e-02        3.576838e-02
+  -1.487257e+00 - i   1.925128e-02        3.576838e-02
+  -1.430716e+00 + i   1.374216e-01        9.081543e-03
+  -1.430716e+00 - i   1.374216e-01        9.081543e-03
+  -1.407110e+00 + i   7.295013e-02        5.424618e-02
+  -1.407110e+00 - i   7.295013e-02        5.424618e-02
+  -1.397670e+00 + i   1.218988e-01        4.306554e-02
+  -1.397670e+00 - i   1.218988e-01        4.306554e-02
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.007583 (2)               
+Anasazi: BlockKrylovSchur::Computing Schur form      0.003138 (8)               
+Anasazi: BlockKrylovSchur::Operation Op*x            0.01728 (102)              
+Anasazi: BlockKrylovSchur::Orthogonalization         0.1381 (104)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.0002575 (8)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.0009456 (8)              
+Anasazi: BlockKrylovSchurSolMgr restarting           0.004629 (6)               
+Anasazi: BlockKrylovSchurSolMgr::solve()             0.1891 (2)                 
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595436 + 0.000000i
+Evals[2] = -1.544656 + 0.000000i
+Evals[3] = -1.487257 + 0.019251i
+Evals[4] = -1.487257 + -0.019251i
+Evals[5] = -1.430716 + 0.137422i
+Evals[6] = -1.430716 + -0.137422i
+Evals[7] = -1.407110 + 0.072950i
+Evals[8] = -1.407110 + -0.072950i
+Evals[9] = -1.397670 + 0.121899i
+Evals[10] = -1.397670 + -0.121899i
+
+
+Arnoldi send eigenvalues to FATHER
+Main ]> Father send array to LS, length = 10
+exit_type[0] = 0
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+exit_type[0] = 0
+yo man
+@} LSQR convhul negatif chsigne 6 cumul 6 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -1.595436+0.000000i
+hk[1] = -1.430716+0.137422i
+hk[2] = -1.397670+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+@} LSQR convhul negatif chsigne 12 cumul 12 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -1.595436+0.000000i
+hk[1] = -1.430716+0.137422i
+hk[2] = -1.397670+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+HELLO, THIS IS LS PRECONDITIONGING INSIDE OF GMRES
+@} LSQR convhul negatif chsigne 18 cumul 18 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -1.595436+0.000000i
+hk[1] = -1.430716+0.137422i
+hk[2] = -1.397670+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 51
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 51
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595436e+00 + i   0.000000e+00        3.512699e-04
+  -1.544656e+00 + i   0.000000e+00        2.953001e-03
+  -1.487257e+00 + i   1.925128e-02        3.576838e-02
+  -1.487257e+00 - i   1.925128e-02        3.576838e-02
+  -1.430716e+00 + i   1.374216e-01        9.081543e-03
+  -1.430716e+00 - i   1.374216e-01        9.081543e-03
+  -1.407110e+00 + i   7.295013e-02        5.424618e-02
+  -1.407110e+00 - i   7.295013e-02        5.424618e-02
+  -1.397670e+00 + i   1.218988e-01        4.306554e-02
+  -1.397670e+00 - i   1.218988e-01        4.306554e-02
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.01134 (3)                
+Anasazi: BlockKrylovSchur::Computing Schur form      0.004563 (12)              
+Anasazi: BlockKrylovSchur::Operation Op*x            0.02586 (153)              
+Anasazi: BlockKrylovSchur::Orthogonalization         0.2064 (156)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.0003675 (12)             
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.001387 (12)              
+Anasazi: BlockKrylovSchurSolMgr restarting           0.006927 (9)               
+Anasazi: BlockKrylovSchurSolMgr::solve()             0.2825 (3)                 
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595436 + 0.000000i
+Evals[2] = -1.544656 + 0.000000i
+Evals[3] = -1.487257 + 0.019251i
+Evals[4] = -1.487257 + -0.019251i
+Evals[5] = -1.430716 + 0.137422i
+Evals[6] = -1.430716 + -0.137422i
+Evals[7] = -1.407110 + 0.072950i
+Evals[8] = -1.407110 + -0.072950i
+Evals[9] = -1.397670 + 0.121899i
+Evals[10] = -1.397670 + -0.121899i
+
+
+Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Debug ]>: Father send data[0] = 10.000000 to GMRES
+Debug ]>: Father send data[1] = -1.465132 to GMRES
+Debug ]>: Father send data[2] = -0.682532 to GMRES
+Debug ]>: Father send data[3] = -0.030325 to GMRES
+Debug ]>: Father send data[4] = -0.002960 to GMRES
+Debug ]>: Father send data[5] = -0.000275 to GMRES
+Debug ]>: Father send data[6] = -0.000026 to GMRES
+Debug ]>: Father send data[7] = -0.000002 to GMRES
+Debug ]>: Father send data[8] = -0.000000 to GMRES
+Debug ]>: Father send data[9] = -0.000000 to GMRES
+Debug ]>: Father send data[10] = -0.000000 to GMRES
+Debug ]>: Father send data[11] = -0.000000 to GMRES
+Debug ]>: Father send data[12] = 0.065152 to GMRES
+Debug ]>: Father send data[13] = 0.143050 to GMRES
+Debug ]>: Father send data[14] = 0.136109 to GMRES
+Debug ]>: Father send data[15] = 0.136405 to GMRES
+Debug ]>: Father send data[16] = 0.136392 to GMRES
+Debug ]>: Father send data[17] = 0.136392 to GMRES
+Debug ]>: Father send data[18] = 0.136392 to GMRES
+Debug ]>: Father send data[19] = 0.136392 to GMRES
+Debug ]>: Father send data[20] = 0.136392 to GMRES
+Debug ]>: Father send data[21] = 0.136392 to GMRES
+Debug ]>: Father send data[22] = 0.000000 to GMRES
+Debug ]>: Father send data[23] = -0.012746 to GMRES
+Debug ]>: Father send data[24] = -0.005805 to GMRES
+Debug ]>: Father send data[25] = -0.006101 to GMRES
+Debug ]>: Father send data[26] = -0.006088 to GMRES
+Debug ]>: Father send data[27] = -0.006089 to GMRES
+Debug ]>: Father send data[28] = -0.006089 to GMRES
+Debug ]>: Father send data[29] = -0.006089 to GMRES
+Debug ]>: Father send data[30] = -0.006089 to GMRES
+Debug ]>: Father send data[31] = -0.006089 to GMRES
+Main ]> Father has sent preconditioned parameters to GMRES Component
+exit_type[0] = 0
+yo man
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Debug ]>: Father send data[0] = 10.000000 to GMRES
+Debug ]>: Father send data[1] = -1.465132 to GMRES
+Debug ]>: Father send data[2] = -0.682532 to GMRES
+Debug ]>: Father send data[3] = -0.030325 to GMRES
+Debug ]>: Father send data[4] = -0.002960 to GMRES
+Debug ]>: Father send data[5] = -0.000275 to GMRES
+Debug ]>: Father send data[6] = -0.000026 to GMRES
+Debug ]>: Father send data[7] = -0.000002 to GMRES
+Debug ]>: Father send data[8] = -0.000000 to GMRES
+Debug ]>: Father send data[9] = -0.000000 to GMRES
+Debug ]>: Father send data[10] = -0.000000 to GMRES
+Debug ]>: Father send data[11] = -0.000000 to GMRES
+Debug ]>: Father send data[12] = 0.065152 to GMRES
+Debug ]>: Father send data[13] = 0.143050 to GMRES
+Debug ]>: Father send data[14] = 0.136109 to GMRES
+Debug ]>: Father send data[15] = 0.136405 to GMRES
+Debug ]>: Father send data[16] = 0.136392 to GMRES
+Debug ]>: Father send data[17] = 0.136392 to GMRES
+Debug ]>: Father send data[18] = 0.136392 to GMRES
+Debug ]>: Father send data[19] = 0.136392 to GMRES
+Debug ]>: Father send data[20] = 0.136392 to GMRES
+Debug ]>: Father send data[21] = 0.136392 to GMRES
+Debug ]>: Father send data[22] = 0.000000 to GMRES
+Debug ]>: Father send data[23] = -0.012746 to GMRES
+Debug ]>: Father send data[24] = -0.005805 to GMRES
+Debug ]>: Father send data[25] = -0.006101 to GMRES
+Debug ]>: Father send data[26] = -0.006088 to GMRES
+Debug ]>: Father send data[27] = -0.006089 to GMRES
+Debug ]>: Father send data[28] = -0.006089 to GMRES
+Debug ]>: Father send data[29] = -0.006089 to GMRES
+Debug ]>: Father send data[30] = -0.006089 to GMRES
+Debug ]>: Father send data[31] = -0.006089 to GMRES
+Main ]> Father has sent preconditioned parameters to GMRES Component
+exit_type[0] = 0
+@} LSQR convhul negatif chsigne 18 cumul 18 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -1.595436+0.000000i
+hk[1] = -1.430716+0.137422i
+hk[2] = -1.397670+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 51
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 51
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595436e+00 + i   0.000000e+00        3.512699e-04
+  -1.544656e+00 + i   0.000000e+00        2.953001e-03
+  -1.487257e+00 + i   1.925128e-02        3.576838e-02
+  -1.487257e+00 - i   1.925128e-02        3.576838e-02
+  -1.430716e+00 + i   1.374216e-01        9.081543e-03
+  -1.430716e+00 - i   1.374216e-01        9.081543e-03
+  -1.407110e+00 + i   7.295013e-02        5.424618e-02
+  -1.407110e+00 - i   7.295013e-02        5.424618e-02
+  -1.397670e+00 + i   1.218988e-01        4.306554e-02
+  -1.397670e+00 - i   1.218988e-01        4.306554e-02
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.0151 (4)                 
+Anasazi: BlockKrylovSchur::Computing Schur form      0.005997 (16)              
+Anasazi: BlockKrylovSchur::Operation Op*x            0.03443 (204)              
+Anasazi: BlockKrylovSchur::Orthogonalization         0.2752 (208)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.0004791 (16)             
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.001832 (16)              
+Anasazi: BlockKrylovSchurSolMgr restarting           0.009224 (12)              
+Anasazi: BlockKrylovSchurSolMgr::solve()             0.3765 (4)                 
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595436 + 0.000000i
+Evals[2] = -1.544656 + 0.000000i
+Evals[3] = -1.487257 + 0.019251i
+Evals[4] = -1.487257 + -0.019251i
+Evals[5] = -1.430716 + 0.137422i
+Evals[6] = -1.430716 + -0.137422i
+Evals[7] = -1.407110 + 0.072950i
+Evals[8] = -1.407110 + -0.072950i
+Evals[9] = -1.397670 + 0.121899i
+Evals[10] = -1.397670 + -0.121899i
+
+
+Arnoldi send eigenvalues to FATHER
+HELLO, THIS IS LS PRECONDITIONGING INSIDE OF GMRES
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 51
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 51
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595436e+00 + i   0.000000e+00        3.512699e-04
+  -1.544656e+00 + i   0.000000e+00        2.953001e-03
+  -1.487257e+00 + i   1.925128e-02        3.576838e-02
+  -1.487257e+00 - i   1.925128e-02        3.576838e-02
+  -1.430716e+00 + i   1.374216e-01        9.081543e-03
+  -1.430716e+00 - i   1.374216e-01        9.081543e-03
+  -1.407110e+00 + i   7.295013e-02        5.424618e-02
+  -1.407110e+00 - i   7.295013e-02        5.424618e-02
+  -1.397670e+00 + i   1.218988e-01        4.306554e-02
+  -1.397670e+00 - i   1.218988e-01        4.306554e-02
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.01884 (5)                
+Anasazi: BlockKrylovSchur::Computing Schur form      0.007416 (20)              
+Anasazi: BlockKrylovSchur::Operation Op*x            0.04301 (255)              
+Anasazi: BlockKrylovSchur::Orthogonalization         0.3442 (260)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.0005889 (20)             
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.002275 (20)              
+Anasazi: BlockKrylovSchurSolMgr restarting           0.01154 (15)               
+Anasazi: BlockKrylovSchurSolMgr::solve()             0.4706 (5)                 
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595436 + 0.000000i
+Evals[2] = -1.544656 + 0.000000i
+Evals[3] = -1.487257 + 0.019251i
+Evals[4] = -1.487257 + -0.019251i
+Evals[5] = -1.430716 + 0.137422i
+Evals[6] = -1.430716 + -0.137422i
+Evals[7] = -1.407110 + 0.072950i
+Evals[8] = -1.407110 + -0.072950i
+Evals[9] = -1.397670 + 0.121899i
+Evals[10] = -1.397670 + -0.121899i
+
+
+Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Debug ]>: Father send data[0] = 10.000000 to GMRES
+Debug ]>: Father send data[1] = -1.465132 to GMRES
+Debug ]>: Father send data[2] = -0.682532 to GMRES
+Debug ]>: Father send data[3] = -0.030325 to GMRES
+Debug ]>: Father send data[4] = -0.002960 to GMRES
+Debug ]>: Father send data[5] = -0.000275 to GMRES
+Debug ]>: Father send data[6] = -0.000026 to GMRES
+Debug ]>: Father send data[7] = -0.000002 to GMRES
+Debug ]>: Father send data[8] = -0.000000 to GMRES
+Debug ]>: Father send data[9] = -0.000000 to GMRES
+Debug ]>: Father send data[10] = -0.000000 to GMRES
+Debug ]>: Father send data[11] = -0.000000 to GMRES
+Debug ]>: Father send data[12] = 0.065152 to GMRES
+Debug ]>: Father send data[13] = 0.143050 to GMRES
+Debug ]>: Father send data[14] = 0.136109 to GMRES
+Debug ]>: Father send data[15] = 0.136405 to GMRES
+Debug ]>: Father send data[16] = 0.136392 to GMRES
+Debug ]>: Father send data[17] = 0.136392 to GMRES
+Debug ]>: Father send data[18] = 0.136392 to GMRES
+Debug ]>: Father send data[19] = 0.136392 to GMRES
+Debug ]>: Father send data[20] = 0.136392 to GMRES
+Debug ]>: Father send data[21] = 0.136392 to GMRES
+Debug ]>: Father send data[22] = 0.000000 to GMRES
+Debug ]>: Father send data[23] = -0.012746 to GMRES
+Debug ]>: Father send data[24] = -0.005805 to GMRES
+Debug ]>: Father send data[25] = -0.006101 to GMRES
+Debug ]>: Father send data[26] = -0.006088 to GMRES
+Debug ]>: Father send data[27] = -0.006089 to GMRES
+Debug ]>: Father send data[28] = -0.006089 to GMRES
+Debug ]>: Father send data[29] = -0.006089 to GMRES
+Debug ]>: Father send data[30] = -0.006089 to GMRES
+Debug ]>: Father send data[31] = -0.006089 to GMRES
+Main ]> Father has sent preconditioned parameters to GMRES Component
+exit_type[0] = 0
+@} LSQR convhul negatif chsigne 18 cumul 18 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -1.595436+0.000000i
+hk[1] = -1.430716+0.137422i
+hk[2] = -1.397670+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+yo man
+HELLO, THIS IS LS PRECONDITIONGING INSIDE OF GMRES
+@} LSQR convhul negatif chsigne 18 cumul 18 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -1.595436+0.000000i
+hk[1] = -1.430716+0.137422i
+hk[2] = -1.397670+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 51
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 51
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595436e+00 + i   0.000000e+00        3.512699e-04
+  -1.544656e+00 + i   0.000000e+00        2.953001e-03
+  -1.487257e+00 + i   1.925128e-02        3.576838e-02
+  -1.487257e+00 - i   1.925128e-02        3.576838e-02
+  -1.430716e+00 + i   1.374216e-01        9.081543e-03
+  -1.430716e+00 - i   1.374216e-01        9.081543e-03
+  -1.407110e+00 + i   7.295013e-02        5.424618e-02
+  -1.407110e+00 - i   7.295013e-02        5.424618e-02
+  -1.397670e+00 + i   1.218988e-01        4.306554e-02
+  -1.397670e+00 - i   1.218988e-01        4.306554e-02
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.0226 (6)                 
+Anasazi: BlockKrylovSchur::Computing Schur form      0.008835 (24)              
+Anasazi: BlockKrylovSchur::Operation Op*x            0.0516 (306)               
+Anasazi: BlockKrylovSchur::Orthogonalization         0.4128 (312)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.0006989 (24)             
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.002716 (24)              
+Anasazi: BlockKrylovSchurSolMgr restarting           0.01384 (18)               
+Anasazi: BlockKrylovSchurSolMgr::solve()             0.5644 (6)                 
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595436 + 0.000000i
+Evals[2] = -1.544656 + 0.000000i
+Evals[3] = -1.487257 + 0.019251i
+Evals[4] = -1.487257 + -0.019251i
+Evals[5] = -1.430716 + 0.137422i
+Evals[6] = -1.430716 + -0.137422i
+Evals[7] = -1.407110 + 0.072950i
+Evals[8] = -1.407110 + -0.072950i
+Evals[9] = -1.397670 + 0.121899i
+Evals[10] = -1.397670 + -0.121899i
+
+
+Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Debug ]>: Father send data[0] = 10.000000 to GMRES
+Debug ]>: Father send data[1] = -1.465132 to GMRES
+Debug ]>: Father send data[2] = -0.682532 to GMRES
+Debug ]>: Father send data[3] = -0.030325 to GMRES
+Debug ]>: Father send data[4] = -0.002960 to GMRES
+Debug ]>: Father send data[5] = -0.000275 to GMRES
+Debug ]>: Father send data[6] = -0.000026 to GMRES
+Debug ]>: Father send data[7] = -0.000002 to GMRES
+Debug ]>: Father send data[8] = -0.000000 to GMRES
+Debug ]>: Father send data[9] = -0.000000 to GMRES
+Debug ]>: Father send data[10] = -0.000000 to GMRES
+Debug ]>: Father send data[11] = -0.000000 to GMRES
+Debug ]>: Father send data[12] = 0.065152 to GMRES
+Debug ]>: Father send data[13] = 0.143050 to GMRES
+Debug ]>: Father send data[14] = 0.136109 to GMRES
+Debug ]>: Father send data[15] = 0.136405 to GMRES
+Debug ]>: Father send data[16] = 0.136392 to GMRES
+Debug ]>: Father send data[17] = 0.136392 to GMRES
+Debug ]>: Father send data[18] = 0.136392 to GMRES
+Debug ]>: Father send data[19] = 0.136392 to GMRES
+Debug ]>: Father send data[20] = 0.136392 to GMRES
+Debug ]>: Father send data[21] = 0.136392 to GMRES
+Debug ]>: Father send data[22] = 0.000000 to GMRES
+Debug ]>: Father send data[23] = -0.012746 to GMRES
+Debug ]>: Father send data[24] = -0.005805 to GMRES
+Debug ]>: Father send data[25] = -0.006101 to GMRES
+Debug ]>: Father send data[26] = -0.006088 to GMRES
+Debug ]>: Father send data[27] = -0.006089 to GMRES
+Debug ]>: Father send data[28] = -0.006089 to GMRES
+Debug ]>: Father send data[29] = -0.006089 to GMRES
+Debug ]>: Father send data[30] = -0.006089 to GMRES
+Debug ]>: Father send data[31] = -0.006089 to GMRES
+Main ]> Father has sent preconditioned parameters to GMRES Component
+exit_type[0] = 0
+GMRES ]> GMRES has recived data from LS
+GMRES ]>: GMRES rank = 0, data[0] = 10.000000
+GMRES ]>: GMRES rank = 0, data[1] = -1.465132
+GMRES ]>: GMRES rank = 0, data[2] = -0.682532
+GMRES ]>: GMRES rank = 0, data[3] = -0.030325
+GMRES ]>: GMRES rank = 0, data[4] = -0.002960
+GMRES ]>: GMRES rank = 0, data[5] = -0.000275
+GMRES ]>: GMRES rank = 0, data[6] = -0.000026
+GMRES ]>: GMRES rank = 0, data[7] = -0.000002
+GMRES ]>: GMRES rank = 0, data[8] = -0.000000
+GMRES ]>: GMRES rank = 0, data[9] = -0.000000
+GMRES ]>: GMRES rank = 0, data[10] = -0.000000
+GMRES ]>: GMRES rank = 0, data[11] = -0.000000
+GMRES ]>: GMRES rank = 0, data[12] = 0.065152
+GMRES ]>: GMRES rank = 0, data[13] = 0.143050
+GMRES ]>: GMRES rank = 0, data[14] = 0.136109
+GMRES ]>: GMRES rank = 0, data[15] = 0.136405
+GMRES ]>: GMRES rank = 0, data[16] = 0.136392
+GMRES ]>: GMRES rank = 0, data[17] = 0.136392
+GMRES ]>: GMRES rank = 0, data[18] = 0.136392
+GMRES ]>: GMRES rank = 0, data[19] = 0.136392
+GMRES ]>: GMRES rank = 0, data[20] = 0.136392
+GMRES ]>: GMRES rank = 0, data[21] = 0.136392
+GMRES ]>: GMRES rank = 0, data[22] = 0.000000
+GMRES ]>: GMRES rank = 0, data[23] = -0.012746
+GMRES ]>: GMRES rank = 0, data[24] = -0.005805
+GMRES ]>: GMRES rank = 0, data[25] = -0.006101
+GMRES ]>: GMRES rank = 0, data[26] = -0.006088
+GMRES ]>: GMRES rank = 0, data[27] = -0.006089
+GMRES ]>: GMRES rank = 0, data[28] = -0.006089
+GMRES ]>: GMRES rank = 0, data[29] = -0.006089
+GMRES ]>: GMRES rank = 0, data[30] = -0.006089
+GMRES ]>: GMRES rank = 0, data[31] = -0.006089
+numVectors = : 2
+LOOP1, Rank 0: 1.57218e+07
+LOOP1, Rank 0: 4.21936e+07
+LOOP2, Rank 0: 1.9564e+17
+LOOP2, Rank 0: 5.3177e+17
+LS update the restarted residual inside GMRES
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Debug ]>: Father send data[0] = 10.000000 to GMRES
+Debug ]>: Father send data[1] = -1.465132 to GMRES
+Debug ]>: Father send data[2] = -0.682532 to GMRES
+Debug ]>: Father send data[3] = -0.030325 to GMRES
+Debug ]>: Father send data[4] = -0.002960 to GMRES
+Debug ]>: Father send data[5] = -0.000275 to GMRES
+Debug ]>: Father send data[6] = -0.000026 to GMRES
+Debug ]>: Father send data[7] = -0.000002 to GMRES
+Debug ]>: Father send data[8] = -0.000000 to GMRES
+Debug ]>: Father send data[9] = -0.000000 to GMRES
+Debug ]>: Father send data[10] = -0.000000 to GMRES
+Debug ]>: Father send data[11] = -0.000000 to GMRES
+Debug ]>: Father send data[12] = 0.065152 to GMRES
+Debug ]>: Father send data[13] = 0.143050 to GMRES
+Debug ]>: Father send data[14] = 0.136109 to GMRES
+Debug ]>: Father send data[15] = 0.136405 to GMRES
+Debug ]>: Father send data[16] = 0.136392 to GMRES
+Debug ]>: Father send data[17] = 0.136392 to GMRES
+Debug ]>: Father send data[18] = 0.136392 to GMRES
+Debug ]>: Father send data[19] = 0.136392 to GMRES
+Debug ]>: Father send data[20] = 0.136392 to GMRES
+Debug ]>: Father send data[21] = 0.136392 to GMRES
+Debug ]>: Father send data[22] = 0.000000 to GMRES
+Debug ]>: Father send data[23] = -0.012746 to GMRES
+Debug ]>: Father send data[24] = -0.005805 to GMRES
+Debug ]>: Father send data[25] = -0.006101 to GMRES
+Debug ]>: Father send data[26] = -0.006088 to GMRES
+Debug ]>: Father send data[27] = -0.006089 to GMRES
+Debug ]>: Father send data[28] = -0.006089 to GMRES
+Debug ]>: Father send data[29] = -0.006089 to GMRES
+Debug ]>: Father send data[30] = -0.006089 to GMRES
+Debug ]>: Father send data[31] = -0.006089 to GMRES
+Main ]> Father has sent preconditioned parameters to GMRES Component
+exit_type[0] = 0
+@} LSQR convhul negatif chsigne 18 cumul 18 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -1.595436+0.000000i
+hk[1] = -1.430716+0.137422i
+hk[2] = -1.397670+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 51
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 51
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595436e+00 + i   0.000000e+00        3.512699e-04
+  -1.544656e+00 + i   0.000000e+00        2.953001e-03
+  -1.487257e+00 + i   1.925128e-02        3.576838e-02
+  -1.487257e+00 - i   1.925128e-02        3.576838e-02
+  -1.430716e+00 + i   1.374216e-01        9.081543e-03
+  -1.430716e+00 - i   1.374216e-01        9.081543e-03
+  -1.407110e+00 + i   7.295013e-02        5.424618e-02
+  -1.407110e+00 - i   7.295013e-02        5.424618e-02
+  -1.397670e+00 + i   1.218988e-01        4.306554e-02
+  -1.397670e+00 - i   1.218988e-01        4.306554e-02
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.02634 (7)                
+Anasazi: BlockKrylovSchur::Computing Schur form      0.01024 (28)               
+Anasazi: BlockKrylovSchur::Operation Op*x            0.06016 (357)              
+Anasazi: BlockKrylovSchur::Orthogonalization         0.4815 (364)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.0008072 (28)             
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.003155 (28)              
+Anasazi: BlockKrylovSchurSolMgr restarting           0.01614 (21)               
+Anasazi: BlockKrylovSchurSolMgr::solve()             0.6581 (7)                 
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595436 + 0.000000i
+Evals[2] = -1.544656 + 0.000000i
+Evals[3] = -1.487257 + 0.019251i
+Evals[4] = -1.487257 + -0.019251i
+Evals[5] = -1.430716 + 0.137422i
+Evals[6] = -1.430716 + -0.137422i
+Evals[7] = -1.407110 + 0.072950i
+Evals[8] = -1.407110 + -0.072950i
+Evals[9] = -1.397670 + 0.121899i
+Evals[10] = -1.397670 + -0.121899i
+
+
+Arnoldi send eigenvalues to FATHER
+HELLO, THIS IS LS PRECONDITIONGING INSIDE OF GMRES
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 51
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 51
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595436e+00 + i   0.000000e+00        3.512699e-04
+  -1.544656e+00 + i   0.000000e+00        2.953001e-03
+  -1.487257e+00 + i   1.925128e-02        3.576838e-02
+  -1.487257e+00 - i   1.925128e-02        3.576838e-02
+  -1.430716e+00 + i   1.374216e-01        9.081543e-03
+  -1.430716e+00 - i   1.374216e-01        9.081543e-03
+  -1.407110e+00 + i   7.295013e-02        5.424618e-02
+  -1.407110e+00 - i   7.295013e-02        5.424618e-02
+  -1.397670e+00 + i   1.218988e-01        4.306554e-02
+  -1.397670e+00 - i   1.218988e-01        4.306554e-02
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.03008 (8)                
+Anasazi: BlockKrylovSchur::Computing Schur form      0.01166 (32)               
+Anasazi: BlockKrylovSchur::Operation Op*x            0.06872 (408)              
+Anasazi: BlockKrylovSchur::Orthogonalization         0.5501 (416)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.0009159 (32)             
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.003596 (32)              
+Anasazi: BlockKrylovSchurSolMgr restarting           0.01844 (24)               
+Anasazi: BlockKrylovSchurSolMgr::solve()             0.7518 (8)                 
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595436 + 0.000000i
+Evals[2] = -1.544656 + 0.000000i
+Evals[3] = -1.487257 + 0.019251i
+Evals[4] = -1.487257 + -0.019251i
+Evals[5] = -1.430716 + 0.137422i
+Evals[6] = -1.430716 + -0.137422i
+Evals[7] = -1.407110 + 0.072950i
+Evals[8] = -1.407110 + -0.072950i
+Evals[9] = -1.397670 + 0.121899i
+Evals[10] = -1.397670 + -0.121899i
+
+
+Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Debug ]>: Father send data[0] = 10.000000 to GMRES
+Debug ]>: Father send data[1] = -1.465132 to GMRES
+Debug ]>: Father send data[2] = -0.682532 to GMRES
+Debug ]>: Father send data[3] = -0.030325 to GMRES
+Debug ]>: Father send data[4] = -0.002960 to GMRES
+Debug ]>: Father send data[5] = -0.000275 to GMRES
+Debug ]>: Father send data[6] = -0.000026 to GMRES
+Debug ]>: Father send data[7] = -0.000002 to GMRES
+Debug ]>: Father send data[8] = -0.000000 to GMRES
+Debug ]>: Father send data[9] = -0.000000 to GMRES
+Debug ]>: Father send data[10] = -0.000000 to GMRES
+Debug ]>: Father send data[11] = -0.000000 to GMRES
+Debug ]>: Father send data[12] = 0.065152 to GMRES
+Debug ]>: Father send data[13] = 0.143050 to GMRES
+Debug ]>: Father send data[14] = 0.136109 to GMRES
+Debug ]>: Father send data[15] = 0.136405 to GMRES
+Debug ]>: Father send data[16] = 0.136392 to GMRES
+Debug ]>: Father send data[17] = 0.136392 to GMRES
+Debug ]>: Father send data[18] = 0.136392 to GMRES
+Debug ]>: Father send data[19] = 0.136392 to GMRES
+Debug ]>: Father send data[20] = 0.136392 to GMRES
+@} LSQR convhul negatif chsigne 18 cumul 18 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -1.595436+0.000000i
+hk[1] = -1.430716+0.137422i
+hk[2] = -1.397670+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+Debug ]>: Father send data[21] = 0.136392 to GMRES
+Debug ]>: Father send data[22] = 0.000000 to GMRES
+Debug ]>: Father send data[23] = -0.012746 to GMRES
+Debug ]>: Father send data[24] = -0.005805 to GMRES
+Debug ]>: Father send data[25] = -0.006101 to GMRES
+Debug ]>: Father send data[26] = -0.006088 to GMRES
+Debug ]>: Father send data[27] = -0.006089 to GMRES
+Debug ]>: Father send data[28] = -0.006089 to GMRES
+Debug ]>: Father send data[29] = -0.006089 to GMRES
+Debug ]>: Father send data[30] = -0.006089 to GMRES
+Debug ]>: Father send data[31] = -0.006089 to GMRES
+Main ]> Father has sent preconditioned parameters to GMRES Component
+exit_type[0] = 0
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+GMRES ]> GMRES has recived data from LS
+GMRES ]>: GMRES rank = 0, data[0] = 10.000000
+GMRES ]>: GMRES rank = 0, data[1] = -1.465132
+GMRES ]>: GMRES rank = 0, data[2] = -0.682532
+GMRES ]>: GMRES rank = 0, data[3] = -0.030325
+GMRES ]>: GMRES rank = 0, data[4] = -0.002960
+GMRES ]>: GMRES rank = 0, data[5] = -0.000275
+GMRES ]>: GMRES rank = 0, data[6] = -0.000026
+GMRES ]>: GMRES rank = 0, data[7] = -0.000002
+GMRES ]>: GMRES rank = 0, data[8] = -0.000000
+GMRES ]>: GMRES rank = 0, data[9] = -0.000000
+GMRES ]>: GMRES rank = 0, data[10] = -0.000000
+GMRES ]>: GMRES rank = 0, data[11] = -0.000000
+GMRES ]>: GMRES rank = 0, data[12] = 0.065152
+GMRES ]>: GMRES rank = 0, data[13] = 0.143050
+GMRES ]>: GMRES rank = 0, data[14] = 0.136109
+GMRES ]>: GMRES rank = 0, data[15] = 0.136405
+GMRES ]>: GMRES rank = 0, data[16] = 0.136392
+GMRES ]>: GMRES rank = 0, data[17] = 0.136392
+GMRES ]>: GMRES rank = 0, data[18] = 0.136392
+GMRES ]>: GMRES rank = 0, data[19] = 0.136392
+GMRES ]>: GMRES rank = 0, data[20] = 0.136392
+GMRES ]>: GMRES rank = 0, data[21] = 0.136392
+GMRES ]>: GMRES rank = 0, data[22] = 0.000000
+GMRES ]>: GMRES rank = 0, data[23] = -0.012746
+GMRES ]>: GMRES rank = 0, data[24] = -0.005805
+GMRES ]>: GMRES rank = 0, data[25] = -0.006101
+GMRES ]>: GMRES rank = 0, data[26] = -0.006088
+GMRES ]>: GMRES rank = 0, data[27] = -0.006089
+GMRES ]>: GMRES rank = 0, data[28] = -0.006089
+GMRES ]>: GMRES rank = 0, data[29] = -0.006089
+GMRES ]>: GMRES rank = 0, data[30] = -0.006089
+GMRES ]>: GMRES rank = 0, data[31] = -0.006089
+numVectors = : 2
+LOOP1, Rank 0: 2.97659e+27
+LOOP1, Rank 0: 7.76214e+27
+LOOP2, Rank 0: 5.36307e+37
+LOOP2, Rank 0: 1.27912e+38
+LS update the restarted residual inside GMRES
+@} LSQR convhul negatif chsigne 18 cumul 18 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -1.595436+0.000000i
+hk[1] = -1.430716+0.137422i
+hk[2] = -1.397670+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 51
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 51
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595436e+00 + i   0.000000e+00        3.512699e-04
+  -1.544656e+00 + i   0.000000e+00        2.953001e-03
+  -1.487257e+00 + i   1.925128e-02        3.576838e-02
+  -1.487257e+00 - i   1.925128e-02        3.576838e-02
+  -1.430716e+00 + i   1.374216e-01        9.081543e-03
+  -1.430716e+00 - i   1.374216e-01        9.081543e-03
+  -1.407110e+00 + i   7.295013e-02        5.424618e-02
+  -1.407110e+00 - i   7.295013e-02        5.424618e-02
+  -1.397670e+00 + i   1.218988e-01        4.306554e-02
+  -1.397670e+00 - i   1.218988e-01        4.306554e-02
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.03383 (9)                
+Anasazi: BlockKrylovSchur::Computing Schur form      0.01308 (36)               
+Anasazi: BlockKrylovSchur::Operation Op*x            0.07728 (459)              
+Anasazi: BlockKrylovSchur::Orthogonalization         0.6185 (468)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.001025 (36)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.004038 (36)              
+Anasazi: BlockKrylovSchurSolMgr restarting           0.02074 (27)               
+Anasazi: BlockKrylovSchurSolMgr::solve()             0.8452 (9)                 
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595436 + 0.000000i
+Evals[2] = -1.544656 + 0.000000i
+Evals[3] = -1.487257 + 0.019251i
+Evals[4] = -1.487257 + -0.019251i
+Evals[5] = -1.430716 + 0.137422i
+Evals[6] = -1.430716 + -0.137422i
+Evals[7] = -1.407110 + 0.072950i
+Evals[8] = -1.407110 + -0.072950i
+Evals[9] = -1.397670 + 0.121899i
+Evals[10] = -1.397670 + -0.121899i
+
+
+Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Debug ]>: Father send data[0] = 10.000000 to GMRES
+Debug ]>: Father send data[1] = -1.465132 to GMRES
+Debug ]>: Father send data[2] = -0.682532 to GMRES
+Debug ]>: Father send data[3] = -0.030325 to GMRES
+Debug ]>: Father send data[4] = -0.002960 to GMRES
+Debug ]>: Father send data[5] = -0.000275 to GMRES
+Debug ]>: Father send data[6] = -0.000026 to GMRES
+Debug ]>: Father send data[7] = -0.000002 to GMRES
+Debug ]>: Father send data[8] = -0.000000 to GMRES
+Debug ]>: Father send data[9] = -0.000000 to GMRES
+Debug ]>: Father send data[10] = -0.000000 to GMRES
+Debug ]>: Father send data[11] = -0.000000 to GMRES
+Debug ]>: Father send data[12] = 0.065152 to GMRES
+Debug ]>: Father send data[13] = 0.143050 to GMRES
+Debug ]>: Father send data[14] = 0.136109 to GMRES
+Debug ]>: Father send data[15] = 0.136405 to GMRES
+Debug ]>: Father send data[16] = 0.136392 to GMRES
+Debug ]>: Father send data[17] = 0.136392 to GMRES
+Debug ]>: Father send data[18] = 0.136392 to GMRES
+Debug ]>: Father send data[19] = 0.136392 to GMRES
+Debug ]>: Father send data[20] = 0.136392 to GMRES
+Debug ]>: Father send data[21] = 0.136392 to GMRES
+Debug ]>: Father send data[22] = 0.000000 to GMRES
+Debug ]>: Father send data[23] = -0.012746 to GMRES
+Debug ]>: Father send data[24] = -0.005805 to GMRES
+Debug ]>: Father send data[25] = -0.006101 to GMRES
+Debug ]>: Father send data[26] = -0.006088 to GMRES
+Debug ]>: Father send data[27] = -0.006089 to GMRES
+Debug ]>: Father send data[28] = -0.006089 to GMRES
+Debug ]>: Father send data[29] = -0.006089 to GMRES
+Debug ]>: Father send data[30] = -0.006089 to GMRES
+Debug ]>: Father send data[31] = -0.006089 to GMRES
+Main ]> Father has sent preconditioned parameters to GMRES Component
+exit_type[0] = 0
+HELLO, THIS IS LS PRECONDITIONGING INSIDE OF GMRES
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Debug ]>: Father send data[0] = 10.000000 to GMRES
+Debug ]>: Father send data[1] = -1.465132 to GMRES
+Debug ]>: Father send data[2] = -0.682532 to GMRES
+Debug ]>: Father send data[3] = -0.030325 to GMRES
+Debug ]>: Father send data[4] = -0.002960 to GMRES
+Debug ]>: Father send data[5] = -0.000275 to GMRES
+Debug ]>: Father send data[6] = -0.000026 to GMRES
+Debug ]>: Father send data[7] = -0.000002 to GMRES
+Debug ]>: Father send data[8] = -0.000000 to GMRES
+Debug ]>: Father send data[9] = -0.000000 to GMRES
+Debug ]>: Father send data[10] = -0.000000 to GMRES
+Debug ]>: Father send data[11] = -0.000000 to GMRES
+Debug ]>: Father send data[12] = 0.065152 to GMRES
+Debug ]>: Father send data[13] = 0.143050 to GMRES
+Debug ]>: Father send data[14] = 0.136109 to GMRES
+Debug ]>: Father send data[15] = 0.136405 to GMRES
+Debug ]>: Father send data[16] = 0.136392 to GMRES
+Debug ]>: Father send data[17] = 0.136392 to GMRES
+Debug ]>: Father send data[18] = 0.136392 to GMRES
+Debug ]>: Father send data[19] = 0.136392 to GMRES
+Debug ]>: Father send data[20] = 0.136392 to GMRES
+Debug ]>: Father send data[21] = 0.136392 to GMRES
+Debug ]>: Father send data[22] = 0.000000 to GMRES
+Debug ]>: Father send data[23] = -0.012746 to GMRES
+Debug ]>: Father send data[24] = -0.005805 to GMRES
+Debug ]>: Father send data[25] = -0.006101 to GMRES
+Debug ]>: Father send data[26] = -0.006088 to GMRES
+Debug ]>: Father send data[27] = -0.006089 to GMRES
+Debug ]>: Father send data[28] = -0.006089 to GMRES
+Debug ]>: Father send data[29] = -0.006089 to GMRES
+Debug ]>: Father send data[30] = -0.006089 to GMRES
+Debug ]>: Father send data[31] = -0.006089 to GMRES
+Main ]> Father has sent preconditioned parameters to GMRES Component
+exit_type[0] = 0
+@} LSQR convhul negatif chsigne 18 cumul 18 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -1.595436+0.000000i
+hk[1] = -1.430716+0.137422i
+hk[2] = -1.397670+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 51
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 51
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595436e+00 + i   0.000000e+00        3.512699e-04
+  -1.544656e+00 + i   0.000000e+00        2.953001e-03
+  -1.487257e+00 + i   1.925128e-02        3.576838e-02
+  -1.487257e+00 - i   1.925128e-02        3.576838e-02
+  -1.430716e+00 + i   1.374216e-01        9.081543e-03
+  -1.430716e+00 - i   1.374216e-01        9.081543e-03
+  -1.407110e+00 + i   7.295013e-02        5.424618e-02
+  -1.407110e+00 - i   7.295013e-02        5.424618e-02
+  -1.397670e+00 + i   1.218988e-01        4.306554e-02
+  -1.397670e+00 - i   1.218988e-01        4.306554e-02
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.03759 (10)               
+Anasazi: BlockKrylovSchur::Computing Schur form      0.0145 (40)                
+Anasazi: BlockKrylovSchur::Operation Op*x            0.08585 (510)              
+Anasazi: BlockKrylovSchur::Orthogonalization         0.6866 (520)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.001135 (40)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.004479 (40)              
+Anasazi: BlockKrylovSchurSolMgr restarting           0.02304 (30)               
+Anasazi: BlockKrylovSchurSolMgr::solve()             0.9384 (10)                
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595436 + 0.000000i
+Evals[2] = -1.544656 + 0.000000i
+Evals[3] = -1.487257 + 0.019251i
+Evals[4] = -1.487257 + -0.019251i
+Evals[5] = -1.430716 + 0.137422i
+Evals[6] = -1.430716 + -0.137422i
+Evals[7] = -1.407110 + 0.072950i
+Evals[8] = -1.407110 + -0.072950i
+Evals[9] = -1.397670 + 0.121899i
+Evals[10] = -1.397670 + -0.121899i
+
+
+Arnoldi send eigenvalues to FATHER
+GMRES ]> GMRES has recived data from LS
+GMRES ]>: GMRES rank = 0, data[0] = 10.000000
+GMRES ]>: GMRES rank = 0, data[1] = -1.465132
+GMRES ]>: GMRES rank = 0, data[2] = -0.682532
+GMRES ]>: GMRES rank = 0, data[3] = -0.030325
+GMRES ]>: GMRES rank = 0, data[4] = -0.002960
+GMRES ]>: GMRES rank = 0, data[5] = -0.000275
+GMRES ]>: GMRES rank = 0, data[6] = -0.000026
+GMRES ]>: GMRES rank = 0, data[7] = -0.000002
+GMRES ]>: GMRES rank = 0, data[8] = -0.000000
+GMRES ]>: GMRES rank = 0, data[9] = -0.000000
+GMRES ]>: GMRES rank = 0, data[10] = -0.000000
+GMRES ]>: GMRES rank = 0, data[11] = -0.000000
+GMRES ]>: GMRES rank = 0, data[12] = 0.065152
+GMRES ]>: GMRES rank = 0, data[13] = 0.143050
+GMRES ]>: GMRES rank = 0, data[14] = 0.136109
+GMRES ]>: GMRES rank = 0, data[15] = 0.136405
+GMRES ]>: GMRES rank = 0, data[16] = 0.136392
+GMRES ]>: GMRES rank = 0, data[17] = 0.136392
+GMRES ]>: GMRES rank = 0, data[18] = 0.136392
+GMRES ]>: GMRES rank = 0, data[19] = 0.136392
+GMRES ]>: GMRES rank = 0, data[20] = 0.136392
+GMRES ]>: GMRES rank = 0, data[21] = 0.136392
+GMRES ]>: GMRES rank = 0, data[22] = 0.000000
+GMRES ]>: GMRES rank = 0, data[23] = -0.012746
+GMRES ]>: GMRES rank = 0, data[24] = -0.005805
+GMRES ]>: GMRES rank = 0, data[25] = -0.006101
+GMRES ]>: GMRES rank = 0, data[26] = -0.006088
+GMRES ]>: GMRES rank = 0, data[27] = -0.006089
+GMRES ]>: GMRES rank = 0, data[28] = -0.006089
+GMRES ]>: GMRES rank = 0, data[29] = -0.006089
+GMRES ]>: GMRES rank = 0, data[30] = -0.006089
+GMRES ]>: GMRES rank = 0, data[31] = -0.006089
+numVectors = : 2
+LOOP1, Rank 0: 1.07316e+48
+LOOP1, Rank 0: 2.35269e+48
+LOOP2, Rank 0: 2.27413e+58
+LOOP2, Rank 0: 4.70259e+58
+LS update the restarted residual inside GMRES
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 51
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 51
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595436e+00 + i   0.000000e+00        3.512699e-04
+  -1.544656e+00 + i   0.000000e+00        2.953001e-03
+  -1.487257e+00 + i   1.925128e-02        3.576838e-02
+  -1.487257e+00 - i   1.925128e-02        3.576838e-02
+  -1.430716e+00 + i   1.374216e-01        9.081543e-03
+  -1.430716e+00 - i   1.374216e-01        9.081543e-03
+  -1.407110e+00 + i   7.295013e-02        5.424618e-02
+  -1.407110e+00 - i   7.295013e-02        5.424618e-02
+  -1.397670e+00 + i   1.218988e-01        4.306554e-02
+  -1.397670e+00 - i   1.218988e-01        4.306554e-02
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.04135 (11)               
+Anasazi: BlockKrylovSchur::Computing Schur form      0.01591 (44)               
+Anasazi: BlockKrylovSchur::Operation Op*x            0.09442 (561)              
+Anasazi: BlockKrylovSchur::Orthogonalization         0.7549 (572)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.001246 (44)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.004919 (44)              
+Anasazi: BlockKrylovSchurSolMgr restarting           0.02535 (33)               
+Anasazi: BlockKrylovSchurSolMgr::solve()             1.032 (11)                 
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595436 + 0.000000i
+Evals[2] = -1.544656 + 0.000000i
+Evals[3] = -1.487257 + 0.019251i
+Evals[4] = -1.487257 + -0.019251i
+Evals[5] = -1.430716 + 0.137422i
+Evals[6] = -1.430716 + -0.137422i
+Evals[7] = -1.407110 + 0.072950i
+Evals[8] = -1.407110 + -0.072950i
+Evals[9] = -1.397670 + 0.121899i
+Evals[10] = -1.397670 + -0.121899i
+
+
+Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Debug ]>: Father send data[0] = 10.000000 to GMRES
+Debug ]>: Father send data[1] = -1.465132 to GMRES
+Debug ]>: Father send data[2] = -0.682532 to GMRES
+Debug ]>: Father send data[3] = -0.030325 to GMRES
+Debug ]>: Father send data[4] = -0.002960 to GMRES
+Debug ]>: Father send data[5] = -0.000275 to GMRES
+Debug ]>: Father send data[6] = -0.000026 to GMRES
+Debug ]>: Father send data[7] = -0.000002 to GMRES
+Debug ]>: Father send data[8] = -0.000000 to GMRES
+Debug ]>: Father send data[9] = -0.000000 to GMRES
+Debug ]>: Father send data[10] = -0.000000 to GMRES
+Debug ]>: Father send data[11] = -0.000000 to GMRES
+Debug ]>: Father send data[12] = 0.065152 to GMRES
+Debug ]>: Father send data[13] = 0.143050 to GMRES
+Debug ]>: Father send data[14] = 0.136109 to GMRES
+Debug ]>: Father send data[15] = 0.136405 to GMRES
+Debug ]>: Father send data[16] = 0.136392 to GMRES
+Debug ]>: Father send data[17] = 0.136392 to GMRES
+Debug ]>: Father send data[18] = 0.136392 to GMRES
+Debug ]>: Father send data[19] = 0.136392 to GMRES
+Debug ]>: Father send data[20] = 0.136392 to GMRES
+Debug ]>: Father send data[21] = 0.136392 to GMRES
+Debug ]>: Father send data[22] = 0.000000 to GMRES
+Debug ]>: Father send data[23] = -0.012746 to GMRES
+Debug ]>: Father send data[24] = -0.005805 to GMRES
+Debug ]>: Father send data[25] = -0.006101 to GMRES
+Debug ]>: Father send data[26] = -0.006088 to GMRES
+Debug ]>: Father send data[27] = -0.006089 to GMRES
+Debug ]>: Father send data[28] = -0.006089 to GMRES
+Debug ]>: Father send data[29] = -0.006089 to GMRES
+Debug ]>: Father send data[30] = -0.006089 to GMRES
+Debug ]>: Father send data[31] = -0.006089 to GMRES
+Main ]> Father has sent preconditioned parameters to GMRES Component
+exit_type[0] = 0
+@} LSQR convhul negatif chsigne 18 cumul 18 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -1.595436+0.000000i
+hk[1] = -1.430716+0.137422i
+hk[2] = -1.397670+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+HELLO, THIS IS LS PRECONDITIONGING INSIDE OF GMRES
+@} LSQR convhul negatif chsigne 18 cumul 18 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -1.595436+0.000000i
+hk[1] = -1.430716+0.137422i
+hk[2] = -1.397670+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 51
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 51
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595436e+00 + i   0.000000e+00        3.512699e-04
+  -1.544656e+00 + i   0.000000e+00        2.953001e-03
+  -1.487257e+00 + i   1.925128e-02        3.576838e-02
+  -1.487257e+00 - i   1.925128e-02        3.576838e-02
+  -1.430716e+00 + i   1.374216e-01        9.081543e-03
+  -1.430716e+00 - i   1.374216e-01        9.081543e-03
+  -1.407110e+00 + i   7.295013e-02        5.424618e-02
+  -1.407110e+00 - i   7.295013e-02        5.424618e-02
+  -1.397670e+00 + i   1.218988e-01        4.306554e-02
+  -1.397670e+00 - i   1.218988e-01        4.306554e-02
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.04511 (12)               
+Anasazi: BlockKrylovSchur::Computing Schur form      0.01733 (48)               
+Anasazi: BlockKrylovSchur::Operation Op*x            0.103 (612)                
+Anasazi: BlockKrylovSchur::Orthogonalization         0.8232 (624)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.001355 (48)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.00536 (48)               
+Anasazi: BlockKrylovSchurSolMgr restarting           0.02766 (36)               
+Anasazi: BlockKrylovSchurSolMgr::solve()             1.125 (12)                 
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595436 + 0.000000i
+Evals[2] = -1.544656 + 0.000000i
+Evals[3] = -1.487257 + 0.019251i
+Evals[4] = -1.487257 + -0.019251i
+Evals[5] = -1.430716 + 0.137422i
+Evals[6] = -1.430716 + -0.137422i
+Evals[7] = -1.407110 + 0.072950i
+Evals[8] = -1.407110 + -0.072950i
+Evals[9] = -1.397670 + 0.121899i
+Evals[10] = -1.397670 + -0.121899i
+
+
+Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Debug ]>: Father send data[0] = 10.000000 to GMRES
+Debug ]>: Father send data[1] = -1.465132 to GMRES
+Debug ]>: Father send data[2] = -0.682532 to GMRES
+Debug ]>: Father send data[3] = -0.030325 to GMRES
+Debug ]>: Father send data[4] = -0.002960 to GMRES
+Debug ]>: Father send data[5] = -0.000275 to GMRES
+Debug ]>: Father send data[6] = -0.000026 to GMRES
+Debug ]>: Father send data[7] = -0.000002 to GMRES
+Debug ]>: Father send data[8] = -0.000000 to GMRES
+Debug ]>: Father send data[9] = -0.000000 to GMRES
+Debug ]>: Father send data[10] = -0.000000 to GMRES
+Debug ]>: Father send data[11] = -0.000000 to GMRES
+Debug ]>: Father send data[12] = 0.065152 to GMRES
+Debug ]>: Father send data[13] = 0.143050 to GMRES
+Debug ]>: Father send data[14] = 0.136109 to GMRES
+Debug ]>: Father send data[15] = 0.136405 to GMRES
+Debug ]>: Father send data[16] = 0.136392 to GMRES
+Debug ]>: Father send data[17] = 0.136392 to GMRES
+Debug ]>: Father send data[18] = 0.136392 to GMRES
+Debug ]>: Father send data[19] = 0.136392 to GMRES
+Debug ]>: Father send data[20] = 0.136392 to GMRES
+Debug ]>: Father send data[21] = 0.136392 to GMRES
+Debug ]>: Father send data[22] = 0.000000 to GMRES
+Debug ]>: Father send data[23] = -0.012746 to GMRES
+Debug ]>: Father send data[24] = -0.005805 to GMRES
+Debug ]>: Father send data[25] = -0.006101 to GMRES
+Debug ]>: Father send data[26] = -0.006088 to GMRES
+Debug ]>: Father send data[27] = -0.006089 to GMRES
+Debug ]>: Father send data[28] = -0.006089 to GMRES
+Debug ]>: Father send data[29] = -0.006089 to GMRES
+Debug ]>: Father send data[30] = -0.006089 to GMRES
+Debug ]>: Father send data[31] = -0.006089 to GMRES
+Main ]> Father has sent preconditioned parameters to GMRES Component
+exit_type[0] = 0
+yo man
+HELLO, THIS IS LS PRECONDITIONGING INSIDE OF GMRES
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Debug ]>: Father send data[0] = 10.000000 to GMRES
+Debug ]>: Father send data[1] = -1.465132 to GMRES
+Debug ]>: Father send data[2] = -0.682532 to GMRES
+Debug ]>: Father send data[3] = -0.030325 to GMRES
+Debug ]>: Father send data[4] = -0.002960 to GMRES
+Debug ]>: Father send data[5] = -0.000275 to GMRES
+Debug ]>: Father send data[6] = -0.000026 to GMRES
+Debug ]>: Father send data[7] = -0.000002 to GMRES
+Debug ]>: Father send data[8] = -0.000000 to GMRES
+Debug ]>: Father send data[9] = -0.000000 to GMRES
+Debug ]>: Father send data[10] = -0.000000 to GMRES
+Debug ]>: Father send data[11] = -0.000000 to GMRES
+Debug ]>: Father send data[12] = 0.065152 to GMRES
+Debug ]>: Father send data[13] = 0.143050 to GMRES
+Debug ]>: Father send data[14] = 0.136109 to GMRES
+Debug ]>: Father send data[15] = 0.136405 to GMRES
+Debug ]>: Father send data[16] = 0.136392 to GMRES
+Debug ]>: Father send data[17] = 0.136392 to GMRES
+Debug ]>: Father send data[18] = 0.136392 to GMRES
+Debug ]>: Father send data[19] = 0.136392 to GMRES
+Debug ]>: Father send data[20] = 0.136392 to GMRES
+Debug ]>: Father send data[21] = 0.136392 to GMRES
+Debug ]>: Father send data[22] = 0.000000 to GMRES
+Debug ]>: Father send data[23] = -0.012746 to GMRES
+Debug ]>: Father send data[24] = -0.005805 to GMRES
+Debug ]>: Father send data[25] = -0.006101 to GMRES
+Debug ]>: Father send data[26] = -0.006088 to GMRES
+Debug ]>: Father send data[27] = -0.006089 to GMRES
+Debug ]>: Father send data[28] = -0.006089 to GMRES
+Debug ]>: Father send data[29] = -0.006089 to GMRES
+Debug ]>: Father send data[30] = -0.006089 to GMRES
+Debug ]>: Father send data[31] = -0.006089 to GMRES
+Main ]> Father has sent preconditioned parameters to GMRES Component
+exit_type[0] = 0
+@} LSQR convhul negatif chsigne 18 cumul 18 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -1.595436+0.000000i
+hk[1] = -1.430716+0.137422i
+hk[2] = -1.397670+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 51
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 51
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595436e+00 + i   0.000000e+00        3.512699e-04
+  -1.544656e+00 + i   0.000000e+00        2.953001e-03
+  -1.487257e+00 + i   1.925128e-02        3.576838e-02
+  -1.487257e+00 - i   1.925128e-02        3.576838e-02
+  -1.430716e+00 + i   1.374216e-01        9.081543e-03
+  -1.430716e+00 - i   1.374216e-01        9.081543e-03
+  -1.407110e+00 + i   7.295013e-02        5.424618e-02
+  -1.407110e+00 - i   7.295013e-02        5.424618e-02
+  -1.397670e+00 + i   1.218988e-01        4.306554e-02
+  -1.397670e+00 - i   1.218988e-01        4.306554e-02
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.04887 (13)               
+Anasazi: BlockKrylovSchur::Computing Schur form      0.01875 (52)               
+Anasazi: BlockKrylovSchur::Operation Op*x            0.1116 (663)               
+Anasazi: BlockKrylovSchur::Orthogonalization         0.8916 (676)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.001465 (52)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.0058 (52)                
+Anasazi: BlockKrylovSchurSolMgr restarting           0.02996 (39)               
+Anasazi: BlockKrylovSchurSolMgr::solve()             1.218 (13)                 
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595436 + 0.000000i
+Evals[2] = -1.544656 + 0.000000i
+Evals[3] = -1.487257 + 0.019251i
+Evals[4] = -1.487257 + -0.019251i
+Evals[5] = -1.430716 + 0.137422i
+Evals[6] = -1.430716 + -0.137422i
+Evals[7] = -1.407110 + 0.072950i
+Evals[8] = -1.407110 + -0.072950i
+Evals[9] = -1.397670 + 0.121899i
+Evals[10] = -1.397670 + -0.121899i
+
+
+Arnoldi send eigenvalues to FATHER
+GMRES ]> GMRES has recived data from LS
+GMRES ]>: GMRES rank = 0, data[0] = 10.000000
+GMRES ]>: GMRES rank = 0, data[1] = -1.465132
+GMRES ]>: GMRES rank = 0, data[2] = -0.682532
+GMRES ]>: GMRES rank = 0, data[3] = -0.030325
+GMRES ]>: GMRES rank = 0, data[4] = -0.002960
+GMRES ]>: GMRES rank = 0, data[5] = -0.000275
+GMRES ]>: GMRES rank = 0, data[6] = -0.000026
+GMRES ]>: GMRES rank = 0, data[7] = -0.000002
+GMRES ]>: GMRES rank = 0, data[8] = -0.000000
+GMRES ]>: GMRES rank = 0, data[9] = -0.000000
+GMRES ]>: GMRES rank = 0, data[10] = -0.000000
+GMRES ]>: GMRES rank = 0, data[11] = -0.000000
+GMRES ]>: GMRES rank = 0, data[12] = 0.065152
+GMRES ]>: GMRES rank = 0, data[13] = 0.143050
+GMRES ]>: GMRES rank = 0, data[14] = 0.136109
+GMRES ]>: GMRES rank = 0, data[15] = 0.136405
+GMRES ]>: GMRES rank = 0, data[16] = 0.136392
+GMRES ]>: GMRES rank = 0, data[17] = 0.136392
+GMRES ]>: GMRES rank = 0, data[18] = 0.136392
+GMRES ]>: GMRES rank = 0, data[19] = 0.136392
+GMRES ]>: GMRES rank = 0, data[20] = 0.136392
+GMRES ]>: GMRES rank = 0, data[21] = 0.136392
+GMRES ]>: GMRES rank = 0, data[22] = 0.000000
+GMRES ]>: GMRES rank = 0, data[23] = -0.012746
+GMRES ]>: GMRES rank = 0, data[24] = -0.005805
+GMRES ]>: GMRES rank = 0, data[25] = -0.006101
+GMRES ]>: GMRES rank = 0, data[26] = -0.006088
+GMRES ]>: GMRES rank = 0, data[27] = -0.006089
+GMRES ]>: GMRES rank = 0, data[28] = -0.006089
+GMRES ]>: GMRES rank = 0, data[29] = -0.006089
+GMRES ]>: GMRES rank = 0, data[30] = -0.006089
+GMRES ]>: GMRES rank = 0, data[31] = -0.006089
+numVectors = : 2
+LOOP1, Rank 0: 2.68012e+53
+LOOP1, Rank 0: 1.83835e+53
+LOOP2, Rank 0: 6.12427e+63
+LOOP2, Rank 0: 3.21975e+63
+LS update the restarted residual inside GMRES
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 51
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 51
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595436e+00 + i   0.000000e+00        3.512699e-04
+  -1.544656e+00 + i   0.000000e+00        2.953001e-03
+  -1.487257e+00 + i   1.925128e-02        3.576838e-02
+  -1.487257e+00 - i   1.925128e-02        3.576838e-02
+  -1.430716e+00 + i   1.374216e-01        9.081543e-03
+  -1.430716e+00 - i   1.374216e-01        9.081543e-03
+  -1.407110e+00 + i   7.295013e-02        5.424618e-02
+  -1.407110e+00 - i   7.295013e-02        5.424618e-02
+  -1.397670e+00 + i   1.218988e-01        4.306554e-02
+  -1.397670e+00 - i   1.218988e-01        4.306554e-02
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.05261 (14)               
+Anasazi: BlockKrylovSchur::Computing Schur form      0.02017 (56)               
+Anasazi: BlockKrylovSchur::Operation Op*x            0.1201 (714)               
+Anasazi: BlockKrylovSchur::Orthogonalization         0.9601 (728)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.001574 (56)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.006242 (56)              
+Anasazi: BlockKrylovSchurSolMgr restarting           0.03227 (42)               
+Anasazi: BlockKrylovSchurSolMgr::solve()             1.312 (14)                 
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595436 + 0.000000i
+Evals[2] = -1.544656 + 0.000000i
+Evals[3] = -1.487257 + 0.019251i
+Evals[4] = -1.487257 + -0.019251i
+Evals[5] = -1.430716 + 0.137422i
+Evals[6] = -1.430716 + -0.137422i
+Evals[7] = -1.407110 + 0.072950i
+Evals[8] = -1.407110 + -0.072950i
+Evals[9] = -1.397670 + 0.121899i
+Evals[10] = -1.397670 + -0.121899i
+
+
+Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Debug ]>: Father send data[0] = 10.000000 to GMRES
+Debug ]>: Father send data[1] = -1.465132 to GMRES
+Debug ]>: Father send data[2] = -0.682532 to GMRES
+Debug ]>: Father send data[3] = -0.030325 to GMRES
+Debug ]>: Father send data[4] = -0.002960 to GMRES
+Debug ]>: Father send data[5] = -0.000275 to GMRES
+Debug ]>: Father send data[6] = -0.000026 to GMRES
+Debug ]>: Father send data[7] = -0.000002 to GMRES
+Debug ]>: Father send data[8] = -0.000000 to GMRES
+Debug ]>: Father send data[9] = -0.000000 to GMRES
+Debug ]>: Father send data[10] = -0.000000 to GMRES
+Debug ]>: Father send data[11] = -0.000000 to GMRES
+Debug ]>: Father send data[12] = 0.065152 to GMRES
+Debug ]>: Father send data[13] = 0.143050 to GMRES
+Debug ]>: Father send data[14] = 0.136109 to GMRES
+Debug ]>: Father send data[15] = 0.136405 to GMRES
+Debug ]>: Father send data[16] = 0.136392 to GMRES
+Debug ]>: Father send data[17] = 0.136392 to GMRES
+Debug ]>: Father send data[18] = 0.136392 to GMRES
+Debug ]>: Father send data[19] = 0.136392 to GMRES
+Debug ]>: Father send data[20] = 0.136392 to GMRES
+Debug ]>: Father send data[21] = 0.136392 to GMRES
+Debug ]>: Father send data[22] = 0.000000 to GMRES
+Debug ]>: Father send data[23] = -0.012746 to GMRES
+Debug ]>: Father send data[24] = -0.005805 to GMRES
+Debug ]>: Father send data[25] = -0.006101 to GMRES
+Debug ]>: Father send data[26] = -0.006088 to GMRES
+Debug ]>: Father send data[27] = -0.006089 to GMRES
+Debug ]>: Father send data[28] = -0.006089 to GMRES
+Debug ]>: Father send data[29] = -0.006089 to GMRES
+Debug ]>: Father send data[30] = -0.006089 to GMRES
+Debug ]>: Father send data[31] = -0.006089 to GMRES
+Main ]> Father has sent preconditioned parameters to GMRES Component
+exit_type[0] = 0
+@} LSQR convhul negatif chsigne 18 cumul 18 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -1.595436+0.000000i
+hk[1] = -1.430716+0.137422i
+hk[2] = -1.397670+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+HELLO, THIS IS LS PRECONDITIONGING INSIDE OF GMRES
+@} LSQR convhul negatif chsigne 18 cumul 18 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -1.595436+0.000000i
+hk[1] = -1.430716+0.137422i
+hk[2] = -1.397670+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 51
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 51
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595436e+00 + i   0.000000e+00        3.512699e-04
+  -1.544656e+00 + i   0.000000e+00        2.953001e-03
+  -1.487257e+00 + i   1.925128e-02        3.576838e-02
+  -1.487257e+00 - i   1.925128e-02        3.576838e-02
+  -1.430716e+00 + i   1.374216e-01        9.081543e-03
+  -1.430716e+00 - i   1.374216e-01        9.081543e-03
+  -1.407110e+00 + i   7.295013e-02        5.424618e-02
+  -1.407110e+00 - i   7.295013e-02        5.424618e-02
+  -1.397670e+00 + i   1.218988e-01        4.306554e-02
+  -1.397670e+00 - i   1.218988e-01        4.306554e-02
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.05636 (15)               
+Anasazi: BlockKrylovSchur::Computing Schur form      0.02159 (60)               
+Anasazi: BlockKrylovSchur::Operation Op*x            0.1287 (765)               
+Anasazi: BlockKrylovSchur::Orthogonalization         1.029 (780)                
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.001683 (60)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.006682 (60)              
+Anasazi: BlockKrylovSchurSolMgr restarting           0.03457 (45)               
+Anasazi: BlockKrylovSchurSolMgr::solve()             1.406 (15)                 
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595436 + 0.000000i
+Evals[2] = -1.544656 + 0.000000i
+Evals[3] = -1.487257 + 0.019251i
+Evals[4] = -1.487257 + -0.019251i
+Evals[5] = -1.430716 + 0.137422i
+Evals[6] = -1.430716 + -0.137422i
+Evals[7] = -1.407110 + 0.072950i
+Evals[8] = -1.407110 + -0.072950i
+Evals[9] = -1.397670 + 0.121899i
+Evals[10] = -1.397670 + -0.121899i
+
+
+Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Debug ]>: Father send data[0] = 10.000000 to GMRES
+Debug ]>: Father send data[1] = -1.465132 to GMRES
+Debug ]>: Father send data[2] = -0.682532 to GMRES
+Debug ]>: Father send data[3] = -0.030325 to GMRES
+Debug ]>: Father send data[4] = -0.002960 to GMRES
+Debug ]>: Father send data[5] = -0.000275 to GMRES
+Debug ]>: Father send data[6] = -0.000026 to GMRES
+Debug ]>: Father send data[7] = -0.000002 to GMRES
+Debug ]>: Father send data[8] = -0.000000 to GMRES
+Debug ]>: Father send data[9] = -0.000000 to GMRES
+Debug ]>: Father send data[10] = -0.000000 to GMRES
+Debug ]>: Father send data[11] = -0.000000 to GMRES
+Debug ]>: Father send data[12] = 0.065152 to GMRES
+Debug ]>: Father send data[13] = 0.143050 to GMRES
+Debug ]>: Father send data[14] = 0.136109 to GMRES
+Debug ]>: Father send data[15] = 0.136405 to GMRES
+Debug ]>: Father send data[16] = 0.136392 to GMRES
+Debug ]>: Father send data[17] = 0.136392 to GMRES
+Debug ]>: Father send data[18] = 0.136392 to GMRES
+Debug ]>: Father send data[19] = 0.136392 to GMRES
+Debug ]>: Father send data[20] = 0.136392 to GMRES
+Debug ]>: Father send data[21] = 0.136392 to GMRES
+Debug ]>: Father send data[22] = 0.000000 to GMRES
+Debug ]>: Father send data[23] = -0.012746 to GMRES
+Debug ]>: Father send data[24] = -0.005805 to GMRES
+Debug ]>: Father send data[25] = -0.006101 to GMRES
+Debug ]>: Father send data[26] = -0.006088 to GMRES
+Debug ]>: Father send data[27] = -0.006089 to GMRES
+Debug ]>: Father send data[28] = -0.006089 to GMRES
+Debug ]>: Father send data[29] = -0.006089 to GMRES
+Debug ]>: Father send data[30] = -0.006089 to GMRES
+Debug ]>: Father send data[31] = -0.006089 to GMRES
+Main ]> Father has sent preconditioned parameters to GMRES Component
+exit_type[0] = 0
+GMRES ]> GMRES has recived data from LS
+GMRES ]>: GMRES rank = 0, data[0] = 10.000000
+GMRES ]>: GMRES rank = 0, data[1] = -1.465132
+GMRES ]>: GMRES rank = 0, data[2] = -0.682532
+GMRES ]>: GMRES rank = 0, data[3] = -0.030325
+GMRES ]>: GMRES rank = 0, data[4] = -0.002960
+GMRES ]>: GMRES rank = 0, data[5] = -0.000275
+GMRES ]>: GMRES rank = 0, data[6] = -0.000026
+GMRES ]>: GMRES rank = 0, data[7] = -0.000002
+GMRES ]>: GMRES rank = 0, data[8] = -0.000000
+GMRES ]>: GMRES rank = 0, data[9] = -0.000000
+GMRES ]>: GMRES rank = 0, data[10] = -0.000000
+GMRES ]>: GMRES rank = 0, data[11] = -0.000000
+GMRES ]>: GMRES rank = 0, data[12] = 0.065152
+GMRES ]>: GMRES rank = 0, data[13] = 0.143050
+GMRES ]>: GMRES rank = 0, data[14] = 0.136109
+GMRES ]>: GMRES rank = 0, data[15] = 0.136405
+GMRES ]>: GMRES rank = 0, data[16] = 0.136392
+GMRES ]>: GMRES rank = 0, data[17] = 0.136392
+GMRES ]>: GMRES rank = 0, data[18] = 0.136392
+GMRES ]>: GMRES rank = 0, data[19] = 0.136392
+GMRES ]>: GMRES rank = 0, data[20] = 0.136392
+GMRES ]>: GMRES rank = 0, data[21] = 0.136392
+GMRES ]>: GMRES rank = 0, data[22] = 0.000000
+GMRES ]>: GMRES rank = 0, data[23] = -0.012746
+GMRES ]>: GMRES rank = 0, data[24] = -0.005805
+GMRES ]>: GMRES rank = 0, data[25] = -0.006101
+GMRES ]>: GMRES rank = 0, data[26] = -0.006088
+GMRES ]>: GMRES rank = 0, data[27] = -0.006089
+GMRES ]>: GMRES rank = 0, data[28] = -0.006089
+GMRES ]>: GMRES rank = 0, data[29] = -0.006089
+GMRES ]>: GMRES rank = 0, data[30] = -0.006089
+GMRES ]>: GMRES rank = 0, data[31] = -0.006089
+numVectors = : 2
+LOOP1, Rank 0: 1.39486e+74
+LOOP1, Rank 0: 6.18048e+73
+LOOP2, Rank 0: 3.15723e+84
+LOOP2, Rank 0: 1.25489e+84
+LS update the restarted residual inside GMRES
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Debug ]>: Father send data[0] = 10.000000 to GMRES
+Debug ]>: Father send data[1] = -1.465132 to GMRES
+Debug ]>: Father send data[2] = -0.682532 to GMRES
+Debug ]>: Father send data[3] = -0.030325 to GMRES
+Debug ]>: Father send data[4] = -0.002960 to GMRES
+Debug ]>: Father send data[5] = -0.000275 to GMRES
+Debug ]>: Father send data[6] = -0.000026 to GMRES
+Debug ]>: Father send data[7] = -0.000002 to GMRES
+Debug ]>: Father send data[8] = -0.000000 to GMRES
+Debug ]>: Father send data[9] = -0.000000 to GMRES
+Debug ]>: Father send data[10] = -0.000000 to GMRES
+Debug ]>: Father send data[11] = -0.000000 to GMRES
+Debug ]>: Father send data[12] = 0.065152 to GMRES
+Debug ]>: Father send data[13] = 0.143050 to GMRES
+Debug ]>: Father send data[14] = 0.136109 to GMRES
+Debug ]>: Father send data[15] = 0.136405 to GMRES
+Debug ]>: Father send data[16] = 0.136392 to GMRES
+Debug ]>: Father send data[17] = 0.136392 to GMRES
+Debug ]>: Father send data[18] = 0.136392 to GMRES
+Debug ]>: Father send data[19] = 0.136392 to GMRES
+Debug ]>: Father send data[20] = 0.136392 to GMRES
+Debug ]>: Father send data[21] = 0.136392 to GMRES
+Debug ]>: Father send data[22] = 0.000000 to GMRES
+Debug ]>: Father send data[23] = -0.012746 to GMRES
+Debug ]>: Father send data[24] = -0.005805 to GMRES
+Debug ]>: Father send data[25] = -0.006101 to GMRES
+Debug ]>: Father send data[26] = -0.006088 to GMRES
+Debug ]>: Father send data[27] = -0.006089 to GMRES
+Debug ]>: Father send data[28] = -0.006089 to GMRES
+Debug ]>: Father send data[29] = -0.006089 to GMRES
+Debug ]>: Father send data[30] = -0.006089 to GMRES
+Debug ]>: Father send data[31] = -0.006089 to GMRES
+Main ]> Father has sent preconditioned parameters to GMRES Component
+exit_type[0] = 0
+@} LSQR convhul negatif chsigne 18 cumul 18 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -1.595436+0.000000i
+hk[1] = -1.430716+0.137422i
+hk[2] = -1.397670+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 51
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 51
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595436e+00 + i   0.000000e+00        3.512699e-04
+  -1.544656e+00 + i   0.000000e+00        2.953001e-03
+  -1.487257e+00 + i   1.925128e-02        3.576838e-02
+  -1.487257e+00 - i   1.925128e-02        3.576838e-02
+  -1.430716e+00 + i   1.374216e-01        9.081543e-03
+  -1.430716e+00 - i   1.374216e-01        9.081543e-03
+  -1.407110e+00 + i   7.295013e-02        5.424618e-02
+  -1.407110e+00 - i   7.295013e-02        5.424618e-02
+  -1.397670e+00 + i   1.218988e-01        4.306554e-02
+  -1.397670e+00 - i   1.218988e-01        4.306554e-02
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.06013 (16)               
+Anasazi: BlockKrylovSchur::Computing Schur form      0.023 (64)                 
+Anasazi: BlockKrylovSchur::Operation Op*x            0.1375 (816)               
+Anasazi: BlockKrylovSchur::Orthogonalization         1.097 (832)                
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.001793 (64)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.007125 (64)              
+Anasazi: BlockKrylovSchurSolMgr restarting           0.03688 (48)               
+Anasazi: BlockKrylovSchurSolMgr::solve()             1.5 (16)                   
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595436 + 0.000000i
+Evals[2] = -1.544656 + 0.000000i
+Evals[3] = -1.487257 + 0.019251i
+Evals[4] = -1.487257 + -0.019251i
+Evals[5] = -1.430716 + 0.137422i
+Evals[6] = -1.430716 + -0.137422i
+Evals[7] = -1.407110 + 0.072950i
+Evals[8] = -1.407110 + -0.072950i
+Evals[9] = -1.397670 + 0.121899i
+Evals[10] = -1.397670 + -0.121899i
+
+
+Arnoldi send eigenvalues to FATHER
+HELLO, THIS IS LS PRECONDITIONGING INSIDE OF GMRES
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 51
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 51
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595436e+00 + i   0.000000e+00        3.512699e-04
+  -1.544656e+00 + i   0.000000e+00        2.953001e-03
+  -1.487257e+00 + i   1.925128e-02        3.576838e-02
+  -1.487257e+00 - i   1.925128e-02        3.576838e-02
+  -1.430716e+00 + i   1.374216e-01        9.081543e-03
+  -1.430716e+00 - i   1.374216e-01        9.081543e-03
+  -1.407110e+00 + i   7.295013e-02        5.424618e-02
+  -1.407110e+00 - i   7.295013e-02        5.424618e-02
+  -1.397670e+00 + i   1.218988e-01        4.306554e-02
+  -1.397670e+00 - i   1.218988e-01        4.306554e-02
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.06389 (17)               
+Anasazi: BlockKrylovSchur::Computing Schur form      0.02443 (68)               
+Anasazi: BlockKrylovSchur::Operation Op*x            0.1461 (867)               
+Anasazi: BlockKrylovSchur::Orthogonalization         1.166 (884)                
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.001902 (68)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.007573 (68)              
+Anasazi: BlockKrylovSchurSolMgr restarting           0.03918 (51)               
+Anasazi: BlockKrylovSchurSolMgr::solve()             1.593 (17)                 
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595436 + 0.000000i
+Evals[2] = -1.544656 + 0.000000i
+Evals[3] = -1.487257 + 0.019251i
+Evals[4] = -1.487257 + -0.019251i
+Evals[5] = -1.430716 + 0.137422i
+Evals[6] = -1.430716 + -0.137422i
+Evals[7] = -1.407110 + 0.072950i
+Evals[8] = -1.407110 + -0.072950i
+Evals[9] = -1.397670 + 0.121899i
+Evals[10] = -1.397670 + -0.121899i
+
+
+Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Debug ]>: Father send data[0] = 10.000000 to GMRES
+Debug ]>: Father send data[1] = -1.465132 to GMRES
+Debug ]>: Father send data[2] = -0.682532 to GMRES
+Debug ]>: Father send data[3] = -0.030325 to GMRES
+Debug ]>: Father send data[4] = -0.002960 to GMRES
+Debug ]>: Father send data[5] = -0.000275 to GMRES
+Debug ]>: Father send data[6] = -0.000026 to GMRES
+Debug ]>: Father send data[7] = -0.000002 to GMRES
+Debug ]>: Father send data[8] = -0.000000 to GMRES
+Debug ]>: Father send data[9] = -0.000000 to GMRES
+Debug ]>: Father send data[10] = -0.000000 to GMRES
+Debug ]>: Father send data[11] = -0.000000 to GMRES
+Debug ]>: Father send data[12] = 0.065152 to GMRES
+Debug ]>: Father send data[13] = 0.143050 to GMRES
+Debug ]>: Father send data[14] = 0.136109 to GMRES
+Debug ]>: Father send data[15] = 0.136405 to GMRES
+Debug ]>: Father send data[16] = 0.136392 to GMRES
+Debug ]>: Father send data[17] = 0.136392 to GMRES
+Debug ]>: Father send data[18] = 0.136392 to GMRES
+Debug ]>: Father send data[19] = 0.136392 to GMRES
+Debug ]>: Father send data[20] = 0.136392 to GMRES
+Debug ]>: Father send data[21] = 0.136392 to GMRES
+Debug ]>: Father send data[22] = 0.000000 to GMRES
+Debug ]>: Father send data[23] = -0.012746 to GMRES
+Debug ]>: Father send data[24] = -0.005805 to GMRES
+Debug ]>: Father send data[25] = -0.006101 to GMRES
+Debug ]>: Father send data[26] = -0.006088 to GMRES
+Debug ]>: Father send data[27] = -0.006089 to GMRES
+Debug ]>: Father send data[28] = -0.006089 to GMRES
+Debug ]>: Father send data[29] = -0.006089 to GMRES
+Debug ]>: Father send data[30] = -0.006089 to GMRES
+Debug ]>: Father send data[31] = -0.006089 to GMRES
+Main ]> Father has sent preconditioned parameters to GMRES Component
+exit_type[0] = 0
+@} LSQR convhul negatif chsigne 18 cumul 18 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -1.595436+0.000000i
+hk[1] = -1.430716+0.137422i
+hk[2] = -1.397670+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+GMRES ]> GMRES has recived data from LS
+GMRES ]>: GMRES rank = 0, data[0] = 10.000000
+GMRES ]>: GMRES rank = 0, data[1] = -1.465132
+GMRES ]>: GMRES rank = 0, data[2] = -0.682532
+GMRES ]>: GMRES rank = 0, data[3] = -0.030325
+GMRES ]>: GMRES rank = 0, data[4] = -0.002960
+GMRES ]>: GMRES rank = 0, data[5] = -0.000275
+GMRES ]>: GMRES rank = 0, data[6] = -0.000026
+GMRES ]>: GMRES rank = 0, data[7] = -0.000002
+GMRES ]>: GMRES rank = 0, data[8] = -0.000000
+GMRES ]>: GMRES rank = 0, data[9] = -0.000000
+GMRES ]>: GMRES rank = 0, data[10] = -0.000000
+GMRES ]>: GMRES rank = 0, data[11] = -0.000000
+GMRES ]>: GMRES rank = 0, data[12] = 0.065152
+GMRES ]>: GMRES rank = 0, data[13] = 0.143050
+GMRES ]>: GMRES rank = 0, data[14] = 0.136109
+GMRES ]>: GMRES rank = 0, data[15] = 0.136405
+GMRES ]>: GMRES rank = 0, data[16] = 0.136392
+GMRES ]>: GMRES rank = 0, data[17] = 0.136392
+GMRES ]>: GMRES rank = 0, data[18] = 0.136392
+GMRES ]>: GMRES rank = 0, data[19] = 0.136392
+GMRES ]>: GMRES rank = 0, data[20] = 0.136392
+GMRES ]>: GMRES rank = 0, data[21] = 0.136392
+GMRES ]>: GMRES rank = 0, data[22] = 0.000000
+GMRES ]>: GMRES rank = 0, data[23] = -0.012746
+GMRES ]>: GMRES rank = 0, data[24] = -0.005805
+GMRES ]>: GMRES rank = 0, data[25] = -0.006101
+GMRES ]>: GMRES rank = 0, data[26] = -0.006088
+GMRES ]>: GMRES rank = 0, data[27] = -0.006089
+GMRES ]>: GMRES rank = 0, data[28] = -0.006089
+GMRES ]>: GMRES rank = 0, data[29] = -0.006089
+GMRES ]>: GMRES rank = 0, data[30] = -0.006089
+GMRES ]>: GMRES rank = 0, data[31] = -0.006089
+numVectors = : 2
+LOOP1, Rank 0: 7.0873e+94
+LOOP1, Rank 0: 2.6254e+94
+LOOP2, Rank 0: 1.57852e+105
+LOOP2, Rank 0: 5.5838e+104
+LS update the restarted residual inside GMRES
+HELLO, THIS IS LS PRECONDITIONGING INSIDE OF GMRES
+@} LSQR convhul negatif chsigne 18 cumul 18 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -1.595436+0.000000i
+hk[1] = -1.430716+0.137422i
+hk[2] = -1.397670+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 51
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 51
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595436e+00 + i   0.000000e+00        3.512699e-04
+  -1.544656e+00 + i   0.000000e+00        2.953001e-03
+  -1.487257e+00 + i   1.925128e-02        3.576838e-02
+  -1.487257e+00 - i   1.925128e-02        3.576838e-02
+  -1.430716e+00 + i   1.374216e-01        9.081543e-03
+  -1.430716e+00 - i   1.374216e-01        9.081543e-03
+  -1.407110e+00 + i   7.295013e-02        5.424618e-02
+  -1.407110e+00 - i   7.295013e-02        5.424618e-02
+  -1.397670e+00 + i   1.218988e-01        4.306554e-02
+  -1.397670e+00 - i   1.218988e-01        4.306554e-02
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.06766 (18)               
+Anasazi: BlockKrylovSchur::Computing Schur form      0.02585 (72)               
+Anasazi: BlockKrylovSchur::Operation Op*x            0.1547 (918)               
+Anasazi: BlockKrylovSchur::Orthogonalization         1.234 (936)                
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.002012 (72)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.008014 (72)              
+Anasazi: BlockKrylovSchurSolMgr restarting           0.04149 (54)               
+Anasazi: BlockKrylovSchurSolMgr::solve()             1.686 (18)                 
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595436 + 0.000000i
+Evals[2] = -1.544656 + 0.000000i
+Evals[3] = -1.487257 + 0.019251i
+Evals[4] = -1.487257 + -0.019251i
+Evals[5] = -1.430716 + 0.137422i
+Evals[6] = -1.430716 + -0.137422i
+Evals[7] = -1.407110 + 0.072950i
+Evals[8] = -1.407110 + -0.072950i
+Evals[9] = -1.397670 + 0.121899i
+Evals[10] = -1.397670 + -0.121899i
+
+
+Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Debug ]>: Father send data[0] = 10.000000 to GMRES
+Debug ]>: Father send data[1] = -1.465132 to GMRES
+Debug ]>: Father send data[2] = -0.682532 to GMRES
+Debug ]>: Father send data[3] = -0.030325 to GMRES
+Debug ]>: Father send data[4] = -0.002960 to GMRES
+Debug ]>: Father send data[5] = -0.000275 to GMRES
+Debug ]>: Father send data[6] = -0.000026 to GMRES
+Debug ]>: Father send data[7] = -0.000002 to GMRES
+Debug ]>: Father send data[8] = -0.000000 to GMRES
+Debug ]>: Father send data[9] = -0.000000 to GMRES
+Debug ]>: Father send data[10] = -0.000000 to GMRES
+Debug ]>: Father send data[11] = -0.000000 to GMRES
+Debug ]>: Father send data[12] = 0.065152 to GMRES
+Debug ]>: Father send data[13] = 0.143050 to GMRES
+Debug ]>: Father send data[14] = 0.136109 to GMRES
+Debug ]>: Father send data[15] = 0.136405 to GMRES
+Debug ]>: Father send data[16] = 0.136392 to GMRES
+Debug ]>: Father send data[17] = 0.136392 to GMRES
+Debug ]>: Father send data[18] = 0.136392 to GMRES
+Debug ]>: Father send data[19] = 0.136392 to GMRES
+Debug ]>: Father send data[20] = 0.136392 to GMRES
+Debug ]>: Father send data[21] = 0.136392 to GMRES
+Debug ]>: Father send data[22] = 0.000000 to GMRES
+Debug ]>: Father send data[23] = -0.012746 to GMRES
+Debug ]>: Father send data[24] = -0.005805 to GMRES
+Debug ]>: Father send data[25] = -0.006101 to GMRES
+Debug ]>: Father send data[26] = -0.006088 to GMRES
+Debug ]>: Father send data[27] = -0.006089 to GMRES
+Debug ]>: Father send data[28] = -0.006089 to GMRES
+Debug ]>: Father send data[29] = -0.006089 to GMRES
+Debug ]>: Father send data[30] = -0.006089 to GMRES
+Debug ]>: Father send data[31] = -0.006089 to GMRES
+Main ]> Father has sent preconditioned parameters to GMRES Component
+exit_type[0] = 0
+GMRES ]> GMRES has recived data from LS
+GMRES ]>: GMRES rank = 0, data[0] = 10.000000
+GMRES ]>: GMRES rank = 0, data[1] = -1.465132
+GMRES ]>: GMRES rank = 0, data[2] = -0.682532
+GMRES ]>: GMRES rank = 0, data[3] = -0.030325
+GMRES ]>: GMRES rank = 0, data[4] = -0.002960
+GMRES ]>: GMRES rank = 0, data[5] = -0.000275
+GMRES ]>: GMRES rank = 0, data[6] = -0.000026
+GMRES ]>: GMRES rank = 0, data[7] = -0.000002
+GMRES ]>: GMRES rank = 0, data[8] = -0.000000
+GMRES ]>: GMRES rank = 0, data[9] = -0.000000
+GMRES ]>: GMRES rank = 0, data[10] = -0.000000
+GMRES ]>: GMRES rank = 0, data[11] = -0.000000
+GMRES ]>: GMRES rank = 0, data[12] = 0.065152
+GMRES ]>: GMRES rank = 0, data[13] = 0.143050
+GMRES ]>: GMRES rank = 0, data[14] = 0.136109
+GMRES ]>: GMRES rank = 0, data[15] = 0.136405
+GMRES ]>: GMRES rank = 0, data[16] = 0.136392
+GMRES ]>: GMRES rank = 0, data[17] = 0.136392
+GMRES ]>: GMRES rank = 0, data[18] = 0.136392
+GMRES ]>: GMRES rank = 0, data[19] = 0.136392
+GMRES ]>: GMRES rank = 0, data[20] = 0.136392
+GMRES ]>: GMRES rank = 0, data[21] = 0.136392
+GMRES ]>: GMRES rank = 0, data[22] = 0.000000
+GMRES ]>: GMRES rank = 0, data[23] = -0.012746
+GMRES ]>: GMRES rank = 0, data[24] = -0.005805
+GMRES ]>: GMRES rank = 0, data[25] = -0.006101
+GMRES ]>: GMRES rank = 0, data[26] = -0.006088
+GMRES ]>: GMRES rank = 0, data[27] = -0.006089
+GMRES ]>: GMRES rank = 0, data[28] = -0.006089
+GMRES ]>: GMRES rank = 0, data[29] = -0.006089
+GMRES ]>: GMRES rank = 0, data[30] = -0.006089
+GMRES ]>: GMRES rank = 0, data[31] = -0.006089
+numVectors = : 2
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Debug ]>: Father send data[0] = 10.000000 to GMRES
+Debug ]>: Father send data[1] = -1.465132 to GMRES
+Debug ]>: Father send data[2] = -0.682532 to GMRES
+Debug ]>: Father send data[3] = -0.030325 to GMRES
+Debug ]>: Father send data[4] = -0.002960 to GMRES
+Debug ]>: Father send data[5] = -0.000275 to GMRES
+Debug ]>: Father send data[6] = -0.000026 to GMRES
+Debug ]>: Father send data[7] = -0.000002 to GMRES
+Debug ]>: Father send data[8] = -0.000000 to GMRES
+Debug ]>: Father send data[9] = -0.000000 to GMRES
+Debug ]>: Father send data[10] = -0.000000 to GMRES
+Debug ]>: Father send data[11] = -0.000000 to GMRES
+Debug ]>: Father send data[12] = 0.065152 to GMRES
+Debug ]>: Father send data[13] = 0.143050 to GMRES
+Debug ]>: Father send data[14] = 0.136109 to GMRES
+Debug ]>: Father send data[15] = 0.136405 to GMRES
+Debug ]>: Father send data[16] = 0.136392 to GMRES
+Debug ]>: Father send data[17] = 0.136392 to GMRES
+Debug ]>: Father send data[18] = 0.136392 to GMRES
+Debug ]>: Father send data[19] = 0.136392 to GMRES
+Debug ]>: Father send data[20] = 0.136392 to GMRES
+Debug ]>: Father send data[21] = 0.136392 to GMRES
+Debug ]>: Father send data[22] = 0.000000 to GMRES
+Debug ]>: Father send data[23] = -0.012746 to GMRES
+Debug ]>: Father send data[24] = -0.005805 to GMRES
+Debug ]>: Father send data[25] = -0.006101 to GMRES
+Debug ]>: Father send data[26] = -0.006088 to GMRES
+Debug ]>: Father send data[27] = -0.006089 to GMRES
+Debug ]>: Father send data[28] = -0.006089 to GMRES
+Debug ]>: Father send data[29] = -0.006089 to GMRES
+Debug ]>: Father send data[30] = -0.006089 to GMRES
+Debug ]>: Father send data[31] = -0.006089 to GMRES
+Main ]> Father has sent preconditioned parameters to GMRES Component
+exit_type[0] = 0
+@} LSQR convhul negatif chsigne 18 cumul 18 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -1.595436+0.000000i
+hk[1] = -1.430716+0.137422i
+hk[2] = -1.397670+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 51
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 51
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595436e+00 + i   0.000000e+00        3.512699e-04
+  -1.544656e+00 + i   0.000000e+00        2.953001e-03
+  -1.487257e+00 + i   1.925128e-02        3.576838e-02
+  -1.487257e+00 - i   1.925128e-02        3.576838e-02
+  -1.430716e+00 + i   1.374216e-01        9.081543e-03
+  -1.430716e+00 - i   1.374216e-01        9.081543e-03
+  -1.407110e+00 + i   7.295013e-02        5.424618e-02
+  -1.407110e+00 - i   7.295013e-02        5.424618e-02
+  -1.397670e+00 + i   1.218988e-01        4.306554e-02
+  -1.397670e+00 - i   1.218988e-01        4.306554e-02
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.07141 (19)               
+Anasazi: BlockKrylovSchur::Computing Schur form      0.02727 (76)               
+Anasazi: BlockKrylovSchur::Operation Op*x            0.1633 (969)               
+Anasazi: BlockKrylovSchur::Orthogonalization         1.302 (988)                
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.002122 (76)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.008457 (76)              
+Anasazi: BlockKrylovSchurSolMgr restarting           0.04379 (57)               
+Anasazi: BlockKrylovSchurSolMgr::solve()             1.78 (19)                  
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595436 + 0.000000i
+Evals[2] = -1.544656 + 0.000000i
+Evals[3] = -1.487257 + 0.019251i
+Evals[4] = -1.487257 + -0.019251i
+Evals[5] = -1.430716 + 0.137422i
+Evals[6] = -1.430716 + -0.137422i
+Evals[7] = -1.407110 + 0.072950i
+Evals[8] = -1.407110 + -0.072950i
+Evals[9] = -1.397670 + 0.121899i
+Evals[10] = -1.397670 + -0.121899i
+
+
+Arnoldi send eigenvalues to FATHER
+LOOP1, Rank 0: 3.49286e+115
+LOOP1, Rank 0: 1.19861e+115
+LOOP2, Rank 0: 7.6893e+125
+LOOP2, Rank 0: 2.58653e+125
+LS update the restarted residual inside GMRES
+HELLO, THIS IS LS PRECONDITIONGING INSIDE OF GMRES
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 51
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 51
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595436e+00 + i   0.000000e+00        3.512699e-04
+  -1.544656e+00 + i   0.000000e+00        2.953001e-03
+  -1.487257e+00 + i   1.925128e-02        3.576838e-02
+  -1.487257e+00 - i   1.925128e-02        3.576838e-02
+  -1.430716e+00 + i   1.374216e-01        9.081543e-03
+  -1.430716e+00 - i   1.374216e-01        9.081543e-03
+  -1.407110e+00 + i   7.295013e-02        5.424618e-02
+  -1.407110e+00 - i   7.295013e-02        5.424618e-02
+  -1.397670e+00 + i   1.218988e-01        4.306554e-02
+  -1.397670e+00 - i   1.218988e-01        4.306554e-02
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.07516 (20)               
+Anasazi: BlockKrylovSchur::Computing Schur form      0.02869 (80)               
+Anasazi: BlockKrylovSchur::Operation Op*x            0.1718 (1020)              
+Anasazi: BlockKrylovSchur::Orthogonalization         1.371 (1040)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.002232 (80)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.0089 (80)                
+Anasazi: BlockKrylovSchurSolMgr restarting           0.0461 (60)                
+Anasazi: BlockKrylovSchurSolMgr::solve()             1.873 (20)                 
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595436 + 0.000000i
+Evals[2] = -1.544656 + 0.000000i
+Evals[3] = -1.487257 + 0.019251i
+Evals[4] = -1.487257 + -0.019251i
+Evals[5] = -1.430716 + 0.137422i
+Evals[6] = -1.430716 + -0.137422i
+Evals[7] = -1.407110 + 0.072950i
+Evals[8] = -1.407110 + -0.072950i
+Evals[9] = -1.397670 + 0.121899i
+Evals[10] = -1.397670 + -0.121899i
+
+
+Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Debug ]>: Father send data[0] = 10.000000 to GMRES
+Debug ]>: Father send data[1] = -1.465132 to GMRES
+Debug ]>: Father send data[2] = -0.682532 to GMRES
+Debug ]>: Father send data[3] = -0.030325 to GMRES
+Debug ]>: Father send data[4] = -0.002960 to GMRES
+Debug ]>: Father send data[5] = -0.000275 to GMRES
+Debug ]>: Father send data[6] = -0.000026 to GMRES
+Debug ]>: Father send data[7] = -0.000002 to GMRES
+Debug ]>: Father send data[8] = -0.000000 to GMRES
+Debug ]>: Father send data[9] = -0.000000 to GMRES
+Debug ]>: Father send data[10] = -0.000000 to GMRES
+Debug ]>: Father send data[11] = -0.000000 to GMRES
+Debug ]>: Father send data[12] = 0.065152 to GMRES
+Debug ]>: Father send data[13] = 0.143050 to GMRES
+Debug ]>: Father send data[14] = 0.136109 to GMRES
+Debug ]>: Father send data[15] = 0.136405 to GMRES
+Debug ]>: Father send data[16] = 0.136392 to GMRES
+Debug ]>: Father send data[17] = 0.136392 to GMRES
+Debug ]>: Father send data[18] = 0.136392 to GMRES
+Debug ]>: Father send data[19] = 0.136392 to GMRES
+Debug ]>: Father send data[20] = 0.136392 to GMRES
+Debug ]>: Father send data[21] = 0.136392 to GMRES
+Debug ]>: Father send data[22] = 0.000000 to GMRES
+Debug ]>: Father send data[23] = -0.012746 to GMRES
+Debug ]>: Father send data[24] = -0.005805 to GMRES
+Debug ]>: Father send data[25] = -0.006101 to GMRES
+Debug ]>: Father send data[26] = -0.006088 to GMRES
+Debug ]>: Father send data[27] = -0.006089 to GMRES
+Debug ]>: Father send data[28] = -0.006089 to GMRES
+Debug ]>: Father send data[29] = -0.006089 to GMRES
+Debug ]>: Father send data[30] = -0.006089 to GMRES
+Debug ]>: Father send data[31] = -0.006089 to GMRES
+Main ]> Father has sent preconditioned parameters to GMRES Component
+exit_type[0] = 0
+@} LSQR convhul negatif chsigne 18 cumul 18 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -1.595436+0.000000i
+hk[1] = -1.430716+0.137422i
+hk[2] = -1.397670+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+GMRES ]> GMRES has recived data from LS
+GMRES ]>: GMRES rank = 0, data[0] = 10.000000
+GMRES ]>: GMRES rank = 0, data[1] = -1.465132
+GMRES ]>: GMRES rank = 0, data[2] = -0.682532
+GMRES ]>: GMRES rank = 0, data[3] = -0.030325
+GMRES ]>: GMRES rank = 0, data[4] = -0.002960
+GMRES ]>: GMRES rank = 0, data[5] = -0.000275
+GMRES ]>: GMRES rank = 0, data[6] = -0.000026
+GMRES ]>: GMRES rank = 0, data[7] = -0.000002
+GMRES ]>: GMRES rank = 0, data[8] = -0.000000
+GMRES ]>: GMRES rank = 0, data[9] = -0.000000
+GMRES ]>: GMRES rank = 0, data[10] = -0.000000
+GMRES ]>: GMRES rank = 0, data[11] = -0.000000
+GMRES ]>: GMRES rank = 0, data[12] = 0.065152
+GMRES ]>: GMRES rank = 0, data[13] = 0.143050
+GMRES ]>: GMRES rank = 0, data[14] = 0.136109
+GMRES ]>: GMRES rank = 0, data[15] = 0.136405
+GMRES ]>: GMRES rank = 0, data[16] = 0.136392
+GMRES ]>: GMRES rank = 0, data[17] = 0.136392
+GMRES ]>: GMRES rank = 0, data[18] = 0.136392
+GMRES ]>: GMRES rank = 0, data[19] = 0.136392
+GMRES ]>: GMRES rank = 0, data[20] = 0.136392
+GMRES ]>: GMRES rank = 0, data[21] = 0.136392
+GMRES ]>: GMRES rank = 0, data[22] = 0.000000
+GMRES ]>: GMRES rank = 0, data[23] = -0.012746
+GMRES ]>: GMRES rank = 0, data[24] = -0.005805
+GMRES ]>: GMRES rank = 0, data[25] = -0.006101
+GMRES ]>: GMRES rank = 0, data[26] = -0.006088
+GMRES ]>: GMRES rank = 0, data[27] = -0.006089
+GMRES ]>: GMRES rank = 0, data[28] = -0.006089
+GMRES ]>: GMRES rank = 0, data[29] = -0.006089
+GMRES ]>: GMRES rank = 0, data[30] = -0.006089
+GMRES ]>: GMRES rank = 0, data[31] = -0.006089
+numVectors = : 2
+LOOP1, Rank 0: 1.68621e+136
+LOOP1, Rank 0: 5.5979e+135
+LOOP2, Rank 0: 3.68714e+146
+LOOP2, Rank 0: 1.21338e+146
+LS update the restarted residual inside GMRES
+@} LSQR convhul negatif chsigne 18 cumul 18 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -1.595436+0.000000i
+hk[1] = -1.430716+0.137422i
+hk[2] = -1.397670+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 51
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 51
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595436e+00 + i   0.000000e+00        3.512699e-04
+  -1.544656e+00 + i   0.000000e+00        2.953001e-03
+  -1.487257e+00 + i   1.925128e-02        3.576838e-02
+  -1.487257e+00 - i   1.925128e-02        3.576838e-02
+  -1.430716e+00 + i   1.374216e-01        9.081543e-03
+  -1.430716e+00 - i   1.374216e-01        9.081543e-03
+  -1.407110e+00 + i   7.295013e-02        5.424618e-02
+  -1.407110e+00 - i   7.295013e-02        5.424618e-02
+  -1.397670e+00 + i   1.218988e-01        4.306554e-02
+  -1.397670e+00 - i   1.218988e-01        4.306554e-02
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.07892 (21)               
+Anasazi: BlockKrylovSchur::Computing Schur form      0.0301 (84)                
+Anasazi: BlockKrylovSchur::Operation Op*x            0.1804 (1071)              
+Anasazi: BlockKrylovSchur::Orthogonalization         1.439 (1092)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.002342 (84)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.00934 (84)               
+Anasazi: BlockKrylovSchurSolMgr restarting           0.04839 (63)               
+Anasazi: BlockKrylovSchurSolMgr::solve()             1.967 (21)                 
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595436 + 0.000000i
+Evals[2] = -1.544656 + 0.000000i
+Evals[3] = -1.487257 + 0.019251i
+Evals[4] = -1.487257 + -0.019251i
+Evals[5] = -1.430716 + 0.137422i
+Evals[6] = -1.430716 + -0.137422i
+Evals[7] = -1.407110 + 0.072950i
+Evals[8] = -1.407110 + -0.072950i
+Evals[9] = -1.397670 + 0.121899i
+Evals[10] = -1.397670 + -0.121899i
+
+
+Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Debug ]>: Father send data[0] = 10.000000 to GMRES
+Debug ]>: Father send data[1] = -1.465132 to GMRES
+Debug ]>: Father send data[2] = -0.682532 to GMRES
+Debug ]>: Father send data[3] = -0.030325 to GMRES
+Debug ]>: Father send data[4] = -0.002960 to GMRES
+Debug ]>: Father send data[5] = -0.000275 to GMRES
+Debug ]>: Father send data[6] = -0.000026 to GMRES
+Debug ]>: Father send data[7] = -0.000002 to GMRES
+Debug ]>: Father send data[8] = -0.000000 to GMRES
+Debug ]>: Father send data[9] = -0.000000 to GMRES
+Debug ]>: Father send data[10] = -0.000000 to GMRES
+Debug ]>: Father send data[11] = -0.000000 to GMRES
+Debug ]>: Father send data[12] = 0.065152 to GMRES
+Debug ]>: Father send data[13] = 0.143050 to GMRES
+Debug ]>: Father send data[14] = 0.136109 to GMRES
+Debug ]>: Father send data[15] = 0.136405 to GMRES
+Debug ]>: Father send data[16] = 0.136392 to GMRES
+Debug ]>: Father send data[17] = 0.136392 to GMRES
+Debug ]>: Father send data[18] = 0.136392 to GMRES
+Debug ]>: Father send data[19] = 0.136392 to GMRES
+Debug ]>: Father send data[20] = 0.136392 to GMRES
+Debug ]>: Father send data[21] = 0.136392 to GMRES
+Debug ]>: Father send data[22] = 0.000000 to GMRES
+Debug ]>: Father send data[23] = -0.012746 to GMRES
+Debug ]>: Father send data[24] = -0.005805 to GMRES
+Debug ]>: Father send data[25] = -0.006101 to GMRES
+Debug ]>: Father send data[26] = -0.006088 to GMRES
+Debug ]>: Father send data[27] = -0.006089 to GMRES
+Debug ]>: Father send data[28] = -0.006089 to GMRES
+Debug ]>: Father send data[29] = -0.006089 to GMRES
+Debug ]>: Father send data[30] = -0.006089 to GMRES
+Debug ]>: Father send data[31] = -0.006089 to GMRES
+Main ]> Father has sent preconditioned parameters to GMRES Component
+exit_type[0] = 0
+HELLO, THIS IS LS PRECONDITIONGING INSIDE OF GMRES
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Debug ]>: Father send data[0] = 10.000000 to GMRES
+Debug ]>: Father send data[1] = -1.465132 to GMRES
+Debug ]>: Father send data[2] = -0.682532 to GMRES
+Debug ]>: Father send data[3] = -0.030325 to GMRES
+Debug ]>: Father send data[4] = -0.002960 to GMRES
+Debug ]>: Father send data[5] = -0.000275 to GMRES
+Debug ]>: Father send data[6] = -0.000026 to GMRES
+Debug ]>: Father send data[7] = -0.000002 to GMRES
+Debug ]>: Father send data[8] = -0.000000 to GMRES
+Debug ]>: Father send data[9] = -0.000000 to GMRES
+Debug ]>: Father send data[10] = -0.000000 to GMRES
+Debug ]>: Father send data[11] = -0.000000 to GMRES
+Debug ]>: Father send data[12] = 0.065152 to GMRES
+Debug ]>: Father send data[13] = 0.143050 to GMRES
+Debug ]>: Father send data[14] = 0.136109 to GMRES
+Debug ]>: Father send data[15] = 0.136405 to GMRES
+Debug ]>: Father send data[16] = 0.136392 to GMRES
+Debug ]>: Father send data[17] = 0.136392 to GMRES
+Debug ]>: Father send data[18] = 0.136392 to GMRES
+Debug ]>: Father send data[19] = 0.136392 to GMRES
+Debug ]>: Father send data[20] = 0.136392 to GMRES
+Debug ]>: Father send data[21] = 0.136392 to GMRES
+Debug ]>: Father send data[22] = 0.000000 to GMRES
+Debug ]>: Father send data[23] = -0.012746 to GMRES
+Debug ]>: Father send data[24] = -0.005805 to GMRES
+Debug ]>: Father send data[25] = -0.006101 to GMRES
+Debug ]>: Father send data[26] = -0.006088 to GMRES
+Debug ]>: Father send data[27] = -0.006089 to GMRES
+Debug ]>: Father send data[28] = -0.006089 to GMRES
+Debug ]>: Father send data[29] = -0.006089 to GMRES
+Debug ]>: Father send data[30] = -0.006089 to GMRES
+Debug ]>: Father send data[31] = -0.006089 to GMRES
+Main ]> Father has sent preconditioned parameters to GMRES Component
+exit_type[0] = 0
+@} LSQR convhul negatif chsigne 18 cumul 18 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -1.595436+0.000000i
+hk[1] = -1.430716+0.137422i
+hk[2] = -1.397670+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 51
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 51
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595436e+00 + i   0.000000e+00        3.512699e-04
+  -1.544656e+00 + i   0.000000e+00        2.953001e-03
+  -1.487257e+00 + i   1.925128e-02        3.576838e-02
+  -1.487257e+00 - i   1.925128e-02        3.576838e-02
+  -1.430716e+00 + i   1.374216e-01        9.081543e-03
+  -1.430716e+00 - i   1.374216e-01        9.081543e-03
+  -1.407110e+00 + i   7.295013e-02        5.424618e-02
+  -1.407110e+00 - i   7.295013e-02        5.424618e-02
+  -1.397670e+00 + i   1.218988e-01        4.306554e-02
+  -1.397670e+00 - i   1.218988e-01        4.306554e-02
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.0827 (22)                
+Anasazi: BlockKrylovSchur::Computing Schur form      0.03152 (88)               
+Anasazi: BlockKrylovSchur::Operation Op*x            0.189 (1122)               
+Anasazi: BlockKrylovSchur::Orthogonalization         1.507 (1144)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.002452 (88)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.009781 (88)              
+Anasazi: BlockKrylovSchurSolMgr restarting           0.05069 (66)               
+Anasazi: BlockKrylovSchurSolMgr::solve()             2.06 (22)                  
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595436 + 0.000000i
+Evals[2] = -1.544656 + 0.000000i
+Evals[3] = -1.487257 + 0.019251i
+Evals[4] = -1.487257 + -0.019251i
+Evals[5] = -1.430716 + 0.137422i
+Evals[6] = -1.430716 + -0.137422i
+Evals[7] = -1.407110 + 0.072950i
+Evals[8] = -1.407110 + -0.072950i
+Evals[9] = -1.397670 + 0.121899i
+Evals[10] = -1.397670 + -0.121899i
+
+
+Arnoldi send eigenvalues to FATHER
+GMRES ]> GMRES has recived data from LS
+GMRES ]>: GMRES rank = 0, data[0] = 10.000000
+GMRES ]>: GMRES rank = 0, data[1] = -1.465132
+GMRES ]>: GMRES rank = 0, data[2] = -0.682532
+GMRES ]>: GMRES rank = 0, data[3] = -0.030325
+GMRES ]>: GMRES rank = 0, data[4] = -0.002960
+GMRES ]>: GMRES rank = 0, data[5] = -0.000275
+GMRES ]>: GMRES rank = 0, data[6] = -0.000026
+GMRES ]>: GMRES rank = 0, data[7] = -0.000002
+GMRES ]>: GMRES rank = 0, data[8] = -0.000000
+GMRES ]>: GMRES rank = 0, data[9] = -0.000000
+GMRES ]>: GMRES rank = 0, data[10] = -0.000000
+GMRES ]>: GMRES rank = 0, data[11] = -0.000000
+GMRES ]>: GMRES rank = 0, data[12] = 0.065152
+GMRES ]>: GMRES rank = 0, data[13] = 0.143050
+GMRES ]>: GMRES rank = 0, data[14] = 0.136109
+GMRES ]>: GMRES rank = 0, data[15] = 0.136405
+GMRES ]>: GMRES rank = 0, data[16] = 0.136392
+GMRES ]>: GMRES rank = 0, data[17] = 0.136392
+GMRES ]>: GMRES rank = 0, data[18] = 0.136392
+GMRES ]>: GMRES rank = 0, data[19] = 0.136392
+GMRES ]>: GMRES rank = 0, data[20] = 0.136392
+GMRES ]>: GMRES rank = 0, data[21] = 0.136392
+GMRES ]>: GMRES rank = 0, data[22] = 0.000000
+GMRES ]>: GMRES rank = 0, data[23] = -0.012746
+GMRES ]>: GMRES rank = 0, data[24] = -0.005805
+GMRES ]>: GMRES rank = 0, data[25] = -0.006101
+GMRES ]>: GMRES rank = 0, data[26] = -0.006088
+GMRES ]>: GMRES rank = 0, data[27] = -0.006089
+GMRES ]>: GMRES rank = 0, data[28] = -0.006089
+GMRES ]>: GMRES rank = 0, data[29] = -0.006089
+GMRES ]>: GMRES rank = 0, data[30] = -0.006089
+GMRES ]>: GMRES rank = 0, data[31] = -0.006089
+numVectors = : 2
+LOOP1, Rank 0: inf
+LOOP1, Rank 0: inf
+LOOP2, Rank 0: inf
+LOOP2, Rank 0: inf
+LS update the restarted residual inside GMRES
+Caught exception: 
+/home/xinzhewu/workstations/trilinos/install/include/BelosStatusTestImpResNorm.hpp:635:
+
+Throw number = 1
+
+Throw test that evaluated to true: true
+
+Belos::StatusTestImpResNorm::checkStatus(): One or more of the current implicit residual norms is NaN.
+Solving TIME = 2.287108
+GMRES ]> This GMRES Component cannot be converged with given parameters
+GMRES ]> GMRES send exit signal
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 51
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 51
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595436e+00 + i   0.000000e+00        3.512699e-04
+  -1.544656e+00 + i   0.000000e+00        2.953001e-03
+  -1.487257e+00 + i   1.925128e-02        3.576838e-02
+  -1.487257e+00 - i   1.925128e-02        3.576838e-02
+  -1.430716e+00 + i   1.374216e-01        9.081543e-03
+  -1.430716e+00 - i   1.374216e-01        9.081543e-03
+  -1.407110e+00 + i   7.295013e-02        5.424618e-02
+  -1.407110e+00 - i   7.295013e-02        5.424618e-02
+  -1.397670e+00 + i   1.218988e-01        4.306554e-02
+  -1.397670e+00 - i   1.218988e-01        4.306554e-02
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.08646 (23)               
+Anasazi: BlockKrylovSchur::Computing Schur form      0.03294 (92)               
+Anasazi: BlockKrylovSchur::Operation Op*x            0.1975 (1173)              
+Anasazi: BlockKrylovSchur::Orthogonalization         1.576 (1196)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.002561 (92)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.01022 (92)               
+Anasazi: BlockKrylovSchurSolMgr restarting           0.053 (69)                 
+Anasazi: BlockKrylovSchurSolMgr::solve()             2.154 (23)                 
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595436 + 0.000000i
+Evals[2] = -1.544656 + 0.000000i
+Evals[3] = -1.487257 + 0.019251i
+Evals[4] = -1.487257 + -0.019251i
+Evals[5] = -1.430716 + 0.137422i
+Evals[6] = -1.430716 + -0.137422i
+Evals[7] = -1.407110 + 0.072950i
+Evals[8] = -1.407110 + -0.072950i
+Evals[9] = -1.397670 + 0.121899i
+Evals[10] = -1.397670 + -0.121899i
+
+
+Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Debug ]>: Father send data[0] = 10.000000 to GMRES
+Debug ]>: Father send data[1] = -1.465132 to GMRES
+Debug ]>: Father send data[2] = -0.682532 to GMRES
+Debug ]>: Father send data[3] = -0.030325 to GMRES
+Debug ]>: Father send data[4] = -0.002960 to GMRES
+Debug ]>: Father send data[5] = -0.000275 to GMRES
+Debug ]>: Father send data[6] = -0.000026 to GMRES
+Debug ]>: Father send data[7] = -0.000002 to GMRES
+Debug ]>: Father send data[8] = -0.000000 to GMRES
+Debug ]>: Father send data[9] = -0.000000 to GMRES
+Debug ]>: Father send data[10] = -0.000000 to GMRES
+Debug ]>: Father send data[11] = -0.000000 to GMRES
+Debug ]>: Father send data[12] = 0.065152 to GMRES
+Debug ]>: Father send data[13] = 0.143050 to GMRES
+Debug ]>: Father send data[14] = 0.136109 to GMRES
+Debug ]>: Father send data[15] = 0.136405 to GMRES
+Debug ]>: Father send data[16] = 0.136392 to GMRES
+Debug ]>: Father send data[17] = 0.136392 to GMRES
+Debug ]>: Father send data[18] = 0.136392 to GMRES
+Debug ]>: Father send data[19] = 0.136392 to GMRES
+Debug ]>: Father send data[20] = 0.136392 to GMRES
+Debug ]>: Father send data[21] = 0.136392 to GMRES
+Debug ]>: Father send data[22] = 0.000000 to GMRES
+Debug ]>: Father send data[23] = -0.012746 to GMRES
+Debug ]>: Father send data[24] = -0.005805 to GMRES
+Debug ]>: Father send data[25] = -0.006101 to GMRES
+Debug ]>: Father send data[26] = -0.006088 to GMRES
+Debug ]>: Father send data[27] = -0.006089 to GMRES
+Debug ]>: Father send data[28] = -0.006089 to GMRES
+Debug ]>: Father send data[29] = -0.006089 to GMRES
+Debug ]>: Father send data[30] = -0.006089 to GMRES
+Debug ]>: Father send data[31] = -0.006089 to GMRES
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Main ]> Father Receive exit type from GMRES 0 Component = 666
+exit_type[0] = 666
+Main ]> Father send exit type to ERAM and LS Component
+Main ]> Father has final exit signal to GMRES Component
+--------------------------------------------------------------------------------
+                               Remove Application
+--------------------------------------------------------------------------------
+@} LSQR convhul negatif chsigne 18 cumul 18 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -1.595436+0.000000i
+hk[1] = -1.430716+0.137422i
+hk[2] = -1.397670+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+Info ]> LS Receive signal information from Father
+Info ]> LS exit
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 51
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 51
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595436e+00 + i   0.000000e+00        3.512699e-04
+  -1.544656e+00 + i   0.000000e+00        2.953001e-03
+  -1.487257e+00 + i   1.925128e-02        3.576838e-02
+  -1.487257e+00 - i   1.925128e-02        3.576838e-02
+  -1.430716e+00 + i   1.374216e-01        9.081543e-03
+  -1.430716e+00 - i   1.374216e-01        9.081543e-03
+  -1.407110e+00 + i   7.295013e-02        5.424618e-02
+  -1.407110e+00 - i   7.295013e-02        5.424618e-02
+  -1.397670e+00 + i   1.218988e-01        4.306554e-02
+  -1.397670e+00 - i   1.218988e-01        4.306554e-02
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.09022 (24)               
+Anasazi: BlockKrylovSchur::Computing Schur form      0.03437 (96)               
+Anasazi: BlockKrylovSchur::Operation Op*x            0.2061 (1224)              
+Anasazi: BlockKrylovSchur::Orthogonalization         1.644 (1248)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.002672 (96)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.01067 (96)               
+Anasazi: BlockKrylovSchurSolMgr restarting           0.0553 (72)                
+Anasazi: BlockKrylovSchurSolMgr::solve()             2.247 (24)                 
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595436 + 0.000000i
+Evals[2] = -1.544656 + 0.000000i
+Evals[3] = -1.487257 + 0.019251i
+Evals[4] = -1.487257 + -0.019251i
+Evals[5] = -1.430716 + 0.137422i
+Evals[6] = -1.430716 + -0.137422i
+Evals[7] = -1.407110 + 0.072950i
+Evals[8] = -1.407110 + -0.072950i
+Evals[9] = -1.397670 + 0.121899i
+Evals[10] = -1.397670 + -0.121899i
+
+
+Arnoldi send eigenvalues to FATHER
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 51
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 51
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595436e+00 + i   0.000000e+00        3.512699e-04
+  -1.544656e+00 + i   0.000000e+00        2.953001e-03
+  -1.487257e+00 + i   1.925128e-02        3.576838e-02
+  -1.487257e+00 - i   1.925128e-02        3.576838e-02
+  -1.430716e+00 + i   1.374216e-01        9.081543e-03
+  -1.430716e+00 - i   1.374216e-01        9.081543e-03
+  -1.407110e+00 + i   7.295013e-02        5.424618e-02
+  -1.407110e+00 - i   7.295013e-02        5.424618e-02
+  -1.397670e+00 + i   1.218988e-01        4.306554e-02
+  -1.397670e+00 - i   1.218988e-01        4.306554e-02
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.09397 (25)               
+Anasazi: BlockKrylovSchur::Computing Schur form      0.03579 (100)              
+Anasazi: BlockKrylovSchur::Operation Op*x            0.2147 (1275)              
+Anasazi: BlockKrylovSchur::Orthogonalization         1.713 (1300)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.002782 (100)             
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.01111 (100)              
+Anasazi: BlockKrylovSchurSolMgr restarting           0.05761 (75)               
+Anasazi: BlockKrylovSchurSolMgr::solve()             2.341 (25)                 
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595436 + 0.000000i
+Evals[2] = -1.544656 + 0.000000i
+Evals[3] = -1.487257 + 0.019251i
+Evals[4] = -1.487257 + -0.019251i
+Evals[5] = -1.430716 + 0.137422i
+Evals[6] = -1.430716 + -0.137422i
+Evals[7] = -1.407110 + 0.072950i
+Evals[8] = -1.407110 + -0.072950i
+Evals[9] = -1.397670 + 0.121899i
+Evals[10] = -1.397670 + -0.121899i
+
+
+Arnoldi send eigenvalues to FATHER
+Info ]> ERAM Receive signal information from Father
+Info ]> ERAM exit
+Main ]> Main Free the Arnoldi Components after waiting a little instant
+GMRES ]> Close of GMRES after waiting a little instant

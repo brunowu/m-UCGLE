@@ -138,7 +138,7 @@ int main( int argc, char *argv[] ) {
     if(!mpi_lsa_com_array_recv(&COMM_LS, &length, data)){
       printf("Main ]> Father has Array received from LS Component\n" );
       for(i = 0; i < length; i++){
-        //printf("Debug ]>: Father send data[%d] = %f to GMRES\n", i, data[i] );
+        printf("Debug ]>: Father send data[%d] = %f to GMRES\n", i, data[i] );
       }
       //send new array to multiples GMRES
       for(i = 0; i < gmres_nb; i++){
