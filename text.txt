@@ -1,0 +1,235 @@
+================================================================================
+
+
+
+             MUCGLE: Multiple Unite and Conquer GMRES/LS-ERAM Method
+
+
+
+================================================================================
+            Developed by Xinzhe WU at Maison de la Simulation, France
+================================================================================
+
+
+
+--------------------------------------------------------------------------------
+                              Start Initialization
+--------------------------------------------------------------------------------
+Initialization ]> GMRES executable number is 1 
+Initialization ]> Each GMRES Proc number is 1 
+Initialization ]> ERAM executable number is 1 
+Initialization ]> Each ERAM Proc number is 1 
+Initialization ]> Thus Total proc number = 1 + 1 + 1 * 1 + 1 * 1 = 4 
+Initialization ]> GMRES executable name list is: [ ./gmres.exe  ]
+Initialization ]> ERAM executable name list is: [ ./arnoldi.exe  ]
+Initialization ]> LS executable name list is: [ ./lsqr.exe  ]
+Parser Matrix filename Flag = --filename="utm300.mtx"  
+--------------------------------------------------------------------------------
+                           Start Spawning Executables
+--------------------------------------------------------------------------------
+Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name mdlsmc232 and rank 0!
+Testing Scalar == double
+GMRES ]> Building problem...
+GMRES ]> Load matrix: utm300.mtx from local filesystem
+
+Tpetra::CrsMatrix (Kokkos refactor): {isFillComplete: true, global dimensions: [300, 300], global number of entries: 3155}
+
+Building TIME = 0.043623
+GMRES ]> GMRES send exit signal
+Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name mdlsmc232 and rank 0!
+Info ]> The Comm world size of ERAM is 1 
+Arnoldi in Trilinos said: my rank = 0
+Parser the MATRIX file NAME = utm300.mtx ! 
+Anasazi Version 12.12d
+
+Anasazi Scalar type == double
+ERAM ]> Building problem... double
+--------------------------------------------------------------------------------
+                    Start Resolving Linear Systems by MUCGLE
+--------------------------------------------------------------------------------
+Main ]> Father Receive exit type from GMRES 0 Component = 666
+exit_type[0] = 666
+Info ]> The Comm world size of LS is 1 
+ERAM ]> Matrix Loaded ... double
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 101
+The block size is         1
+The number of blocks is   100
+The current basis size is 101
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 101
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595404e+00 + i   0.000000e+00        8.978382e-14
+  -1.545713e+00 + i   0.000000e+00        1.064040e-07
+  -1.544812e+00 + i   0.000000e+00        3.197391e-08
+  -1.518373e+00 + i   0.000000e+00        5.706130e-06
+  -1.484252e+00 + i   0.000000e+00        6.438439e-04
+  -1.476755e+00 + i   0.000000e+00        9.983519e-04
+  -1.471398e+00 + i   1.943724e-02        1.109734e-03
+  -1.471398e+00 - i   1.943724e-02        1.109734e-03
+  -1.469058e+00 + i   3.692148e-02        1.631375e-05
+  -1.469058e+00 - i   3.692148e-02        1.631375e-05
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.01118 (1)                
+Anasazi: BlockKrylovSchur::Computing Schur form      0.01918 (1)                
+Anasazi: BlockKrylovSchur::Operation Op*x            0.01772 (101)              
+Anasazi: BlockKrylovSchur::Orthogonalization         0.2289 (102)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.001613 (1)               
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.004514 (1)               
+Anasazi: BlockKrylovSchurSolMgr restarting           0 (0)                      
+Anasazi: BlockKrylovSchurSolMgr::solve()             0.2968 (1)                 
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595404 + 0.000000i
+Evals[2] = -1.545713 + 0.000000i
+Evals[3] = -1.544812 + 0.000000i
+Evals[4] = -1.518373 + 0.000000i
+Evals[5] = -1.484252 + 0.000000i
+Evals[6] = -1.476755 + 0.000000i
+Evals[7] = -1.471398 + 0.019437i
+Evals[8] = -1.471398 + -0.019437i
+Evals[9] = -1.469058 + 0.036921i
+Evals[10] = -1.469058 + -0.036921i
+
+
+Arnoldi send eigenvalues to FATHER
+Main ]> Father send exit type to ERAM and LS Component
+Main ]> Father has final exit signal to GMRES Component
+--------------------------------------------------------------------------------
+                               Remove Application
+--------------------------------------------------------------------------------
+Info ]> LS Receive signal information from Father
+Info ]> LS exit
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 101
+The block size is         1
+The number of blocks is   100
+The current basis size is 101
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 101
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595404e+00 + i   0.000000e+00        8.978382e-14
+  -1.545713e+00 + i   0.000000e+00        1.064040e-07
+  -1.544812e+00 + i   0.000000e+00        3.197391e-08
+  -1.518373e+00 + i   0.000000e+00        5.706130e-06
+  -1.484252e+00 + i   0.000000e+00        6.438439e-04
+  -1.476755e+00 + i   0.000000e+00        9.983519e-04
+  -1.471398e+00 + i   1.943724e-02        1.109734e-03
+  -1.471398e+00 - i   1.943724e-02        1.109734e-03
+  -1.469058e+00 + i   3.692148e-02        1.631375e-05
+  -1.469058e+00 - i   3.692148e-02        1.631375e-05
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.0206 (2)                 
+Anasazi: BlockKrylovSchur::Computing Schur form      0.03186 (2)                
+Anasazi: BlockKrylovSchur::Operation Op*x            0.03234 (202)              
+Anasazi: BlockKrylovSchur::Orthogonalization         0.399 (204)                
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.001703 (2)               
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.009008 (2)               
+Anasazi: BlockKrylovSchurSolMgr restarting           0 (0)                      
+Anasazi: BlockKrylovSchurSolMgr::solve()             0.5188 (2)                 
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595404 + 0.000000i
+Evals[2] = -1.545713 + 0.000000i
+Evals[3] = -1.544812 + 0.000000i
+Evals[4] = -1.518373 + 0.000000i
+Evals[5] = -1.484252 + 0.000000i
+Evals[6] = -1.476755 + 0.000000i
+Evals[7] = -1.471398 + 0.019437i
+Evals[8] = -1.471398 + -0.019437i
+Evals[9] = -1.469058 + 0.036921i
+Evals[10] = -1.469058 + -0.036921i
+
+
+Arnoldi send eigenvalues to FATHER
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 101
+The block size is         1
+The number of blocks is   100
+The current basis size is 101
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 101
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -1.595404e+00 + i   0.000000e+00        8.978382e-14
+  -1.545713e+00 + i   0.000000e+00        1.064040e-07
+  -1.544812e+00 + i   0.000000e+00        3.197391e-08
+  -1.518373e+00 + i   0.000000e+00        5.706130e-06
+  -1.484252e+00 + i   0.000000e+00        6.438439e-04
+  -1.476755e+00 + i   0.000000e+00        9.983519e-04
+  -1.471398e+00 + i   1.943724e-02        1.109734e-03
+  -1.471398e+00 - i   1.943724e-02        1.109734e-03
+  -1.469058e+00 + i   3.692148e-02        1.631375e-05
+  -1.469058e+00 - i   3.692148e-02        1.631375e-05
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.02935 (3)                
+Anasazi: BlockKrylovSchur::Computing Schur form      0.04454 (3)                
+Anasazi: BlockKrylovSchur::Operation Op*x            0.04675 (303)              
+Anasazi: BlockKrylovSchur::Orthogonalization         0.5637 (306)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.001796 (3)               
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.01351 (3)                
+Anasazi: BlockKrylovSchurSolMgr restarting           0 (0)                      
+Anasazi: BlockKrylovSchurSolMgr::solve()             0.7342 (3)                 
+================================================================================
+NUMVECS = 10
+Evals[1] = -1.595404 + 0.000000i
+Evals[2] = -1.545713 + 0.000000i
+Evals[3] = -1.544812 + 0.000000i
+Evals[4] = -1.518373 + 0.000000i
+Evals[5] = -1.484252 + 0.000000i
+Evals[6] = -1.476755 + 0.000000i
+Evals[7] = -1.471398 + 0.019437i
+Evals[8] = -1.471398 + -0.019437i
+Evals[9] = -1.469058 + 0.036921i
+Evals[10] = -1.469058 + -0.036921i
+
+
+Arnoldi send eigenvalues to FATHER
+Info ]> ERAM Receive signal information from Father
+Info ]> ERAM exit
+Main ]> Main Free the Arnoldi Components after waiting a little instant
+GMRES ]> Close of GMRES after waiting a little instant

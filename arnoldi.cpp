@@ -138,6 +138,8 @@ int main( int argc, char *argv[] ){
     else {
       filename = "utm300.mtx";
     }
+  }else{
+    printf("Parser the MATRIX file NAME = %s ! \n", filename.c_str());
   }
 
   std::ostream& out = ( (allprint || (MyPID == 0)) ? std::cout : blackhole );

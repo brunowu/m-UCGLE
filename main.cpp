@@ -18,6 +18,9 @@ int main( int argc, char *argv[] ) {
   char **arnoldi_cmds;
   char *lsqr_cmd;
 
+  char **args_arnoldi_runtime;
+  
+
   MPI_Init( &argc, &argv );
 
   int size, rank;
@@ -44,6 +47,8 @@ int main( int argc, char *argv[] ) {
   gmres_cmds = argsParserGmresExec(argc, argv, gmres_nb);
   arnoldi_cmds = argsParserArnoldiExec(argc, argv, arnoldi_nb);
   lsqr_cmd = argsParserLsqrExec(argc, argv);
+  args_arnoldi_runtime = argsParserArnoldiRuntime(argc, argv);
+
 
   MPI_Comm COMM_GMRES[2], COMM_ARNOLDI[2], COMM_LS;
   MPI_Request gReq[gmres_proc], aReq[arnoldi_proc], lReq[ls_proc];
@@ -58,7 +63,7 @@ int main( int argc, char *argv[] ) {
   }
 
   for( j = 0; j < arnoldi_nb; j++){
-    MPI_Comm_spawn( arnoldi_cmds[j], MPI_ARGV_NULL, arnoldi_proc, MPI_INFO_NULL, 0, MPI_COMM_WORLD, &COMM_ARNOLDI[j], MPI_ERRCODES_IGNORE);
+    MPI_Comm_spawn( arnoldi_cmds[j], args_arnoldi_runtime, arnoldi_proc, MPI_INFO_NULL, 0, MPI_COMM_WORLD, &COMM_ARNOLDI[j], MPI_ERRCODES_IGNORE);
   }
 
   MPI_Comm_spawn( lsqr_cmd, MPI_ARGV_NULL, ls_proc, MPI_INFO_NULL, 0, MPI_COMM_WORLD, &COMM_LS, MPI_ERRCODES_IGNORE);
@@ -193,13 +198,6 @@ int main( int argc, char *argv[] ) {
   for(i = 0; i < gmres_nb; i++){
       delete [] gmres_cmds[i];
   }
-/*
-  for(j = 0; j < arnoldi_nb; j++){
-      delete [] arnoldi_cmds[j];
-      MPI_Comm_free(&COMM_ARNOLDI[j]);
-      printf("Main ]> Main Free the Arnoldi Components\n" );
-  }
-*/
 
   delete [] lsqr_cmd;
 

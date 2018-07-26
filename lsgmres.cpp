@@ -202,6 +202,7 @@ int main(int argc, char *argv[]){
 	/////////////////////////////////////////////////
 	/*construct GMRES solver*/
 
+/*
 	RCP<Belos::SolverManager<Scalar,MV,OP> > solver;
 	if (myRank==0){
   		std::cout << "GMRES ]> Construct solver ..." << std::endl;
@@ -244,6 +245,7 @@ int main(int argc, char *argv[]){
 			printf("GMRES ]> This GMRES Component cannot be converged with given parameters\n");
 		}
 	}
+  */
 
   mpi_lsa_com_type_send(&COMM_FATHER, &type);
 

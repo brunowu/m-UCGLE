@@ -157,4 +157,26 @@ char *argsParserLsqrExec(int argc, char ** argv){
 
 }
 
+char **argsParserArnoldiRuntime(int argc, char ** argv){
+  
+  int i, j = 0;
+
+  char **arnoldi_runtime_args = new char* [14];
+  char *skr = new char [100];
+
+  for(i = 0; i < argc; i++){
+    //parse matrix market file name
+    memcpy(skr, argv[i] + 0, 10);
+    if (strcmp(skr,"--filename") == 0){
+      arnoldi_runtime_args[j] = new char [100];
+      strcpy(arnoldi_runtime_args[j], argv[i]);
+      printf("Parser Matrix filename Flag = %s  \n", arnoldi_runtime_args[j]);
+
+      j++;
+    }
+  }
+  
+  return arnoldi_runtime_args;
+
+}
 #endif
