@@ -10,6 +10,61 @@ Meanwhile, multiple GMRES allows to solve simultaneously non-Hermitian linear sy
 
 This software is underdevelopment by [Xinzhe Wu](https://brunowu.github.io/)...
 
+#### Installation
+The codes have dependency [Trilinos](https://trilinos.org).
+
+##### Installation script example for Trilinos
+```bash
+#!/bin/sh
+TRILINOS_PATH=/home/Username/../../trilinos-12.12.1-Source
+OPENMPI=${MPI_INSTALLATION_DIRECTORY}
+EXTRA_ARGS=$@
+
+rm -f CMakeCache.txt
+
+cmake \
+  -D CMAKE_BUILD_TYPE:STRING=DEBUG \
+  -D TPL_ENABLE_MPI:BOOL=ON \
+  -D MPI_BASE_DIR:PATH="$OPENMPI"\
+  -D MPI_BIN_DIR:PATH="$OPENMPI/bin"\
+  -D MPI_INCLUDE_PATH:PATH="$OPENMPI/include" \
+  -D MPI_USE_COMPILER_WRAPPERS:BOOL=ON \
+  -D MPI_Fortran_COMPILER:FILEPATH="$OPENMPI/bin/mpif90" \
+  -D MPI_CXX_COMPILER:FILEPATH="$OPENMPI/bin/mpicxx" \
+  -D MPI_C_COMPILER:FILEPATH="$OPENMPI/bin/mpicc" \
+  -D HAVE_GCC_ABI_DEMANGLE:BOOL=ON \
+  -D Trilinos_WARNINGS_AS_ERRORS_FLAGS:STRING="" \
+  -D DART_TESTING_TIMEOUT:STRING=600 \
+  -D CMAKE_VERBOSE_MAKEFILE:BOOL=TRUE \
+  -D Trilinos_ENABLE_CTrilinos:BOOL=ON\
+  -D Trilinos_ENABLE_ForTrilinos:BOOL=OFF\
+  -D ForTrilinos_ENABLE_TESTS:BOOL=OFF \
+  -D ForTrilinos_ENABLE_OBJECT_ORIENTED:BOOL=ON \
+  -D ForTrilinos_DISABLE_DEFERRED_LENGTH_CHARACTERS:BOOL=ON \
+  -D ForTrilinos_DISABLE_FINAL_SUBROUTINES:BOOL=ON \
+  -D ForTrilinos_ENABLE_EXAMPLES:BOOL=OFF \
+  -D Trilinos_ENABLE_TESTS:BOOL=OFF \
+  -D Trilinos_ENABLE_EXAMPLES:BOOL=OFF \
+  -D Trilinos_ENABLE_Kokkos=ON \
+  -D Trilinos_ENABLE_COMPLEX=ON \
+  -D Trilinos_ENABLE_Epetra=ON \
+  -D Trilinos_ENABLE_Tpetra=ON \
+  -D Trilinos_ENABLE_Belos=ON \
+  -D Trilinos_ENABLE_Anasazi=ON \
+  -D Trilinos_ENABLE_AztecOO=ONFF\
+  -D Trilinos_ENABLE_IFPACK=ON \
+  -D Trilinos_ENABLE_ifpack2=ON \
+  -D Trilinos_ENABLE_Teko=ON \
+  -D Trilinos_ENABLE_EpetraExt=ON \
+  -D Trilinos_ENABLE_Teuchos=ON \
+  -D Trilinos_ENABLE_TriUtils=ON \
+  -D CMAKE_INSTALL_PREFIX="../../install" \
+  -D TPL_ENABLE_Boost=OFF \
+  -D TPL_ENABLE_Netcdf=OFF \
+$EXTRA_ARGS \
+$TRILINOS_PATH
+```
+
 #### To run
 
 ```bash
