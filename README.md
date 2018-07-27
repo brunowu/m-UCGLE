@@ -20,7 +20,7 @@ mpirun -np 1 ./test.exe -nb_gmres 1 -proc_gmres 1 -nb_arnoldi 1 -proc_arnoldi 1 
 
 #### Arnoldi Runtime Flags
 
-```bash
+```
   options:
   --help                               Prints this help message
   --pause-for-debugging                Pauses for user input to allow attaching a debugger
