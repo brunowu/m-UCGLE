@@ -19,7 +19,9 @@ int main( int argc, char *argv[] ) {
   char *lsqr_cmd;
 
   char **args_arnoldi_runtime;
-  
+  char **args_gmres_runtime;
+  char **args_lsp_runtime;
+
 
   MPI_Init( &argc, &argv );
 
@@ -48,7 +50,8 @@ int main( int argc, char *argv[] ) {
   arnoldi_cmds = argsParserArnoldiExec(argc, argv, arnoldi_nb);
   lsqr_cmd = argsParserLsqrExec(argc, argv);
   args_arnoldi_runtime = argsParserArnoldiRuntime(argc, argv);
-
+  args_gmres_runtime = argsParserGMRESRuntime(argc, argv);
+  args_lsp_runtime = argsParserLSPRuntime(argc, argv);
 
   MPI_Comm COMM_GMRES[2], COMM_ARNOLDI[2], COMM_LS;
   MPI_Request gReq[gmres_proc], aReq[arnoldi_proc], lReq[ls_proc];
@@ -59,14 +62,14 @@ int main( int argc, char *argv[] ) {
   border_print2();
 
   for(i = 0; i < gmres_nb; i++){
-    MPI_Comm_spawn( gmres_cmds[i], MPI_ARGV_NULL, gmres_proc, MPI_INFO_NULL, 0, MPI_COMM_WORLD, &COMM_GMRES[i], MPI_ERRCODES_IGNORE);
+    MPI_Comm_spawn( gmres_cmds[i], args_gmres_runtime, gmres_proc, MPI_INFO_NULL, 0, MPI_COMM_WORLD, &COMM_GMRES[i], MPI_ERRCODES_IGNORE);
   }
 
   for( j = 0; j < arnoldi_nb; j++){
     MPI_Comm_spawn( arnoldi_cmds[j], args_arnoldi_runtime, arnoldi_proc, MPI_INFO_NULL, 0, MPI_COMM_WORLD, &COMM_ARNOLDI[j], MPI_ERRCODES_IGNORE);
   }
 
-  MPI_Comm_spawn( lsqr_cmd, MPI_ARGV_NULL, ls_proc, MPI_INFO_NULL, 0, MPI_COMM_WORLD, &COMM_LS, MPI_ERRCODES_IGNORE);
+  MPI_Comm_spawn( lsqr_cmd, args_lsp_runtime, ls_proc, MPI_INFO_NULL, 0, MPI_COMM_WORLD, &COMM_LS, MPI_ERRCODES_IGNORE);
 
   border_print2();
   center_print("Start Resolving Linear Systems by MUCGLE", 79);

@@ -87,19 +87,19 @@ int main(int argc, char *argv[]){
   	double t1, t2, t3, t4, t5, t6;
 
   	Teuchos::CommandLineProcessor cmdp(false,true);
-  	cmdp.setOption("verbose","quiet",&verbose,"Print messages and results.");
-  	cmdp.setOption("debug","nodebug",&debug,"Run debugging checks.");
-  	cmdp.setOption("frequency",&frequency,"Solvers frequency for printing residuals (#iters).");
- 	  cmdp.setOption("tol",&tol,"Relative residual tolerance used by solver.");
- 	  cmdp.setOption("num-rhs",&numVectors,"Number of right-hand sides to be solved for.");
- 	  cmdp.setOption("block-size",&blocksize,"Block size to be used by the solver.");
- 	  cmdp.setOption("use-precond","no-precond",&precond,"Use a diagonal preconditioner.");
-	  cmdp.setOption("num-blocks",&numblocks,"Number of blocks in the Krylov basis.");
-	  cmdp.setOption("reduce-tol","fixed-tol",&reduce_tol,"Require increased accuracy from higher precision scalar types.");
+  	cmdp.setOption("ksp-verbose","ksp-quiet",&verbose,"Print messages and results.");
+  	cmdp.setOption("ksp-debug","ksp-nodebug",&debug,"Run debugging checks.");
+  	cmdp.setOption("ksp-frequency",&frequency,"Solvers frequency for printing residuals (#iters).");
+ 	  cmdp.setOption("ksp-tol",&tol,"Relative residual tolerance used by solver.");
+ 	  cmdp.setOption("ksp-num-rhs",&numVectors,"Number of right-hand sides to be solved for.");
+ 	  cmdp.setOption("ksp-block-size",&blocksize,"Block size to be used by the solver.");
+ 	  cmdp.setOption("ksp-use-precond","ksp-no-precond",&precond,"Use a diagonal preconditioner.");
+	  cmdp.setOption("ksp-num-blocks",&numblocks,"Number of blocks in the Krylov basis.");
+	  cmdp.setOption("ksp-reduce-tol","ksp-fixed-tol",&reduce_tol,"Require increased accuracy from higher precision scalar types.");
   	cmdp.setOption("filename",&filename,"Filename for Matrix-Market test matrix.");
-  	cmdp.setOption("print-matrix","no-print-matrix",&printMatrix,"Print the full matrix after reading it.");
-  	cmdp.setOption("all-print","root-print",&allprint,"All processors print to out");
-  	cmdp.setOption("dump-data","no-dump-data",&dumpdata,"Dump raw data to data.dat.");
+  	cmdp.setOption("ksp-print-matrix","ksp-no-print-matrix",&printMatrix,"Print the full matrix after reading it.");
+  	cmdp.setOption("ksp-all-print","ksp-root-print",&allprint,"All processors print to out");
+  	cmdp.setOption("ksp-dump-data","ksp-no-dump-data",&dumpdata,"Dump raw data to data.dat.");
 
   	if (cmdp.parse(argc,argv) != Teuchos::CommandLineProcessor::PARSE_SUCCESSFUL) {
     	return -1;
@@ -202,7 +202,7 @@ int main(int argc, char *argv[]){
 	/////////////////////////////////////////////////
 	/*construct GMRES solver*/
 
-/*
+
 	RCP<Belos::SolverManager<Scalar,MV,OP> > solver;
 	if (myRank==0){
   		std::cout << "GMRES ]> Construct solver ..." << std::endl;
@@ -245,7 +245,7 @@ int main(int argc, char *argv[]){
 			printf("GMRES ]> This GMRES Component cannot be converged with given parameters\n");
 		}
 	}
-  */
+  
 
   mpi_lsa_com_type_send(&COMM_FATHER, &type);
 

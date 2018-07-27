@@ -161,8 +161,9 @@ char **argsParserArnoldiRuntime(int argc, char ** argv){
   
   int i, j = 0;
 
-  char **arnoldi_runtime_args = new char* [14];
+  char **arnoldi_runtime_args = new char* [30];
   char *skr = new char [100];
+  char *eps = new char [100];
 
   for(i = 0; i < argc; i++){
     //parse matrix market file name
@@ -171,12 +172,90 @@ char **argsParserArnoldiRuntime(int argc, char ** argv){
       arnoldi_runtime_args[j] = new char [100];
       strcpy(arnoldi_runtime_args[j], argv[i]);
       printf("Parser Matrix filename Flag = %s  \n", arnoldi_runtime_args[j]);
+      j++;
+    }
+  }
 
+  for(i = 0; i < argc; i++){
+    //parse arnoldi runtime parameters
+    memcpy(eps, argv[i] + 0, 5);
+    if (strcmp(eps,"--eps") == 0){
+      arnoldi_runtime_args[j] = new char [100];
+      strcpy(arnoldi_runtime_args[j], argv[i]);
+      printf("Parser Arnoldi runtime Flag = %s  \n", arnoldi_runtime_args[j]);
       j++;
     }
   }
   
+
+  delete [] skr;
+  delete [] eps;
+
   return arnoldi_runtime_args;
 
 }
+
+char **argsParserGMRESRuntime(int argc, char ** argv){
+  
+  int i, j = 0;
+
+  char **gmres_runtime_args = new char* [30];
+  char *skr = new char [100];
+  char *ksp = new char [100];
+
+  for(i = 0; i < argc; i++){
+    //parse matrix market file name
+    memcpy(skr, argv[i] + 0, 10);
+    if (strcmp(skr,"--filename") == 0){
+      gmres_runtime_args[j] = new char [100];
+      strcpy(gmres_runtime_args[j], argv[i]);
+      printf("Parser Matrix filename Flag = %s  \n", gmres_runtime_args[j]);
+      j++;
+    }
+  }
+
+  for(i = 0; i < argc; i++){
+    //parse arnoldi runtime parameters
+    memcpy(ksp, argv[i] + 0, 5);
+    if (strcmp(ksp,"--ksp") == 0){
+      gmres_runtime_args[j] = new char [100];
+      strcpy(gmres_runtime_args[j], argv[i]);
+      printf("Parser GMRES runtime Flag = %s  \n", gmres_runtime_args[j]);
+      j++;
+    }
+  }
+  
+
+  delete [] skr;
+  delete [] ksp;
+
+  return gmres_runtime_args;
+  
+}
+
+char **argsParserLSPRuntime(int argc, char ** argv){
+  
+  int i, j = 0;
+
+  char **lsp_runtime_args = new char* [30];
+  char *lsp = new char [100];
+
+  for(i = 0; i < argc; i++){
+    //parse arnoldi runtime parameters
+    memcpy(lsp, argv[i] + 0, 5);
+    if (strcmp(lsp,"--lsp") == 0){
+      lsp_runtime_args[j] = new char [100];
+      strcpy(lsp_runtime_args[j], argv[i]);
+      printf("Parser Least Square Polynomial runtime Flag = %s  \n", lsp_runtime_args[j]);
+      j++;
+    }
+  }
+  
+
+  delete [] lsp;
+
+  return lsp_runtime_args;
+  
+}
+
 #endif

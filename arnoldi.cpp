@@ -112,19 +112,19 @@ int main( int argc, char *argv[] ){
   int maxRestarts = 100;
 
   Teuchos::CommandLineProcessor cmdp(false,true);
-  cmdp.setOption("verbose","quiet",&verbose,"Print messages and results.");
-  cmdp.setOption("debug","nodebug",&debug,"Print debugging information.");
-  cmdp.setOption("insitu","exsitu",&insitu,"Perform in situ restarting.");
-  cmdp.setOption("sort",&which,"Targetted eigenvalues (SM or LM).");
-  cmdp.setOption("herm","nonherm",&herm,"Solve Hermitian or non-Hermitian problem.");
+  cmdp.setOption("eps-verbose","eps-quiet",&verbose,"Print messages and results.");
+  cmdp.setOption("eps-debug","eps-nodebug",&debug,"Print debugging information.");
+  cmdp.setOption("eps-insitu","eps-exsitu",&insitu,"Perform in situ restarting.");
+  cmdp.setOption("eps-sort",&which,"Targetted eigenvalues (SM or LM).");
+  cmdp.setOption("eps-herm","eps-nonherm",&herm,"Solve Hermitian or non-Hermitian problem.");
   cmdp.setOption("filename",&filename,"Filename for Harwell-Boeing test matrix (assumes non-Hermitian unless specified otherwise).");
-  cmdp.setOption("nev",&nev,"Number of eigenvalues to compute.");
-  cmdp.setOption("blockSize",&blockSize,"Block size for the algorithm.");
-  cmdp.setOption("tol",&tol,"Tolerance for convergence.");
-  cmdp.setOption("print-matrix","no-print-matrix",&printMatrix,"Print the full matrix after reading it.");
-  cmdp.setOption("all-print","root-print",&allprint,"All processors print to out");
-  cmdp.setOption("numBlocks",&numBlocks,"Number of blocks in Krylov basis.");
-  cmdp.setOption("maxRestarts",&maxRestarts,"Number of restarts allowed.");
+  cmdp.setOption("eps-nev",&nev,"Number of eigenvalues to compute.");
+  cmdp.setOption("eps-blockSize",&blockSize,"Block size for the algorithm.");
+  cmdp.setOption("eps-tol",&tol,"Tolerance for convergence.");
+  cmdp.setOption("eps-print-matrix","eps-no-print-matrix",&printMatrix,"Print the full matrix after reading it.");
+  cmdp.setOption("eps-all-print","eps-root-print",&allprint,"All processors print to out");
+  cmdp.setOption("eps-numBlocks",&numBlocks,"Number of blocks in Krylov basis.");
+  cmdp.setOption("eps-maxRestarts",&maxRestarts,"Number of restarts allowed.");
 
   if (cmdp.parse(argc,argv) != Teuchos::CommandLineProcessor::PARSE_SUCCESSFUL) {
     return -1;
