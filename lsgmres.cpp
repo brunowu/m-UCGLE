@@ -76,7 +76,7 @@ int main(int argc, char *argv[]){
   	std::string filename("utm300.mtx");
   	int frequency 	   = -1;
   	int numVectors 	   = 2;
-	  int blocksize 	   = 100;
+	int blocksize 	   = 100;
   	int numblocks 	   = 50;
   	double tol 		   = 1.0e-5;
   	bool precond 	   = false;
@@ -85,6 +85,10 @@ int main(int argc, char *argv[]){
   	Teuchos::ParameterList mptestpl;
   	Belos::ReturnType ret;
   	double t1, t2, t3, t4, t5, t6;
+
+	int lsPower = 10;
+	int latency = 1;
+	bool lspuse = true;
 
   	Teuchos::CommandLineProcessor cmdp(false,true);
   	cmdp.setOption("ksp-verbose","ksp-quiet",&verbose,"Print messages and results.");
@@ -101,6 +105,12 @@ int main(int argc, char *argv[]){
   	cmdp.setOption("ksp-all-print","ksp-root-print",&allprint,"All processors print to out");
   	cmdp.setOption("ksp-dump-data","ksp-no-dump-data",&dumpdata,"Dump raw data to data.dat.");
 
+
+	cmdp.setOption("ksp-lsp-degree",&lsPower,"Least Square polynomial degree for preconditioning.");
+        cmdp.setOption("ksp-lsp-latency",&lsPower,"Latency of Least Square polynomial preconditioning to apply.");
+
+	cmdp.setOption("ksp-use-lsp","ksp-no-use-lsp",&lspuse, "Whether to use LS polynomial preconditioning.");
+
   	if (cmdp.parse(argc,argv) != Teuchos::CommandLineProcessor::PARSE_SUCCESSFUL) {
     	return -1;
   	}
@@ -115,6 +125,10 @@ int main(int argc, char *argv[]){
 
 	mptestpl.set( "Block Size", blocksize );
  	mptestpl.set( "Num Blocks", numblocks);
+	
+	mptestpl.set("LS Polynomial Degree", lsPower);
+        mptestpl.set("LS Apply Latency", latency);
+        mptestpl.set("LS USE", lspuse);
 
   	mptestpl.set<MT>( "Convergence Tolerance", tol );
   	mptestpl.set( "Timer Label",  Teuchos::typeName(ONE) );
@@ -202,7 +216,7 @@ int main(int argc, char *argv[]){
 	/////////////////////////////////////////////////
 	/*construct GMRES solver*/
 
-/*
+
 	RCP<Belos::SolverManager<Scalar,MV,OP> > solver;
 	if (myRank==0){
   		std::cout << "GMRES ]> Construct solver ..." << std::endl;
@@ -246,7 +260,7 @@ int main(int argc, char *argv[]){
 		}
 	}
   
-*/
+
 
   mpi_lsa_com_type_send(&COMM_FATHER, &type);
 

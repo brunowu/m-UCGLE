@@ -7,7 +7,7 @@
 #include <unistd.h>
 
 #ifndef EIGEN_ALL
-#define EIGEN_ALL 1000
+#define EIGEN_ALL 10
 #endif
 
 
@@ -64,13 +64,13 @@ int main( int argc, char *argv[] ) {
   for(i = 0; i < gmres_nb; i++){
     MPI_Comm_spawn( gmres_cmds[i], args_gmres_runtime, gmres_proc, MPI_INFO_NULL, 0, MPI_COMM_WORLD, &COMM_GMRES[i], MPI_ERRCODES_IGNORE);
   }
-
   for( j = 0; j < arnoldi_nb; j++){
     MPI_Comm_spawn( arnoldi_cmds[j], args_arnoldi_runtime, arnoldi_proc, MPI_INFO_NULL, 0, MPI_COMM_WORLD, &COMM_ARNOLDI[j], MPI_ERRCODES_IGNORE);
   }
 
   MPI_Comm_spawn( lsqr_cmd, args_lsp_runtime, ls_proc, MPI_INFO_NULL, 0, MPI_COMM_WORLD, &COMM_LS, MPI_ERRCODES_IGNORE);
 
+  printf("HEYHEYHEY\n");
   border_print2();
   center_print("Start Resolving Linear Systems by MUCGLE", 79);
   border_print2();
@@ -194,10 +194,6 @@ int main( int argc, char *argv[] ) {
     }
   }
   
-
-  delete [] data;
-  delete [] data_recv;
-
   for(i = 0; i < gmres_nb; i++){
       delete [] gmres_cmds[i];
   }

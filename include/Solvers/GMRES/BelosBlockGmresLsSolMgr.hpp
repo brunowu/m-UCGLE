@@ -342,6 +342,11 @@ private:
   static const std::string orthoType_default_;
   static const Teuchos::RCP<std::ostream> outputStream_default_;
 
+//LS poynomial degree parameter
+  static const int lsPower_default_;
+  static const int lsLatency_default_;
+  static const bool useLsp_default_;
+
   // Current solver values.
   MagnitudeType convtol_, orthoKappa_, achievedTol_;
   int maxRestarts_, maxIters_, numIters_;
@@ -349,6 +354,9 @@ private:
   bool adaptiveBlockSize_, showMaxResNormOnly_, isFlexible_, expResTest_;
   std::string orthoType_;
   std::string impResScale_, expResScale_;
+
+  int lsPower_, lsLatency_;
+  bool useLsp_;
 
   // Timers.
   std::string label_;
@@ -415,6 +423,15 @@ const std::string BlockGmresSolMgr<ScalarType,MV,OP>::orthoType_default_ = "DGKS
 template<class ScalarType, class MV, class OP>
 const Teuchos::RCP<std::ostream> BlockGmresSolMgr<ScalarType,MV,OP>::outputStream_default_ = Teuchos::rcp(&std::cout,false);
 
+template<class ScalarType, class MV, class OP>
+const int BlockGmresSolMgr<ScalarType,MV,OP>::lsPower_default_ = 5;
+
+template<class ScalarType, class MV, class OP>
+const int BlockGmresSolMgr<ScalarType,MV,OP>::lsLatency_default_ = 1;
+
+template<class ScalarType, class MV, class OP>
+const bool BlockGmresSolMgr<ScalarType,MV,OP>::useLsp_default_ = true;
+
 
 // Empty Constructor
 template<class ScalarType, class MV, class OP>
@@ -426,6 +443,11 @@ BlockGmresSolMgr<ScalarType,MV,OP>::BlockGmresSolMgr() :
   maxRestarts_(maxRestarts_default_),
   maxIters_(maxIters_default_),
   numIters_(0),
+
+  lsPower_(lsPower_default_),
+  lsLatency_(lsLatency_default_),
+  useLsp_(useLsp_default_),
+
   blockSize_(blockSize_default_),
   numBlocks_(numBlocks_default_),
   verbosity_(verbosity_default_),
@@ -458,6 +480,11 @@ BlockGmresSolMgr (const Teuchos::RCP<LinearProblem<ScalarType,MV,OP> > &problem,
   maxRestarts_(maxRestarts_default_),
   maxIters_(maxIters_default_),
   numIters_(0),
+
+  lsPower_(lsPower_default_),
+  lsLatency_(lsLatency_default_),
+  useLsp_(useLsp_default_),
+
   blockSize_(blockSize_default_),
   numBlocks_(numBlocks_default_),
   verbosity_(verbosity_default_),
@@ -505,6 +532,17 @@ BlockGmresSolMgr<ScalarType,MV,OP>::getValidParameters() const
     pl->set("Num Blocks", numBlocks_default_,
       "The maximum number of blocks allowed in the Krylov subspace\n"
       "for each set of RHS solved.");
+
+    pl->set("LS Polynomial Degree", lsPower_default_,
+      "The Least Square polynomial degree for LS preconditioning.");    
+
+    pl->set("LS Apply Latency", lsLatency_default_,
+      "The latency of Least Square polynomial preconditioning to apply.");
+
+    pl->set("LS USE", useLsp_default_,
+      "The flag indicates if use Least Square polynomial preconditioning.");
+
+
     pl->set("Block Size", blockSize_default_,
       "The number of vectors in each block.  This number times the\n"
       "number of blocks is the total Krylov subspace dimension.");
@@ -605,6 +643,34 @@ void BlockGmresSolMgr<ScalarType,MV,OP>::setParameters( const Teuchos::RCP<Teuch
     // Update parameter in our list.
     params_->set("Num Blocks", numBlocks_);
   }
+
+
+
+  // check for the least square polynomial degree
+  if (params->isParameter("LS Polynomial Degree")){
+    lsPower_ = params->get("LS Polynomial Degree", lsPower_default_);
+
+  // update parameter in our list
+    params_->set("LS Polynomial Degree", lsPower_);
+  }
+
+  // check for the least square polynomial latency
+  if (params->isParameter("LS Apply Latency")){
+    lsLatency_ = params->get("LS Apply Latency", lsLatency_default_);
+  
+  // update parameter in our list
+    params_->set("LS Apply Latency", lsPower_);
+  }
+
+  // check if use LSP
+  if (params->isParameter("LS USE")){
+    useLsp_ = params->get("LS USE", useLsp_default_);
+
+  // update parameter in our list
+    params_->set("LS USE", useLsp_);
+
+  }
+
 
   // Check to see if the timer label changed.
   if (params->isParameter("Timer Label")) {
@@ -1105,6 +1171,10 @@ ReturnType BlockGmresSolMgr<ScalarType,MV,OP>::solve() {
       int grank;
       MPI_Comm_rank(MPI_COMM_WORLD, &grank);
 
+      printf("LS POWER = %d, LS LATENCY = %d\n",lsPower_, lsLatency_);
+
+      if(useLsp_){printf("To Use LS preconditioning for solving");}
+
       while(1) {
         // tell block_gmres_iter to iterate
         try {
@@ -1159,7 +1229,7 @@ ReturnType BlockGmresSolMgr<ScalarType,MV,OP>::solve() {
               Teuchos::RCP<MV> curX = problem_->getCurrLHSVec();
               MVT::MvAddMv( 1.0, *curX, 1.0, *update, *curX );
             }
-            else if(!LSResUpdate(problem_)){
+            else if((!LSResUpdate(problem_, lsPower_, lsLatency_, useLsp_)) && (useLsp_)){
               if(grank == 0){
                   printf("LS update the restarted residual inside GMRES\n");
               }

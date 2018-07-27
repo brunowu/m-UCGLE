@@ -30,6 +30,11 @@
 #include <MatrixMarket_Tpetra.hpp>
 #include <Tpetra_Import.hpp>
 
+#ifndef EIGEN_ALL
+#define EIGEN_ALL 10
+#endif
+
+
 using Tpetra::CrsMatrix;
 using Tpetra::Map;
 using std::vector;
@@ -103,7 +108,7 @@ int main( int argc, char *argv[] ){
   bool herm = false;
   std::string which("LM");
   std::string filename;
-  int nev = 10;
+  int nev = EIGEN_ALL;
   int blockSize = 1;
   MT tol = 1.0e-1;
   bool printMatrix   = false;
