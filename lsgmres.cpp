@@ -15,15 +15,15 @@
 #include "BelosLinearProblem.hpp"
 #include "BelosTpetraAdapter.hpp"
 
-#include "Solvers/GMRES/BelosBlockGmresLsSolMgr.hpp"
+#include "include/Solvers/GMRES/BelosBlockGmresLsSolMgr.hpp"
 
 // I/O for Matrix-Market files
 #include <MatrixMarket_Tpetra.hpp>
 #include <Tpetra_Import.hpp>
 
-#include "Solvers/GMRES/LSResUpdate.hpp"
+#include "include/Solvers/GMRES/LSResUpdate.hpp"
 
-#include "Libs/mpi_lsa_com.hpp"
+#include "include/Libs/mpi_lsa_com.hpp"
 
 
 int main(int argc, char *argv[]){
@@ -202,7 +202,7 @@ int main(int argc, char *argv[]){
 	/////////////////////////////////////////////////
 	/*construct GMRES solver*/
 
-
+/*
 	RCP<Belos::SolverManager<Scalar,MV,OP> > solver;
 	if (myRank==0){
   		std::cout << "GMRES ]> Construct solver ..." << std::endl;
@@ -246,6 +246,7 @@ int main(int argc, char *argv[]){
 		}
 	}
   
+*/
 
   mpi_lsa_com_type_send(&COMM_FATHER, &type);
 

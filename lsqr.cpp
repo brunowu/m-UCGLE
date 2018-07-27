@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <cstdio>
 #include <mpi.h>
-#include "Libs/mpi_lsa_com.hpp"
+#include "include/Libs/mpi_lsa_com.hpp"
 #include <complex>
-#include "Solvers/Utils/libs.hpp"
-#include "Solvers/Utils/convhull.hpp"
-#include "Solvers/Utils/ellipse.hpp"
-#include "Solvers/LS/precond.hpp"
+#include "include/Solvers/Utils/libs.hpp"
+#include "include/Solvers/Utils/convhull.hpp"
+#include "include/Solvers/Utils/ellipse.hpp"
+#include "include/Solvers/LS/precond.hpp"
 #include <cstring>
 #include <iostream>
 #include <complex>

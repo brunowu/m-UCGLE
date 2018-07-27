@@ -39,6 +39,11 @@
 // ************************************************************************
 //@HEADER
 
+/*! The original file is BelosBlockGmresSolMgr.hpp in Belos
+ *  It is modified by Xinzhe Wu to adapt the Least Square polynomial preconditioning.
+ */
+
+
 #ifndef BELOS_BLOCK_GMRES_SOLMGR_HPP
 #define BELOS_BLOCK_GMRES_SOLMGR_HPP
 

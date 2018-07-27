@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <mpi.h>
-#include "Libs/mpi_lsa_com.hpp"
+#include "include/Libs/mpi_lsa_com.hpp"
 #include <complex>
 #include <unistd.h>
 

@@ -57,14 +57,14 @@ Testing Scalar == double
 GMRES ]> Building problem...
 Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name mdlsmc232 and rank 0!
 Info ]> The Comm world size of ERAM is 1 
+GMRES ]> Load matrix: utm300.mtx from local filesystem
 Arnoldi in Trilinos said: my rank = 0
 Parser the MATRIX file NAME = utm300.mtx ! 
 Anasazi Version 12.12d
 
 Anasazi Scalar type == double
 ERAM ]> Building problem... double
-GMRES ]> Load matrix: utm300.mtx from local filesystem
-Building TIME = 0.060290
+Building TIME = 0.050601
 GMRES ]> GMRES send exit signal
 --------------------------------------------------------------------------------
                     Start Resolving Linear Systems by MUCGLE
@@ -107,14 +107,14 @@ CURRENT RITZ VALUES
 
 Timer Name                                           Global time (num calls)    
 --------------------------------------------------------------------------------
-Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.01202 (1)                
-Anasazi: BlockKrylovSchur::Computing Schur form      0.01848 (1)                
-Anasazi: BlockKrylovSchur::Operation Op*x            0.01854 (101)              
-Anasazi: BlockKrylovSchur::Orthogonalization         0.2135 (102)               
-Anasazi: BlockKrylovSchur::Sorting Ritz values       0.001625 (1)               
-Anasazi: BlockKrylovSchur::Sorting Schur form        0.007197 (1)               
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.01483 (1)                
+Anasazi: BlockKrylovSchur::Computing Schur form      0.02015 (1)                
+Anasazi: BlockKrylovSchur::Operation Op*x            0.0204 (101)               
+Anasazi: BlockKrylovSchur::Orthogonalization         0.2375 (102)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.0001781 (1)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.006128 (1)               
 Anasazi: BlockKrylovSchurSolMgr restarting           0 (0)                      
-Anasazi: BlockKrylovSchurSolMgr::solve()             0.2851 (1)                 
+Anasazi: BlockKrylovSchurSolMgr::solve()             0.3158 (1)                 
 ================================================================================
 NUMVECS = 10
 Evals[1] = -1.595404 + 0.000000i
@@ -171,14 +171,14 @@ CURRENT RITZ VALUES
 
 Timer Name                                           Global time (num calls)    
 --------------------------------------------------------------------------------
-Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.02046 (2)                
-Anasazi: BlockKrylovSchur::Computing Schur form      0.03163 (2)                
-Anasazi: BlockKrylovSchur::Operation Op*x            0.03366 (202)              
-Anasazi: BlockKrylovSchur::Orthogonalization         0.3886 (204)               
-Anasazi: BlockKrylovSchur::Sorting Ritz values       0.001733 (2)               
-Anasazi: BlockKrylovSchur::Sorting Schur form        0.01171 (2)                
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.02538 (2)                
+Anasazi: BlockKrylovSchur::Computing Schur form      0.03607 (2)                
+Anasazi: BlockKrylovSchur::Operation Op*x            0.03514 (202)              
+Anasazi: BlockKrylovSchur::Orthogonalization         0.4142 (204)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.0002983 (2)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.01103 (2)                
 Anasazi: BlockKrylovSchurSolMgr restarting           0 (0)                      
-Anasazi: BlockKrylovSchurSolMgr::solve()             0.513 (2)                  
+Anasazi: BlockKrylovSchurSolMgr::solve()             0.55 (2)                   
 ================================================================================
 NUMVECS = 10
 Evals[1] = -1.595404 + 0.000000i
@@ -228,14 +228,14 @@ CURRENT RITZ VALUES
 
 Timer Name                                           Global time (num calls)    
 --------------------------------------------------------------------------------
-Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.03108 (3)                
-Anasazi: BlockKrylovSchur::Computing Schur form      0.04484 (3)                
-Anasazi: BlockKrylovSchur::Operation Op*x            0.04816 (303)              
-Anasazi: BlockKrylovSchur::Orthogonalization         0.5586 (306)               
-Anasazi: BlockKrylovSchur::Sorting Ritz values       0.001836 (3)               
-Anasazi: BlockKrylovSchur::Sorting Schur form        0.01665 (3)                
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.03469 (3)                
+Anasazi: BlockKrylovSchur::Computing Schur form      0.0552 (3)                 
+Anasazi: BlockKrylovSchur::Operation Op*x            0.05397 (303)              
+Anasazi: BlockKrylovSchur::Orthogonalization         0.6633 (306)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.0004153 (3)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.01854 (3)                
 Anasazi: BlockKrylovSchurSolMgr restarting           0 (0)                      
-Anasazi: BlockKrylovSchurSolMgr::solve()             0.7374 (3)                 
+Anasazi: BlockKrylovSchurSolMgr::solve()             0.8704 (3)                 
 ================================================================================
 NUMVECS = 10
 Evals[1] = -1.595404 + 0.000000i

@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <mpi.h>
-#include "Libs/mpi_lsa_com.hpp"
-#include "Libs/args_parser.hpp"
-#include "utils/logo.h"
+#include "include/Libs/mpi_lsa_com.hpp"
+#include "include/Libs/args_parser.hpp"
+#include "include/Libs/logo.h"
 #include <complex>
 #include <unistd.h>
 
