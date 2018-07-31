@@ -160,16 +160,6 @@ int main( int argc, char *argv[] ) {
   int exit_signal_arnoldi[arnoldi_nb];
   int arnoldi_exit = 0;
 
-  for(i = 0; i < arnoldi_nb; i++){
-    if(!mpi_lsa_com_type_recv(&COMM_ARNOLDI[i], &exit_signal_arnoldi[i])){
-      if (exit_signal_arnoldi[i] == 777){
-        printf("exit_signal = %d\n", exit_signal_arnoldi[i]);
-        arnoldi_exit = arnoldi_exit + 1;
-      }
-    }
-  }
-
-
   for(i = 0; i < gmres_nb; i++){
     mpi_lsa_com_type_send(&COMM_GMRES[i], &exit_signal_gmres);
     printf("Main ]> Father has final exit signal to GMRES Component\n" );
@@ -179,20 +169,14 @@ int main( int argc, char *argv[] ) {
   center_print("Remove Application", 79);
   border_print2();
 
-  if(arnoldi_exit == arnoldi_nb){
-    for(j = 0; j < arnoldi_nb; j++){
-      delete [] arnoldi_cmds[j];
-      MPI_Comm_free(&COMM_ARNOLDI[j]);
-      printf("Main ]> Main Free the Arnoldi Components\n" );
-    }
-  }else{
-    usleep(1000000);
-    for(j = 0; j < arnoldi_nb; j++){
+
+  usleep(1000000);
+  for(j = 0; j < arnoldi_nb; j++){
       delete [] arnoldi_cmds[j];
       MPI_Comm_free(&COMM_ARNOLDI[j]);
       printf("Main ]> Main Free the Arnoldi Components after waiting a little instant\n" );
-    }
   }
+  
   
   for(i = 0; i < gmres_nb; i++){
       delete [] gmres_cmds[i];

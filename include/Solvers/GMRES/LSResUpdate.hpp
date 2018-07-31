@@ -24,17 +24,28 @@
 #include "../../Libs/mpi_lsa_com.hpp"
 #include <unistd.h>
 
+// SMG2S test matrix generation with given spectra
+#include "../../SMG2S/smg2s/smg2s.h"
 
-typedef double Scalar;
-typedef Teuchos::ScalarTraits<Scalar>         	SCT;
+// SMG2S interface to Trilinos/teptra csr sparse matrix
+#include "../../SMG2S/interface/Trilinos/trilinos_interface.hpp"
+
+
+#ifdef __USE_COMPLEX__
+typedef std::complex<double>                  	ST;
+#else
+typedef double                                	ST;
+#endif
+
+typedef Teuchos::ScalarTraits<ST>         		SCT;
 typedef Tpetra::Map<>::local_ordinal_type 		LO;
 typedef Tpetra::Map<>::global_ordinal_type 		GO;
-typedef Tpetra::MultiVector<Scalar,LO,GO> 		MV;
-typedef Belos::MultiVecTraits<Scalar,MV> MVT;
-typedef Tpetra::Operator<Scalar,int>         OP;
-typedef Belos::OperatorTraits<Scalar,MV,OP> OPT;
-typedef Teuchos::ScalarTraits<Scalar> SCT;
-typedef SCT::magnitudeType MT;
+typedef Tpetra::MultiVector<ST,LO,GO> 			MV;
+typedef Belos::MultiVecTraits<ST,MV> 			MVT;
+typedef Tpetra::Operator<ST,int>         		OP;
+typedef Belos::OperatorTraits<ST,MV,OP> 		OPT;
+typedef Teuchos::ScalarTraits<ST> 				SCT;
+typedef SCT::magnitudeType 						MT;
 
 using Tpetra::global_size_t;
 using Tpetra::Map;
@@ -44,7 +55,7 @@ using Teuchos::rcp;
 
 static int latency_count = 0;
 
-int LSResUpdate(const Teuchos::RCP<Belos::LinearProblem<Scalar,MV,OP> > &problem, int ls_power, int latency, bool uselsp){
+int LSResUpdate(const Teuchos::RCP<Belos::LinearProblem<ST,MV,OP> > &problem, int ls_power, int latency, bool uselsp){
 	//simulation of the received data from LS
 	int rank;
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
@@ -72,6 +83,7 @@ int LSResUpdate(const Teuchos::RCP<Belos::LinearProblem<Scalar,MV,OP> > &problem
   	int i, j, k;
 
 	if(uselsp){
+
 
 		printf("Hey LS PPOWER = %d, LS Latency = %d\n", ls_power, latency);
 	  	latency_count++;
@@ -114,7 +126,7 @@ int LSResUpdate(const Teuchos::RCP<Belos::LinearProblem<Scalar,MV,OP> > &problem
 		Teuchos::RCP<const MV> vec_rhs = problem->getRHS();
 		//std::cout <<*B << std::endl;
 		
-		const Scalar ONE  = SCT::one();
+		const ST ONE  = SCT::one();
 
 		int numVectors = vec_rhs->getNumVectors();
 		std::cout <<"numVectors = : " << numVectors<< std::endl;
@@ -205,13 +217,13 @@ int LSResUpdate(const Teuchos::RCP<Belos::LinearProblem<Scalar,MV,OP> > &problem
 
 		    MVT::MvNorm( *vec_rhs, normB);
 
-		    std::vector<Scalar>::iterator iter_begin = normV.begin();
-		    std::vector<Scalar>::iterator iter_end   = normV.end();
-		    std::vector<Scalar>::iterator iter;
+		    std::vector<double>::iterator iter_begin = normV.begin();
+		    std::vector<double>::iterator iter_end   = normV.end();
+		    std::vector<double>::iterator iter;
 
-		    std::vector<Scalar>::iterator iterB_begin = normB.begin();
-		    std::vector<Scalar>::iterator iterB_end   = normB.end();
-		    std::vector<Scalar>::iterator iterB;
+		    std::vector<double>::iterator iterB_begin = normB.begin();
+		    std::vector<double>::iterator iterB_end   = normB.end();
+		    std::vector<double>::iterator iterB;
 
 		    normBB = normB.data();
 		    normVV = normV.data();

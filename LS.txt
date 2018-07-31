@@ -1,0 +1,1495 @@
+================================================================================
+
+
+
+             MUCGLE: Multiple Unite and Conquer GMRES/LS-ERAM Method
+
+
+
+================================================================================
+            Developed by Xinzhe WU at Maison de la Simulation, France
+================================================================================
+
+
+
+--------------------------------------------------------------------------------
+                              Start Initialization
+--------------------------------------------------------------------------------
+Initialization ]> GMRES executable number is 1 
+Initialization ]> Each GMRES Proc number is 2 
+Initialization ]> ERAM executable number is 1 
+Initialization ]> Each ERAM Proc number is 1 
+Initialization ]> Thus Total proc number = 1 + 1 + 1 * 2 + 1 * 1 = 5 
+Initialization ]> GMRES executable name list is: [ ./gmres.exe  ]
+Initialization ]> ERAM executable name list is: [ ./arnoldi.exe  ]
+Initialization ]> LS executable name list is: [ ./lsqr.exe  ]
+Parser Arnoldi runtime Flag = --eps-quiet  
+Parser Arnoldi runtime Flag = --eps-nodebug  
+Parser Arnoldi runtime Flag = --eps-exsitu  
+Parser Arnoldi runtime Flag = --eps-sort="LM"  
+Parser Arnoldi runtime Flag = --eps-nonherm  
+Parser Arnoldi runtime Flag = --eps-nev=10  
+Parser Arnoldi runtime Flag = --eps-blockSize=1  
+Parser Arnoldi runtime Flag = --eps-tol=0.1  
+Parser Arnoldi runtime Flag = --eps-no-print-matrix  
+Parser Arnoldi runtime Flag = --eps-all-print  
+Parser Arnoldi runtime Flag = --eps-numBlocks=20  
+Parser Arnoldi runtime Flag = --eps-maxRestarts=50  
+Parser GMRES runtime Flag = --ksp-nodebug  
+Parser GMRES runtime Flag = --ksp-frequency=1  
+Parser GMRES runtime Flag = --ksp-tol=1e-05  
+Parser GMRES runtime Flag = --ksp-num-rhs=2  
+Parser GMRES runtime Flag = --ksp-block-size=2  
+Parser GMRES runtime Flag = --ksp-no-precond  
+Parser GMRES runtime Flag = --ksp-num-blocks=45  
+Parser GMRES runtime Flag = --ksp-fixed-tol  
+Parser GMRES runtime Flag = --ksp-no-print-matrix  
+Parser GMRES runtime Flag = --ksp-all-print  
+Parser GMRES runtime Flag = --ksp-no-dump-data  
+Parser GMRES runtime Flag = --ksp-lsp-degree=15  
+Parser GMRES runtime Flag = --ksp-lsp-latency=1  
+Parser GMRES runtime Flag = --ksp-use-lsp  
+--------------------------------------------------------------------------------
+                           Start Spawning Executables
+--------------------------------------------------------------------------------
+Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name romeo1 and rank 0!
+Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name romeo1 and rank 1!
+Testing Scalar == complex<double>
+GMRES ]> Building problem...
+Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name romeo1 and rank 0!
+Info ]> The Comm world size of ERAM is 1 
+Arnoldi in Trilinos said: my rank = 0
+Anasazi Version 12.12d
+
+Anasazi Scalar type == complex<double>
+ERAM ]> Building problem... complex<double>
+HEYHEYHEY
+--------------------------------------------------------------------------------
+                    Start Resolving Linear Systems by MUCGLE
+--------------------------------------------------------------------------------
+exit_type[0] = 0
+Info ]> The Comm world size of LS is 1 
+LS POWER = 1, LS LATENCY = 1
+GMRES ]> Load matrix: mhd1280a.mtx from local filesystem
+
+Tpetra::CrsMatrix (Kokkos refactor): {isFillComplete: true, global dimensions: [1280, 1280], global number of entries: 47906}
+
+Building TIME = 0.288561
+GMRES ]> Construct solver ...
+Construct TIME = 0.000328
+GMRES ]> Solving problem ...
+LS POWER = 1, LS LATENCY = 1
+To Use LS preconditioning for solving
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (1, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 0 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1 > 1e-05
+                  residual [ 1 ] = 1 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (2, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 1 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.99544 > 1e-05
+                  residual [ 1 ] = 0.996719 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (3, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 2 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.351196 > 1e-05
+                  residual [ 1 ] = 0.431661 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (4, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 3 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.349153 > 1e-05
+                  residual [ 1 ] = 0.427506 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (5, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 4 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.236627 > 1e-05
+                  residual [ 1 ] = 0.249396 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (6, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 5 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.234552 > 1e-05
+                  residual [ 1 ] = 0.247524 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (7, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 6 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.175736 > 1e-05
+                  residual [ 1 ] = 0.189175 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (8, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 7 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.173431 > 1e-05
+                  residual [ 1 ] = 0.183285 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (9, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 8 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.191105 > 1e-05
+                  residual [ 1 ] = 0.168904 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (10, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 9 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.126842 > 1e-05
+                  residual [ 1 ] = 0.0973507 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (11, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 10 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.11993 > 1e-05
+                  residual [ 1 ] = 0.0882948 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (12, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 11 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0776062 > 1e-05
+                  residual [ 1 ] = 0.0678936 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (13, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 12 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0700789 > 1e-05
+                  residual [ 1 ] = 0.0585636 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (14, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 13 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0649476 > 1e-05
+                  residual [ 1 ] = 0.0607582 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (15, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 14 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0669939 > 1e-05
+                  residual [ 1 ] = 0.0474749 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (16, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 15 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0382249 > 1e-05
+                  residual [ 1 ] = 0.0399727 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (17, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 16 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0390237 > 1e-05
+                  residual [ 1 ] = 0.0394362 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (18, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 17 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0265194 > 1e-05
+                  residual [ 1 ] = 0.0251325 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (19, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 18 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0252929 > 1e-05
+                  residual [ 1 ] = 0.0245182 > 1e-05
+
+ERAM ]> Matrix Loaded ... complex<double>
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (20, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 19 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0165645 > 1e-05
+                  residual [ 1 ] = 0.0107884 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (21, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 20 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0182579 > 1e-05
+                  residual [ 1 ] = 0.0095767 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (22, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 21 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00933574 > 1e-05
+                  residual [ 1 ] = 0.00584615 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (23, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 22 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00784536 > 1e-05
+                  residual [ 1 ] = 0.0047553 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (24, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 23 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00506474 > 1e-05
+                  residual [ 1 ] = 0.00324226 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (25, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 24 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00433716 > 1e-05
+                  residual [ 1 ] = 0.00273728 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (26, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 25 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00366568 > 1e-05
+                  residual [ 1 ] = 0.00254231 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (27, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 26 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00365997 > 1e-05
+                  residual [ 1 ] = 0.00248637 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (28, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 27 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00271366 > 1e-05
+                  residual [ 1 ] = 0.00160321 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (29, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 28 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00249376 > 1e-05
+                  residual [ 1 ] = 0.00145587 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (30, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 29 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00157332 > 1e-05
+                  residual [ 1 ] = 0.000889739 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (31, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 30 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00147468 > 1e-05
+                  residual [ 1 ] = 0.000846122 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (32, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 31 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000934813 > 1e-05
+                  residual [ 1 ] = 0.000612581 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (33, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 32 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000859467 > 1e-05
+                  residual [ 1 ] = 0.000569832 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (34, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 33 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00077307 > 1e-05
+                  residual [ 1 ] = 0.000336669 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (35, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 34 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00076688 > 1e-05
+                  residual [ 1 ] = 0.000324376 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (36, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 35 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000770949 > 1e-05
+                  residual [ 1 ] = 0.000328459 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (37, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 36 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000758014 > 1e-05
+                  residual [ 1 ] = 0.000319785 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (38, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 37 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000624304 > 1e-05
+                  residual [ 1 ] = 0.000278121 > 1e-05
+
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 21
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 21
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -3.893481e+00 - i   2.459077e+02        1.527643e-09
+  -3.893481e+00 + i   2.459077e+02        1.595441e-09
+  -3.893166e+00 + i   2.439434e+02        7.482552e-10
+  -3.893166e+00 - i   2.439434e+02        7.116513e-10
+  -1.395110e+00 - i   9.299076e+01        7.576926e-03
+  -1.395193e+00 + i   9.299033e+01        8.431012e-03
+  -1.395818e+00 + i   9.129823e+01        9.867982e-03
+  -1.396081e+00 - i   9.129709e+01        8.792418e-03
+  -5.217435e-01 - i   5.860813e+01        1.865539e+00
+  -2.348951e-01 + i   5.845906e+01        2.418359e+00
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.007245 (1)               
+Anasazi: BlockKrylovSchur::Computing Schur form      0.0007984 (1)              
+Anasazi: BlockKrylovSchur::Operation Op*x            0.07147 (21)               
+Anasazi: BlockKrylovSchur::Orthogonalization         0.05293 (22)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       6.359e-05 (1)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.0001939 (1)              
+Anasazi: BlockKrylovSchurSolMgr restarting           0 (0)                      
+Anasazi: BlockKrylovSchurSolMgr::solve()             0.1374 (1)                 
+================================================================================
+Evals[1] = -3.893481 + -245.907691i
+Evals[2] = -3.893481 + 245.907691i
+Evals[3] = -3.893166 + 243.943374i
+Evals[4] = -3.893166 + -243.943374i
+Evals[5] = -1.395110 + -92.990756i
+Evals[6] = -1.395193 + 92.990330i
+Evals[7] = -1.395818 + 91.298227i
+Evals[8] = -1.396081 + -91.297092i
+Evals[9] = -0.521744 + -58.608128i
+Evals[10] = -0.234895 + 58.459056i
+
+
+Arnoldi send eigenvalues to FATHER
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (39, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 38 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000587001 > 1e-05
+                  residual [ 1 ] = 0.000268647 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (40, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 39 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000343911 > 1e-05
+                  residual [ 1 ] = 0.000173364 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (41, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 40 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000269902 > 1e-05
+                  residual [ 1 ] = 0.00014475 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (42, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 41 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000207418 > 1e-05
+                  residual [ 1 ] = 0.000107978 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (43, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 42 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000192709 > 1e-05
+                  residual [ 1 ] = 9.73059e-05 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (44, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 43 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000165563 > 1e-05
+                  residual [ 1 ] = 7.29776e-05 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (45, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 44 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000146929 > 1e-05
+                  residual [ 1 ] = 6.53067e-05 > 1e-05
+
+To Use LS preconditioning for solvingHey LS PPOWER = 1, LS Latency = 1
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (46, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 45 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000112851 > 1e-05
+                  residual [ 1 ] = 5.54398e-05 > 1e-05
+
+Hey LS PPOWER = 1, LS Latency = 1
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 21
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 21
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -3.893481e+00 - i   2.459077e+02        1.527643e-09
+  -3.893481e+00 + i   2.459077e+02        1.595441e-09
+  -3.893166e+00 + i   2.439434e+02        7.482552e-10
+  -3.893166e+00 - i   2.439434e+02        7.116513e-10
+  -1.395110e+00 - i   9.299076e+01        7.576926e-03
+  -1.395193e+00 + i   9.299033e+01        8.431012e-03
+  -1.395818e+00 + i   9.129823e+01        9.867982e-03
+  -1.396081e+00 - i   9.129709e+01        8.792418e-03
+  -5.217435e-01 - i   5.860813e+01        1.865539e+00
+  -2.348951e-01 + i   5.845906e+01        2.418359e+00
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.01448 (2)                
+Anasazi: BlockKrylovSchur::Computing Schur form      0.001357 (2)               
+Anasazi: BlockKrylovSchur::Operation Op*x            0.1429 (42)                
+Anasazi: BlockKrylovSchur::Orthogonalization         0.1055 (44)                
+Anasazi: BlockKrylovSchur::Sorting Ritz values       9.448e-05 (2)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.0003697 (2)              
+Anasazi: BlockKrylovSchurSolMgr restarting           0 (0)                      
+Anasazi: BlockKrylovSchurSolMgr::solve()             0.2741 (2)                 
+================================================================================
+Evals[1] = -3.893481 + -245.907691i
+Evals[2] = -3.893481 + 245.907691i
+Evals[3] = -3.893166 + 243.943374i
+Evals[4] = -3.893166 + -243.943374i
+Evals[5] = -1.395110 + -92.990756i
+Evals[6] = -1.395193 + 92.990330i
+Evals[7] = -1.395818 + 91.298227i
+Evals[8] = -1.396081 + -91.297092i
+Evals[9] = -0.521744 + -58.608128i
+Evals[10] = -0.234895 + 58.459056i
+
+
+Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+exit_type[0] = 0
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+exit_type[0] = 0
+@} LSQR convhul negatif chsigne 5 cumul 5 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -3.893481+0.000000i
+hk[1] = -3.893166+243.943374i
+hk[2] = -0.234895+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 485784.904614
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+@} LSQR convhul negatif chsigne 10 cumul 10 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -3.893481+0.000000i
+hk[1] = -3.893481+245.907691i
+hk[2] = -0.234895+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 493496.170148
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+numVectors = : 2
+numVectors = : 2
+LOOP1, Rank 1: 80.7224
+LOOP1, Rank 1: 77.6769
+LOOP1, Rank 0: 80.7224
+LOOP1, Rank 0: 77.6769
+LS update the restarted residual inside GMRES
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (47, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 45 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 80.7224 > 1e-05
+                  residual [ 1 ] = 77.6769 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (48, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 46 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 80.373 > 1e-05
+                  residual [ 1 ] = 77.4127 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (49, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 47 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 6.20624 > 1e-05
+                  residual [ 1 ] = 8.18278 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (50, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 48 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 6.13427 > 1e-05
+                  residual [ 1 ] = 8.06103 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (51, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 49 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 7.49022 > 1e-05
+                  residual [ 1 ] = 6.65743 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (52, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 50 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 7.40358 > 1e-05
+                  residual [ 1 ] = 6.58556 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (53, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 51 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 3.53699 > 1e-05
+                  residual [ 1 ] = 2.96598 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (54, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 52 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 3.38953 > 1e-05
+                  residual [ 1 ] = 2.83318 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (55, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 53 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 2.07638 > 1e-05
+                  residual [ 1 ] = 1.87948 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (56, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 54 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 2.00317 > 1e-05
+                  residual [ 1 ] = 1.81832 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (57, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 55 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1.33729 > 1e-05
+                  residual [ 1 ] = 1.18115 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (58, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 56 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1.26517 > 1e-05
+                  residual [ 1 ] = 1.10518 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (59, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 57 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.732199 > 1e-05
+                  residual [ 1 ] = 0.653721 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (60, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 58 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.671008 > 1e-05
+                  residual [ 1 ] = 0.598535 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (61, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 59 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.383136 > 1e-05
+                  residual [ 1 ] = 0.345575 > 1e-05
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Debug ]>: Father send data[0] = 10.000000 to GMRES
+Debug ]>: Father send data[1] = -2.638240 to GMRES
+Debug ]>: Father send data[2] = -0.379041 to GMRES
+Debug ]>: Father send data[3] = -0.000000 to GMRES
+Debug ]>: Father send data[4] = -0.000028 to GMRES
+Debug ]>: Father send data[5] = -0.000000 to GMRES
+Debug ]>: Father send data[6] = -0.000000 to GMRES
+Debug ]>: Father send data[7] = -0.000000 to GMRES
+Debug ]>: Father send data[8] = -0.000000 to GMRES
+Debug ]>: Father send data[9] = 0.000000 to GMRES
+Debug ]>: Father send data[10] = -0.000000 to GMRES
+Debug ]>: Father send data[11] = -0.000000 to GMRES
+Debug ]>: Father send data[12] = 1.228010 to GMRES
+Debug ]>: Father send data[13] = 16396.474227 to GMRES
+Debug ]>: Father send data[14] = 3.683847 to GMRES
+Debug ]>: Father send data[15] = 5467.401620 to GMRES
+Debug ]>: Father send data[16] = 6.138213 to GMRES
+Debug ]>: Father send data[17] = 3282.241864 to GMRES
+Debug ]>: Father send data[18] = 8.589641 to GMRES
+Debug ]>: Father send data[19] = 2346.212292 to GMRES
+Debug ]>: Father send data[20] = 11.036670 to GMRES
+Debug ]>: Father send data[21] = 1826.559185 to GMRES
+Debug ]>: Father send data[22] = 0.000000 to GMRES
+Debug ]>: Father send data[23] = -16394.018206 to GMRES
+Debug ]>: Father send data[24] = -1.227826 to GMRES
+Debug ]>: Father send data[25] = -5464.945599 to GMRES
+Debug ]>: Father send data[26] = -3.682192 to GMRES
+Debug ]>: Father send data[27] = -3279.785844 to GMRES
+Debug ]>: Father send data[28] = -6.133620 to GMRES
+Debug ]>: Father send data[29] = -2343.756271 to GMRES
+Debug ]>: Father send data[30] = -8.580649 to GMRES
+Debug ]>: Father send data[31] = -1824.103165 to GMRES
+Main ]> Father has sent preconditioned parameters to GMRES Component
+exit_type[0] = 0
+@} LSQR convhul negatif chsigne 15 cumul 15 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -3.893481+0.000000i
+hk[1] = -3.893481+245.907691i
+hk[2] = -0.234895+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 493496.170148
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 21
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 21
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -3.893481e+00 - i   2.459077e+02        1.527643e-09
+  -3.893481e+00 + i   2.459077e+02        1.595441e-09
+  -3.893166e+00 + i   2.439434e+02        7.482552e-10
+  -3.893166e+00 - i   2.439434e+02        7.116513e-10
+  -1.395110e+00 - i   9.299076e+01        7.576926e-03
+  -1.395193e+00 + i   9.299033e+01        8.431012e-03
+  -1.395818e+00 + i   9.129823e+01        9.867982e-03
+  -1.396081e+00 - i   9.129709e+01        8.792418e-03
+  -5.217435e-01 - i   5.860813e+01        1.865539e+00
+  -2.348951e-01 + i   5.845906e+01        2.418359e+00
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.02171 (3)                
+Anasazi: BlockKrylovSchur::Computing Schur form      0.001918 (3)               
+Anasazi: BlockKrylovSchur::Operation Op*x            0.2144 (63)                
+Anasazi: BlockKrylovSchur::Orthogonalization         0.1583 (66)                
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.0001263 (3)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.0005462 (3)              
+Anasazi: BlockKrylovSchurSolMgr restarting           0 (0)                      
+Anasazi: BlockKrylovSchurSolMgr::solve()             0.411 (3)                  
+================================================================================
+Evals[1] = -3.893481 + -245.907691i
+Evals[2] = -3.893481 + 245.907691i
+Evals[3] = -3.893166 + 243.943374i
+Evals[4] = -3.893166 + -243.943374i
+Evals[5] = -1.395110 + -92.990756i
+Evals[6] = -1.395193 + 92.990330i
+Evals[7] = -1.395818 + 91.298227i
+Evals[8] = -1.396081 + -91.297092i
+Evals[9] = -0.521744 + -58.608128i
+Evals[10] = -0.234895 + 58.459056i
+
+
+Arnoldi send eigenvalues to FATHER
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (62, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 60 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.343698 > 1e-05
+                  residual [ 1 ] = 0.309827 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (63, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 61 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.124855 > 1e-05
+                  residual [ 1 ] = 0.113573 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (64, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 62 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.109534 > 1e-05
+                  residual [ 1 ] = 0.0998022 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (65, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 63 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0673431 > 1e-05
+                  residual [ 1 ] = 0.0608868 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (66, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 64 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.060603 > 1e-05
+                  residual [ 1 ] = 0.0547265 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (67, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 65 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.034252 > 1e-05
+                  residual [ 1 ] = 0.0307185 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (68, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 66 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0321859 > 1e-05
+                  residual [ 1 ] = 0.0291623 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (69, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 67 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0098484 > 1e-05
+                  residual [ 1 ] = 0.00901234 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (70, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 68 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00880394 > 1e-05
+                  residual [ 1 ] = 0.00806769 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (71, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 69 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00438926 > 1e-05
+                  residual [ 1 ] = 0.00385812 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (72, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 70 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00368874 > 1e-05
+                  residual [ 1 ] = 0.00327627 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (73, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 71 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00251784 > 1e-05
+                  residual [ 1 ] = 0.00218238 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (74, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 72 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00202512 > 1e-05
+                  residual [ 1 ] = 0.00176143 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (75, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 73 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00156119 > 1e-05
+                  residual [ 1 ] = 0.0013925 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (76, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 74 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00127795 > 1e-05
+                  residual [ 1 ] = 0.00113936 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (77, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 75 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000547707 > 1e-05
+                  residual [ 1 ] = 0.000494762 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (78, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 76 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00038155 > 1e-05
+                  residual [ 1 ] = 0.000346843 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (79, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 77 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000318293 > 1e-05
+                  residual [ 1 ] = 0.000285828 > 1e-05
+
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 21
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 21
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -3.893481e+00 - i   2.459077e+02        1.527643e-09
+  -3.893481e+00 + i   2.459077e+02        1.595441e-09
+  -3.893166e+00 + i   2.439434e+02        7.482552e-10
+  -3.893166e+00 - i   2.439434e+02        7.116513e-10
+  -1.395110e+00 - i   9.299076e+01        7.576926e-03
+  -1.395193e+00 + i   9.299033e+01        8.431012e-03
+  -1.395818e+00 + i   9.129823e+01        9.867982e-03
+  -1.396081e+00 - i   9.129709e+01        8.792418e-03
+  -5.217435e-01 - i   5.860813e+01        1.865539e+00
+  -2.348951e-01 + i   5.845906e+01        2.418359e+00
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.02893 (4)                
+Anasazi: BlockKrylovSchur::Computing Schur form      0.002481 (4)               
+Anasazi: BlockKrylovSchur::Operation Op*x            0.2859 (84)                
+Anasazi: BlockKrylovSchur::Orthogonalization         0.211 (88)                 
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.0001572 (4)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.0007243 (4)              
+Anasazi: BlockKrylovSchurSolMgr restarting           0 (0)                      
+Anasazi: BlockKrylovSchurSolMgr::solve()             0.5478 (4)                 
+================================================================================
+Evals[1] = -3.893481 + -245.907691i
+Evals[2] = -3.893481 + 245.907691i
+Evals[3] = -3.893166 + 243.943374i
+Evals[4] = -3.893166 + -243.943374i
+Evals[5] = -1.395110 + -92.990756i
+Evals[6] = -1.395193 + 92.990330i
+Evals[7] = -1.395818 + 91.298227i
+Evals[8] = -1.396081 + -91.297092i
+Evals[9] = -0.521744 + -58.608128i
+Evals[10] = -0.234895 + 58.459056i
+
+
+Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Debug ]>: Father send data[0] = 10.000000 to GMRES
+Debug ]>: Father send data[1] = -2.639020 to GMRES
+Debug ]>: Father send data[2] = -0.378929 to GMRES
+Debug ]>: Father send data[3] = -0.000000 to GMRES
+Debug ]>: Father send data[4] = -0.000028 to GMRES
+Debug ]>: Father send data[5] = -0.000000 to GMRES
+Debug ]>: Father send data[6] = -0.000000 to GMRES
+Debug ]>: Father send data[7] = -0.000000 to GMRES
+Debug ]>: Father send data[8] = -0.000000 to GMRES
+Debug ]>: Father send data[9] = 0.000000 to GMRES
+Debug ]>: Father send data[10] = -0.000000 to GMRES
+Debug ]>: Father send data[11] = -0.000000 to GMRES
+Debug ]>: Father send data[12] = 1.227982 to GMRES
+Debug ]>: Father send data[13] = 16657.875800 to GMRES
+Debug ]>: Father send data[14] = 3.683766 to GMRES
+Debug ]>: Father send data[15] = 5554.535434 to GMRES
+Debug ]>: Father send data[16] = 6.138101 to GMRES
+Debug ]>: Father send data[17] = 3334.522114 to GMRES
+Debug ]>: Father send data[18] = 8.589545 to GMRES
+Debug ]>: Father send data[19] = 2383.555295 to GMRES
+Debug ]>: Father send data[20] = 11.036658 to GMRES
+Debug ]>: Father send data[21] = 1855.603718 to GMRES
+Debug ]>: Father send data[22] = 0.000000 to GMRES
+Debug ]>: Father send data[23] = -16655.419835 to GMRES
+Debug ]>: Father send data[24] = -1.227801 to GMRES
+Debug ]>: Father send data[25] = -5552.079470 to GMRES
+Debug ]>: Father send data[26] = -3.682137 to GMRES
+Debug ]>: Father send data[27] = -3332.066150 to GMRES
+Debug ]>: Father send data[28] = -6.133580 to GMRES
+Debug ]>: Father send data[29] = -2381.099330 to GMRES
+Debug ]>: Father send data[30] = -8.580694 to GMRES
+Debug ]>: Father send data[31] = -1853.147754 to GMRES
+Main ]> Father has sent preconditioned parameters to GMRES Component
+exit_type[0] = 0
+@} LSQR convhul negatif chsigne 20 cumul 20 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -3.893481+0.000000i
+hk[1] = -3.893481+245.907691i
+hk[2] = -0.234895+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 493496.170148
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (80, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 78 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00023658 > 1e-05
+                  residual [ 1 ] = 0.000213522 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (81, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 79 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00017476 > 1e-05
+                  residual [ 1 ] = 0.000155113 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (82, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 80 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000114946 > 1e-05
+                  residual [ 1 ] = 0.000103141 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (83, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 81 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 5.31512e-05 > 1e-05
+                  residual [ 1 ] = 4.73779e-05 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (84, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 82 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 4.16584e-05 > 1e-05
+                  residual [ 1 ] = 3.71362e-05 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (85, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 83 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 3.04542e-05 > 1e-05
+                  residual [ 1 ] = 2.74283e-05 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (86, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 84 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 2.87024e-05 > 1e-05
+                  residual [ 1 ] = 2.58355e-05 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (87, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 85 < 1000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1.21512e-05 > 1e-05
+                  residual [ 1 ] = 1.09366e-05 > 1e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (88, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 86 < 1000
+     Unconverged (LoA)(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1.05033e-05 > 1e-05
+                  residual [ 1 ] = 9.42072e-06 < 1e-05
+
+
+Belos::StatusTestGeneralOutput: Passed
+  (Num calls,Mod test,State test): (89, 1, Passed Failed Undefined)
+   Passed.......OR Combination -> 
+     OK...........Number of Iterations = 87 < 1000
+     Converged....(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 9.29584e-06 < 1e-05
+                  residual [ 1 ] = 8.16332e-06 < 1e-05
+
+Belos::BlockGmresSolMgr::solve(): Warning! Solver has experienced a loss of accuracy!
+Passed.......OR Combination -> 
+  OK...........Number of Iterations = 87 < 1000
+  Converged....(2-Norm Res Vec) / (2-Norm Prec Res0)
+               residual [ 0 ] = 9.29584e-06 < 1e-05
+               residual [ 1 ] = 8.16332e-06 < 1e-05
+
+@} LSQR convhul negatif chsigne 20 cumul 20 mu1 3
+info===0
+$} Ellipse Allocating work memory 4
+$} Ellipse Computing Edges
+hk[0] = -3.893481+0.000000i
+hk[1] = -3.893481+245.907691i
+hk[2] = -0.234895+0.000000i
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 493496.170148
+$} Ellipse Research three points optimal ellipse
+*info = = 0
+Teuchos in Trilinos 12.12.1
+
+LS ]> LS send array to Father
+Info ]> LS Receive signal information from Father
+Info ]> LS exit
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 21
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 21
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -3.893481e+00 - i   2.459077e+02        1.527643e-09
+  -3.893481e+00 + i   2.459077e+02        1.595441e-09
+  -3.893166e+00 + i   2.439434e+02        7.482552e-10
+  -3.893166e+00 - i   2.439434e+02        7.116513e-10
+  -1.395110e+00 - i   9.299076e+01        7.576926e-03
+  -1.395193e+00 + i   9.299033e+01        8.431012e-03
+  -1.395818e+00 + i   9.129823e+01        9.867982e-03
+  -1.396081e+00 - i   9.129709e+01        8.792418e-03
+  -5.217435e-01 - i   5.860813e+01        1.865539e+00
+  -2.348951e-01 + i   5.845906e+01        2.418359e+00
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.03615 (5)                
+Anasazi: BlockKrylovSchur::Computing Schur form      0.003042 (5)               
+Anasazi: BlockKrylovSchur::Operation Op*x            0.3573 (105)               
+Anasazi: BlockKrylovSchur::Orthogonalization         0.2636 (110)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.0001876 (5)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.0009023 (5)              
+Anasazi: BlockKrylovSchurSolMgr restarting           0 (0)                      
+Anasazi: BlockKrylovSchurSolMgr::solve()             0.6845 (5)                 
+================================================================================
+Evals[1] = -3.893481 + -245.907691i
+Evals[2] = -3.893481 + 245.907691i
+Evals[3] = -3.893166 + 243.943374i
+Evals[4] = -3.893166 + -243.943374i
+Evals[5] = -1.395110 + -92.990756i
+Evals[6] = -1.395193 + 92.990330i
+Evals[7] = -1.395818 + 91.298227i
+Evals[8] = -1.396081 + -91.297092i
+Evals[9] = -0.521744 + -58.608128i
+Evals[10] = -0.234895 + 58.459056i
+
+
+Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Debug ]>: Father send data[0] = 10.000000 to GMRES
+Debug ]>: Father send data[1] = -2.639020 to GMRES
+Debug ]>: Father send data[2] = -0.378929 to GMRES
+Debug ]>: Father send data[3] = -0.000000 to GMRES
+Debug ]>: Father send data[4] = -0.000028 to GMRES
+Debug ]>: Father send data[5] = -0.000000 to GMRES
+Debug ]>: Father send data[6] = -0.000000 to GMRES
+Debug ]>: Father send data[7] = -0.000000 to GMRES
+Debug ]>: Father send data[8] = -0.000000 to GMRES
+Debug ]>: Father send data[9] = 0.000000 to GMRES
+Debug ]>: Father send data[10] = -0.000000 to GMRES
+Debug ]>: Father send data[11] = -0.000000 to GMRES
+Debug ]>: Father send data[12] = 1.227982 to GMRES
+Debug ]>: Father send data[13] = 16657.875800 to GMRES
+Debug ]>: Father send data[14] = 3.683766 to GMRES
+Debug ]>: Father send data[15] = 5554.535434 to GMRES
+Debug ]>: Father send data[16] = 6.138101 to GMRES
+Debug ]>: Father send data[17] = 3334.522114 to GMRES
+Debug ]>: Father send data[18] = 8.589545 to GMRES
+Debug ]>: Father send data[19] = 2383.555295 to GMRES
+Debug ]>: Father send data[20] = 11.036658 to GMRES
+Debug ]>: Father send data[21] = 1855.603718 to GMRES
+Debug ]>: Father send data[22] = 0.000000 to GMRES
+Debug ]>: Father send data[23] = -16655.419835 to GMRES
+Debug ]>: Father send data[24] = -1.227801 to GMRES
+Debug ]>: Father send data[25] = -5552.079470 to GMRES
+Debug ]>: Father send data[26] = -3.682137 to GMRES
+Debug ]>: Father send data[27] = -3332.066150 to GMRES
+Debug ]>: Father send data[28] = -6.133580 to GMRES
+Debug ]>: Father send data[29] = -2381.099330 to GMRES
+Debug ]>: Father send data[30] = -8.580694 to GMRES
+Debug ]>: Father send data[31] = -1853.147754 to GMRES
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Main ]> Father Receive exit type from GMRES 0 Component = 666
+exit_type[0] = 666
+Main ]> Father send exit type to ERAM and LS Component
+Main ]> Father has final exit signal to GMRES Component
+--------------------------------------------------------------------------------
+                               Remove Application
+--------------------------------------------------------------------------------
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 21
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 21
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -3.893481e+00 - i   2.459077e+02        1.527643e-09
+  -3.893481e+00 + i   2.459077e+02        1.595441e-09
+  -3.893166e+00 + i   2.439434e+02        7.482552e-10
+  -3.893166e+00 - i   2.439434e+02        7.116513e-10
+  -1.395110e+00 - i   9.299076e+01        7.576926e-03
+  -1.395193e+00 + i   9.299033e+01        8.431012e-03
+  -1.395818e+00 + i   9.129823e+01        9.867982e-03
+  -1.396081e+00 - i   9.129709e+01        8.792418e-03
+  -5.217435e-01 - i   5.860813e+01        1.865539e+00
+  -2.348951e-01 + i   5.845906e+01        2.418359e+00
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.04338 (6)                
+Anasazi: BlockKrylovSchur::Computing Schur form      0.003604 (6)               
+Anasazi: BlockKrylovSchur::Operation Op*x            0.4289 (126)               
+Anasazi: BlockKrylovSchur::Orthogonalization         0.3164 (132)               
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.0002194 (6)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.001079 (6)               
+Anasazi: BlockKrylovSchurSolMgr restarting           0 (0)                      
+Anasazi: BlockKrylovSchurSolMgr::solve()             0.8214 (6)                 
+================================================================================
+Evals[1] = -3.893481 + -245.907691i
+Evals[2] = -3.893481 + 245.907691i
+Evals[3] = -3.893166 + 243.943374i
+Evals[4] = -3.893166 + -243.943374i
+Evals[5] = -1.395110 + -92.990756i
+Evals[6] = -1.395193 + 92.990330i
+Evals[7] = -1.395818 + 91.298227i
+Evals[8] = -1.396081 + -91.297092i
+Evals[9] = -0.521744 + -58.608128i
+Evals[10] = -0.234895 + 58.459056i
+
+
+Arnoldi send eigenvalues to FATHER
+================================================================================
+
+                         BlockKrylovSchur Solver Status
+
+The solver is initialized.
+The number of iterations performed is 21
+The block size is         1
+The number of blocks is   20
+The current basis size is 21
+The number of auxiliary vectors is 0
+The number of operations Op*x   is 21
+
+CURRENT RITZ VALUES             
+              Ritz Value                 Ritz Residual
+--------------------------------------------------------------------------------
+  -3.893481e+00 - i   2.459077e+02        1.527643e-09
+  -3.893481e+00 + i   2.459077e+02        1.595441e-09
+  -3.893166e+00 + i   2.439434e+02        7.482552e-10
+  -3.893166e+00 - i   2.439434e+02        7.116513e-10
+  -1.395110e+00 - i   9.299076e+01        7.576926e-03
+  -1.395193e+00 + i   9.299033e+01        8.431012e-03
+  -1.395818e+00 + i   9.129823e+01        9.867982e-03
+  -1.396081e+00 - i   9.129709e+01        8.792418e-03
+  -5.217435e-01 - i   5.860813e+01        1.865539e+00
+  -2.348951e-01 + i   5.845906e+01        2.418359e+00
+
+================================================================================
+
+================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                           Global time (num calls)    
+--------------------------------------------------------------------------------
+Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.05059 (7)                
+Anasazi: BlockKrylovSchur::Computing Schur form      0.004175 (7)               
+Anasazi: BlockKrylovSchur::Operation Op*x            0.5003 (147)               
+Anasazi: BlockKrylovSchur::Orthogonalization         0.369 (154)                
+Anasazi: BlockKrylovSchur::Sorting Ritz values       0.0002512 (7)              
+Anasazi: BlockKrylovSchur::Sorting Schur form        0.001255 (7)               
+Anasazi: BlockKrylovSchurSolMgr restarting           0 (0)                      
+Anasazi: BlockKrylovSchurSolMgr::solve()             0.9581 (7)                 
+================================================================================
+Evals[1] = -3.893481 + -245.907691i
+Evals[2] = -3.893481 + 245.907691i
+Evals[3] = -3.893166 + 243.943374i
+Evals[4] = -3.893166 + -243.943374i
+Evals[5] = -1.395110 + -92.990756i
+Evals[6] = -1.395193 + 92.990330i
+Evals[7] = -1.395818 + 91.298227i
+Evals[8] = -1.396081 + -91.297092i
+Evals[9] = -0.521744 + -58.608128i
+Evals[10] = -0.234895 + 58.459056i
+
+
+Arnoldi send eigenvalues to FATHER
+Info ]> ERAM Receive signal information from Father
+Info ]> ERAM exit
+Main ]> Main Free the Arnoldi Components after waiting a little instant
+GMRES ]> Close of GMRES after waiting a little instant

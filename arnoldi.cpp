@@ -30,6 +30,12 @@
 #include <MatrixMarket_Tpetra.hpp>
 #include <Tpetra_Import.hpp>
 
+// SMG2S test matrix generation with given spectra
+#include "include/SMG2S/smg2s/smg2s.h"
+
+// SMG2S interface to Trilinos/teptra csr sparse matrix
+#include "include/SMG2S/interface/Trilinos/trilinos_interface.hpp"
+
 #ifndef EIGEN_ALL
 #define EIGEN_ALL 10
 #endif
@@ -45,6 +51,22 @@ using std::cout;
 using std::endl;
 using Tpetra::global_size_t;
 using Tpetra::Import;
+
+#ifdef __USE_COMPLEX__
+typedef std::complex<double>                  ST;
+#else
+typedef double                                ST;
+#endif
+
+typedef Tpetra::Map<>::global_ordinal_type    GO;
+typedef Tpetra::Map<>::local_ordinal_type     LO;
+typedef Tpetra::MultiVector<ST,LO,GO>         MV;
+typedef Teuchos::ScalarTraits<ST>             SCT;
+typedef SCT::magnitudeType                    MT;
+typedef Tpetra::Operator<ST>                  OP;
+typedef Anasazi::MultiVecTraits<ST,MV>        MVT;
+typedef Anasazi::OperatorTraits<ST,MV,OP>     OPT;
+typedef Tpetra::CrsMatrix<ST,LO,GO>           MAT;
 
 
 int main( int argc, char *argv[] ){
@@ -65,20 +87,6 @@ int main( int argc, char *argv[] ){
   if(arank == 0){
     printf("Info ]> The Comm world size of ERAM is %d \n", asize);
   }
-
-  typedef double                              ST;
-  typedef std::complex<double>                CST;
-  typedef Tpetra::Map<>::global_ordinal_type    GO;
-  typedef Tpetra::Map<>::local_ordinal_type     LO;
-  typedef Tpetra::MultiVector<ST,LO,GO>     MV;
-  typedef Tpetra::MultiVector<CST,LO,GO>     CMV;
-  typedef Teuchos::ScalarTraits<ST>          SCT;
-  typedef SCT::magnitudeType                  MT;
-  typedef Tpetra::Operator<ST>                OP;
-  typedef Anasazi::MultiVecTraits<ST,MV>     MVT;
-  typedef Anasazi::OperatorTraits<ST,MV,OP>  OPT;
-  typedef Tpetra::CrsMatrix<ST,LO,GO>     MAT;
-
 
 
   bool success = false;
@@ -141,7 +149,7 @@ int main( int argc, char *argv[] ){
       filename = "mhd1280b.cua";
     }
     else {
-      filename = "utm300.mtx";
+      filename = "mhd1280a.mtx";
     }
   }else{
     printf("Parser the MATRIX file NAME = %s ! \n", filename.c_str());
@@ -259,9 +267,8 @@ int main( int argc, char *argv[] ){
     // Get the eigenvalues and eigenvectors from the eigenproblem
     Anasazi::Eigensolution<ST,MV> sol = problem->getSolution();
     numev = sol.numVecs;
-    printf("NUMVECS = %d\n", numev);
 
-    CST *Evalues  = new CST [numev];
+    std::complex<double> *Evalues  = new std::complex<double> [numev];
 
     if (numev > 0) {
       std::ostringstream os;
@@ -271,7 +278,7 @@ int main( int argc, char *argv[] ){
       // Compute the direct residual
       std::vector<MT> normV( numev );
       for (int i=0; i<numev; i++) {
-        Evalues[i] = CST(sol.Evals[i].realpart,sol.Evals[i].imagpart);
+        Evalues[i] = std::complex<double>(sol.Evals[i].realpart,sol.Evals[i].imagpart);
         printf("Evals[%d] = %f + %fi\n", i+1,sol.Evals[i].realpart, sol.Evals[i].imagpart);
       }
    
@@ -298,10 +305,6 @@ int main( int argc, char *argv[] ){
       }
     }
   }
-
-
-  int exit_signal = 777;
-  mpi_lsa_com_type_send(&COMM_FATHER, &exit_signal);
 
   MPI_Comm_free(&COMM_FATHER);
 
