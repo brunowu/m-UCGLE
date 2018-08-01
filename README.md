@@ -4,7 +4,7 @@ Xinzhe WU @ Maison de la Simulation (xinzhe.wu@cea.fr)
 
 Another similar implementation of [UCGLE](https://github.com/brunowu/UCGLE). The previous UCGLE uses a static MPI distributed communication implementation, thus the GMRES and ERAM Component numbers are fixed.
 
-Here, we design a new dynamic distributed communication workflow by MPI_SPWAN. The Spawn functionality allows allocating multiple ERAM and GMRES Components. The multiple ERAM trends to be a [MERAM](https://epubs.siam.org/doi/10.1137/S1064827500366082)(Multiple Explicitly Restarted Arnoldi Method), the exchange of spectral information among the ERAM Components will improve the convergence of resolving no-Hermitian eigenvalue problems.
+Here, we design a new dynamic distributed communication workflow by MPI_SPWAN. The Spawn functionality allows allocating multiple ERAM and GMRES Components. The multiple ERAM trends to be a [MERAM] (https://epubs.siam.org/doi/10.1137/S1064827500366082)(Multiple Explicitly Restarted Arnoldi Method), the exchange of spectral information among the ERAM Components will improve the convergence of resolving no-Hermitian eigenvalue problems.
 
 Meanwhile, multiple GMRES allows to solve simultaneously non-Hermitian linear systems with multiple right-hand sides. It is comparable with deflated [Block GMRES](http://www.sam.math.ethz.ch/~mhg/pub/delhipap.pdf), but with less global communication.
 
@@ -142,18 +142,18 @@ mpirun -np 1 ./test.exe -nb_gmres 1 -proc_gmres 1 -nb_arnoldi 1 -proc_arnoldi 1 
   --ksp-root-print                        (default: --ksp-root-print)
   --ksp-dump-data           bool          Dump raw data to data.dat.
   --ksp-no-dump-data                      (default: --ksp-no-dump-data)
-  --ksp-lsp-degree       int           Least Square polynomial degree for preconditioning.
+  --ksp-lsp-degree          int           Least Square polynomial degree for preconditioning.
                                        (default: --ksp-lsp-degree=10)
-  --ksp-lsp-latency      int           Latency of Least Square polynomial preconditioning to apply.
+  --ksp-lsp-latency         int           Latency of Least Square polynomial preconditioning to apply.
                                        (default: --ksp-lsp-latency=10)
-  --ksp-use-lsp          bool          Whether to use LS polynomial preconditioning.
+  --ksp-use-lsp             bool          Whether to use LS polynomial preconditioning.
   --ksp-no-use-lsp                     (default: --ksp-use-lsp)
 ```
 
 ##### Use SMG2S matrix generation suite
 UCMGLE uses the dominant eigenvalues to accelerate the convergence, thus it is important to evaluate the influence of spectral distribution. [SMG2S](https://github.com/brunowu/SMG2S) is a Scalable Matrix Generator with Given Spectrum. SMG2S is implemented in parallel by MPI and C++. An interface of SMG2S to Trilinos:Teptra:CsrMatrix is provided. UCMGLE is able to use SMG2S with the following flags.
 
-```shell
+```bash
 #ERAM SMG2S FLAGS
   --eps-usesmg2s            bool          Use SMG2S to generate test matrix.
   --eps-no-usesmg2s                       (default: --eps-no-usesmg2s)
