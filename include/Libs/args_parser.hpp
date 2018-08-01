@@ -204,20 +204,9 @@ char **argsParserGMRESRuntime(int argc, char ** argv){
   char *ksp = new char [100];
 
   for(i = 0; i < argc; i++){
-    //parse matrix market file name
-    memcpy(skr, argv[i] + 0, 10);
-    if (strcmp(skr,"--filename") == 0){
-      gmres_runtime_args[j] = new char [100];
-      strcpy(gmres_runtime_args[j], argv[i]);
-      printf("Parser Matrix filename Flag = %s  \n", gmres_runtime_args[j]);
-      j++;
-    }
-  }
-
-  for(i = 0; i < argc; i++){
     //parse arnoldi runtime parameters
-    memcpy(ksp, argv[i] + 0, 5);
-    if (strcmp(ksp,"--ksp") == 0){
+    memcpy(ksp, argv[i] + 0, 6);
+    if (strcmp(ksp,"--ksp-") == 0){
       gmres_runtime_args[j] = new char [100];
       strcpy(gmres_runtime_args[j], argv[i]);
       printf("Parser GMRES runtime Flag = %s  \n", gmres_runtime_args[j]);

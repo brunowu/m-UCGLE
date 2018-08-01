@@ -44,6 +44,9 @@ int main( int argc, char *argv[] ){
 
   MPI_Comm_get_parent( &COMM_FATHER );
 
+  //MPI_Comm_size( COMM_FATHER, &lsize );
+  //MPI_Comm_rank( COMM_FATHER, &lrank );
+
   if(lrank == 0){
     printf("Info ]> The Comm world size of LS is %d \n", lsize);
   }

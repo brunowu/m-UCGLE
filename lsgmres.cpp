@@ -110,7 +110,7 @@ int main(int argc, char *argv[]){
   cmdp.setOption("ksp-use-precond","ksp-no-precond",&precond,"Use a diagonal preconditioner.");
   cmdp.setOption("ksp-num-blocks",&numblocks,"Number of blocks in the Krylov basis.");
   cmdp.setOption("ksp-reduce-tol","ksp-fixed-tol",&reduce_tol,"Require increased accuracy from higher precision scalar types.");
-	cmdp.setOption("filename",&filename,"Filename for Matrix-Market test matrix.");
+	cmdp.setOption("ksp-filename",&filename,"Filename for Matrix-Market test matrix.");
 	cmdp.setOption("ksp-print-matrix","ksp-no-print-matrix",&printMatrix,"Print the full matrix after reading it.");
 	cmdp.setOption("ksp-all-print","ksp-root-print",&allprint,"All processors print to out");
 	cmdp.setOption("ksp-dump-data","ksp-no-dump-data",&dumpdata,"Dump raw data to data.dat.");

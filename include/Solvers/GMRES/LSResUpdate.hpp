@@ -85,8 +85,10 @@ int LSResUpdate(const Teuchos::RCP<Belos::LinearProblem<ST,MV,OP> > &problem, in
 	if(uselsp){
 
 
-		printf("Hey LS PPOWER = %d, LS Latency = %d\n", ls_power, latency);
-	  	latency_count++;
+		if(rank == 0){
+			printf("Hey LS PPOWER = %d, LS Latency = %d\n", ls_power, latency);
+	  	}
+		latency_count++;
 
 	  	if(latency_count % latency == 0){
 			usleep(100000);
