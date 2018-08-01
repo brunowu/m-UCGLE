@@ -179,5 +179,5 @@ UCMGLE uses the dominant eigenvalues to accelerate the convergence, thus it is i
 ```
 ##### Workflow
 
-![Workflow of UCMGEL](workflow.jpg)
+![Workflow of UCMGEL](workflow.png)
 
