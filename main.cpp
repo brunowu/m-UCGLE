@@ -53,7 +53,7 @@ int main( int argc, char *argv[] ) {
   args_gmres_runtime = argsParserGMRESRuntime(argc, argv);
   args_lsp_runtime = argsParserLSPRuntime(argc, argv);
 
-  MPI_Comm COMM_GMRES[2], COMM_ARNOLDI[2], COMM_LS;
+  MPI_Comm COMM_GMRES[gmres_nb], COMM_ARNOLDI[arnoldi_nb], COMM_LS;
   MPI_Request gReq[gmres_proc], aReq[arnoldi_proc], lReq[ls_proc];
   MPI_Status gStatus, aStatus, lStatus;
 
@@ -70,7 +70,6 @@ int main( int argc, char *argv[] ) {
 
   MPI_Comm_spawn( lsqr_cmd, args_lsp_runtime, ls_proc, MPI_INFO_NULL, 0, MPI_COMM_WORLD, &COMM_LS, MPI_ERRCODES_IGNORE);
 
-  printf("HEYHEYHEY\n");
   border_print2();
   center_print("Start Resolving Linear Systems by MUCGLE", 79);
   border_print2();

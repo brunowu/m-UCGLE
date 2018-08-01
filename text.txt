@@ -23,234 +23,36 @@ Initialization ]> Thus Total proc number = 1 + 1 + 1 * 1 + 1 * 1 = 4
 Initialization ]> GMRES executable name list is: [ ./gmres.exe  ]
 Initialization ]> ERAM executable name list is: [ ./arnoldi.exe  ]
 Initialization ]> LS executable name list is: [ ./lsqr.exe  ]
-Parser Matrix filename Flag = --filename="utm300.mtx"  
 Parser Arnoldi runtime Flag = --eps-quiet  
 Parser Arnoldi runtime Flag = --eps-nodebug  
 Parser Arnoldi runtime Flag = --eps-exsitu  
 Parser Arnoldi runtime Flag = --eps-sort="LM"  
+Parser Arnoldi runtime Flag = --eps-nonherm  
 Parser Arnoldi runtime Flag = --eps-nev=10  
 Parser Arnoldi runtime Flag = --eps-blockSize=1  
 Parser Arnoldi runtime Flag = --eps-tol=0.1  
 Parser Arnoldi runtime Flag = --eps-no-print-matrix  
 Parser Arnoldi runtime Flag = --eps-all-print  
-Parser Arnoldi runtime Flag = --eps-numBlocks=100  
-Parser Arnoldi runtime Flag = --eps-maxRestarts=100  
-Parser Matrix filename Flag = --filename="utm300.mtx"  
-Parser GMRES runtime Flag = --ksp-quiet  
+Parser Arnoldi runtime Flag = --eps-numBlocks=20  
+Parser Arnoldi runtime Flag = --eps-maxRestarts=50  
+Parser GMRES runtime Flag = --ksp-filename="mhd1280a.mtx"  
 Parser GMRES runtime Flag = --ksp-nodebug  
-Parser GMRES runtime Flag = --ksp-frequency=-1  
+Parser GMRES runtime Flag = --ksp-frequency=10  
 Parser GMRES runtime Flag = --ksp-tol=1e-05  
 Parser GMRES runtime Flag = --ksp-num-rhs=2  
-Parser GMRES runtime Flag = --ksp-block-size=100  
+Parser GMRES runtime Flag = --ksp-block-size=2  
 Parser GMRES runtime Flag = --ksp-no-precond  
-Parser GMRES runtime Flag = --ksp-num-blocks=50  
+Parser GMRES runtime Flag = --ksp-num-blocks=20  
 Parser GMRES runtime Flag = --ksp-fixed-tol  
 Parser GMRES runtime Flag = --ksp-no-print-matrix  
 Parser GMRES runtime Flag = --ksp-all-print  
 Parser GMRES runtime Flag = --ksp-no-dump-data  
+Parser GMRES runtime Flag = --ksp-lsp-degree=1  
+Parser GMRES runtime Flag = --ksp-lsp-latency=1  
+Parser GMRES runtime Flag = --ksp-use-lsp  
 --------------------------------------------------------------------------------
                            Start Spawning Executables
 --------------------------------------------------------------------------------
-Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name mdlsmc232 and rank 0!
-Testing Scalar == double
-GMRES ]> Building problem...
-Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name mdlsmc232 and rank 0!
-Info ]> The Comm world size of ERAM is 1 
-GMRES ]> Load matrix: utm300.mtx from local filesystem
-Arnoldi in Trilinos said: my rank = 0
-Parser the MATRIX file NAME = utm300.mtx ! 
-Anasazi Version 12.12d
-
-Anasazi Scalar type == double
-ERAM ]> Building problem... double
-Building TIME = 0.062187
-GMRES ]> GMRES send exit signal
---------------------------------------------------------------------------------
-                    Start Resolving Linear Systems by MUCGLE
---------------------------------------------------------------------------------
-Main ]> Father Receive exit type from GMRES 0 Component = 666
-exit_type[0] = 666
-Info ]> The Comm world size of LS is 1 
-ERAM ]> Matrix Loaded ... double
-================================================================================
-
-                         BlockKrylovSchur Solver Status
-
-The solver is initialized.
-The number of iterations performed is 101
-The block size is         1
-The number of blocks is   100
-The current basis size is 101
-The number of auxiliary vectors is 0
-The number of operations Op*x   is 101
-
-CURRENT RITZ VALUES             
-              Ritz Value                 Ritz Residual
---------------------------------------------------------------------------------
-  -1.595404e+00 + i   0.000000e+00        8.978382e-14
-  -1.545713e+00 + i   0.000000e+00        1.064040e-07
-  -1.544812e+00 + i   0.000000e+00        3.197391e-08
-  -1.518373e+00 + i   0.000000e+00        5.706130e-06
-  -1.484252e+00 + i   0.000000e+00        6.438439e-04
-  -1.476755e+00 + i   0.000000e+00        9.983519e-04
-  -1.471398e+00 + i   1.943724e-02        1.109734e-03
-  -1.471398e+00 - i   1.943724e-02        1.109734e-03
-  -1.469058e+00 + i   3.692148e-02        1.631375e-05
-  -1.469058e+00 - i   3.692148e-02        1.631375e-05
-
-================================================================================
-
-================================================================================
-
-                      TimeMonitor results over 1 processor
-
-Timer Name                                           Global time (num calls)    
---------------------------------------------------------------------------------
-Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.01172 (1)                
-Anasazi: BlockKrylovSchur::Computing Schur form      0.01968 (1)                
-Anasazi: BlockKrylovSchur::Operation Op*x            0.02526 (101)              
-Anasazi: BlockKrylovSchur::Orthogonalization         0.2536 (102)               
-Anasazi: BlockKrylovSchur::Sorting Ritz values       0.001622 (1)               
-Anasazi: BlockKrylovSchur::Sorting Schur form        0.005265 (1)               
-Anasazi: BlockKrylovSchurSolMgr restarting           0 (0)                      
-Anasazi: BlockKrylovSchurSolMgr::solve()             0.3394 (1)                 
-================================================================================
-NUMVECS = 10
-Evals[1] = -1.595404 + 0.000000i
-Evals[2] = -1.545713 + 0.000000i
-Evals[3] = -1.544812 + 0.000000i
-Evals[4] = -1.518373 + 0.000000i
-Evals[5] = -1.484252 + 0.000000i
-Evals[6] = -1.476755 + 0.000000i
-Evals[7] = -1.471398 + 0.019437i
-Evals[8] = -1.471398 + -0.019437i
-Evals[9] = -1.469058 + 0.036921i
-Evals[10] = -1.469058 + -0.036921i
-
-
-Arnoldi send eigenvalues to FATHER
-Main ]> Father send exit type to ERAM and LS Component
-Main ]> Father has final exit signal to GMRES Component
---------------------------------------------------------------------------------
-                               Remove Application
---------------------------------------------------------------------------------
-Info ]> LS Receive signal information from Father
-Info ]> LS exit
-================================================================================
-
-                         BlockKrylovSchur Solver Status
-
-The solver is initialized.
-The number of iterations performed is 101
-The block size is         1
-The number of blocks is   100
-The current basis size is 101
-The number of auxiliary vectors is 0
-The number of operations Op*x   is 101
-
-CURRENT RITZ VALUES             
-              Ritz Value                 Ritz Residual
---------------------------------------------------------------------------------
-  -1.595404e+00 + i   0.000000e+00        8.978382e-14
-  -1.545713e+00 + i   0.000000e+00        1.064040e-07
-  -1.544812e+00 + i   0.000000e+00        3.197391e-08
-  -1.518373e+00 + i   0.000000e+00        5.706130e-06
-  -1.484252e+00 + i   0.000000e+00        6.438439e-04
-  -1.476755e+00 + i   0.000000e+00        9.983519e-04
-  -1.471398e+00 + i   1.943724e-02        1.109734e-03
-  -1.471398e+00 - i   1.943724e-02        1.109734e-03
-  -1.469058e+00 + i   3.692148e-02        1.631375e-05
-  -1.469058e+00 - i   3.692148e-02        1.631375e-05
-
-================================================================================
-
-================================================================================
-
-                      TimeMonitor results over 1 processor
-
-Timer Name                                           Global time (num calls)    
---------------------------------------------------------------------------------
-Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.02029 (2)                
-Anasazi: BlockKrylovSchur::Computing Schur form      0.03263 (2)                
-Anasazi: BlockKrylovSchur::Operation Op*x            0.04066 (202)              
-Anasazi: BlockKrylovSchur::Orthogonalization         0.4309 (204)               
-Anasazi: BlockKrylovSchur::Sorting Ritz values       0.001724 (2)               
-Anasazi: BlockKrylovSchur::Sorting Schur form        0.009771 (2)               
-Anasazi: BlockKrylovSchurSolMgr restarting           0 (0)                      
-Anasazi: BlockKrylovSchurSolMgr::solve()             0.5701 (2)                 
-================================================================================
-NUMVECS = 10
-Evals[1] = -1.595404 + 0.000000i
-Evals[2] = -1.545713 + 0.000000i
-Evals[3] = -1.544812 + 0.000000i
-Evals[4] = -1.518373 + 0.000000i
-Evals[5] = -1.484252 + 0.000000i
-Evals[6] = -1.476755 + 0.000000i
-Evals[7] = -1.471398 + 0.019437i
-Evals[8] = -1.471398 + -0.019437i
-Evals[9] = -1.469058 + 0.036921i
-Evals[10] = -1.469058 + -0.036921i
-
-
-Arnoldi send eigenvalues to FATHER
-================================================================================
-
-                         BlockKrylovSchur Solver Status
-
-The solver is initialized.
-The number of iterations performed is 101
-The block size is         1
-The number of blocks is   100
-The current basis size is 101
-The number of auxiliary vectors is 0
-The number of operations Op*x   is 101
-
-CURRENT RITZ VALUES             
-              Ritz Value                 Ritz Residual
---------------------------------------------------------------------------------
-  -1.595404e+00 + i   0.000000e+00        8.978382e-14
-  -1.545713e+00 + i   0.000000e+00        1.064040e-07
-  -1.544812e+00 + i   0.000000e+00        3.197391e-08
-  -1.518373e+00 + i   0.000000e+00        5.706130e-06
-  -1.484252e+00 + i   0.000000e+00        6.438439e-04
-  -1.476755e+00 + i   0.000000e+00        9.983519e-04
-  -1.471398e+00 + i   1.943724e-02        1.109734e-03
-  -1.471398e+00 - i   1.943724e-02        1.109734e-03
-  -1.469058e+00 + i   3.692148e-02        1.631375e-05
-  -1.469058e+00 - i   3.692148e-02        1.631375e-05
-
-================================================================================
-
-================================================================================
-
-                      TimeMonitor results over 1 processor
-
-Timer Name                                           Global time (num calls)    
---------------------------------------------------------------------------------
-Anasazi: BlockKrylovSchur::Computing Ritz vectors    0.03065 (3)                
-Anasazi: BlockKrylovSchur::Computing Schur form      0.04586 (3)                
-Anasazi: BlockKrylovSchur::Operation Op*x            0.05614 (303)              
-Anasazi: BlockKrylovSchur::Orthogonalization         0.6089 (306)               
-Anasazi: BlockKrylovSchur::Sorting Ritz values       0.001819 (3)               
-Anasazi: BlockKrylovSchur::Sorting Schur form        0.01482 (3)                
-Anasazi: BlockKrylovSchurSolMgr restarting           0 (0)                      
-Anasazi: BlockKrylovSchurSolMgr::solve()             0.8041 (3)                 
-================================================================================
-NUMVECS = 10
-Evals[1] = -1.595404 + 0.000000i
-Evals[2] = -1.545713 + 0.000000i
-Evals[3] = -1.544812 + 0.000000i
-Evals[4] = -1.518373 + 0.000000i
-Evals[5] = -1.484252 + 0.000000i
-Evals[6] = -1.476755 + 0.000000i
-Evals[7] = -1.471398 + 0.019437i
-Evals[8] = -1.471398 + -0.019437i
-Evals[9] = -1.469058 + 0.036921i
-Evals[10] = -1.469058 + -0.036921i
-
-
-Arnoldi send eigenvalues to FATHER
-Info ]> ERAM Receive signal information from Father
-Info ]> ERAM exit
-Main ]> Main Free the Arnoldi Components after waiting a little instant
-GMRES ]> Close of GMRES after waiting a little instant
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 95969 on node mdlsmc232 exited on signal 11 (Segmentation fault: 11).
+--------------------------------------------------------------------------
