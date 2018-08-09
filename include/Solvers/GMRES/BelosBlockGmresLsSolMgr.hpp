@@ -659,7 +659,7 @@ void BlockGmresSolMgr<ScalarType,MV,OP>::setParameters( const Teuchos::RCP<Teuch
     lsLatency_ = params->get("LS Apply Latency", lsLatency_default_);
   
   // update parameter in our list
-    params_->set("LS Apply Latency", lsPower_);
+    params_->set("LS Apply Latency", lsLatency_);
   }
 
   // check if use LSP
