@@ -131,7 +131,7 @@ int main(int argc, char *argv[]){
 
 
 	cmdp.setOption("ksp-lsp-degree",&lsPower,"Least Square polynomial degree for preconditioning.");
-        cmdp.setOption("ksp-lsp-latency",&lsPower,"Latency of Least Square polynomial preconditioning to apply.");
+        cmdp.setOption("ksp-lsp-latency",&latency,"Latency of Least Square polynomial preconditioning to apply.");
 
 	cmdp.setOption("ksp-use-lsp","ksp-no-use-lsp",&lspuse, "Whether to use LS polynomial preconditioning.");
 
