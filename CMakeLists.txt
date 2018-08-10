@@ -89,6 +89,8 @@ ENABLE_TESTING()
 #ADD_SUBDIRECTORY(Solvers)
 #ADD_SUBDIRECTORY(Solvers/GMRES)
 
+ADD_SUBDIRECTORY(benchmark)
+
 #Add Trilinos information to the include and link lines
 include_directories(${Trilinos_INCLUDE_DIRS} ${Trilinos_TPL_INCLUDE_DIRS} )
 link_directories(${Trilinos_LIBRARY_DIRS} ${Trilinos_TPL_LIBRARY_DIRS} )

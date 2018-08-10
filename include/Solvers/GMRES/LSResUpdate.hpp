@@ -2,7 +2,7 @@
 #define _LS_RES_UPDATE_H_
 
 #ifndef EIGEN_ALL
-#define EIGEN_ALL 10
+#define EIGEN_ALL 20
 #endif
 
 
