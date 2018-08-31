@@ -1,4 +1,8 @@
-#include "ellipse.hpp"
+#ifndef ELLIPSE_PETSC_HPP_
+
+#include "petsc.h"
+#include <math.h>
+#include <stdlib.h>
 
 int ellipse3(PetscScalar xy1, PetscScalar xy2, PetscScalar xy3, PetscReal * a2, PetscReal * b2, PetscReal * c, PetscInt * info){
 	
@@ -197,3 +201,5 @@ PetscErrorCode ellipse(PetscScalar * c, PetscScalar * d, PetscInt n, PetscInt mu
 	
 	return 0;
 }
+
+#endif

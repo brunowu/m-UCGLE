@@ -1,4 +1,4 @@
-#include "lib.hpp"
+#include "petsc.h"
 
 /* calcul de l'epsilon machine */
 PetscReal epsilon(void){

@@ -1,4 +1,8 @@
-#include "triep.hpp"
+#ifndef TRIEP_PETSC_HPP_
+
+#include "petsc.h"
+#include <math.h>
+#include <stdlib.h>
 
 /* 
 ! -----------------------------------------------------------------------
@@ -196,3 +200,5 @@ void sort(PetscScalar *arr, int beg, int end)
     sort(arr, r, end);
   }
 }
+
+#endif
