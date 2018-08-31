@@ -28,12 +28,12 @@ int convhull(PetscScalar * ab, PetscScalar * c, PetscScalar * d, PetscInt n, Pet
 	
 	
 	/* trouve l'indice de la valeur propres à plus petite partie réelle*/
-	s=(PetscScalar)PetscRealPart(ab[offset])+PETSC_i*(PetscScalar)0.0;
+	s = PetscRealPart(ab[offset]);
 	m1=0;
 	
 	for(i=1;i<n;i++){
-		if(PetscRealPart(ab[i+offset])<=PetscRealPart(s)){
-			s=(PetscScalar)PetscRealPart(ab[offset])+PETSC_i*(PetscScalar)0.0;
+		if(PetscRealPart(ab[i+offset]) <= s){
+			s = PetscRealPart(ab[offset]);
 	       		
 ///////			s=(PetscScalar)PetscRealPart(ab[i+offset])+PETSC_i*(PetscScalar)0.0;
 			m1=i;
@@ -49,7 +49,7 @@ int convhull(PetscScalar * ab, PetscScalar * c, PetscScalar * d, PetscInt n, Pet
 		l[m1]=0;
 	}else{
 ////////		m1=0;
-   		ab[m1+offset]=(PetscScalar) PetscRealPart(s) + (PetscScalar)PETSC_i*dzero;
+   		ab[m1+offset] = s + PETSC_i*dzero;
 	}
 	
 	
@@ -86,8 +86,8 @@ int convhull(PetscScalar * ab, PetscScalar * c, PetscScalar * d, PetscInt n, Pet
 			hk[i]=ab[m+offset];
 			l[m]=0;
 			*ne=i;
-			c[i-1+mu]=(hk[i]+hk[i-1])/2;
-			d[i-1+mu]=(hk[i]-hk[i-1])/2;
+			c[i-1+mu]=(hk[i]+hk[i-1])/2.0;
+			d[i-1+mu]=(hk[i]-hk[i-1])/2.0;
 			
 			for(j=0;j<n;j++)
 				if(l[j])
@@ -106,5 +106,6 @@ int convhull(PetscScalar * ab, PetscScalar * c, PetscScalar * d, PetscInt n, Pet
 	
 	return 0;
 }
+
 
 #endif

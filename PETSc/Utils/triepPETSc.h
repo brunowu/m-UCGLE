@@ -1,4 +1,5 @@
 #ifndef TRIEP_PETSC_HPP_
+#define TRIEP_PETSC_HPP_
 
 #include "petsc.h"
 #include <math.h>
@@ -18,7 +19,7 @@ PetscErrorCode tri(PetscScalar * vp, PetscInt nValues, PetscInt * ch_signe){
 	 
 	for( i = 0; i < nValues-1 ; ++i)
 	{
-		sort(vp,0,nValues);
+		SORT(vp,0,nValues);
 		
 
 	/* 
@@ -27,7 +28,7 @@ PetscErrorCode tri(PetscScalar * vp, PetscInt nValues, PetscInt * ch_signe){
  
  		*ch_signe=0;
  	
-		while(PetscRealPart(PetscRealPart(vp[*ch_signe]))<0.0){
+		while((PetscRealPart(vp[*ch_signe]))<0.0){
 			(*ch_signe)++;
 			if(*ch_signe>nValues){
 				break;
@@ -179,7 +180,7 @@ void swap(PetscScalar *a, PetscScalar *b)
 }
 
 
-void sort(PetscScalar *arr, int beg, int end)
+void SORT(PetscScalar *arr, int beg, int end)
 {
   if (end > beg + 1)
   {

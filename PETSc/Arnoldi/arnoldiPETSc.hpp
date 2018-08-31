@@ -1,16 +1,11 @@
-#ifndef ARNOLDI_HPP
-#define ARNOLDI_HPP
-
+#include "petsc.h"
 #include "slepceps.h"
-#include <unistd.h>
-#include "../../Libs/mpi_lsa.h"
-#include "../../Libs/mpi_lsa_com.h"
-#include "../../Libs/data_rw.h"
 
-#ifndef EIGEN_ALL
-#define EIGEN_ALL 20
-#endif
+PetscErrorCode loadInputs(Mat * A, Vec * x);
+PetscErrorCode loadMatrix(Mat * A);
+PetscErrorCode loadVector(char * type_v,Vec * b);
+PetscErrorCode generateVector(int size, Vec * v);
+PetscErrorCode generateVectorRandom(int size, Vec * v);
+PetscErrorCode generateVectorNorm(int size, Vec * v);
 
-PetscErrorCode Arnoldi(com_lsa * com, Mat * A, Vec * v);
 
-#endif
