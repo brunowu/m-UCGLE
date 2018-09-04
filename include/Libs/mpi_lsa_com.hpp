@@ -129,6 +129,7 @@ int mpi_lsa_com_cplx_array_send(MPI_Comm * com, int * size, std::complex<double>
     }
   }
 */
+  
   for(i = 0; i < * size*2; i = i+2){
     j = (int) i / 2;
     array_out_sended_buffer[i] = data[j].real();

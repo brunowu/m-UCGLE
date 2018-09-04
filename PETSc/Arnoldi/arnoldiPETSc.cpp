@@ -12,10 +12,33 @@ int main(int argc, char **argv){
 	EPS eps;
 	PetscInt its, nev, nconv;
 	EPSType type;
+	int j;
+
+	PetscReal re,im;
+	PetscScalar ei, er;
+	PetscBool flag;
+	PetscInt eigen_nb, nb;
+
+	std::complex<double> *eigenvalues = new std::complex<double> [500];;
+
+	PetscBool exit = PETSC_FALSE;
+	int end = 0;
+
+
+	int arank, asize;
+
+	int exit_type = 0;
 
 	ierr=SlepcInitialize(&argc,&argv,PETSC_NULL,help);CHKERRQ(ierr);
 	PetscPrintf(PETSC_COMM_WORLD,"\n\n]> Initializing SLEPc\n");
 	
+	MPI_Comm COMM_FATHER;
+
+  	MPI_Comm_size( MPI_COMM_WORLD, &asize );
+  	MPI_Comm_rank( MPI_COMM_WORLD, &arank );
+
+  	MPI_Comm_get_parent( &COMM_FATHER );
+
 	/*Load data*/
 	ierr=loadInputs(&A,&x);CHKERRQ(ierr);
 	PetscPrintf(PETSC_COMM_WORLD,"]> Data loaded\n");
@@ -27,8 +50,57 @@ int main(int argc, char **argv){
 	ierr = EPSSetType(eps,EPSARNOLDI);CHKERRQ(ierr);
 	ierr = EPSSetFromOptions(eps);CHKERRQ(ierr);
 
+	ierr=PetscOptionsGetInt(NULL,PETSC_NULL,"-ksp_ls_eigen",&eigen_nb,&flag);CHKERRQ(ierr);
+	if(!flag) eigen_nb=EIGEN_ALL;
+
+	int numv = (int) eigen_nb;
 	PetscPrintf(PETSC_COMM_WORLD,"]> Krylov Solver settings done\n");
 
+	while(!end){
+		/*check if the program need to exit */
+		if(exit == PETSC_TRUE)
+			break;
+
+		for(j = 0;j < eigen_nb;j++){
+			eigenvalues[j]=0.0 + PETSC_i*0.0;
+		}
+
+		ierr=EPSSetInitialSpace(eps,1,&x);CHKERRQ(ierr);
+
+		ierr=EPSSolve(eps);CHKERRQ(ierr);
+
+		ierr=EPSGetConverged(eps,&nb);CHKERRQ(ierr);
+
+
+		for(j = 0;j < nb; j++){
+			ierr = EPSGetEigenvalue(eps,j,&er,&ei);CHKERRQ(ierr);
+			#ifdef PETSC_USE_COMPLEX
+			  re=PetscRealPart(er);
+			  im=PetscImaginaryPart(er);
+			#else
+			  re=er;
+			  im=ei;
+			#endif
+			eigenvalues[j] = std::complex<double>(re, im);
+		}
+
+		mpi_lsa_com_cplx_array_send(&COMM_FATHER, &numv, eigenvalues);
+
+		PetscPrintf(PETSC_COMM_WORLD, "Arnoldi send eigenvalues to FATHER\n");
+
+		/* check if we received an exit message from Father*/
+		if(!mpi_lsa_com_type_recv(&COMM_FATHER, &exit_type)){
+        	PetscPrintf(PETSC_COMM_WORLD, "Info ]> ERAM Receive signal information from Father\n");	
+		}
+
+		if(exit_type == 666){
+        	PetscPrintf(PETSC_COMM_WORLD, "Info ]> ERAM exit\n");
+         	end = 1;
+         	break;
+      	}
+
+      	 MPI_Comm_free(&COMM_FATHER);
+	}
 	/*Solve the problem*/
 	PetscPrintf(PETSC_COMM_WORLD,"]> Krylov Solver Launching solving process\n");
 	ierr = EPSSolve(eps);CHKERRQ(ierr);
@@ -132,7 +204,7 @@ PetscErrorCode loadVector(char * type_v,Vec * b){
 }
 
 
-PetscErrorCode generateVectorRandom(int size, Vec * v){
+PetscErrorCode generateVectorRandom(PetscInt size, Vec * v){
 	PetscErrorCode ierr;
 
 	ierr=PetscPrintf(PETSC_COMM_WORLD,"Generating Vector \n");CHKERRQ(ierr);
@@ -144,7 +216,7 @@ PetscErrorCode generateVectorRandom(int size, Vec * v){
 }
 
 
-PetscErrorCode generateVectorNorm(int size, Vec * v){
+PetscErrorCode generateVectorNorm(PetscInt size, Vec * v){
 	PetscScalar scal;
 	PetscErrorCode ierr;
 
@@ -158,7 +230,7 @@ PetscErrorCode generateVectorNorm(int size, Vec * v){
 }
 
 
-PetscErrorCode generateVector(int size, Vec * v){
+PetscErrorCode generateVector(PetscInt size, Vec * v){
 	PetscErrorCode ierr;
 
 	ierr=VecCreate(PETSC_COMM_WORLD,v);CHKERRQ(ierr);

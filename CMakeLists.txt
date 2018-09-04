@@ -1,4 +1,6 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 3.6)
+
+project(UCMGEL)
 
 MESSAGE("Starting configure")
 
@@ -115,6 +117,44 @@ target_link_libraries(lsqr.exe ${LINK_LIBRARIES})
 target_link_libraries(arnoldi.exe ${LINK_LIBRARIES_ARNOLDI})
 target_link_libraries(gmres.exe ${LINK_LIBRARIES_GMRES})
 #target_link_libraries(gmres2.exe ${LINK_LIBRARIES_GMRES})
+
+list (APPEND CMAKE_MODULE_PATH "${UCMGEL_SOURCE_DIR}/cmake-modules")
+
+find_package (PETSc REQUIRED)
+
+if(PETSC_FOUND)
+    message([STATUS] "PETSC is provided.")
+endif()
+
+if(PETSC_FOUND)
+  find_package(SLEPc REQUIRED)
+  if(SLEPC_FOUND)
+     message([STATUS] "SLEPC version ${SLEPC_VERSION} is provided.")
+  endif()
+endif()
+
+message ([STATUS] "CPP COMPILER ${PETSC_COMPILER}")
+message ([STATUS] "PETSC INCLIUDES = ${PETSC_INCLUDES}")
+message ([STATUS] "SLPEC INCLIUDES = ${SLPEC_INCLUDES}")
+
+include_directories(${PETSC_INCLUDES} ${SLPEC_INCLUDES})
+
+add_definitions (${PETSC_DEFINITIONS})
+
+add_definitions (-g)
+
+message (STATUS "PETSC_DEFINITIONS ${PETSC_DEFINITIONS}")
+
+message (STATUS "PETSC_LIBRARIES ${PETSC_LIBRARIES}")
+
+add_executable(lsqrPETSc.exe PETSc/LS/lsqrPETSc.cpp)
+add_executable(arnoldiPETSc.exe PETSc/Arnoldi/arnoldiPETSc.cpp)
+
+
+target_link_libraries(lsqrPETSc.exe ${PETSC_LIBRARIES} ${SLEPC_LIBRARIES})
+
+target_link_libraries(arnoldiPETSc.exe ${PETSC_LIBRARIES} ${SLEPC_LIBRARIES})
+
 
 include(Dart)
 include(CPack)
