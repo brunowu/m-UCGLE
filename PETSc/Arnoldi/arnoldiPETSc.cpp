@@ -10,7 +10,7 @@ int main(int argc, char **argv){
 	Vec x;
 	Mat A;
 	EPS eps;
-	PetscInt its, nev, nconv;
+	PetscInt its, nconv;
 	EPSType type;
 	int j;
 
@@ -19,16 +19,18 @@ int main(int argc, char **argv){
 	PetscBool flag;
 	PetscInt eigen_nb, nb;
 
-	std::complex<double> *eigenvalues = new std::complex<double> [500];;
+	std::complex<double> *eigenvalues = new std::complex<double> [500];
 
 	PetscBool exit = PETSC_FALSE;
 	int end = 0;
-
 
 	int arank, asize;
 
 	int exit_type = 0;
 
+	int count = 0;
+
+	PetscInt nev, ncv, mpd;
 	ierr=SlepcInitialize(&argc,&argv,PETSC_NULL,help);CHKERRQ(ierr);
 	PetscPrintf(PETSC_COMM_WORLD,"\n\n]> Initializing SLEPc\n");
 	
@@ -57,6 +59,9 @@ int main(int argc, char **argv){
 	PetscPrintf(PETSC_COMM_WORLD,"]> Krylov Solver settings done\n");
 
 	while(!end){
+
+		count ++;
+
 		/*check if the program need to exit */
 		if(exit == PETSC_TRUE)
 			break;
@@ -67,7 +72,21 @@ int main(int argc, char **argv){
 
 		ierr=EPSSetInitialSpace(eps,1,&x);CHKERRQ(ierr);
 
+		if(exit_type != 666){
+			nev = 20;
+			mpd = 200;
+			if(100 + (count - 1)*20 < nev + mpd){
+				ncv = 100 + (count - 1) * 20;
+			}
+			else {ncv = mpd;}
+
+			EPSSetDimensions(eps, 10, 100+(count-1)*20,200);
+
+		}
+		PetscPrintf(PETSC_COMM_WORLD,"]> Krylov Solver Launching solving process\n");
 		ierr=EPSSolve(eps);CHKERRQ(ierr);
+		PetscPrintf(PETSC_COMM_WORLD,"]> Krylov Solver System solved\n");
+
 
 		ierr=EPSGetConverged(eps,&nb);CHKERRQ(ierr);
 
@@ -100,23 +119,9 @@ int main(int argc, char **argv){
       	}
 
       	 MPI_Comm_free(&COMM_FATHER);
+
 	}
-	/*Solve the problem*/
-	PetscPrintf(PETSC_COMM_WORLD,"]> Krylov Solver Launching solving process\n");
-	ierr = EPSSolve(eps);CHKERRQ(ierr);
-	PetscPrintf(PETSC_COMM_WORLD,"]> Krylov Solver System solved\n");
 
-	/*Get some informations of resolution*/
-
-	ierr = EPSGetIterationNumber(eps,&its);CHKERRQ(ierr);
-	PetscPrintf(PETSC_COMM_WORLD," Number of iterations of the method: %D\n",its);
-	ierr = EPSGetType(eps,&type);CHKERRQ(ierr);
-	PetscPrintf(PETSC_COMM_WORLD," Solution method: %s\n\n",type);
-	ierr = EPSGetDimensions(eps,&nev,NULL,NULL);CHKERRQ(ierr);
-	PetscPrintf(PETSC_COMM_WORLD," Number of requested eigenvalues: %D\n",nev);
-	/*Display the solution*/
-	EPSGetConverged(eps,&nconv);
-	PetscPrintf(PETSC_COMM_WORLD," Number of converged eigenpairs: %D\n\n",nconv);
 	/*Clean*/
 	ierr = EPSDestroy(&eps);CHKERRQ(ierr);
 	ierr = VecDestroy(&x);CHKERRQ(ierr);

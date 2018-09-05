@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 3.6)
 
-project(UCMGEL)
 
 MESSAGE("Starting configure")
 
@@ -9,6 +8,7 @@ MESSAGE("Starting configure")
 set(TRILINOS_PATH /Users/xwu/phd_xwu/trilinos-12.12.1-Source2/installation2)
 #set(TRILINOS_PATH /home/xinzhewu/workstations/trilinos/install)
 #set(TRILINOS_PATH /home/xinzhewu/workstations/trilinos/install-openmpi-1.10.2)
+#set(TRILINOS_PATH /home/xinzhewu/workstations/trilinos/install-openmpi-1.10.2-gcc5.1.0)
 
 SET(CMAKE_PREFIX_PATH ${TRILINOS_PATH} ${CMAKE_PREFIX_PATH})
 
@@ -91,7 +91,7 @@ ENABLE_TESTING()
 #ADD_SUBDIRECTORY(Solvers)
 #ADD_SUBDIRECTORY(Solvers/GMRES)
 
-ADD_SUBDIRECTORY(benchmark)
+#ADD_SUBDIRECTORY(benchmark)
 
 #Add Trilinos information to the include and link lines
 include_directories(${Trilinos_INCLUDE_DIRS} ${Trilinos_TPL_INCLUDE_DIRS} )
@@ -113,12 +113,16 @@ add_executable(gmres.exe lsgmres.cpp)
 #add_executable(gmres2.exe lsgmres.cpp)
 add_executable(arnoldi.exe arnoldi.cpp)
 add_executable(lsqr.exe lsqr.cpp)
+
+add_executable(testlsqrBelos.exe test/testlsqrBelos.cpp)
+
 target_link_libraries(lsqr.exe ${LINK_LIBRARIES})
 target_link_libraries(arnoldi.exe ${LINK_LIBRARIES_ARNOLDI})
 target_link_libraries(gmres.exe ${LINK_LIBRARIES_GMRES})
 #target_link_libraries(gmres2.exe ${LINK_LIBRARIES_GMRES})
+target_link_libraries(testlsqrBelos.exe ${LINK_LIBRARIES_GMRES})
 
-list (APPEND CMAKE_MODULE_PATH "${UCMGEL_SOURCE_DIR}/cmake-modules")
+list (APPEND CMAKE_MODULE_PATH "./cmake-modules")
 
 find_package (PETSc REQUIRED)
 
@@ -147,13 +151,18 @@ message (STATUS "PETSC_DEFINITIONS ${PETSC_DEFINITIONS}")
 
 message (STATUS "PETSC_LIBRARIES ${PETSC_LIBRARIES}")
 
+message (STATUS "SLPEC_LIBRARIES ${SLEPC_LIBRARIES}")
+
 add_executable(lsqrPETSc.exe PETSc/LS/lsqrPETSc.cpp)
 add_executable(arnoldiPETSc.exe PETSc/Arnoldi/arnoldiPETSc.cpp)
 
+add_executable(testlsqrPetsc.exe test/testlsqrPetsc.cpp)
 
-target_link_libraries(lsqrPETSc.exe ${PETSC_LIBRARIES} ${SLEPC_LIBRARIES})
+target_link_libraries(lsqrPETSc.exe ${PETSC_LIBRARIES})
 
-target_link_libraries(arnoldiPETSc.exe ${PETSC_LIBRARIES} ${SLEPC_LIBRARIES})
+target_link_libraries(testlsqrPetsc.exe ${PETSC_LIBRARIES})
+
+target_link_libraries(arnoldiPETSc.exe ${SLEPC_LIBRARIES} ${PETSC_LIBRARIES})
 
 
 include(Dart)
