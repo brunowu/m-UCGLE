@@ -18,7 +18,8 @@ int main(int argc, char **argv){
 	ierr=loadInputs(&Amat,&vec_rhs,&x);CHKERRQ(ierr);
 	PetscPrintf(PETSC_COMM_WORLD,"]> Data loaded\n");
 
-	PetscReal *data_tmp = new PetscReal [32];
+	PetscScalar data_tmp[32];
+
 	data_tmp[0] = 10.000000; data_tmp[1] = -0.633583; data_tmp[2] = -1.578017; data_tmp[3] = -0.105339;
 	data_tmp[4] = -0.172723; data_tmp[5] = -0.072221; data_tmp[6] = -0.061025; data_tmp[7] = -0.038023;
 	data_tmp[8] = -0.009229; data_tmp[9] = -0.007351; data_tmp[10] = -0.023021; data_tmp[11] = -0.009441;
@@ -28,14 +29,15 @@ int main(int argc, char **argv){
 	data_tmp[24] = -0.102049; data_tmp[25] = -0.305847; data_tmp[26] = -0.197462; data_tmp[27] = -0.243319;
 	data_tmp[28] = -0.221550; data_tmp[29] = -0.231377; data_tmp[30] = -0.226835; data_tmp[31] = -0.228912;
 
-	PetscMalloc(sizeof(PetscScalar)*(PetscInt)data_tmp[0],&eta);
-    PetscMalloc(sizeof(PetscScalar)*(PetscInt)data_tmp[0],&beta);
-    PetscMalloc(sizeof(PetscScalar)*(PetscInt)data_tmp[0],&delta);
+	PetscInt size = (PetscInt)PetscRealPart(data_tmp[0]);
+	PetscMalloc(sizeof(PetscScalar)*size,&eta);
+    PetscMalloc(sizeof(PetscScalar)*size,&beta);
+    PetscMalloc(sizeof(PetscScalar)*size,&delta);
 
 	ierr=PetscMemcpy(&alpha,&data_tmp[1],1*sizeof(PetscScalar));CHKERRQ(ierr);
-	ierr=PetscMemcpy(eta,&data_tmp[2],((PetscInt)data_tmp[0])*sizeof(PetscScalar));CHKERRQ(ierr);
-	ierr=PetscMemcpy(beta,&data_tmp[2+((PetscInt)data_tmp[0])],((PetscInt)data_tmp[0])*sizeof(PetscScalar));CHKERRQ(ierr);
-	ierr=PetscMemcpy(delta,&data_tmp[2+2*((PetscInt)data_tmp[0])],((PetscInt)data_tmp[0])*sizeof(PetscScalar));CHKERRQ(ierr);
+	ierr=PetscMemcpy(eta,&data_tmp[2],(size)*sizeof(PetscScalar));CHKERRQ(ierr);
+	ierr=PetscMemcpy(beta,&data_tmp[2+(size)],(size)*sizeof(PetscScalar));CHKERRQ(ierr);
+	ierr=PetscMemcpy(delta,&data_tmp[2+2*(size)],(size)*sizeof(PetscScalar));CHKERRQ(ierr);
 
 	ierr=VecDuplicate(vec_rhs,&vec_sol);CHKERRQ(ierr);
 	ierr=VecSet(vec_sol,(PetscScalar)0.0);CHKERRQ(ierr);
@@ -58,8 +60,12 @@ int main(int argc, char **argv){
 	ierr=VecSet(vec_tmp,(PetscScalar)0.0);CHKERRQ(ierr);
 	ierr=VecCopy(vec_sol,sol_tmp);CHKERRQ(ierr);
 
-	PetscInt ls_power = 10, i, j;
+	PetscInt ls_power = 1, i, j;
 	PetscReal norm, normb;
+
+	for(i=0;i<size-1;i++){
+		//PetscPrintf(PETSC_COMM_WORLD, "delta[%d] = %g\n", i, delta[i]);
+	}
 
 	VecNorm(vec_rhs,NORM_2,&normb);
 	printf("nromb = %f\n", normb);
@@ -67,6 +73,7 @@ int main(int argc, char **argv){
 	for(j=0;j<ls_power;j++){
 		/* r0 = b-Ax*/
 		/* put A*x into VEC_TEMP */
+
 		ierr = MatMult(Amat,sol_tmp,vec_tmp);CHKERRQ(ierr);
 		/* now put residual (-A*x + f) into vec_vv(0) */
 		ierr = VecWAXPY(r0_tmp,-1.0,vec_tmp,vec_rhs);CHKERRQ(ierr);
@@ -75,11 +82,15 @@ int main(int argc, char **argv){
 		ierr=VecCopy(w0_tmp,x_tmp);CHKERRQ(ierr);
 		ierr=VecScale(x_tmp,eta[0]);CHKERRQ(ierr);
 		ierr=VecSet(w_1_tmp,(PetscScalar)0.0);CHKERRQ(ierr);
-		/* depending ton the ls polynom size (PetscInt)data_tmp[0] */
-		for(i=0;i<(PetscInt)data_tmp[0]-1;i++){
+
+		/* depending ton the ls polynom size size */
+		for(i=0;i<size-1;i++){
+
 		  /* w1=-alpha*w0 - delta[i]*w_1 ((  y = alpha x + delta y. )) (Vec y,PetscScalar alpha,PetscScalar beta,Vec x)*/
 		  ierr=VecCopy(w_1_tmp,w1_tmp);CHKERRQ(ierr);
 		  ierr=VecAXPBY(w1_tmp,-alpha,-(PetscScalar)delta[i],w0_tmp);CHKERRQ(ierr);
+		  VecNorm(w1_tmp,NORM_2,&norm);
+		  PetscPrintf(PETSC_COMM_WORLD, "r1_tmp_norm[%d] = %f\n", i, norm/normb);
 		  /* w1 = w1 - A*w0 */
 		  ierr = MatMult(Amat,w0_tmp,vec_tmp);CHKERRQ(ierr);
 		  /* y = alpha x + y.  VecAXPY(Vec y,PetscScalar alpha,Vec x)*/
@@ -100,9 +111,7 @@ int main(int argc, char **argv){
 		/* now put residual (-A*x + f) into vec_vv(0) */
 		ierr = VecWAXPY(r1_tmp,-1.0,vec_tmp,vec_rhs);CHKERRQ(ierr);
 		/* compute norm and see if it's below epsilon */
-		VecNorm(r1_tmp,NORM_2,&norm);
 
-		PetscPrintf(PETSC_COMM_WORLD, "r1_tmp_norm[%d] = %f\n", j, norm/normb);
 	}
 
 	/*Clean*/
