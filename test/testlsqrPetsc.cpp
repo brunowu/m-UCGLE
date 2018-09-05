@@ -89,8 +89,8 @@ int main(int argc, char **argv){
 		  /* w1=-alpha*w0 - delta[i]*w_1 ((  y = alpha x + delta y. )) (Vec y,PetscScalar alpha,PetscScalar beta,Vec x)*/
 		  ierr=VecCopy(w_1_tmp,w1_tmp);CHKERRQ(ierr);
 		  ierr=VecAXPBY(w1_tmp,-alpha,-(PetscScalar)delta[i],w0_tmp);CHKERRQ(ierr);
-		  VecNorm(w1_tmp,NORM_2,&norm);
-		  PetscPrintf(PETSC_COMM_WORLD, "r1_tmp_norm[%d] = %f\n", i, norm/normb);
+//		  VecNorm(w1_tmp,NORM_2,&norm);
+//		  PetscPrintf(PETSC_COMM_WORLD, "r1_tmp_norm[%d] = %f\n", i, norm/normb);
 		  /* w1 = w1 - A*w0 */
 		  ierr = MatMult(Amat,w0_tmp,vec_tmp);CHKERRQ(ierr);
 		  /* y = alpha x + y.  VecAXPY(Vec y,PetscScalar alpha,Vec x)*/
@@ -111,6 +111,10 @@ int main(int argc, char **argv){
 		/* now put residual (-A*x + f) into vec_vv(0) */
 		ierr = VecWAXPY(r1_tmp,-1.0,vec_tmp,vec_rhs);CHKERRQ(ierr);
 		/* compute norm and see if it's below epsilon */
+
+		VecNorm(r1_tmp,NORM_2,&norm);
+		PetscPrintf(PETSC_COMM_WORLD, "r1_tmp_norm[%d] = %f\n", i, norm/normb);
+
 
 	}
 

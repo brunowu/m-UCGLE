@@ -156,6 +156,7 @@ int main(int argc, char *argv[]){
 	      	w1_tmp = MVT::CloneCopy(*w_1_tmp);
 	      	/*AXPBY*/
 	      	MVT::MvAddMv( -delta[i], *w1_tmp, -alpha, *w0_tmp, *w1_tmp );
+/*
 	      	MVT::MvNorm( *w1_tmp, normV);
 
 			normVV = normV.data();
@@ -165,7 +166,7 @@ int main(int argc, char *argv[]){
 					printf("r1_tmp_norm[%d] = %f\n", i, normVV[k]/normBB[k]);
 				}
 			}
-
+*/
 	      	/* w1 = w1 - A*w0 */
 	      	A->apply(*w0_tmp,*vec_tmp);
 	      	/* y = alpha x + y.*/
@@ -182,12 +183,22 @@ int main(int argc, char *argv[]){
 
 
 		/* update solution, x1= x1+x*/
-		MVT::MvAddMv( ONE, *sol_tmp, ONE, *w0_tmp, *sol_tmp );  
+		MVT::MvAddMv( ONE, *sol_tmp, ONE, *x_tmp, *sol_tmp );  
 		/* put A*x into VEC_TEMP */
 		A->apply(*sol_tmp,*vec_tmp);   
 		/* now put residual (-A*x + f) into vec_vv(0) */
 		MVT::MvAddMv( -ONE, *vec_tmp, ONE, *vec_rhs, *r1_tmp );  
 		/* compute norm and see if it's below epsilon */
+
+		MVT::MvNorm( *r1_tmp, normV);
+
+		normVV = normV.data();
+
+		if(myRank == 0){
+			for(k = 0; k < numVectors; k++){
+				printf("r1_tmp_norm[%d] = %f\n", i, normVV[k]/normBB[k]);
+			}
+		}
 
 	}
 
