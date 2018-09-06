@@ -83,7 +83,7 @@ int main(int argc, char *argv[]){
 	bool allprint      = false;
 	bool verbose 	   = (myRank==0);
 	bool debug 		   = false;
-	std::string filename("mhd1280a.mtx");
+	std::string filename("utm300_cp.mtx");
 	int frequency 	   = -1;
 	int numVectors 	   = 2;
   int blocksize 	   = 100;

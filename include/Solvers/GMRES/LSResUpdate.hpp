@@ -122,7 +122,7 @@ int LSResUpdate(const Teuchos::RCP<Belos::LinearProblem<ST,MV,OP> > &problem, in
 		}
 
 		Teuchos::RCP<const OP> A = problem->getOperator();
-		//std::cout <<*A << std::endl;
+		std::cout <<*A << std::endl;
 
 		Teuchos::RCP<const MV> vec_rhs = problem->getRHS();
 		//std::cout <<*B << std::endl;
@@ -132,8 +132,10 @@ int LSResUpdate(const Teuchos::RCP<Belos::LinearProblem<ST,MV,OP> > &problem, in
 		int numVectors = vec_rhs->getNumVectors();
 		std::cout <<"numVectors = : " << numVectors<< std::endl;
 
-	//	RCP<MV> curX = MVT::Clone(*vec_rhs,numVectors);
-	//	curX->putScalar(0.0);
+//		RCP<MV> curX = MVT::Clone(*vec_rhs,numVectors);
+
+//		curX->putScalar(0.0);
+
 
 		RCP<MV> curX = problem->getCurrLHSVec();
 

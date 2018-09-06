@@ -55,7 +55,7 @@ int main(int argc, char **argv){
 	ierr=PetscOptionsGetInt(NULL,PETSC_NULL,"-ksp_ls_eigen",&eigen_nb,&flag);CHKERRQ(ierr);
 	if(!flag) eigen_nb=EIGEN_ALL;
 
-	int numv = (int) eigen_nb;
+	int numv;
 	PetscPrintf(PETSC_COMM_WORLD,"]> Krylov Solver settings done\n");
 
 	while(!end){
@@ -80,7 +80,7 @@ int main(int argc, char **argv){
 			}
 			else {ncv = mpd;}
 
-			EPSSetDimensions(eps, 10, 100+(count-1)*20,200);
+			EPSSetDimensions(eps, 5, 20, 30);
 
 		}
 		PetscPrintf(PETSC_COMM_WORLD,"]> Krylov Solver Launching solving process\n");
@@ -103,6 +103,8 @@ int main(int argc, char **argv){
 			eigenvalues[j] = std::complex<double>(re, im);
 		}
 
+		numv = (int) nb;
+		
 		mpi_lsa_com_cplx_array_send(&COMM_FATHER, &numv, eigenvalues);
 
 		PetscPrintf(PETSC_COMM_WORLD, "Arnoldi send eigenvalues to FATHER\n");
@@ -164,8 +166,7 @@ PetscErrorCode loadMatrix(Mat * A){
 	/*check args, if no matrix then no work... matrix file is mandatory*/
 	ierr=PetscOptionsGetString(NULL,PETSC_NULL,"-mfile",file,PETSC_MAX_PATH_LEN-1,&flag);CHKERRQ(ierr);
 	if (!flag) {		
-		sprintf(err,"Error : mfile is not properly set -> %s\n",file);
-		SETERRQ(PETSC_COMM_WORLD,(PetscErrorCode)83,err);
+		strcpy(file, "utm300.mtx_300x300_3155nnz");
 	}
 
 	/* read matrix file */

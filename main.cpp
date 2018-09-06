@@ -7,7 +7,7 @@
 #include <unistd.h>
 
 #ifndef EIGEN_ALL
-#define EIGEN_ALL 500
+#define EIGEN_ALL 10
 #endif
 
 

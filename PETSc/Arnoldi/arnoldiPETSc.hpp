@@ -5,7 +5,7 @@
 #include <complex>
 
 #ifndef EIGEN_ALL
-#define EIGEN_ALL 20
+#define EIGEN_ALL 10
 #endif
 
 PetscErrorCode loadInputs(Mat * A, Vec * x);
@@ -13,4 +13,5 @@ PetscErrorCode loadMatrix(Mat * A);
 PetscErrorCode loadVector(char * type_v,Vec * b);
 PetscErrorCode generateVector(PetscInt size, Vec * v);
 PetscErrorCode generateVectorRandom(PetscInt size, Vec * v);
+
 
