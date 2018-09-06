@@ -42,6 +42,15 @@ int main(int argc, char **argv){
 	ierr=VecDuplicate(vec_rhs,&vec_sol);CHKERRQ(ierr);
 	ierr=VecSet(vec_sol,(PetscScalar)0.0);CHKERRQ(ierr);
 
+/*
+	ierr=VecSet(vec_sol,(PetscScalar)1.0);CHKERRQ(ierr);
+
+	Vec tt;
+	ierr=VecDuplicate(vec_sol,&tt);CHKERRQ(ierr);
+	ierr = MatMult(Amat,vec_sol,tt);CHKERRQ(ierr);
+	ierr=VecCopy(tt,vec_rhs);CHKERRQ(ierr);
+*/
+
 	ierr=VecDuplicate(vec_sol,&x_tmp);CHKERRQ(ierr);
 	ierr=VecDuplicate(vec_sol,&r0_tmp);CHKERRQ(ierr);
 	ierr=VecDuplicate(vec_sol,&w_1_tmp);CHKERRQ(ierr);
@@ -60,7 +69,7 @@ int main(int argc, char **argv){
 	ierr=VecSet(vec_tmp,(PetscScalar)0.0);CHKERRQ(ierr);
 	ierr=VecCopy(vec_sol,sol_tmp);CHKERRQ(ierr);
 
-	PetscInt ls_power = 1, i, j;
+	PetscInt ls_power = 10, i, j;
 	PetscReal norm, normb;
 
 	for(i=0;i<size-1;i++){

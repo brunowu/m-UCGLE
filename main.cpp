@@ -7,7 +7,7 @@
 #include <unistd.h>
 
 #ifndef EIGEN_ALL
-#define EIGEN_ALL 10
+#define EIGEN_ALL 500
 #endif
 
 
@@ -91,7 +91,7 @@ int main( int argc, char *argv[] ) {
   int flg;
 
   std::complex<double> *data_recv = new std::complex<double> [length];
-  double *data = new double [EIGEN_ALL];
+  double *data = new double [3*length + 2];
 
   for(i = 0; i < gmres_nb; i++){
     exit_type[i] = 0;

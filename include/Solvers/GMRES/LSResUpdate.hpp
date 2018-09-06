@@ -2,9 +2,8 @@
 #define _LS_RES_UPDATE_H_
 
 #ifndef EIGEN_ALL
-#define EIGEN_ALL 20
+#define EIGEN_ALL 500
 #endif
-
 
 #include "BelosConfigDefs.hpp"
 #include "BelosLinearProblem.hpp"
@@ -163,8 +162,6 @@ int LSResUpdate(const Teuchos::RCP<Belos::LinearProblem<ST,MV,OP> > &problem, in
 	    double *normBB = new double [numVectors];
 	    double *normVV = new double [numVectors];
 
-
-
 		int size = (int) data_tmp[0];
 
 	  	double alpha;
@@ -172,12 +169,15 @@ int LSResUpdate(const Teuchos::RCP<Belos::LinearProblem<ST,MV,OP> > &problem, in
 	  	double *beta = new double [size];
 	  	double *delta = new double [size];
 
-	  	std::memcpy(&alpha,&data_tmp[1], 1*sizeof(double));
-	  	std::memcpy(eta,&data_tmp[2], size*sizeof(double));
-	  	std::memcpy(beta,&data_tmp[2 + size], size*sizeof(double));
-	  	std::memcpy(delta,&data_tmp[2 + 2 * size], size*sizeof(double));
+		std::memcpy(&alpha,&data_tmp[1], 1*sizeof(double));
+		std::memcpy(eta,&data_tmp[2], size*sizeof(double));
+		std::memcpy(beta,&data_tmp[2 + size], size*sizeof(double));
+		std::memcpy(delta,&data_tmp[2 + 2 * size], size*sizeof(double));
 
+		MVT::MvNorm( *vec_rhs, normB);
 
+		normBB = normB.data();
+		
 		for(j = 0; j < ls_power; j++){
 			/* r0 = b-Ax*/
 			/* put A*x into vec_tmp */
@@ -193,46 +193,37 @@ int LSResUpdate(const Teuchos::RCP<Belos::LinearProblem<ST,MV,OP> > &problem, in
 		    	/* w1=-alpha*w0 - delta[i]*w_1 ((  y = alpha x + delta y. ))*/
 		      	w1_tmp = MVT::CloneCopy(*w_1_tmp);
 		      	/*AXPBY*/
-		      	MVT::MvAddMv( -alpha, *w1_tmp, delta[i], *w0_tmp, *w1_tmp );
+		      	MVT::MvAddMv( -delta[i], *w1_tmp, -alpha, *w0_tmp, *w1_tmp );
 		      	/* w1 = w1 - A*w0 */
 		      	A->apply(*w0_tmp,*vec_tmp);
 		      	/* y = alpha x + y.*/
-		      	MVT::MvAddMv( ONE, *w1_tmp, -ONE, *vec_tmp, *w1_tmp );
+		      	MVT::MvAddMv(ONE, *w1_tmp, ONE, *vec_tmp, *w1_tmp );
 		      	/* w1 = w1/beta[i] */
 		      	MVT::MvScale(*w1_tmp, 1/beta[i]);
 		      	/* w_1 = w0 */
 		      	w_1_tmp = MVT::CloneCopy(*w0_tmp);
 		      	/* w0 = w1*/
-		      	w0_tmp = MVT::CloneCopy(*w1_tmp);
+	      		w0_tmp = MVT::CloneCopy(*w1_tmp);
 		      	/* x = x + (w0 * eta[i] ) */
 		      	MVT::MvAddMv( ONE, *x_tmp, eta[i + 1], *w0_tmp, *x_tmp );      
 		    }
 
 		    /* update solution, x1= x1+x*/
-		    MVT::MvAddMv( ONE, *sol_tmp, ONE, *w0_tmp, *sol_tmp );  
+		    MVT::MvAddMv( ONE, *sol_tmp, ONE, *x_tmp, *sol_tmp );   
 		    /* put A*x into VEC_TEMP */
-		    A->apply(*sol_tmp,*vec_tmp);   
+			A->apply(*sol_tmp,*vec_tmp);    
 		    /* now put residual (-A*x + f) into vec_vv(0) */
-		    MVT::MvAddMv( -ONE, *vec_tmp, ONE, *vec_rhs, *r1_tmp );  
+		    MVT::MvAddMv( -ONE, *vec_tmp, ONE, *vec_rhs, *r1_tmp ); 
 		    /* compute norm and see if it's below epsilon */
 		    MVT::MvNorm( *r1_tmp, normV);
 
-		    MVT::MvNorm( *vec_rhs, normB);
-
-		    std::vector<double>::iterator iter_begin = normV.begin();
-		    std::vector<double>::iterator iter_end   = normV.end();
-		    std::vector<double>::iterator iter;
-
-		    std::vector<double>::iterator iterB_begin = normB.begin();
-		    std::vector<double>::iterator iterB_end   = normB.end();
-		    std::vector<double>::iterator iterB;
-
-		    normBB = normB.data();
 		    normVV = normV.data();
+			if(grank == 0){
+				for(k = 0; k < numVectors; k++){
+					printf("r1_tmp_norm[%d] = %f\n", i, normVV[k]/normBB[k]);
+				}
+			}
 
-		    for(k = 0; k < numVectors; k++){
-		    	std::cout << "LOOP" << j+1 << ", Rank " << rank << ": "<< normVV[k]/normBB[k] << std::endl;
-		    }
 		}
 
 		MVT::MvAddMv( ONE, *sol_tmp, -ONE, *curX, *sol_tmp );  

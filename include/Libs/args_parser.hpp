@@ -228,11 +228,12 @@ char **argsParserLSPRuntime(int argc, char ** argv){
 
   char **lsp_runtime_args = new char* [30];
   char *lsp = new char [100];
+  char *lspeigen = new char [100];
 
   for(i = 0; i < argc; i++){
     //parse arnoldi runtime parameters
-    memcpy(lsp, argv[i] + 0, 5);
-    if (strcmp(lsp,"--lsp") == 0){
+    memcpy(lsp, argv[i] + 0, 9);
+    if (strcmp(lsp,"--eps-nev") == 0){
       lsp_runtime_args[j] = new char [100];
       strcpy(lsp_runtime_args[j], argv[i]);
       printf("Parser Least Square Polynomial runtime Flag = %s  \n", lsp_runtime_args[j]);

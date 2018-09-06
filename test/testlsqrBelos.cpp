@@ -132,7 +132,7 @@ int main(int argc, char *argv[]){
 	std::memcpy(beta,&data_tmp[2 + size], size*sizeof(double));
 	std::memcpy(delta,&data_tmp[2 + 2 * size], size*sizeof(double));
 
-	int ls_power = 1, i, j ,k;
+	int ls_power = 10, i, j ,k;
 
 	MVT::MvNorm( *vec_rhs, normB);
 

@@ -74,8 +74,23 @@ int main( int argc, char *argv[] ){
   sprintf(export_path,"./lsqr.bin");
 
   /*options and flags we add later using Trilinos functions*/
-  ls_eigen_min=EIGEN_MIN;
   ls_eigen=EIGEN_ALL;
+
+  char *lsp_runtime_args = new char [100];
+  char *lsp = new char [100];
+  char *lspn = new char [100];
+
+  for(int p = 0; p < argc; p++){
+    memcpy(lsp, argv[p] + 0, 9);
+    if (strcmp(lsp,"--eps-nev") == 0){
+      strcpy(lsp_runtime_args, argv[p]);
+      memcpy(lspn, lsp_runtime_args + 10, strlen(lsp_runtime_args) - 10 + 1);
+      ls_eigen = atoi(lspn);
+      printf("Parser Least Square Polynomial used egeinvalues number = %s with ls_eigen = %d  \n", lsp_runtime_args, ls_eigen);
+    }
+  }
+
+  ls_eigen_min=EIGEN_MIN;
   eigen_max=ls_eigen;
 
   eigen_tri = new std::complex<double> [vector_size];
