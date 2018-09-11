@@ -23,6 +23,8 @@ int main( int argc, char *argv[] ) {
   char **args_gmres_runtime;
   char **args_lsp_runtime;
 
+  bool debug = false;
+
 
   MPI_Init( &argc, &argv );
 
@@ -43,6 +45,17 @@ int main( int argc, char *argv[] ) {
   border_print2();
   center_print("Start Initialization", 79);
   border_print2();
+
+  for(int i = 0; i < argc; i++){
+    if(std::string(argv[i]) == "--DEBUG"){
+      debug = true;
+    }
+  }
+
+  border_print2();
+  if(debug){center_print("Running in DEBUG mode", 79);}
+  border_print2();
+
   //Parser the arguments to initialize MUCLGE
   argsParser(argc, argv, &gmres_nb, &arnoldi_nb, &gmres_proc, &arnoldi_proc);
 
@@ -113,8 +126,10 @@ int main( int argc, char *argv[] ) {
       }
     }
 
-    for(i = 0; i < gmres_nb; i++){
-      printf("exit_type[%d] = %d\n", i, exit_type[i]);
+    if(debug){
+      for(i = 0; i < gmres_nb; i++){
+        printf("exit_type[%d] = %d\n", i, exit_type[i]);
+      }
     }
 
     if(exit == gmres_nb){
@@ -147,7 +162,7 @@ int main( int argc, char *argv[] ) {
     if(!mpi_lsa_com_array_recv(&COMM_LS, &length, data)){
       printf("Main ]> Father has Array received from LS Component\n" );
       for(i = 0; i < length; i++){
-        printf("Debug ]>: Father send data[%d] = %f to GMRES\n", i, data[i] );
+        if(debug) printf("Debug ]>: Father send data[%d] = %f to GMRES\n", i, data[i] );
       }
       //send new array to multiples GMRES
       for(i = 0; i < gmres_nb; i++){

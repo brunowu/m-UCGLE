@@ -119,13 +119,13 @@ int main( int argc, char *argv[] ){
   bool herm = false;
   std::string which("LM");
   std::string filename;
-  int nev = 5;
+  int nev = 20;
   int blockSize = 1;
   MT tol = 1.0e-1;
   bool printMatrix   = false;
   bool allprint      = false;
-  int numBlocks = 20;
-  int maxRestarts = 100;
+  int numBlocks = 100;
+  int maxRestarts = 150;
 
   /*smg2s parameters*/
   bool usesmg2s = false;
@@ -328,7 +328,7 @@ int main( int argc, char *argv[] ){
       std::vector<MT> normV( numev );
       for (int i=0; i<numev; i++) {
         Evalues[i] = std::complex<double>(sol.Evals[i].realpart,sol.Evals[i].imagpart);
-        printf("Evals[%d] = %f + %fi\n", i+1,sol.Evals[i].realpart, sol.Evals[i].imagpart);
+        printf("Evals2[%d] = %f + %fi\n", i+1,sol.Evals[i].realpart, sol.Evals[i].imagpart);
       }
    
       if (MyPID==0) {

@@ -83,7 +83,7 @@ int LSResUpdate(const Teuchos::RCP<Belos::LinearProblem<ST,MV,OP> > &problem, in
 
 
 		if(rank == 0){
-			printf("Hey LS PPOWER = %d, LS Latency = %d\n", ls_power, latency);
+			//printf("Hey LS PPOWER = %d, LS Latency = %d\n", ls_power, latency);
 	  	}
 		latency_count++;
 
@@ -97,9 +97,11 @@ int LSResUpdate(const Teuchos::RCP<Belos::LinearProblem<ST,MV,OP> > &problem, in
 		if(!mpi_lsa_com_array_recv(&COMM_FATHER, &size_data, data_tmp)){
 			if(grank == 0){
 				printf("GMRES ]> GMRES has recived data from LS\n");
+/*
 				for(i = 0; i < size_data; i++){
 	            	printf("GMRES ]>: GMRES rank = %d, data[%d] = %f\n",grank, i, data_tmp[i] );
 	            }
+*/
 			}
 
 			for(i = 0; i < EIGEN_MAX * 3 + 2; i++){
@@ -128,7 +130,7 @@ int LSResUpdate(const Teuchos::RCP<Belos::LinearProblem<ST,MV,OP> > &problem, in
 		const ST ONE  = SCT::one();
 
 		int numVectors = vec_rhs->getNumVectors();
-		std::cout <<"numVectors = : " << numVectors<< std::endl;
+//		std::cout <<"numVectors = : " << numVectors<< std::endl;
 
 //		RCP<MV> curX = MVT::Clone(*vec_rhs,numVectors);
 

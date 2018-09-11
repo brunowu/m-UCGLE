@@ -116,7 +116,7 @@ void ellipse(std::complex<double> * c, std::complex<double> * d, int n, int mu, 
 	/* CALCUL DES SOMMETS A PARTIR DES CENTRES ET DES DEMI-DISTANCES */
 	for(i = 0;i < n - 1; i++){
 		hk[i] = c[i] - d[i];
-		printf("hk[%d] = %f+%fi\n",i,real(hk[i]), imag(hk[i]));
+		//printf("hk[%d] = %f+%fi\n",i,real(hk[i]), imag(hk[i]));
 	}
 
 	printf("----------------------\n");
@@ -188,7 +188,7 @@ void ellipse(std::complex<double> * c, std::complex<double> * d, int n, int mu, 
 	*dr= (*ao2) >= bo2;
 	*ao2 = std::sqrt(*ao2);
 
-	printf("*info = = %d\n", *info);
+	//printf("*info = = %d\n", *info);
 
 	delete [] hk;
 

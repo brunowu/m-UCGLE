@@ -33,8 +33,14 @@ int main( int argc, char *argv[] ){
 
   MPI_Comm_get_parent( &COMM_FATHER );
 
-  //MPI_Comm_size( COMM_FATHER, &lsize );
-  //MPI_Comm_rank( COMM_FATHER, &lrank );
+  bool debug = false;
+
+  for(int i = 0; i < argc; i++){
+    if(std::string(argv[i]) == "--DEBUG"){
+      debug = true;
+    }
+  }
+
 
   if(lrank == 0){
     printf("Info ]> The Comm world size of LS is %d \n", lsize);
@@ -44,7 +50,7 @@ int main( int argc, char *argv[] ){
   int end, cumul, eigen_received, eigen_total, eigen_max;
   int i, info, type = 0;
 
-  int vector_size = 20;
+  int vector_size = EIGEN_MAX;
   /*flags*/
   int flag, data_load = 0, data_export, continuous_export, data_load_any = 0;
 
@@ -76,7 +82,7 @@ int main( int argc, char *argv[] ){
   }
 
   ls_eigen_min=EIGEN_MIN;
-  eigen_max=ls_eigen;
+  eigen_max=EIGEN_MAX;
 
   eigen_tri = new std::complex<double> [vector_size];
   eigen_cumul = new std::complex<double> [vector_size];
@@ -140,18 +146,22 @@ int main( int argc, char *argv[] ){
 
     if(!mpi_lsa_com_cplx_array_recv(&COMM_FATHER, &data_size, data)){
       /* we received data or load it depending on the flags (for first step only*/
-/*
-      for(i = 0; i < data_size; i++){
-        printf("data[%d] = %f+%fi\n",i, data[i].real(),data[i].imag());
+      if(debug){
+        for(i = 0; i < data_size; i++){
+          printf("data[%d] = %f+%fi\n",i, data[i].real(),data[i].imag());
+        }         
       }
-*/
+
       /* first we gonna remove some non-needed values */
       epurer(data,&data_size);
-/*
-      for(i = 0;i < data_size; i++){
-        printf("data_epure[%d] = %f+i%f\n",i,data[i].real(), data[i].imag() );
+
+      if(debug){
+        for(i = 0;i < data_size; i++){
+          printf("data_epure[%d] = %f+i%f\n",i,data[i].real(), data[i].imag() );
+        } 
       }
-*/
+
+
       /* add them to the accumulated eigenvalues */
       /* if full renew full eigenvalues */
       if(eigen_total + data_size > vector_size) eigen_total = 0;
@@ -190,11 +200,11 @@ int main( int argc, char *argv[] ){
         if(chsign > 0){
         //keepPositif(eigen_tri,&cumul);
           convhull(eigen_tri, c, d, chsign, &mu1, 0, 0);
-          printf("@} LSQR convhul negatif chsigne %d cumul %d mu1 %d\n",chsign,cumul,mu1);
+          if(debug) printf("@} LSQR convhul negatif chsigne %d cumul %d mu1 %d\n",chsign,cumul,mu1);
         }
         if(chsign < cumul){
           convhull(eigen_tri, c, d, cumul-chsign, &mu2, chsign, mu1);
-          printf("@} LSQR convhul positif chsigne %d cumul %d mu1 %d mu2 %d\n",chsign,cumul,mu1,mu2);
+          if(debug) printf("@} LSQR convhul positif chsigne %d cumul %d mu1 %d mu2 %d\n",chsign,cumul,mu1,mu2);
         }
         mu = mu1 + mu2;
 
@@ -211,10 +221,11 @@ int main( int argc, char *argv[] ){
                 delta, c, d,&mu, &ls_eigen, &ls_eigen_min, &eigen_max); 
         }
 
-        for(i = 0; i < eigen_max; i++){
-          //printf("eta[%d] = %f, alpha = %f, beta[%d] = %f, deta[%d] =  %f\n", i, eta[i], alpha, i, beta[i],i, delta[i]);
+        if(debug){
+          for(i = 0; i < eigen_max; i++){
+            printf("eta[%d] = %f, alpha = %f, beta[%d] = %f, deta[%d] =  %f\n", i, eta[i], alpha, i, beta[i],i, delta[i]);
+          }
         }
-
       }
     }
 
@@ -237,7 +248,7 @@ int main( int argc, char *argv[] ){
 
       MPI_Request rq[1];
       mpi_lsa_com_array_send(&COMM_FATHER, &result_array_size,result_array, rq);
-      printf("LS ]> LS send array to Father, result_array_size = %d\n", result_array_size);
+      if(debug) printf("LS ]> LS send array to Father, result_array_size = %d\n", result_array_size);
     }
 
     if(ls_eigen>1){

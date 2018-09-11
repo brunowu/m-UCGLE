@@ -187,7 +187,6 @@ char **argsParserArnoldiRuntime(int argc, char ** argv){
     }
   }
   
-
   delete [] skr;
   delete [] eps;
 
@@ -234,6 +233,15 @@ char **argsParserLSPRuntime(int argc, char ** argv){
     //parse arnoldi runtime parameters
     memcpy(lsp, argv[i] + 0, 9);
     if (strcmp(lsp,"--eps-nev") == 0){
+      lsp_runtime_args[j] = new char [100];
+      strcpy(lsp_runtime_args[j], argv[i]);
+      printf("Parser Least Square Polynomial runtime Flag = %s  \n", lsp_runtime_args[j]);
+      j++;
+    }
+  }
+
+  for(i = 0; i < argc; i++){
+    if(std::string(argv[i]) == "--DEBUG"){
       lsp_runtime_args[j] = new char [100];
       strcpy(lsp_runtime_args[j], argv[i]);
       printf("Parser Least Square Polynomial runtime Flag = %s  \n", lsp_runtime_args[j]);

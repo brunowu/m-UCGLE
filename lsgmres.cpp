@@ -31,11 +31,11 @@
 // SMG2S interface to Trilinos/teptra csr sparse matrix
 #include "include/SMG2S/interface/Trilinos/trilinos_interface.hpp"
 
-#ifdef __USE_COMPLEX__
+#include <ctime>
+
+
 typedef std::complex<double>                  ST;
-#else
-typedef double                                ST;
-#endif
+
 
 typedef Teuchos::ScalarTraits<ST>             SCT;
 typedef SCT::magnitudeType                    MT;
@@ -236,6 +236,26 @@ int main(int argc, char *argv[]){
   	= rcp( new Map<LO,GO>(nrows,myRank == 0 ? nrows : 0,0,comm) );
 	RCP<MV> Xhat = rcp( new MV(root_map,numVectors) );
 	RCP<Import<LO,GO> > importer = rcp( new Import<LO,GO>(dmnmap,root_map) );
+
+	RCP<MV> Y = rcp(new MV(dmnmap,numVectors));
+
+	ST v;
+	double rnd_r, rnd_i;
+	GO i; 
+	int j;
+//	std::srand(std::time(0));
+	for(j = 0; j < numVectors; j++){
+		std::srand((i + j)*1.2345);
+		for(i = 0; i < nrows; i++){
+			rnd_r = (double)std::rand()/RAND_MAX;
+			rnd_i = (double)std::rand()/RAND_MAX;
+			v.real(rnd_r);
+			v.imag(rnd_i);
+			Y->replaceGlobalValue(i, j, v);
+		}		
+	}
+
+	Y->describe(*fos, Teuchos::VERB_EXTREME);
 
 	// generate randomly the final solution of systems as X
 	RCP<MV> X = rcp(new MV(dmnmap,numVectors));
