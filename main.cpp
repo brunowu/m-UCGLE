@@ -6,9 +6,10 @@
 #include <complex>
 #include <unistd.h>
 
-#ifndef EIGEN_ALL
-#define EIGEN_ALL 10
-#endif
+#include "config.hpp"
+//#ifndef EIGEN_ALL
+//#define EIGEN_ALL 10
+//#endif
 
 
 int main( int argc, char *argv[] ) {
@@ -74,7 +75,7 @@ int main( int argc, char *argv[] ) {
   center_print("Start Resolving Linear Systems by MUCGLE", 79);
   border_print2();
 
-  int length = EIGEN_ALL;
+  int length = EIGEN_MAX;
 
   int exit_type[gmres_nb];
   int exit_recv[gmres_nb];
@@ -142,6 +143,7 @@ int main( int argc, char *argv[] ) {
     }
 
     //receive new array from LS
+    
     if(!mpi_lsa_com_array_recv(&COMM_LS, &length, data)){
       printf("Main ]> Father has Array received from LS Component\n" );
       for(i = 0; i < length; i++){
@@ -154,6 +156,7 @@ int main( int argc, char *argv[] ) {
 
       }
     }
+    
   }
 
   int exit_signal_arnoldi[arnoldi_nb];

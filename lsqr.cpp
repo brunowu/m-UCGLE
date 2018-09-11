@@ -13,21 +13,10 @@
 #include <cmath>
 #include <unistd.h>
 
+#include "config.hpp"
 
 #ifndef EIGEN_MIN
 #define EIGEN_MIN 2
-#endif
-
-#ifndef EIGEN_ALL
-#define EIGEN_ALL 10
-#endif
-
-#ifndef EIGEN_MAX
-#define EIGEN_MAX 10
-#endif
-
-#ifndef MAX_PATH_LEN
-#define MAX_PATH_LEN 4096
 #endif
 
 int main( int argc, char *argv[] ){
@@ -53,7 +42,6 @@ int main( int argc, char *argv[] ){
 
   /* variables */
   int end, cumul, eigen_received, eigen_total, eigen_max;
-  char load_path[MAX_PATH_LEN], export_path[MAX_PATH_LEN];
   int i, info, type = 0;
 
   int vector_size = 20;
@@ -69,9 +57,6 @@ int main( int argc, char *argv[] ){
   int mu1, mu2, mu, result_array_size;
   double *eta, *beta, *delta, alpha, scalar_tmp, *result_array;
   int ls_eigen_min, ls_eigen; // use default values
-
-  sprintf(load_path,"./lsqr.bin");
-  sprintf(export_path,"./lsqr.bin");
 
   /*options and flags we add later using Trilinos functions*/
   ls_eigen=EIGEN_ALL;
@@ -235,7 +220,7 @@ int main( int argc, char *argv[] ){
 
     if(ls_eigen > 1){
       /* place the computed results inside the array */
-      scalar_tmp = ls_eigen;
+      scalar_tmp = cumul;
       std::memcpy(&result_array[0],&scalar_tmp,1*sizeof(double));
       std::memcpy(&result_array[1],&alpha,1*sizeof(double));
       std::memcpy(&result_array[2],eta,ls_eigen*sizeof(double));
@@ -252,7 +237,7 @@ int main( int argc, char *argv[] ){
 
       MPI_Request rq[1];
       mpi_lsa_com_array_send(&COMM_FATHER, &result_array_size,result_array, rq);
-      printf("LS ]> LS send array to Father\n");
+      printf("LS ]> LS send array to Father, result_array_size = %d\n", result_array_size);
     }
 
     if(ls_eigen>1){

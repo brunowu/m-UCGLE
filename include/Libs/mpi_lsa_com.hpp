@@ -6,9 +6,7 @@
 #include <cstdlib>
 #include <complex>
 
-#ifndef EIGEN_MAX
-#define EIGEN_MAX 10
-#endif
+#include "../../config.hpp"
 
 /*recv type information functionality*/
 int mpi_lsa_com_type_recv(MPI_Comm * com, int * type){

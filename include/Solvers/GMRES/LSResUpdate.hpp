@@ -1,10 +1,6 @@
 #ifndef _LS_RES_UPDATE_H_
 #define _LS_RES_UPDATE_H_
 
-#ifndef EIGEN_ALL
-#define EIGEN_ALL 500
-#endif
-
 #include "BelosConfigDefs.hpp"
 #include "BelosLinearProblem.hpp"
 #include "BelosTpetraAdapter.hpp"
@@ -29,6 +25,8 @@
 // SMG2S interface to Trilinos/teptra csr sparse matrix
 #include "../../SMG2S/interface/Trilinos/trilinos_interface.hpp"
 
+
+#include "../../../config.hpp"
 
 #ifdef __USE_COMPLEX__
 typedef std::complex<double>                  	ST;
@@ -72,10 +70,10 @@ int LSResUpdate(const Teuchos::RCP<Belos::LinearProblem<ST,MV,OP> > &problem, in
 
   	bool lspuse = true;
 
-  	double data_tmp[EIGEN_ALL*2*3];
-  	double tmp[EIGEN_ALL*2*3];
+  	double data_tmp[EIGEN_MAX*2*3];
+  	double tmp[EIGEN_MAX*2*3];
 
-  	int size_data = EIGEN_ALL;
+  	int size_data = EIGEN_MAX;
 
   	int tmp_size; 
 
@@ -104,7 +102,7 @@ int LSResUpdate(const Teuchos::RCP<Belos::LinearProblem<ST,MV,OP> > &problem, in
 	            }
 			}
 
-			for(i = 0; i < EIGEN_ALL * 3 + 2; i++){
+			for(i = 0; i < EIGEN_MAX * 3 + 2; i++){
 				tmp[i] = data_tmp[i];
 			}
 			tmp_size = (int)data_tmp[i] * 3 + 2;
@@ -114,7 +112,7 @@ int LSResUpdate(const Teuchos::RCP<Belos::LinearProblem<ST,MV,OP> > &problem, in
 				}
 			}
 		} else{
-			for(i = 0; i < EIGEN_ALL * 3 + 2; i++){
+			for(i = 0; i < EIGEN_MAX * 3 + 2; i++){
 				data_tmp[i] = tmp[i];
 			}
 			size_data = tmp_size;

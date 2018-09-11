@@ -36,9 +36,10 @@
 // SMG2S interface to Trilinos/teptra csr sparse matrix
 #include "include/SMG2S/interface/Trilinos/trilinos_interface.hpp"
 
-#ifndef EIGEN_ALL
-#define EIGEN_ALL 10
-#endif
+#include "config.hpp"
+//#ifndef EIGEN_ALL
+//#define EIGEN_ALL 10
+//#endif
 
 
 using Tpetra::CrsMatrix;
@@ -118,7 +119,7 @@ int main( int argc, char *argv[] ){
   bool herm = false;
   std::string which("LM");
   std::string filename;
-  int nev = EIGEN_ALL;
+  int nev = 10;
   int blockSize = 1;
   MT tol = 1.0e-1;
   bool printMatrix   = false;
@@ -332,24 +333,7 @@ int main( int argc, char *argv[] ){
       }
     }
 
-
-    std::complex<double> *eigenvalues  = new std::complex<double> [10];
-
-eigenvalues[0]=std::complex<double>(-0.825703,0.508459);
-eigenvalues[1]=std::complex<double>(-0.825703,0.508459);
-eigenvalues[2]=std::complex<double>(-0.825703,0.508459);
-eigenvalues[3]=std::complex<double>(-0.825703,0.508459);
-eigenvalues[4]=std::complex<double>(-0.775875 , 0.422209);
-eigenvalues[5]=std::complex<double>(-0.775875 , 0.422209);
-eigenvalues[6]=std::complex<double>(-0.775875 , 0.422209);
-eigenvalues[7]=std::complex<double>(-0.444923,0.517788);
-eigenvalues[8]=std::complex<double>(-0.444923,0.517788);
-eigenvalues[9]=std::complex<double>(-0.444923,0.517788);
-
-nnq = 10;
-//    mpi_lsa_com_cplx_array_send(&COMM_FATHER, &numev, Evalues);
-      mpi_lsa_com_cplx_array_send(&COMM_FATHER, &nnq, eigenvalues);
-
+    printf("numev = %d\n", numev);
 
     mpi_lsa_com_cplx_array_send(&COMM_FATHER, &numev, Evalues);
     printf("Arnoldi send eigenvalues to FATHER\n");
