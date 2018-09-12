@@ -237,7 +237,7 @@ int main(int argc, char *argv[]){
 	RCP<MV> Xhat = rcp( new MV(root_map,numVectors) );
 	RCP<Import<LO,GO> > importer = rcp( new Import<LO,GO>(dmnmap,root_map) );
 
-	RCP<MV> Y = rcp(new MV(dmnmap,numVectors));
+	RCP<MV> X = rcp(new MV(dmnmap,numVectors));
 
 	ST v;
 	double rnd_r, rnd_i;
@@ -251,16 +251,15 @@ int main(int argc, char *argv[]){
 			rnd_i = (double)std::rand()/RAND_MAX;
 			v.real(rnd_r);
 			v.imag(rnd_i);
-			Y->replaceGlobalValue(i, j, v);
+			X->replaceGlobalValue(i, j, v);
 		}		
 	}
 
-	Y->describe(*fos, Teuchos::VERB_EXTREME);
 
 	// generate randomly the final solution of systems as X
-	RCP<MV> X = rcp(new MV(dmnmap,numVectors));
+//	RCP<MV> X = rcp(new MV(dmnmap,numVectors));
 	//X->randomize();
-	MVT::MvRandom(*X);
+//	MVT::MvRandom(*X);
 	//X->describe(*fos, Teuchos::VERB_EXTREME);
 
 	/*generate the right hand sides B by given X and A */

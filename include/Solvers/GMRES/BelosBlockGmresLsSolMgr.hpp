@@ -1171,9 +1171,9 @@ ReturnType BlockGmresSolMgr<ScalarType,MV,OP>::solve() {
       int grank;
       MPI_Comm_rank(MPI_COMM_WORLD, &grank);
 
-      printf("LS POWER = %d, LS LATENCY = %d\n",lsPower_, lsLatency_);
+      if(grank == 0) printf("LS POWER = %d, LS LATENCY = %d\n",lsPower_, lsLatency_);
 
-      if(useLsp_){printf("To Use LS preconditioning for solving");}
+      //if(useLsp_){if(grank == 0) printf("To Use LS preconditioning for solving");}
 
       while(1) {
         // tell block_gmres_iter to iterate
@@ -1231,14 +1231,13 @@ ReturnType BlockGmresSolMgr<ScalarType,MV,OP>::solve() {
             }
             else if((!LSResUpdate(problem_, lsPower_, lsLatency_, useLsp_)) && (useLsp_)){
               if(grank == 0){
-                  printf("LS update the restarted residual inside GMRES\n");
+                  printf("The GMRES Restarted Residual is updated by the LEAST SQUARE Polynomial METHOD\n");
               }
             } else{
                 problem_->updateSolution( update, true );
             }
                     
             
-
             // Get the state.
             GmresIterationState<ScalarType,MV> oldState = block_gmres_iter->getState();
 

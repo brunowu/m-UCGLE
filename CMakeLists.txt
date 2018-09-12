@@ -102,7 +102,7 @@ link_directories(${Trilinos_LIBRARY_DIRS} ${Trilinos_TPL_LIBRARY_DIRS} )
 set(LINK_LIBRARIES ${Teuchos_LIBRARIES})
 
 #set Anasazi libraries to link (LINK_LIBRARIES_ARNOLDI)
-set(LINK_LIBRARIES_ARNOLDI ${Epetra_LIBRARIES} ${Anasazi_LIBRARIES} ${Amesos_LIBRARIES})
+set(LINK_LIBRARIES_ARNOLDI ${Teuchos_LIBRARIES} ${Epetra_LIBRARIES} ${Anasazi_LIBRARIES} ${Amesos_LIBRARIES})
 
 #set Belos libraries to link (LINK_LIBRARIES_GMRES)
 set(LINK_LIBRARIES_GMRES ${Tpetra_LIBRARIES} ${Teuchos_LIBRARIES} ${Belos_LIBRARIES})

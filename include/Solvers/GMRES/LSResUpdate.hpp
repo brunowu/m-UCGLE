@@ -222,7 +222,7 @@ int LSResUpdate(const Teuchos::RCP<Belos::LinearProblem<ST,MV,OP> > &problem, in
 		    normVV = normV.data();
 			if(grank == 0){
 				for(k = 0; k < numVectors; k++){
-					printf("r1_tmp_norm[%d] = %f\n", i, normVV[k]/normBB[k]);
+					if(grank == 0) printf("r1_tmp_norm[%d] = %f\n", i, normVV[k]/normBB[k]);
 				}
 			}
 

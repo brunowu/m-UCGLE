@@ -27,7 +27,7 @@
 #include "AnasaziBlockKrylovSchurSolMgr.hpp"
 
 // I/O for Matrix-Market files
-#include <MatrixMarket_Tpetra.hpp>
+#include "include/Solvers/Arnoldi/MatrixMarket_Tpetra_dyn.hpp"
 #include <Tpetra_Import.hpp>
 
 // SMG2S test matrix generation with given spectra
@@ -53,11 +53,8 @@ using std::endl;
 using Tpetra::global_size_t;
 using Tpetra::Import;
 
-#ifdef __USE_COMPLEX__
 typedef std::complex<double>                  ST;
-#else
-typedef double                                ST;
-#endif
+
 
 typedef Tpetra::Map<>::global_ordinal_type    GO;
 typedef Tpetra::Map<>::local_ordinal_type     LO;
@@ -106,7 +103,7 @@ int main( int argc, char *argv[] ){
   /*stantard MPI functionality*/
   int rank;
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-  std::cout << "Arnoldi in Trilinos said: my rank = " << rank << "\n";
+  //std::cout << "Arnoldi in Trilinos said: my rank = " << rank << "\n";
   ///////////////////////////////
 
   Teuchos::oblackholestream blackhole;
@@ -127,12 +124,15 @@ int main( int argc, char *argv[] ){
   int numBlocks = 100;
   int maxRestarts = 150;
 
+  ST target;
   /*smg2s parameters*/
   bool usesmg2s = false;
   global_ordinal_type probSize = 10;
   int continous = 4;
   int lbandwidth = 4;
   std::string spectra_file = " ";
+
+  Teuchos::ParameterList MyPL;
 
   Teuchos::CommandLineProcessor cmdp(false,true);
   cmdp.setOption("eps-verbose","eps-quiet",&verbose,"Print messages and results.");
@@ -169,14 +169,14 @@ int main( int argc, char *argv[] ){
       filename = "mhd1280a.mtx";
     }
   }else{
-    printf("Parser the MATRIX file NAME = %s ! \n", filename.c_str());
+    if (MyPID == 0) printf("Parser the MATRIX file NAME = %s ! \n", filename.c_str());
   }
 
   std::ostream& out = ( (allprint || (MyPID == 0)) ? std::cout : blackhole );
   RCP<Teuchos::FancyOStream> fos = Teuchos::fancyOStream(Teuchos::rcpFromRef(out));
 
   if(usesmg2s){
-    std::cout << "ERAM use SMG2S to genrate test matrix" << std::endl;
+    if (MyPID == 0) std::cout << "ERAM use SMG2S to genrate test matrix" << std::endl;
   }
 
   if (MyPID == 0) {
@@ -218,19 +218,31 @@ int main( int argc, char *argv[] ){
       std::cout << "ERAM ]> SMG2S generated test matrix ... " << Teuchos::typeName(ONE) << std::endl;
     }
   }else{
-    A = Tpetra::MatrixMarket::Reader<MAT>::readSparseFile(filename, comm);
+    A = Tpetra::MatrixMarket::Reader<MAT>::readSparseFile(filename, comm, false);
 
     if (MyPID == 0){
       std::cout << "ERAM ]> Matrix Loaded ... " << Teuchos::typeName(ONE) << std::endl;
     }
-
-    if( printMatrix ){
-      A->describe(*fos, Teuchos::VERB_EXTREME);
-    } else if( verbose ){
-      std::cout << std::endl << A->description() << std::endl << std::endl;
-    }
   }
   
+
+  double target_r = -0.60;
+  double target_i = 0.0;
+  double minusone = -1.0;
+
+  ST shift;
+
+  target.real(target_r);
+  target.imag(target_i);
+
+  shift.real(target_r * minusone);
+  shift.imag(target_i * minusone);
+
+  for(GO s = 0; s < 300; s++){
+    A->insertGlobalValues(s,tuple<global_ordinal_type>(s),tuple<ST>(shift));
+  }
+
+  A->fillComplete ();
 
   //A->describe(*fos, Teuchos::VERB_EXTREME);
 
@@ -243,7 +255,6 @@ int main( int argc, char *argv[] ){
     = rcp( new Map<LO,GO>(nrows,MyPID == 0 ? nrows : 0,0,comm) );
   RCP<MV> Xhat = rcp( new MV(root_map,blockSize) );
   RCP<Import<LO,GO> > importer = rcp( new Import<LO,GO>(dmnmap,root_map) );
-
 
 // Create initial vectors
   RCP<MV> ivec = rcp( new MV(dmnmap,blockSize) );
@@ -290,7 +301,7 @@ int main( int argc, char *argv[] ){
   // Eigensolver parameters
 
   // Create parameter list to pass into the solver manager
-  Teuchos::ParameterList MyPL;
+  
   MyPL.set( "Verbosity", verbosity );
   MyPL.set( "Which", which );
   MyPL.set( "Block Size", blockSize );
@@ -327,8 +338,8 @@ int main( int argc, char *argv[] ){
       // Compute the direct residual
       std::vector<MT> normV( numev );
       for (int i=0; i<numev; i++) {
-        Evalues[i] = std::complex<double>(sol.Evals[i].realpart,sol.Evals[i].imagpart);
-        printf("Evals2[%d] = %f + %fi\n", i+1,sol.Evals[i].realpart, sol.Evals[i].imagpart);
+        Evalues[i] = std::complex<double>(sol.Evals[i].realpart + target.real(),sol.Evals[i].imagpart + target.imag());
+        if (MyPID == 0){printf("Evals2[%d] = %f + %fi\n", i+1,sol.Evals[i].realpart + target.real() , sol.Evals[i].imagpart + target.imag() );}
       }
    
       if (MyPID==0) {
@@ -336,10 +347,10 @@ int main( int argc, char *argv[] ){
       }
     }
 
-    if(debug) printf("numev = %d\n", numev);
+    //if(debug) printf("numev = %d\n", numev);
 
     mpi_lsa_com_cplx_array_send(&COMM_FATHER, &numev, Evalues);
-    printf("Arnoldi ]> Arnoldi send eigenvalues to FATHER\n");
+    if (MyPID == 0) printf("Arnoldi ]> Arnoldi send eigenvalues to FATHER\n");
 
     //check if any type to receive
     if(!mpi_lsa_com_type_recv(&COMM_FATHER, &exit_type)){
