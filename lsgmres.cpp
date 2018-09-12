@@ -283,7 +283,7 @@ int main(int argc, char *argv[]){
 	/////////////////////////////////////////////////
 	/*construct GMRES solver*/
 
-/*
+
 	RCP<Belos::SolverManager<ST,MV,OP> > solver;
 	if (myRank==0){
   		std::cout << "GMRES ]> Construct solver ..." << std::endl;
@@ -327,8 +327,6 @@ int main(int argc, char *argv[]){
 		}
 	}
   
-*/
-  usleep(5000000);
   mpi_lsa_com_type_send(&COMM_FATHER, &type);
 
   if(grank == 0){
