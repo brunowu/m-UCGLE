@@ -39,8 +39,13 @@
 // ************************************************************************
 // @HEADER
 
-#ifndef __MatrixMarket_Tpetra_hpp
-#define __MatrixMarket_Tpetra_hpp
+////////////////////////////////////////////////////////////////////////////
+//
+//              This file has been slightly modified by Xinzhe Wu.
+//
+////////////////////////////////////////////////////////////////////////////
+#ifndef __MatrixMarket_Tpetra_dyn_hpp
+#define __MatrixMarket_Tpetra_dyn_hpp
 
 /// \file MatrixMarket_Tpetra.hpp
 /// \brief Matrix Market file readers and writers for Tpetra objects.
@@ -2230,7 +2235,8 @@ namespace Tpetra {
                   const Teuchos::RCP<node_type>& pNode,
                   const bool callFillComplete=true,
                   const bool tolerant=false,
-                  const bool debug=false)
+                  const bool debug=false
+                  )
       {
         using Teuchos::MatrixMarket::Banner;
         using Teuchos::arcp;
@@ -2334,6 +2340,9 @@ namespace Tpetra {
         // operation.  It does a collective check for correctness too.
         Tuple<global_ordinal_type, 3> dims =
           readCoordDims (in, lineNumber, pBanner, pComm, tolerant, debug);
+        //*nrows = dims[0];
+        //printf("nrows = %d\n",*nrows);
+
 
         if (debug && myRank == rootRank) {
           cerr << "-- Making Adder for collecting matrix data" << endl;
@@ -3489,6 +3498,7 @@ namespace Tpetra {
         // operation.  It does a collective check for correctness too.
         Tuple<global_ordinal_type, 3> dims =
           readCoordDims (in, lineNumber, pBanner, pComm, tolerant, debug);
+      
 
         if (debug && myRank == rootRank) {
           cerr << "-- Making Adder for collecting matrix data" << endl;
@@ -8600,4 +8610,4 @@ namespace Tpetra {
   } // namespace MatrixMarket
 } // namespace Tpetra
 
-#endif // __MatrixMarket_Tpetra_hpp
+#endif // __MatrixMarket_Tpetra_dyn_hpp

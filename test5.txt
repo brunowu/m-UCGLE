@@ -66,7 +66,7 @@ GMRES ]> Matrix Loaded ... complex<double>
 
 Tpetra::CrsMatrix (Kokkos refactor): {isFillComplete: true, global dimensions: [300, 300], global number of entries: 3155}
 
-Building TIME = 0.080087
+Building TIME = 0.086124
 Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name mdlsmc232 and rank 0!
 Info ]> The Comm world size of ERAM is 1 
 Parser the MATRIX file NAME = utm300_cp.mtx ! 
@@ -88,7 +88,6 @@ Evals[5] = -0.288347 + 0.357264i
 
 
 Arnoldi ]> Arnoldi send eigenvalues to FATHER
-Main ]> Array receive from ERAM 0 Component
 Evals[1] = -0.444916 + 0.517997i
 Evals[2] = -0.830896 + 0.514120i
 Evals[3] = -0.772372 + 0.425891i
@@ -97,6 +96,7 @@ Evals[5] = -0.288347 + 0.357264i
 
 
 Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
 Main ]> Father send array to LS, length = 5
 info===0
 $} Ellipse Allocating work memory 5
@@ -224,26 +224,18 @@ Main ]> Array receive from ERAM 0 Component
 Main ]> Father send array to LS, length = 5
 Main ]> Array receive from ERAM 1 Component
 Main ]> Father send array to LS, length = 20
+info===0
+$} Ellipse Allocating work memory 8
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
 Main ]> Array receive from ERAM 0 Component
 Main ]> Father send array to LS, length = 5
 Main ]> Array receive from ERAM 1 Component
 Main ]> Father send array to LS, length = 20
+$} Ellipse Research three points optimal ellipse
 Main ]> Array receive from ERAM 0 Component
 Main ]> Father send array to LS, length = 5
-info===0
-$} Ellipse Allocating work memory 8
-$} Ellipse Computing Edges
-----------------------
-$} Ellipse Research two points optimal ellipse
-$} Ellipse Research three points optimal ellipse
-Teuchos in Trilinos 12.12.1
-
-info===0
-$} Ellipse Allocating work memory 8
-$} Ellipse Computing Edges
-----------------------
-$} Ellipse Research two points optimal ellipse
-$} Ellipse Research three points optimal ellipse
 Teuchos in Trilinos 12.12.1
 
 info===0
@@ -278,6 +270,14 @@ Evals[5] = -0.288347 + 0.357264i
 
 
 Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 8
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
 info===0
 $} Ellipse Allocating work memory 8
 $} Ellipse Computing Edges
@@ -485,6 +485,14 @@ Evals[5] = -0.288347 + 0.357264i
 
 
 Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Evals[1] = -0.444916 + 0.517997i
+Evals[2] = -0.830896 + 0.514120i
+Evals[3] = -0.772372 + 0.425891i
+Evals[4] = -0.468804 + 0.363482i
+Evals[5] = -0.288347 + 0.357264i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
 Evals2[1] = -0.444915 + 0.517993i
 Evals2[2] = -0.830910 + 0.514104i
 Evals2[3] = -0.773901 + 0.426167i
@@ -522,14 +530,6 @@ $} Ellipse Research two points optimal ellipse
 $} Ellipse Research three points optimal ellipse
 Teuchos in Trilinos 12.12.1
 
-Evals[1] = -0.444916 + 0.517997i
-Evals[2] = -0.830896 + 0.514120i
-Evals[3] = -0.772372 + 0.425891i
-Evals[4] = -0.468804 + 0.363482i
-Evals[5] = -0.288347 + 0.357264i
-
-
-Arnoldi ]> Arnoldi send eigenvalues to FATHER
 info===0
 $} Ellipse Allocating work memory 8
 $} Ellipse Computing Edges
@@ -638,10 +638,10 @@ Evals2[19] = -0.524673 + 0.209678i
 Evals2[20] = -0.109068 + 0.204309i
 
 
-Arnoldi ]> Arnoldi send eigenvalues to FATHER
 Main ]> Array receive from ERAM 1 Component
 Main ]> Father send array to LS, length = 20
 Main ]> Father has Array received from LS Component
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
 Main ]> Father has sent preconditioned parameters to GMRES Component
 Main ]> Father Receive exit type from GMRES 0 Component = 666
 Main ]> Father send exit type to ERAM and LS Component

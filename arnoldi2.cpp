@@ -220,6 +220,8 @@ int main( int argc, char *argv[] ){
   }else{
     A = Tpetra::MatrixMarket::Reader<MAT>::readSparseFile(filename, comm, false);
 
+    probSize = A->getGlobalNumRows();
+    
     if (MyPID == 0){
       std::cout << "ERAM ]> Matrix Loaded ... " << Teuchos::typeName(ONE) << std::endl;
     }
@@ -238,7 +240,7 @@ int main( int argc, char *argv[] ){
   shift.real(target_r * minusone);
   shift.imag(target_i * minusone);
 
-  for(GO s = 0; s < 300; s++){
+  for(GO s = 0; s < probSize; s++){
     A->insertGlobalValues(s,tuple<global_ordinal_type>(s),tuple<ST>(shift));
   }
 
