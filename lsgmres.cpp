@@ -100,6 +100,9 @@ int main(int argc, char *argv[]){
 	int latency = 1;
 	bool lspuse = true;
 
+	int max_iters = 5000;
+	int max_restarts = 1000;
+
 	/*smg2s parameters*/
 	bool usesmg2s = false;
 	global_ordinal_type probSize = 10;
@@ -157,6 +160,8 @@ int main(int argc, char *argv[]){
 	mptestpl.set<MT>( "Convergence Tolerance", tol );
 	mptestpl.set( "Timer Label",  Teuchos::typeName(ONE) );
 
+	mptestpl.set("Maximum Iterations", max_iters);
+	mptestpl.set("Maximum Restarts", max_restarts);
 
 	int verbLevel = Belos::Errors + Belos::Warnings;
 /*
@@ -251,7 +256,7 @@ int main(int argc, char *argv[]){
 			rnd_i = (double)std::rand()/RAND_MAX;
 			v.real(rnd_r);
 			v.imag(rnd_i);
-			X->replaceGlobalValue(i, j, v);
+//			X->replaceGlobalValue(i, j, v);
 		}		
 	}
 
@@ -259,7 +264,7 @@ int main(int argc, char *argv[]){
 	// generate randomly the final solution of systems as X
 //	RCP<MV> X = rcp(new MV(dmnmap,numVectors));
 	//X->randomize();
-//	MVT::MvRandom(*X);
+	MVT::MvRandom(*X);
 	//X->describe(*fos, Teuchos::VERB_EXTREME);
 
 	/*generate the right hand sides B by given X and A */
@@ -327,6 +332,8 @@ int main(int argc, char *argv[]){
 		}
 	}
   
+    usleep(5000000);
+
   mpi_lsa_com_type_send(&COMM_FATHER, &type);
 
   if(grank == 0){

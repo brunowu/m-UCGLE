@@ -78,6 +78,7 @@ int main( int argc, char *argv[] ) {
   for(i = 0; i < gmres_nb; i++){
     MPI_Comm_spawn( gmres_cmds[i], args_gmres_runtime, gmres_proc, MPI_INFO_NULL, 0, MPI_COMM_WORLD, &COMM_GMRES[i], MPI_ERRCODES_IGNORE);
   }
+
   for( j = 0; j < arnoldi_nb; j++){
     MPI_Comm_spawn( arnoldi_cmds[j], args_arnoldi_runtime, arnoldi_proc, MPI_INFO_NULL, 0, MPI_COMM_WORLD, &COMM_ARNOLDI[j], MPI_ERRCODES_IGNORE);
   }

@@ -1,0 +1,3 @@
+mpirun -np 1 ./test.exe -nb_gmres 1 -proc_gmres 1 -nb_arnoldi 1 -proc_arnoldi 1 -gmres_exec ./gmres.exe -arnoldi_exec ./arnoldi.exe -lsqr_exec ./lsqr.exe --filename=\"utm300_cp.mtx\" --eps-quiet --eps-nodebug --eps-exsitu --eps-sort=\"LI\" --eps-nonherm --eps-nev=15 --eps-blockSize=1 --eps-tol=0.1 --eps-no-print-matrix --eps-all-print --eps-maxRestarts=50 --ksp-nodebug --ksp-frequency=1 --ksp-tol=1e-10 --ksp-num-rhs=1 --ksp-block-size=1 --ksp-no-precond --ksp-num-blocks=80 --ksp-fixed-tol --ksp-no-print-matrix --ksp-all-print --ksp-no-dump-data --ksp-lsp-degree=3 --ksp-lsp-latency=2 --ksp-use-lsp > test_ksp80_use_1_rhs.txt
+
+

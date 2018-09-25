@@ -1,2 +1,2 @@
-#define EIGEN_MAX 100
+#define EIGEN_MAX 15
 
