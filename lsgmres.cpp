@@ -209,6 +209,8 @@ int main(int argc, char *argv[]){
 
 		A = ConvertToTrilinosMat(Mt);
 
+		A->fillComplete ();
+
 	    if( printMatrix ){
 	      A->describe(*fos, Teuchos::VERB_EXTREME);
 	    } else if( verbose ){
