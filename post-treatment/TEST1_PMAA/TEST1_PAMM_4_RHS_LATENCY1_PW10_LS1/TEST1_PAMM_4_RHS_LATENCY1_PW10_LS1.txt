@@ -1,0 +1,4713 @@
+===============================================================================
+
+
+
+             MUCGLE: Multiple Unite and Conquer GMRES/LS-ERAM Method
+
+
+
+===============================================================================
+            Developed by Xinzhe WU at Maison de la Simulation, France
+===============================================================================
+
+
+
+-------------------------------------------------------------------------------
+                              Start Initialization
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+Initialization ]> GMRES executable number is 1 
+Initialization ]> Each GMRES Proc number is 1 
+Initialization ]> ERAM executable number is 1 
+Initialization ]> Each ERAM Proc number is 1 
+Initialization ]> Thus Total proc number = 1 + 1 + 1 * 1 + 1 * 1 = 4 
+Initialization ]> GMRES executable name list is: [ ./gmres.exe  ]
+Initialization ]> ERAM executable name list is: [ ./arnoldi.exe  ]
+Initialization ]> LS executable name list is: [ ./lsqr.exe  ]
+Parser Matrix filename Flag = --filename="utm300_cp.mtx"  
+Parser Arnoldi runtime Flag = --eps-quiet  
+Parser Arnoldi runtime Flag = --eps-nodebug  
+Parser Arnoldi runtime Flag = --eps-exsitu  
+Parser Arnoldi runtime Flag = --eps-sort="LI"  
+Parser Arnoldi runtime Flag = --eps-nonherm  
+Parser Arnoldi runtime Flag = --eps-nev=15  
+Parser Arnoldi runtime Flag = --eps-blockSize=1  
+Parser Arnoldi runtime Flag = --eps-tol=0.1  
+Parser Arnoldi runtime Flag = --eps-no-print-matrix  
+Parser Arnoldi runtime Flag = --eps-all-print  
+Parser Arnoldi runtime Flag = --eps-maxRestarts=50  
+Parser Arnoldi runtime Flag = --eps-usesmg2s  
+Parser Arnoldi runtime Flag = --eps-smg2s-size=300  
+Parser Arnoldi runtime Flag = --eps-smg2s-continous=3  
+Parser Arnoldi runtime Flag = --eps-smg2s-lbandwidth=4  
+Parser Arnoldi runtime Flag = --eps-smg2s-spectra-file=spectrum2.txt  
+Parser GMRES runtime Flag = --ksp-nodebug  
+Parser GMRES runtime Flag = --ksp-frequency=1  
+Parser GMRES runtime Flag = --ksp-tol=1e-8  
+Parser GMRES runtime Flag = --ksp-num-rhs=4  
+Parser GMRES runtime Flag = --ksp-block-size=4  
+Parser GMRES runtime Flag = --ksp-no-precond  
+Parser GMRES runtime Flag = --ksp-num-blocks=40  
+Parser GMRES runtime Flag = --ksp-fixed-tol  
+Parser GMRES runtime Flag = --ksp-no-print-matrix  
+Parser GMRES runtime Flag = --ksp-all-print  
+Parser GMRES runtime Flag = --ksp-no-dump-data  
+Parser GMRES runtime Flag = --ksp-lsp-degree=10  
+Parser GMRES runtime Flag = --ksp-lsp-latency=1  
+Parser GMRES runtime Flag = --ksp-use-lsp  
+Parser GMRES runtime Flag = --ksp-usesmg2s  
+Parser GMRES runtime Flag = --ksp-smg2s-size=300  
+Parser GMRES runtime Flag = --ksp-smg2s-continous=3  
+Parser GMRES runtime Flag = --ksp-smg2s-lbandwidth=4  
+Parser GMRES runtime Flag = --ksp-smg2s-spectra-file=spectrum2.txt  
+-------------------------------------------------------------------------------
+                           Start Spawning Executables
+-------------------------------------------------------------------------------
+Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name romeo1 and rank 0!
+Testing Scalar == complex<double>
+GMRES ]> Building problem...
+Parallel Vector View: 
+
+[0]: (49.89,18.3173)
+[1]: (45.1856,-15.6801)
+[2]: (24.2333,21.9961)
+[3]: (47.1586,9.224)
+[4]: (53.4158,5.85085)
+[5]: (37.6259,13.2446)
+[6]: (65.4406,-17.8404)
+[7]: (50.8576,5.41832)
+[8]: (44.254,12.4396)
+[9]: (41.4129,19.09)
+[10]: (53.6529,-14.7144)
+[11]: (57.1519,-0.561678)
+[12]: (23.3769,-4.87192)
+[13]: (49.3995,-11.4606)
+[14]: (61.2047,-15.2952)
+[15]: (56.7872,3.09464)
+[16]: (21.0221,-6.02718)
+[17]: (50.4146,-17.7446)
+[18]: (33.9689,-10.4268)
+[19]: (54.4794,-20.6152)
+[20]: (58.424,-15.8947)
+[21]: (55.6294,15.8646)
+[22]: (29.2649,-1.51302)
+[23]: (39.2829,10.5189)
+[24]: (28.9266,17.6959)
+[25]: (47.6089,19.5794)
+[26]: (65.9815,-3.23919)
+[27]: (37.0177,-18.6416)
+[28]: (54.8889,23.4172)
+[29]: (32.8978,8.09358)
+[30]: (26.122,-18.315)
+[31]: (29.1882,-15.8559)
+[32]: (38.6578,16.6028)
+[33]: (29.3995,9.62678)
+[34]: (24.176,20.8789)
+[35]: (52.0116,19.6)
+[36]: (22.9842,-0.359029)
+[37]: (53.4646,-10.7509)
+[38]: (61.1279,-15.2525)
+[39]: (62.768,-17.9455)
+[40]: (65.4434,2.37696)
+[41]: (64.6339,23.4249)
+[42]: (62.1378,-6.34833)
+[43]: (22.7833,9.02666)
+[44]: (35.0689,-7.31894)
+[45]: (35.1202,-1.8091)
+[46]: (37.3661,1.30846)
+[47]: (45.335,13.0239)
+[48]: (35.9113,11.7344)
+[49]: (40.6507,-2.91279)
+[50]: (50.6133,-15.3377)
+[51]: (34.6872,10.5975)
+[52]: (47.3032,-19.8483)
+[53]: (62.8466,0.431195)
+[54]: (27.8992,17.6146)
+[55]: (45.4857,-14.6574)
+[56]: (37.9916,2.11962)
+[57]: (26.7675,-7.87068)
+[58]: (58.7713,-13.4492)
+[59]: (64.156,-14.1598)
+[60]: (42.2318,-8.72377)
+[61]: (47.0311,16.5979)
+[62]: (55.5847,-15.634)
+[63]: (47.6218,-16.5041)
+[64]: (59.1005,-19.7275)
+[65]: (43.5832,1.71373)
+[66]: (27.9348,15.2703)
+[67]: (30.3112,12.238)
+[68]: (58.422,-14.8422)
+[69]: (30.6692,23.3213)
+[70]: (65.7723,13.1549)
+[71]: (26.6639,-4.2361)
+[72]: (33.2745,-9.56859)
+[73]: (50.8932,-15.9542)
+[74]: (39.9822,7.04921)
+[75]: (32.886,19.214)
+[76]: (61.3254,16.9171)
+[77]: (53.8119,8.91013)
+[78]: (64.2831,-6.56628)
+[79]: (55.4061,15.3836)
+[80]: (36.7062,-9.01077)
+[81]: (35.0973,1.64101)
+[82]: (24.2595,2.40853)
+[83]: (31.879,19.6816)
+[84]: (50.5663,-0.451738)
+[85]: (61.0029,8.33863)
+[86]: (30.7032,-20.3332)
+[87]: (22.1025,0.977722)
+[88]: (33.0982,9.99575)
+[89]: (48.0236,10.0804)
+[90]: (35.045,17.9096)
+[91]: (47.2944,-11.6296)
+[92]: (52.8267,-6.89374)
+[93]: (60.2805,9.1098)
+[94]: (49.54,7.6866)
+[95]: (42.4934,23.2462)
+[96]: (61.6758,14.5907)
+[97]: (42.8872,22.9354)
+[98]: (34.9993,11.7662)
+[99]: (60.617,22.5655)
+[100]: (29.3145,13.6198)
+[101]: (48.9042,-2.98231)
+[102]: (56.2866,8.00671)
+[103]: (60.9954,-18.6152)
+[104]: (36.0025,1.01897)
+[105]: (54.4652,8.04743)
+[106]: (36.9285,-6.2405)
+[107]: (59.4178,-18.2448)
+[108]: (49.8658,11.6983)
+[109]: (53.865,-8.59426)
+[110]: (37.3849,-11.6416)
+[111]: (32.6519,-8.93923)
+[112]: (65.9491,12.5391)
+[113]: (31.9961,-7.0516)
+[114]: (42.3054,-15.3869)
+[115]: (33.514,8.61991)
+[116]: (61.233,19.4181)
+[117]: (23.6376,9.51958)
+[118]: (45.4248,21.633)
+[119]: (53.9044,18.4273)
+[120]: (40.652,0.369526)
+[121]: (44.4747,14.5805)
+[122]: (57.129,-4.10744)
+[123]: (59.3357,-1.00521)
+[124]: (25.5909,5.20072)
+[125]: (53.4005,-0.0241533)
+[126]: (56.5591,23.0525)
+[127]: (54.0366,14.5083)
+[128]: (53.5916,23.0328)
+[129]: (25.4567,-12.103)
+[130]: (25.6459,-4.02939)
+[131]: (59.5169,23.8788)
+[132]: (33.3887,20.1545)
+[133]: (51.3984,15.8136)
+[134]: (59.7875,-2.69721)
+[135]: (52.2409,-7.56048)
+[136]: (60.6723,-11.2844)
+[137]: (25.02,9.80135)
+[138]: (47.6082,21.3558)
+[139]: (26.7961,10.1991)
+[140]: (44.5565,17.1967)
+[141]: (28.1749,-6.8844)
+[142]: (58.2491,19.2115)
+[143]: (25.6239,3.84074)
+[144]: (60.2443,-11.9195)
+[145]: (54.7378,22.8902)
+[146]: (47.0511,6.25467)
+[147]: (64.769,17.4399)
+[148]: (44.4092,8.16743)
+[149]: (51.2534,-3.80327)
+[150]: (23.4702,-4.50567)
+[151]: (51.6362,21.1425)
+[152]: (47.21,13.6563)
+[153]: (48.9439,-13.1819)
+[154]: (53.0121,12.74)
+[155]: (60.0172,-10.4315)
+[156]: (47.9367,-19.8079)
+[157]: (45.6841,-1.81419)
+[158]: (62.4037,8.308)
+[159]: (65.0266,14.648)
+[160]: (59.3885,11.7643)
+[161]: (55.5382,-1.56038)
+[162]: (36.019,12.3072)
+[163]: (33.8795,17.4282)
+[164]: (38.4746,22.1329)
+[165]: (31.6249,-1.05517)
+[166]: (35.6272,20.2611)
+[167]: (38.0874,19.8372)
+[168]: (51.9174,-20.9688)
+[169]: (24.6553,-3.07049)
+[170]: (54.7713,21.6725)
+[171]: (49.4981,-5.29206)
+[172]: (64.8647,-12.8178)
+[173]: (55.8938,19.2684)
+[174]: (58.4902,12.9203)
+[175]: (51.9163,9.87871)
+[176]: (42.6846,-0.545497)
+[177]: (26.3183,15.7036)
+[178]: (29.7617,-2.80219)
+[179]: (51.1318,5.2363)
+[180]: (37.3307,19.7567)
+[181]: (22.1811,9.95797)
+[182]: (58.0178,-2.73152)
+[183]: (47.7952,1.93526)
+[184]: (39.2997,9.45049)
+[185]: (61.8648,-13.929)
+[186]: (49.123,3.36282)
+[187]: (43.7789,5.9877)
+[188]: (53.545,-8.32733)
+[189]: (43.256,4.03521)
+[190]: (22.593,-12.8276)
+[191]: (31.9139,2.2776)
+[192]: (49.6269,-4.76775)
+[193]: (35.9812,16.3886)
+[194]: (55.4301,-20.887)
+[195]: (39.6249,-15.2392)
+[196]: (61.8697,-1.19401)
+[197]: (57.7187,11.8875)
+[198]: (59.0745,-2.48608)
+[199]: (31.8227,-9.6258)
+[200]: (24.9644,-14.3125)
+[201]: (39.4452,11.0874)
+[202]: (52.0503,20.2241)
+[203]: (35.0751,-2.40468)
+[204]: (29.8968,15.3312)
+[205]: (64.6305,-10.5103)
+[206]: (65.5036,-11.4555)
+[207]: (54.7673,7.13045)
+[208]: (46.7767,-17.2515)
+[209]: (41.519,-5.79325)
+[210]: (24.8615,18.1439)
+[211]: (41.9675,23.7312)
+[212]: (34.9499,-8.31372)
+[213]: (53.6186,-13.9756)
+[214]: (52.2002,22.4414)
+[215]: (39.3985,14.1646)
+[216]: (26.1289,15.8437)
+[217]: (43.252,15.1792)
+[218]: (54.0678,15.3272)
+[219]: (30.7745,20.9646)
+[220]: (48.6583,-12.595)
+[221]: (28.4543,6.16191)
+[222]: (38.9495,20.2216)
+[223]: (31.2924,22.7262)
+[224]: (65.9702,9.81138)
+[225]: (34.9329,-17.1683)
+[226]: (45.9553,13.9005)
+[227]: (24.5628,17.9051)
+[228]: (23.5867,15.1815)
+[229]: (21.9295,12.7869)
+[230]: (55.6229,-1.67196)
+[231]: (44.9515,18.7517)
+[232]: (32.1718,-19.7964)
+[233]: (51.9309,23.2396)
+[234]: (58.5307,19.7054)
+[235]: (62.2041,-0.810926)
+[236]: (25.1104,-17.3416)
+[237]: (23.351,1.05986)
+[238]: (65.88,-8.35665)
+[239]: (41.786,23.8502)
+[240]: (64.4547,13.719)
+[241]: (24.6819,2.41)
+[242]: (45.6194,-13.7553)
+[243]: (38.3151,6.20613)
+[244]: (64.4262,-2.75535)
+[245]: (36.993,12.0491)
+[246]: (58.5727,18.9446)
+[247]: (48.8008,-17.2555)
+[248]: (62.1481,-7.26833)
+[249]: (23.984,12.6789)
+[250]: (30.437,23.1881)
+[251]: (29.8679,-7.45258)
+[252]: (23.8466,-9.78109)
+[253]: (56.6073,-18.2734)
+[254]: (44.8623,-9.6067)
+[255]: (23.5768,1.31698)
+[256]: (22.1123,-14.7413)
+[257]: (21.727,4.73166)
+[258]: (34.5034,-2.95787)
+[259]: (28.9378,-9.07042)
+[260]: (57.2868,2.93083)
+[261]: (65.9786,7.85947)
+[262]: (39.8754,6.77943)
+[263]: (53.6039,-5.97648)
+[264]: (62.5111,14.5879)
+[265]: (24.7024,-15.0519)
+[266]: (55.7761,-8.4297)
+[267]: (40.4955,16.6226)
+[268]: (44.7892,-10.8972)
+[269]: (61.3492,-18.3485)
+[270]: (42.4961,21.926)
+[271]: (45.9684,1.60838)
+[272]: (25.1847,4.69543)
+[273]: (24.34,-3.31196)
+[274]: (64.7376,-9.72218)
+[275]: (50.6176,14.0243)
+[276]: (56.2086,8.59626)
+[277]: (39.8838,-11.9159)
+[278]: (33.3757,-14.5123)
+[279]: (45.1076,-12.1132)
+[280]: (63.0757,6.80995)
+[281]: (35.8349,10.8518)
+[282]: (61.3802,13.3304)
+[283]: (45.4744,-1.83054)
+[284]: (65.4333,-1.17636)
+[285]: (42.8209,-0.0706101)
+[286]: (38.7497,-19.2106)
+[287]: (64.5378,0.934323)
+[288]: (48.4848,-19.1222)
+[289]: (60.6224,5.22236)
+[290]: (34.1556,3.23997)
+[291]: (37.2467,-17.6357)
+[292]: (29.8362,14.1305)
+[293]: (33.4483,0.211916)
+[294]: (62.6182,15.5559)
+[295]: (51.0987,17.6939)
+[296]: (40.3658,23.9336)
+[297]: (46.5457,-6.25391)
+[298]: (55.264,-15.9799)
+[299]: (54.9155,12.6973)
+Initial matrix generation time = 0.001964
+Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name romeo1 and rank 0!
+Info ]> The Comm world size of ERAM is 1 
+Parser the MATRIX file NAME = utm300_cp.mtx ! 
+ERAM use SMG2S to genrate test matrix
+Anasazi Version 12.12d
+
+Anasazi Scalar type == complex<double>
+ERAM ]> Building problem... complex<double>
+Parser the SMG2S spectra file NAME = spectrum2.txt ! 
+Parallel Vector View: 
+
+[0]: (49.89,18.3173)
+[1]: (45.1856,-15.6801)
+[2]: (24.2333,21.9961)
+[3]: (47.1586,9.224)
+[4]: (53.4158,5.85085)
+[5]: (37.6259,13.2446)
+[6]: (65.4406,-17.8404)
+[7]: (50.8576,5.41832)
+[8]: (44.254,12.4396)
+[9]: (41.4129,19.09)
+[10]: (53.6529,-14.7144)
+[11]: (57.1519,-0.561678)
+[12]: (23.3769,-4.87192)
+[13]: (49.3995,-11.4606)
+[14]: (61.2047,-15.2952)
+[15]: (56.7872,3.09464)
+[16]: (21.0221,-6.02718)
+[17]: (50.4146,-17.7446)
+[18]: (33.9689,-10.4268)
+[19]: (54.4794,-20.6152)
+[20]: (58.424,-15.8947)
+[21]: (55.6294,15.8646)
+[22]: (29.2649,-1.51302)
+[23]: (39.2829,10.5189)
+[24]: (28.9266,17.6959)
+[25]: (47.6089,19.5794)
+[26]: (65.9815,-3.23919)
+[27]: (37.0177,-18.6416)
+[28]: (54.8889,23.4172)
+[29]: (32.8978,8.09358)
+[30]: (26.122,-18.315)
+[31]: (29.1882,-15.8559)
+[32]: (38.6578,16.6028)
+[33]: (29.3995,9.62678)
+[34]: (24.176,20.8789)
+[35]: (52.0116,19.6)
+[36]: (22.9842,-0.359029)
+[37]: (53.4646,-10.7509)
+[38]: (61.1279,-15.2525)
+[39]: (62.768,-17.9455)
+[40]: (65.4434,2.37696)
+[41]: (64.6339,23.4249)
+[42]: (62.1378,-6.34833)
+[43]: (22.7833,9.02666)
+[44]: (35.0689,-7.31894)
+[45]: (35.1202,-1.8091)
+[46]: (37.3661,1.30846)
+[47]: (45.335,13.0239)
+[48]: (35.9113,11.7344)
+[49]: (40.6507,-2.91279)
+[50]: (50.6133,-15.3377)
+[51]: (34.6872,10.5975)
+[52]: (47.3032,-19.8483)
+[53]: (62.8466,0.431195)
+[54]: (27.8992,17.6146)
+[55]: (45.4857,-14.6574)
+[56]: (37.9916,2.11962)
+[57]: (26.7675,-7.87068)
+[58]: (58.7713,-13.4492)
+[59]: (64.156,-14.1598)
+[60]: (42.2318,-8.72377)
+[61]: (47.0311,16.5979)
+[62]: (55.5847,-15.634)
+[63]: (47.6218,-16.5041)
+[64]: (59.1005,-19.7275)
+[65]: (43.5832,1.71373)
+[66]: (27.9348,15.2703)
+[67]: (30.3112,12.238)
+[68]: (58.422,-14.8422)
+[69]: (30.6692,23.3213)
+[70]: (65.7723,13.1549)
+[71]: (26.6639,-4.2361)
+[72]: (33.2745,-9.56859)
+[73]: (50.8932,-15.9542)
+[74]: (39.9822,7.04921)
+[75]: (32.886,19.214)
+[76]: (61.3254,16.9171)
+[77]: (53.8119,8.91013)
+[78]: (64.2831,-6.56628)
+[79]: (55.4061,15.3836)
+[80]: (36.7062,-9.01077)
+[81]: (35.0973,1.64101)
+[82]: (24.2595,2.40853)
+[83]: (31.879,19.6816)
+[84]: (50.5663,-0.451738)
+[85]: (61.0029,8.33863)
+[86]: (30.7032,-20.3332)
+[87]: (22.1025,0.977722)
+[88]: (33.0982,9.99575)
+[89]: (48.0236,10.0804)
+[90]: (35.045,17.9096)
+[91]: (47.2944,-11.6296)
+[92]: (52.8267,-6.89374)
+[93]: (60.2805,9.1098)
+[94]: (49.54,7.6866)
+[95]: (42.4934,23.2462)
+[96]: (61.6758,14.5907)
+[97]: (42.8872,22.9354)
+[98]: (34.9993,11.7662)
+[99]: (60.617,22.5655)
+[100]: (29.3145,13.6198)
+[101]: (48.9042,-2.98231)
+[102]: (56.2866,8.00671)
+[103]: (60.9954,-18.6152)
+[104]: (36.0025,1.01897)
+[105]: (54.4652,8.04743)
+[106]: (36.9285,-6.2405)
+[107]: (59.4178,-18.2448)
+[108]: (49.8658,11.6983)
+[109]: (53.865,-8.59426)
+[110]: (37.3849,-11.6416)
+[111]: (32.6519,-8.93923)
+[112]: (65.9491,12.5391)
+[113]: (31.9961,-7.0516)
+[114]: (42.3054,-15.3869)
+[115]: (33.514,8.61991)
+[116]: (61.233,19.4181)
+[117]: (23.6376,9.51958)
+[118]: (45.4248,21.633)
+[119]: (53.9044,18.4273)
+[120]: (40.652,0.369526)
+[121]: (44.4747,14.5805)
+[122]: (57.129,-4.10744)
+[123]: (59.3357,-1.00521)
+[124]: (25.5909,5.20072)
+[125]: (53.4005,-0.0241533)
+[126]: (56.5591,23.0525)
+[127]: (54.0366,14.5083)
+[128]: (53.5916,23.0328)
+[129]: (25.4567,-12.103)
+[130]: (25.6459,-4.02939)
+[131]: (59.5169,23.8788)
+[132]: (33.3887,20.1545)
+[133]: (51.3984,15.8136)
+[134]: (59.7875,-2.69721)
+[135]: (52.2409,-7.56048)
+[136]: (60.6723,-11.2844)
+[137]: (25.02,9.80135)
+[138]: (47.6082,21.3558)
+[139]: (26.7961,10.1991)
+[140]: (44.5565,17.1967)
+[141]: (28.1749,-6.8844)
+[142]: (58.2491,19.2115)
+[143]: (25.6239,3.84074)
+[144]: (60.2443,-11.9195)
+[145]: (54.7378,22.8902)
+[146]: (47.0511,6.25467)
+[147]: (64.769,17.4399)
+[148]: (44.4092,8.16743)
+[149]: (51.2534,-3.80327)
+[150]: (23.4702,-4.50567)
+[151]: (51.6362,21.1425)
+[152]: (47.21,13.6563)
+[153]: (48.9439,-13.1819)
+[154]: (53.0121,12.74)
+[155]: (60.0172,-10.4315)
+[156]: (47.9367,-19.8079)
+[157]: (45.6841,-1.81419)
+[158]: (62.4037,8.308)
+[159]: (65.0266,14.648)
+[160]: (59.3885,11.7643)
+[161]: (55.5382,-1.56038)
+[162]: (36.019,12.3072)
+[163]: (33.8795,17.4282)
+[164]: (38.4746,22.1329)
+[165]: (31.6249,-1.05517)
+[166]: (35.6272,20.2611)
+[167]: (38.0874,19.8372)
+[168]: (51.9174,-20.9688)
+[169]: (24.6553,-3.07049)
+[170]: (54.7713,21.6725)
+[171]: (49.4981,-5.29206)
+[172]: (64.8647,-12.8178)
+[173]: (55.8938,19.2684)
+[174]: (58.4902,12.9203)
+[175]: (51.9163,9.87871)
+[176]: (42.6846,-0.545497)
+[177]: (26.3183,15.7036)
+[178]: (29.7617,-2.80219)
+[179]: (51.1318,5.2363)
+[180]: (37.3307,19.7567)
+[181]: (22.1811,9.95797)
+[182]: (58.0178,-2.73152)
+[183]: (47.7952,1.93526)
+[184]: (39.2997,9.45049)
+[185]: (61.8648,-13.929)
+[186]: (49.123,3.36282)
+[187]: (43.7789,5.9877)
+[188]: (53.545,-8.32733)
+[189]: (43.256,4.03521)
+[190]: (22.593,-12.8276)
+[191]: (31.9139,2.2776)
+[192]: (49.6269,-4.76775)
+[193]: (35.9812,16.3886)
+[194]: (55.4301,-20.887)
+[195]: (39.6249,-15.2392)
+[196]: (61.8697,-1.19401)
+[197]: (57.7187,11.8875)
+[198]: (59.0745,-2.48608)
+[199]: (31.8227,-9.6258)
+[200]: (24.9644,-14.3125)
+[201]: (39.4452,11.0874)
+[202]: (52.0503,20.2241)
+[203]: (35.0751,-2.40468)
+[204]: (29.8968,15.3312)
+[205]: (64.6305,-10.5103)
+[206]: (65.5036,-11.4555)
+[207]: (54.7673,7.13045)
+[208]: (46.7767,-17.2515)
+[209]: (41.519,-5.79325)
+[210]: (24.8615,18.1439)
+[211]: (41.9675,23.7312)
+[212]: (34.9499,-8.31372)
+[213]: (53.6186,-13.9756)
+[214]: (52.2002,22.4414)
+[215]: (39.3985,14.1646)
+[216]: (26.1289,15.8437)
+[217]: (43.252,15.1792)
+[218]: (54.0678,15.3272)
+[219]: (30.7745,20.9646)
+[220]: (48.6583,-12.595)
+[221]: (28.4543,6.16191)
+[222]: (38.9495,20.2216)
+[223]: (31.2924,22.7262)
+[224]: (65.9702,9.81138)
+[225]: (34.9329,-17.1683)
+[226]: (45.9553,13.9005)
+[227]: (24.5628,17.9051)
+[228]: (23.5867,15.1815)
+[229]: (21.9295,12.7869)
+[230]: (55.6229,-1.67196)
+[231]: (44.9515,18.7517)
+[232]: (32.1718,-19.7964)
+[233]: (51.9309,23.2396)
+[234]: (58.5307,19.7054)
+[235]: (62.2041,-0.810926)
+[236]: (25.1104,-17.3416)
+[237]: (23.351,1.05986)
+[238]: (65.88,-8.35665)
+[239]: (41.786,23.8502)
+[240]: (64.4547,13.719)
+[241]: (24.6819,2.41)
+[242]: (45.6194,-13.7553)
+[243]: (38.3151,6.20613)
+[244]: (64.4262,-2.75535)
+[245]: (36.993,12.0491)
+[246]: (58.5727,18.9446)
+[247]: (48.8008,-17.2555)
+[248]: (62.1481,-7.26833)
+[249]: (23.984,12.6789)
+[250]: (30.437,23.1881)
+[251]: (29.8679,-7.45258)
+[252]: (23.8466,-9.78109)
+[253]: (56.6073,-18.2734)
+[254]: (44.8623,-9.6067)
+[255]: (23.5768,1.31698)
+[256]: (22.1123,-14.7413)
+[257]: (21.727,4.73166)
+[258]: (34.5034,-2.95787)
+[259]: (28.9378,-9.07042)
+[260]: (57.2868,2.93083)
+[261]: (65.9786,7.85947)
+[262]: (39.8754,6.77943)
+[263]: (53.6039,-5.97648)
+[264]: (62.5111,14.5879)
+[265]: (24.7024,-15.0519)
+[266]: (55.7761,-8.4297)
+[267]: (40.4955,16.6226)
+[268]: (44.7892,-10.8972)
+[269]: (61.3492,-18.3485)
+[270]: (42.4961,21.926)
+[271]: (45.9684,1.60838)
+[272]: (25.1847,4.69543)
+[273]: (24.34,-3.31196)
+[274]: (64.7376,-9.72218)
+[275]: (50.6176,14.0243)
+[276]: (56.2086,8.59626)
+[277]: (39.8838,-11.9159)
+[278]: (33.3757,-14.5123)
+[279]: (45.1076,-12.1132)
+[280]: (63.0757,6.80995)
+[281]: (35.8349,10.8518)
+[282]: (61.3802,13.3304)
+[283]: (45.4744,-1.83054)
+[284]: (65.4333,-1.17636)
+[285]: (42.8209,-0.0706101)
+[286]: (38.7497,-19.2106)
+[287]: (64.5378,0.934323)
+[288]: (48.4848,-19.1222)
+[289]: (60.6224,5.22236)
+[290]: (34.1556,3.23997)
+[291]: (37.2467,-17.6357)
+[292]: (29.8362,14.1305)
+[293]: (33.4483,0.211916)
+[294]: (62.6182,15.5559)
+[295]: (51.0987,17.6939)
+[296]: (40.3658,23.9336)
+[297]: (46.5457,-6.25391)
+[298]: (55.264,-15.9799)
+[299]: (54.9155,12.6973)
+Initial matrix generation time = 0.001808
+-------------------------------------------------------------------------------
+                    Start Resolving Linear Systems by MUCGLE
+-------------------------------------------------------------------------------
+Info ]> The Comm world size of LS is 1 
+
+Tpetra::CrsMatrix (Kokkos refactor): {isFillComplete: true, global dimensions: [300, 300], global number of entries: 2828}
+
+GMRES ]> SMG2S generated test matrix ... complex<double>
+Building TIME = 0.221666
+GMRES ]> Construct solver ...
+Construct TIME = 0.000335
+GMRES ]> Solving problem ...
+LS POWER = 10, LS LATENCY = 1
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (1, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 0 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1 > 1e-08
+                  residual [ 1 ] = 1 > 1e-08
+                  residual [ 2 ] = 1 > 1e-08
+                  residual [ 3 ] = 1 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (2, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 1 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.446188 > 1e-08
+                  residual [ 1 ] = 0.486178 > 1e-08
+                  residual [ 2 ] = 0.446557 > 1e-08
+                  residual [ 3 ] = 0.489771 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (3, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 2 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.265443 > 1e-08
+                  residual [ 1 ] = 0.552425 > 1e-08
+                  residual [ 2 ] = 0.244642 > 1e-08
+                  residual [ 3 ] = 0.327994 > 1e-08
+
+ERAM ]> SMG2S generated test matrix ... complex<double>
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (4, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 3 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.207551 > 1e-08
+                  residual [ 1 ] = 0.462764 > 1e-08
+                  residual [ 2 ] = 0.144329 > 1e-08
+                  residual [ 3 ] = 0.265796 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (5, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 4 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.159081 > 1e-08
+                  residual [ 1 ] = 0.475176 > 1e-08
+                  residual [ 2 ] = 0.0995486 > 1e-08
+                  residual [ 3 ] = 0.223398 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (6, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 5 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.118179 > 1e-08
+                  residual [ 1 ] = 0.447543 > 1e-08
+                  residual [ 2 ] = 0.0680685 > 1e-08
+                  residual [ 3 ] = 0.186604 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (7, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 6 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0788049 > 1e-08
+                  residual [ 1 ] = 0.414784 > 1e-08
+                  residual [ 2 ] = 0.0571303 > 1e-08
+                  residual [ 3 ] = 0.166362 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (8, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 7 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0562104 > 1e-08
+                  residual [ 1 ] = 0.339059 > 1e-08
+                  residual [ 2 ] = 0.0444262 > 1e-08
+                  residual [ 3 ] = 0.137401 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (9, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 8 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0344652 > 1e-08
+                  residual [ 1 ] = 0.236036 > 1e-08
+                  residual [ 2 ] = 0.0331539 > 1e-08
+                  residual [ 3 ] = 0.0973066 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (10, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 9 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0233184 > 1e-08
+                  residual [ 1 ] = 0.163589 > 1e-08
+                  residual [ 2 ] = 0.0220668 > 1e-08
+                  residual [ 3 ] = 0.0671511 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (11, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 10 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0128946 > 1e-08
+                  residual [ 1 ] = 0.0983251 > 1e-08
+                  residual [ 2 ] = 0.0147183 > 1e-08
+                  residual [ 3 ] = 0.0394437 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (12, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 11 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00808296 > 1e-08
+                  residual [ 1 ] = 0.0637765 > 1e-08
+                  residual [ 2 ] = 0.0100063 > 1e-08
+                  residual [ 3 ] = 0.0249579 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (13, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 12 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00607929 > 1e-08
+                  residual [ 1 ] = 0.0394618 > 1e-08
+                  residual [ 2 ] = 0.00629544 > 1e-08
+                  residual [ 3 ] = 0.0152685 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (14, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 13 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00417716 > 1e-08
+                  residual [ 1 ] = 0.0294897 > 1e-08
+                  residual [ 2 ] = 0.00424583 > 1e-08
+                  residual [ 3 ] = 0.0114109 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (15, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 14 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00265982 > 1e-08
+                  residual [ 1 ] = 0.0237953 > 1e-08
+                  residual [ 2 ] = 0.00331539 > 1e-08
+                  residual [ 3 ] = 0.00938598 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (16, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 15 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00178684 > 1e-08
+                  residual [ 1 ] = 0.0150186 > 1e-08
+                  residual [ 2 ] = 0.00194686 > 1e-08
+                  residual [ 3 ] = 0.00625813 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (17, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 16 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00123342 > 1e-08
+                  residual [ 1 ] = 0.0100419 > 1e-08
+                  residual [ 2 ] = 0.00120199 > 1e-08
+                  residual [ 3 ] = 0.00430698 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (18, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 17 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00090704 > 1e-08
+                  residual [ 1 ] = 0.00637808 > 1e-08
+                  residual [ 2 ] = 0.000857849 > 1e-08
+                  residual [ 3 ] = 0.00276607 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (19, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 18 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000559613 > 1e-08
+                  residual [ 1 ] = 0.00392802 > 1e-08
+                  residual [ 2 ] = 0.000554189 > 1e-08
+                  residual [ 3 ] = 0.00171105 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (20, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 19 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000473129 > 1e-08
+                  residual [ 1 ] = 0.00235561 > 1e-08
+                  residual [ 2 ] = 0.000314151 > 1e-08
+                  residual [ 3 ] = 0.00114538 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (21, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 20 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000297265 > 1e-08
+                  residual [ 1 ] = 0.00131795 > 1e-08
+                  residual [ 2 ] = 0.000178882 > 1e-08
+                  residual [ 3 ] = 0.000665841 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (22, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 21 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000300209 > 1e-08
+                  residual [ 1 ] = 0.00153462 > 1e-08
+                  residual [ 2 ] = 0.000188233 > 1e-08
+                  residual [ 3 ] = 0.000773765 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (23, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 22 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00019398 > 1e-08
+                  residual [ 1 ] = 0.00105449 > 1e-08
+                  residual [ 2 ] = 0.00012506 > 1e-08
+                  residual [ 3 ] = 0.000525313 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (24, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 23 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000114481 > 1e-08
+                  residual [ 1 ] = 0.000649138 > 1e-08
+                  residual [ 2 ] = 7.43769e-05 > 1e-08
+                  residual [ 3 ] = 0.00032208 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (25, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 24 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 6.71879e-05 > 1e-08
+                  residual [ 1 ] = 0.000385326 > 1e-08
+                  residual [ 2 ] = 4.44658e-05 > 1e-08
+                  residual [ 3 ] = 0.000190474 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (26, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 25 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 6.11923e-05 > 1e-08
+                  residual [ 1 ] = 0.000322464 > 1e-08
+                  residual [ 2 ] = 4.01525e-05 > 1e-08
+                  residual [ 3 ] = 0.000160904 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (27, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 26 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 4.90712e-05 > 1e-08
+                  residual [ 1 ] = 0.00025095 > 1e-08
+                  residual [ 2 ] = 3.17709e-05 > 1e-08
+                  residual [ 3 ] = 0.00012595 > 1e-08
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (28, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 27 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 3.94315e-05 > 1e-08
+                  residual [ 1 ] = 0.000202707 > 1e-08
+                  residual [ 2 ] = 2.54704e-05 > 1e-08
+                  residual [ 3 ] = 0.000101793 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (29, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 28 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 2.85169e-05 > 1e-08
+                  residual [ 1 ] = 0.000145707 > 1e-08
+                  residual [ 2 ] = 1.82799e-05 > 1e-08
+                  residual [ 3 ] = 7.33335e-05 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (30, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 29 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1.63623e-05 > 1e-08
+                  residual [ 1 ] = 8.36881e-05 > 1e-08
+                  residual [ 2 ] = 1.04447e-05 > 1e-08
+                  residual [ 3 ] = 4.21546e-05 > 1e-08
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (31, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 30 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1.06283e-05 > 1e-08
+                  residual [ 1 ] = 5.41978e-05 > 1e-08
+                  residual [ 2 ] = 6.76688e-06 > 1e-08
+                  residual [ 3 ] = 2.73206e-05 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (32, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 31 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 6.08466e-06 > 1e-08
+                  residual [ 1 ] = 3.1068e-05 > 1e-08
+                  residual [ 2 ] = 3.87369e-06 > 1e-08
+                  residual [ 3 ] = 1.56546e-05 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (33, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 32 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 5.14747e-06 > 1e-08
+                  residual [ 1 ] = 2.62459e-05 > 1e-08
+                  residual [ 2 ] = 3.27774e-06 > 1e-08
+                  residual [ 3 ] = 1.32233e-05 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (34, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 33 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 2.98045e-06 > 1e-08
+                  residual [ 1 ] = 1.51586e-05 > 1e-08
+                  residual [ 2 ] = 1.89601e-06 > 1e-08
+                  residual [ 3 ] = 7.63917e-06 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (35, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 34 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 2.09389e-06 > 1e-08
+                  residual [ 1 ] = 1.06367e-05 > 1e-08
+                  residual [ 2 ] = 1.33163e-06 > 1e-08
+                  residual [ 3 ] = 5.36074e-06 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (36, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 35 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1.41562e-06 > 1e-08
+                  residual [ 1 ] = 7.18e-06 > 1e-08
+                  residual [ 2 ] = 8.99576e-07 > 1e-08
+                  residual [ 3 ] = 3.62042e-06 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (37, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 36 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 9.81544e-07 > 1e-08
+                  residual [ 1 ] = 4.96753e-06 > 1e-08
+                  residual [ 2 ] = 6.22432e-07 > 1e-08
+                  residual [ 3 ] = 2.50638e-06 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (38, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 37 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 7.08047e-07 > 1e-08
+                  residual [ 1 ] = 3.59007e-06 > 1e-08
+                  residual [ 2 ] = 4.48948e-07 > 1e-08
+                  residual [ 3 ] = 1.81112e-06 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (39, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 38 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 4.51376e-07 > 1e-08
+                  residual [ 1 ] = 2.28658e-06 > 1e-08
+                  residual [ 2 ] = 2.86159e-07 > 1e-08
+                  residual [ 3 ] = 1.15371e-06 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (40, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 39 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 2.63523e-07 > 1e-08
+                  residual [ 1 ] = 1.33488e-06 > 1e-08
+                  residual [ 2 ] = 1.671e-07 > 1e-08
+                  residual [ 3 ] = 6.73499e-07 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (41, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 40 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1.34522e-07 > 1e-08
+                  residual [ 1 ] = 6.81324e-07 > 1e-08
+                  residual [ 2 ] = 8.52976e-08 > 1e-08
+                  residual [ 3 ] = 3.43765e-07 > 1e-08
+
+Hey LS PPOWER = 10, LS Latency = 1
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+ Tpetra::CrsMatrix (Kokkos refactor):
+  Template parameters:
+   Scalar: complex<double>
+   LocalOrdinal: int
+   GlobalOrdinal: int
+   Node: Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace>
+  isFillComplete: true
+  Global dimensions: [300, 300]
+  Global number of entries: 2828
+  Global number of diagonal entries: 300
+  Global max number of entries in a row: 11
+  
+  Row Map:
+  
+   "Tpetra::Map":
+    Template parameters:
+     LocalOrdinal: int
+     GlobalOrdinal: int
+     Node: Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace>
+    Global number of entries: 300
+    Minimum global index: 0
+    Maximum global index: 299
+    Index base: 0
+    Number of processes: 1
+    Uniform: true
+    Contiguous: true
+    Distributed: false
+  Column Map: same as row Map
+  Domain Map: same as row Map
+  Range Map: same as domain Map
+  Process rank: 0
+   Number of allocated entries: 2828
+   Number of entries: 2828
+   Number of diagonal entries: 300
+   Max number of entries per row: 11
+
+numVectors = : 4
+r1_tmp_norm[0] = 1.000000
+r1_tmp_norm[0] = 1.000000
+r1_tmp_norm[0] = 1.000000
+r1_tmp_norm[0] = 1.000000
+r1_tmp_norm[1] = 1.000000
+r1_tmp_norm[1] = 1.000000
+r1_tmp_norm[1] = 1.000000
+r1_tmp_norm[1] = 1.000000
+r1_tmp_norm[2] = 1.000000
+r1_tmp_norm[2] = 1.000000
+r1_tmp_norm[2] = 1.000000
+r1_tmp_norm[2] = 1.000000
+r1_tmp_norm[3] = 1.000000
+r1_tmp_norm[3] = 1.000000
+r1_tmp_norm[3] = 1.000000
+r1_tmp_norm[3] = 1.000000
+r1_tmp_norm[4] = 1.000000
+r1_tmp_norm[4] = 1.000000
+r1_tmp_norm[4] = 1.000000
+r1_tmp_norm[4] = 1.000000
+r1_tmp_norm[5] = 1.000000
+r1_tmp_norm[5] = 1.000000
+r1_tmp_norm[5] = 1.000000
+r1_tmp_norm[5] = 1.000000
+r1_tmp_norm[6] = 1.000000
+r1_tmp_norm[6] = 1.000000
+r1_tmp_norm[6] = 1.000000
+r1_tmp_norm[6] = 1.000000
+r1_tmp_norm[7] = 1.000000
+r1_tmp_norm[7] = 1.000000
+r1_tmp_norm[7] = 1.000000
+r1_tmp_norm[7] = 1.000000
+r1_tmp_norm[8] = 1.000000
+r1_tmp_norm[8] = 1.000000
+r1_tmp_norm[8] = 1.000000
+r1_tmp_norm[8] = 1.000000
+r1_tmp_norm[9] = 1.000000
+r1_tmp_norm[9] = 1.000000
+r1_tmp_norm[9] = 1.000000
+r1_tmp_norm[9] = 1.000000
+The GMRES Restarted Residual is updated by the LEAST SQUARE Polynomial METHOD
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (42, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 40 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1 > 1e-08
+                  residual [ 1 ] = 1 > 1e-08
+                  residual [ 2 ] = 1 > 1e-08
+                  residual [ 3 ] = 1 > 1e-08
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (43, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 41 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.446188 > 1e-08
+                  residual [ 1 ] = 0.486178 > 1e-08
+                  residual [ 2 ] = 0.446557 > 1e-08
+                  residual [ 3 ] = 0.489771 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (44, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 42 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.265443 > 1e-08
+                  residual [ 1 ] = 0.552425 > 1e-08
+                  residual [ 2 ] = 0.244642 > 1e-08
+                  residual [ 3 ] = 0.327994 > 1e-08
+
+Main ]> Father has sent preconditioned parameters to GMRES Component
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (45, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 43 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.207551 > 1e-08
+                  residual [ 1 ] = 0.462764 > 1e-08
+                  residual [ 2 ] = 0.144329 > 1e-08
+                  residual [ 3 ] = 0.265796 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (46, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 44 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.159081 > 1e-08
+                  residual [ 1 ] = 0.475176 > 1e-08
+                  residual [ 2 ] = 0.0995486 > 1e-08
+                  residual [ 3 ] = 0.223398 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (47, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 45 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.118179 > 1e-08
+                  residual [ 1 ] = 0.447543 > 1e-08
+                  residual [ 2 ] = 0.0680685 > 1e-08
+                  residual [ 3 ] = 0.186604 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (48, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 46 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0788049 > 1e-08
+                  residual [ 1 ] = 0.414784 > 1e-08
+                  residual [ 2 ] = 0.0571303 > 1e-08
+                  residual [ 3 ] = 0.166362 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (49, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 47 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0562104 > 1e-08
+                  residual [ 1 ] = 0.339059 > 1e-08
+                  residual [ 2 ] = 0.0444262 > 1e-08
+                  residual [ 3 ] = 0.137401 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (50, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 48 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0344652 > 1e-08
+                  residual [ 1 ] = 0.236036 > 1e-08
+                  residual [ 2 ] = 0.0331539 > 1e-08
+                  residual [ 3 ] = 0.0973066 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (51, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 49 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0233184 > 1e-08
+                  residual [ 1 ] = 0.163589 > 1e-08
+                  residual [ 2 ] = 0.0220668 > 1e-08
+                  residual [ 3 ] = 0.0671511 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (52, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 50 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0128946 > 1e-08
+                  residual [ 1 ] = 0.0983251 > 1e-08
+                  residual [ 2 ] = 0.0147183 > 1e-08
+                  residual [ 3 ] = 0.0394437 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (53, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 51 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00808296 > 1e-08
+                  residual [ 1 ] = 0.0637765 > 1e-08
+                  residual [ 2 ] = 0.0100063 > 1e-08
+                  residual [ 3 ] = 0.0249579 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (54, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 52 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00607929 > 1e-08
+                  residual [ 1 ] = 0.0394618 > 1e-08
+                  residual [ 2 ] = 0.00629544 > 1e-08
+                  residual [ 3 ] = 0.0152685 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (55, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 53 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00417716 > 1e-08
+                  residual [ 1 ] = 0.0294897 > 1e-08
+                  residual [ 2 ] = 0.00424583 > 1e-08
+                  residual [ 3 ] = 0.0114109 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (56, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 54 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00265982 > 1e-08
+                  residual [ 1 ] = 0.0237953 > 1e-08
+                  residual [ 2 ] = 0.00331539 > 1e-08
+                  residual [ 3 ] = 0.00938598 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (57, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 55 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00178684 > 1e-08
+                  residual [ 1 ] = 0.0150186 > 1e-08
+                  residual [ 2 ] = 0.00194686 > 1e-08
+                  residual [ 3 ] = 0.00625813 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (58, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 56 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00123342 > 1e-08
+                  residual [ 1 ] = 0.0100419 > 1e-08
+                  residual [ 2 ] = 0.00120199 > 1e-08
+                  residual [ 3 ] = 0.00430698 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (59, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 57 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00090704 > 1e-08
+                  residual [ 1 ] = 0.00637808 > 1e-08
+                  residual [ 2 ] = 0.000857849 > 1e-08
+                  residual [ 3 ] = 0.00276607 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (60, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 58 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000559613 > 1e-08
+                  residual [ 1 ] = 0.00392802 > 1e-08
+                  residual [ 2 ] = 0.000554189 > 1e-08
+                  residual [ 3 ] = 0.00171105 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (61, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 59 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000473129 > 1e-08
+                  residual [ 1 ] = 0.00235561 > 1e-08
+                  residual [ 2 ] = 0.000314151 > 1e-08
+                  residual [ 3 ] = 0.00114538 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (62, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 60 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000297265 > 1e-08
+                  residual [ 1 ] = 0.00131795 > 1e-08
+                  residual [ 2 ] = 0.000178882 > 1e-08
+                  residual [ 3 ] = 0.000665841 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (63, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 61 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000300209 > 1e-08
+                  residual [ 1 ] = 0.00153462 > 1e-08
+                  residual [ 2 ] = 0.000188233 > 1e-08
+                  residual [ 3 ] = 0.000773765 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (64, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 62 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00019398 > 1e-08
+                  residual [ 1 ] = 0.00105449 > 1e-08
+                  residual [ 2 ] = 0.00012506 > 1e-08
+                  residual [ 3 ] = 0.000525313 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (65, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 63 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000114481 > 1e-08
+                  residual [ 1 ] = 0.000649138 > 1e-08
+                  residual [ 2 ] = 7.43769e-05 > 1e-08
+                  residual [ 3 ] = 0.00032208 > 1e-08
+
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (66, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 64 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 6.71879e-05 > 1e-08
+                  residual [ 1 ] = 0.000385326 > 1e-08
+                  residual [ 2 ] = 4.44658e-05 > 1e-08
+                  residual [ 3 ] = 0.000190474 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (67, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 65 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 6.11923e-05 > 1e-08
+                  residual [ 1 ] = 0.000322464 > 1e-08
+                  residual [ 2 ] = 4.01525e-05 > 1e-08
+                  residual [ 3 ] = 0.000160904 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (68, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 66 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 4.90712e-05 > 1e-08
+                  residual [ 1 ] = 0.00025095 > 1e-08
+                  residual [ 2 ] = 3.17709e-05 > 1e-08
+                  residual [ 3 ] = 0.00012595 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (69, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 67 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 3.94315e-05 > 1e-08
+                  residual [ 1 ] = 0.000202707 > 1e-08
+                  residual [ 2 ] = 2.54704e-05 > 1e-08
+                  residual [ 3 ] = 0.000101793 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (70, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 68 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 2.85169e-05 > 1e-08
+                  residual [ 1 ] = 0.000145707 > 1e-08
+                  residual [ 2 ] = 1.82799e-05 > 1e-08
+                  residual [ 3 ] = 7.33335e-05 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (71, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 69 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1.63623e-05 > 1e-08
+                  residual [ 1 ] = 8.36881e-05 > 1e-08
+                  residual [ 2 ] = 1.04447e-05 > 1e-08
+                  residual [ 3 ] = 4.21546e-05 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (72, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 70 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1.06283e-05 > 1e-08
+                  residual [ 1 ] = 5.41978e-05 > 1e-08
+                  residual [ 2 ] = 6.76688e-06 > 1e-08
+                  residual [ 3 ] = 2.73206e-05 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (73, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 71 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 6.08466e-06 > 1e-08
+                  residual [ 1 ] = 3.1068e-05 > 1e-08
+                  residual [ 2 ] = 3.87369e-06 > 1e-08
+                  residual [ 3 ] = 1.56546e-05 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (74, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 72 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 5.14747e-06 > 1e-08
+                  residual [ 1 ] = 2.62459e-05 > 1e-08
+                  residual [ 2 ] = 3.27774e-06 > 1e-08
+                  residual [ 3 ] = 1.32233e-05 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (75, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 73 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 2.98045e-06 > 1e-08
+                  residual [ 1 ] = 1.51586e-05 > 1e-08
+                  residual [ 2 ] = 1.89601e-06 > 1e-08
+                  residual [ 3 ] = 7.63917e-06 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (76, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 74 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 2.09389e-06 > 1e-08
+                  residual [ 1 ] = 1.06367e-05 > 1e-08
+                  residual [ 2 ] = 1.33163e-06 > 1e-08
+                  residual [ 3 ] = 5.36074e-06 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (77, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 75 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1.41562e-06 > 1e-08
+                  residual [ 1 ] = 7.18e-06 > 1e-08
+                  residual [ 2 ] = 8.99576e-07 > 1e-08
+                  residual [ 3 ] = 3.62042e-06 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (78, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 76 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 9.81544e-07 > 1e-08
+                  residual [ 1 ] = 4.96753e-06 > 1e-08
+                  residual [ 2 ] = 6.22432e-07 > 1e-08
+                  residual [ 3 ] = 2.50638e-06 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (79, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 77 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 7.08047e-07 > 1e-08
+                  residual [ 1 ] = 3.59007e-06 > 1e-08
+                  residual [ 2 ] = 4.48948e-07 > 1e-08
+                  residual [ 3 ] = 1.81112e-06 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (80, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 78 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 4.51376e-07 > 1e-08
+                  residual [ 1 ] = 2.28658e-06 > 1e-08
+                  residual [ 2 ] = 2.86159e-07 > 1e-08
+                  residual [ 3 ] = 1.15371e-06 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (81, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 79 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 2.63523e-07 > 1e-08
+                  residual [ 1 ] = 1.33488e-06 > 1e-08
+                  residual [ 2 ] = 1.671e-07 > 1e-08
+                  residual [ 3 ] = 6.73499e-07 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (82, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 80 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1.34522e-07 > 1e-08
+                  residual [ 1 ] = 6.81324e-07 > 1e-08
+                  residual [ 2 ] = 8.52976e-08 > 1e-08
+                  residual [ 3 ] = 3.43765e-07 > 1e-08
+
+Hey LS PPOWER = 10, LS Latency = 1
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+ Tpetra::CrsMatrix (Kokkos refactor):
+  Template parameters:
+   Scalar: complex<double>
+   LocalOrdinal: int
+   GlobalOrdinal: int
+   Node: Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace>
+  isFillComplete: true
+  Global dimensions: [300, 300]
+  Global number of entries: 2828
+  Global number of diagonal entries: 300
+  Global max number of entries in a row: 11
+  
+  Row Map:
+  
+   "Tpetra::Map":
+    Template parameters:
+     LocalOrdinal: int
+     GlobalOrdinal: int
+     Node: Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace>
+    Global number of entries: 300
+    Minimum global index: 0
+    Maximum global index: 299
+    Index base: 0
+    Number of processes: 1
+    Uniform: true
+    Contiguous: true
+    Distributed: false
+  Column Map: same as row Map
+  Domain Map: same as row Map
+  Range Map: same as domain Map
+  Process rank: 0
+   Number of allocated entries: 2828
+   Number of entries: 2828
+   Number of diagonal entries: 300
+   Max number of entries per row: 11
+
+numVectors = : 4
+r1_tmp_norm[0] = 1.000000
+r1_tmp_norm[0] = 1.000000
+r1_tmp_norm[0] = 1.000000
+r1_tmp_norm[0] = 1.000000
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+r1_tmp_norm[1] = 1.000000
+r1_tmp_norm[1] = 1.000000
+r1_tmp_norm[1] = 1.000000
+r1_tmp_norm[1] = 1.000000
+r1_tmp_norm[2] = 1.000000
+r1_tmp_norm[2] = 1.000000
+r1_tmp_norm[2] = 1.000000
+r1_tmp_norm[2] = 1.000000
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+r1_tmp_norm[3] = 1.000000
+r1_tmp_norm[3] = 1.000000
+r1_tmp_norm[3] = 1.000000
+r1_tmp_norm[3] = 1.000000
+r1_tmp_norm[4] = 1.000000
+r1_tmp_norm[4] = 1.000000
+r1_tmp_norm[4] = 1.000000
+r1_tmp_norm[4] = 1.000000
+r1_tmp_norm[5] = 1.000000
+r1_tmp_norm[5] = 1.000000
+r1_tmp_norm[5] = 1.000000
+r1_tmp_norm[5] = 1.000000
+r1_tmp_norm[6] = 1.000000
+r1_tmp_norm[6] = 1.000000
+r1_tmp_norm[6] = 1.000000
+r1_tmp_norm[6] = 1.000000
+r1_tmp_norm[7] = 1.000000
+r1_tmp_norm[7] = 1.000000
+r1_tmp_norm[7] = 1.000000
+r1_tmp_norm[7] = 1.000000
+r1_tmp_norm[8] = 1.000000
+r1_tmp_norm[8] = 1.000000
+r1_tmp_norm[8] = 1.000000
+r1_tmp_norm[8] = 1.000000
+r1_tmp_norm[9] = 1.000000
+r1_tmp_norm[9] = 1.000000
+r1_tmp_norm[9] = 1.000000
+r1_tmp_norm[9] = 1.000000
+The GMRES Restarted Residual is updated by the LEAST SQUARE Polynomial METHOD
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (83, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 80 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1 > 1e-08
+                  residual [ 1 ] = 1 > 1e-08
+                  residual [ 2 ] = 1 > 1e-08
+                  residual [ 3 ] = 1 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (84, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 81 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.446188 > 1e-08
+                  residual [ 1 ] = 0.486178 > 1e-08
+                  residual [ 2 ] = 0.446557 > 1e-08
+                  residual [ 3 ] = 0.489771 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (85, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 82 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.265443 > 1e-08
+                  residual [ 1 ] = 0.552425 > 1e-08
+                  residual [ 2 ] = 0.244642 > 1e-08
+                  residual [ 3 ] = 0.327994 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (86, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 83 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.207551 > 1e-08
+                  residual [ 1 ] = 0.462764 > 1e-08
+                  residual [ 2 ] = 0.144329 > 1e-08
+                  residual [ 3 ] = 0.265796 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (87, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 84 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.159081 > 1e-08
+                  residual [ 1 ] = 0.475176 > 1e-08
+                  residual [ 2 ] = 0.0995486 > 1e-08
+                  residual [ 3 ] = 0.223398 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (88, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 85 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.118179 > 1e-08
+                  residual [ 1 ] = 0.447543 > 1e-08
+                  residual [ 2 ] = 0.0680685 > 1e-08
+                  residual [ 3 ] = 0.186604 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (89, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 86 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0788049 > 1e-08
+                  residual [ 1 ] = 0.414784 > 1e-08
+                  residual [ 2 ] = 0.0571303 > 1e-08
+                  residual [ 3 ] = 0.166362 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (90, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 87 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0562104 > 1e-08
+                  residual [ 1 ] = 0.339059 > 1e-08
+                  residual [ 2 ] = 0.0444262 > 1e-08
+                  residual [ 3 ] = 0.137401 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (91, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 88 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0344652 > 1e-08
+                  residual [ 1 ] = 0.236036 > 1e-08
+                  residual [ 2 ] = 0.0331539 > 1e-08
+                  residual [ 3 ] = 0.0973066 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (92, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 89 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0233184 > 1e-08
+                  residual [ 1 ] = 0.163589 > 1e-08
+                  residual [ 2 ] = 0.0220668 > 1e-08
+                  residual [ 3 ] = 0.0671511 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (93, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 90 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0128946 > 1e-08
+                  residual [ 1 ] = 0.0983251 > 1e-08
+                  residual [ 2 ] = 0.0147183 > 1e-08
+                  residual [ 3 ] = 0.0394437 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (94, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 91 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00808296 > 1e-08
+                  residual [ 1 ] = 0.0637765 > 1e-08
+                  residual [ 2 ] = 0.0100063 > 1e-08
+                  residual [ 3 ] = 0.0249579 > 1e-08
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (95, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 92 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00607929 > 1e-08
+                  residual [ 1 ] = 0.0394618 > 1e-08
+                  residual [ 2 ] = 0.00629544 > 1e-08
+                  residual [ 3 ] = 0.0152685 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (96, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 93 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00417716 > 1e-08
+                  residual [ 1 ] = 0.0294897 > 1e-08
+                  residual [ 2 ] = 0.00424583 > 1e-08
+                  residual [ 3 ] = 0.0114109 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (97, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 94 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00265982 > 1e-08
+                  residual [ 1 ] = 0.0237953 > 1e-08
+                  residual [ 2 ] = 0.00331539 > 1e-08
+                  residual [ 3 ] = 0.00938598 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (98, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 95 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00178684 > 1e-08
+                  residual [ 1 ] = 0.0150186 > 1e-08
+                  residual [ 2 ] = 0.00194686 > 1e-08
+                  residual [ 3 ] = 0.00625813 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (99, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 96 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00123342 > 1e-08
+                  residual [ 1 ] = 0.0100419 > 1e-08
+                  residual [ 2 ] = 0.00120199 > 1e-08
+                  residual [ 3 ] = 0.00430698 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (100, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 97 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00090704 > 1e-08
+                  residual [ 1 ] = 0.00637808 > 1e-08
+                  residual [ 2 ] = 0.000857849 > 1e-08
+                  residual [ 3 ] = 0.00276607 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (101, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 98 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000559613 > 1e-08
+                  residual [ 1 ] = 0.00392802 > 1e-08
+                  residual [ 2 ] = 0.000554189 > 1e-08
+                  residual [ 3 ] = 0.00171105 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (102, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 99 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000473129 > 1e-08
+                  residual [ 1 ] = 0.00235561 > 1e-08
+                  residual [ 2 ] = 0.000314151 > 1e-08
+                  residual [ 3 ] = 0.00114538 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (103, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 100 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000297265 > 1e-08
+                  residual [ 1 ] = 0.00131795 > 1e-08
+                  residual [ 2 ] = 0.000178882 > 1e-08
+                  residual [ 3 ] = 0.000665841 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (104, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 101 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000300209 > 1e-08
+                  residual [ 1 ] = 0.00153462 > 1e-08
+                  residual [ 2 ] = 0.000188233 > 1e-08
+                  residual [ 3 ] = 0.000773765 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (105, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 102 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00019398 > 1e-08
+                  residual [ 1 ] = 0.00105449 > 1e-08
+                  residual [ 2 ] = 0.00012506 > 1e-08
+                  residual [ 3 ] = 0.000525313 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (106, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 103 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000114481 > 1e-08
+                  residual [ 1 ] = 0.000649138 > 1e-08
+                  residual [ 2 ] = 7.43769e-05 > 1e-08
+                  residual [ 3 ] = 0.00032208 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (107, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 104 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 6.71879e-05 > 1e-08
+                  residual [ 1 ] = 0.000385326 > 1e-08
+                  residual [ 2 ] = 4.44658e-05 > 1e-08
+                  residual [ 3 ] = 0.000190474 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (108, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 105 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 6.11923e-05 > 1e-08
+                  residual [ 1 ] = 0.000322464 > 1e-08
+                  residual [ 2 ] = 4.01525e-05 > 1e-08
+                  residual [ 3 ] = 0.000160904 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (109, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 106 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 4.90712e-05 > 1e-08
+                  residual [ 1 ] = 0.00025095 > 1e-08
+                  residual [ 2 ] = 3.17709e-05 > 1e-08
+                  residual [ 3 ] = 0.00012595 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (110, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 107 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 3.94315e-05 > 1e-08
+                  residual [ 1 ] = 0.000202707 > 1e-08
+                  residual [ 2 ] = 2.54704e-05 > 1e-08
+                  residual [ 3 ] = 0.000101793 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (111, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 108 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 2.85169e-05 > 1e-08
+                  residual [ 1 ] = 0.000145707 > 1e-08
+                  residual [ 2 ] = 1.82799e-05 > 1e-08
+                  residual [ 3 ] = 7.33335e-05 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (112, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 109 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1.63623e-05 > 1e-08
+                  residual [ 1 ] = 8.36881e-05 > 1e-08
+                  residual [ 2 ] = 1.04447e-05 > 1e-08
+                  residual [ 3 ] = 4.21546e-05 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (113, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 110 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1.06283e-05 > 1e-08
+                  residual [ 1 ] = 5.41978e-05 > 1e-08
+                  residual [ 2 ] = 6.76688e-06 > 1e-08
+                  residual [ 3 ] = 2.73206e-05 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (114, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 111 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 6.08466e-06 > 1e-08
+                  residual [ 1 ] = 3.1068e-05 > 1e-08
+                  residual [ 2 ] = 3.87369e-06 > 1e-08
+                  residual [ 3 ] = 1.56546e-05 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (115, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 112 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 5.14747e-06 > 1e-08
+                  residual [ 1 ] = 2.62459e-05 > 1e-08
+                  residual [ 2 ] = 3.27774e-06 > 1e-08
+                  residual [ 3 ] = 1.32233e-05 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (116, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 113 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 2.98045e-06 > 1e-08
+                  residual [ 1 ] = 1.51586e-05 > 1e-08
+                  residual [ 2 ] = 1.89601e-06 > 1e-08
+                  residual [ 3 ] = 7.63917e-06 > 1e-08
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (117, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 114 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 2.09389e-06 > 1e-08
+                  residual [ 1 ] = 1.06367e-05 > 1e-08
+                  residual [ 2 ] = 1.33163e-06 > 1e-08
+                  residual [ 3 ] = 5.36074e-06 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (118, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 115 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1.41562e-06 > 1e-08
+                  residual [ 1 ] = 7.18e-06 > 1e-08
+                  residual [ 2 ] = 8.99576e-07 > 1e-08
+                  residual [ 3 ] = 3.62042e-06 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (119, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 116 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 9.81544e-07 > 1e-08
+                  residual [ 1 ] = 4.96753e-06 > 1e-08
+                  residual [ 2 ] = 6.22432e-07 > 1e-08
+                  residual [ 3 ] = 2.50638e-06 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (120, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 117 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 7.08047e-07 > 1e-08
+                  residual [ 1 ] = 3.59007e-06 > 1e-08
+                  residual [ 2 ] = 4.48948e-07 > 1e-08
+                  residual [ 3 ] = 1.81112e-06 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (121, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 118 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 4.51376e-07 > 1e-08
+                  residual [ 1 ] = 2.28658e-06 > 1e-08
+                  residual [ 2 ] = 2.86159e-07 > 1e-08
+                  residual [ 3 ] = 1.15371e-06 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (122, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 119 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 2.63523e-07 > 1e-08
+                  residual [ 1 ] = 1.33488e-06 > 1e-08
+                  residual [ 2 ] = 1.671e-07 > 1e-08
+                  residual [ 3 ] = 6.73499e-07 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (123, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 120 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1.34522e-07 > 1e-08
+                  residual [ 1 ] = 6.81324e-07 > 1e-08
+                  residual [ 2 ] = 8.52976e-08 > 1e-08
+                  residual [ 3 ] = 3.43765e-07 > 1e-08
+
+Hey LS PPOWER = 10, LS Latency = 1
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+ Tpetra::CrsMatrix (Kokkos refactor):
+  Template parameters:
+   Scalar: complex<double>
+   LocalOrdinal: int
+   GlobalOrdinal: int
+   Node: Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace>
+  isFillComplete: true
+  Global dimensions: [300, 300]
+  Global number of entries: 2828
+  Global number of diagonal entries: 300
+  Global max number of entries in a row: 11
+  
+  Row Map:
+  
+   "Tpetra::Map":
+    Template parameters:
+     LocalOrdinal: int
+     GlobalOrdinal: int
+     Node: Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace>
+    Global number of entries: 300
+    Minimum global index: 0
+    Maximum global index: 299
+    Index base: 0
+    Number of processes: 1
+    Uniform: true
+    Contiguous: true
+    Distributed: false
+  Column Map: same as row Map
+  Domain Map: same as row Map
+  Range Map: same as domain Map
+  Process rank: 0
+   Number of allocated entries: 2828
+   Number of entries: 2828
+   Number of diagonal entries: 300
+   Max number of entries per row: 11
+
+numVectors = : 4
+r1_tmp_norm[0] = 1.000000
+r1_tmp_norm[0] = 1.000000
+r1_tmp_norm[0] = 1.000000
+r1_tmp_norm[0] = 1.000000
+r1_tmp_norm[1] = 1.000000
+r1_tmp_norm[1] = 1.000000
+r1_tmp_norm[1] = 1.000000
+r1_tmp_norm[1] = 1.000000
+r1_tmp_norm[2] = 1.000000
+r1_tmp_norm[2] = 1.000000
+r1_tmp_norm[2] = 1.000000
+r1_tmp_norm[2] = 1.000000
+r1_tmp_norm[3] = 1.000000
+r1_tmp_norm[3] = 1.000000
+r1_tmp_norm[3] = 1.000000
+r1_tmp_norm[3] = 1.000000
+r1_tmp_norm[4] = 1.000000
+r1_tmp_norm[4] = 1.000000
+r1_tmp_norm[4] = 1.000000
+r1_tmp_norm[4] = 1.000000
+r1_tmp_norm[5] = 1.000000
+r1_tmp_norm[5] = 1.000000
+r1_tmp_norm[5] = 1.000000
+r1_tmp_norm[5] = 1.000000
+r1_tmp_norm[6] = 1.000000
+r1_tmp_norm[6] = 1.000000
+r1_tmp_norm[6] = 1.000000
+r1_tmp_norm[6] = 1.000000
+r1_tmp_norm[7] = 1.000000
+r1_tmp_norm[7] = 1.000000
+r1_tmp_norm[7] = 1.000000
+r1_tmp_norm[7] = 1.000000
+r1_tmp_norm[8] = 1.000000
+r1_tmp_norm[8] = 1.000000
+r1_tmp_norm[8] = 1.000000
+r1_tmp_norm[8] = 1.000000
+r1_tmp_norm[9] = 1.000000
+r1_tmp_norm[9] = 1.000000
+r1_tmp_norm[9] = 1.000000
+r1_tmp_norm[9] = 1.000000
+The GMRES Restarted Residual is updated by the LEAST SQUARE Polynomial METHOD
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (124, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 120 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1 > 1e-08
+                  residual [ 1 ] = 1 > 1e-08
+                  residual [ 2 ] = 1 > 1e-08
+                  residual [ 3 ] = 1 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (125, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 121 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.446188 > 1e-08
+                  residual [ 1 ] = 0.486178 > 1e-08
+                  residual [ 2 ] = 0.446557 > 1e-08
+                  residual [ 3 ] = 0.489771 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (126, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 122 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.265443 > 1e-08
+                  residual [ 1 ] = 0.552425 > 1e-08
+                  residual [ 2 ] = 0.244642 > 1e-08
+                  residual [ 3 ] = 0.327994 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (127, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 123 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.207551 > 1e-08
+                  residual [ 1 ] = 0.462764 > 1e-08
+                  residual [ 2 ] = 0.144329 > 1e-08
+                  residual [ 3 ] = 0.265796 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (128, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 124 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.159081 > 1e-08
+                  residual [ 1 ] = 0.475176 > 1e-08
+                  residual [ 2 ] = 0.0995486 > 1e-08
+                  residual [ 3 ] = 0.223398 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (129, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 125 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.118179 > 1e-08
+                  residual [ 1 ] = 0.447543 > 1e-08
+                  residual [ 2 ] = 0.0680685 > 1e-08
+                  residual [ 3 ] = 0.186604 > 1e-08
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (130, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 126 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0788049 > 1e-08
+                  residual [ 1 ] = 0.414784 > 1e-08
+                  residual [ 2 ] = 0.0571303 > 1e-08
+                  residual [ 3 ] = 0.166362 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (131, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 127 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0562104 > 1e-08
+                  residual [ 1 ] = 0.339059 > 1e-08
+                  residual [ 2 ] = 0.0444262 > 1e-08
+                  residual [ 3 ] = 0.137401 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (132, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 128 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0344652 > 1e-08
+                  residual [ 1 ] = 0.236036 > 1e-08
+                  residual [ 2 ] = 0.0331539 > 1e-08
+                  residual [ 3 ] = 0.0973066 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (133, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 129 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0233184 > 1e-08
+                  residual [ 1 ] = 0.163589 > 1e-08
+                  residual [ 2 ] = 0.0220668 > 1e-08
+                  residual [ 3 ] = 0.0671511 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (134, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 130 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0128946 > 1e-08
+                  residual [ 1 ] = 0.0983251 > 1e-08
+                  residual [ 2 ] = 0.0147183 > 1e-08
+                  residual [ 3 ] = 0.0394437 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (135, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 131 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00808296 > 1e-08
+                  residual [ 1 ] = 0.0637765 > 1e-08
+                  residual [ 2 ] = 0.0100063 > 1e-08
+                  residual [ 3 ] = 0.0249579 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (136, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 132 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00607929 > 1e-08
+                  residual [ 1 ] = 0.0394618 > 1e-08
+                  residual [ 2 ] = 0.00629544 > 1e-08
+                  residual [ 3 ] = 0.0152685 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (137, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 133 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00417716 > 1e-08
+                  residual [ 1 ] = 0.0294897 > 1e-08
+                  residual [ 2 ] = 0.00424583 > 1e-08
+                  residual [ 3 ] = 0.0114109 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (138, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 134 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00265982 > 1e-08
+                  residual [ 1 ] = 0.0237953 > 1e-08
+                  residual [ 2 ] = 0.00331539 > 1e-08
+                  residual [ 3 ] = 0.00938598 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (139, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 135 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00178684 > 1e-08
+                  residual [ 1 ] = 0.0150186 > 1e-08
+                  residual [ 2 ] = 0.00194686 > 1e-08
+                  residual [ 3 ] = 0.00625813 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (140, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 136 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00123342 > 1e-08
+                  residual [ 1 ] = 0.0100419 > 1e-08
+                  residual [ 2 ] = 0.00120199 > 1e-08
+                  residual [ 3 ] = 0.00430698 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (141, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 137 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00090704 > 1e-08
+                  residual [ 1 ] = 0.00637808 > 1e-08
+                  residual [ 2 ] = 0.000857849 > 1e-08
+                  residual [ 3 ] = 0.00276607 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (142, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 138 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000559613 > 1e-08
+                  residual [ 1 ] = 0.00392802 > 1e-08
+                  residual [ 2 ] = 0.000554189 > 1e-08
+                  residual [ 3 ] = 0.00171105 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (143, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 139 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000473129 > 1e-08
+                  residual [ 1 ] = 0.00235561 > 1e-08
+                  residual [ 2 ] = 0.000314151 > 1e-08
+                  residual [ 3 ] = 0.00114538 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (144, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 140 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000297265 > 1e-08
+                  residual [ 1 ] = 0.00131795 > 1e-08
+                  residual [ 2 ] = 0.000178882 > 1e-08
+                  residual [ 3 ] = 0.000665841 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (145, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 141 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000300209 > 1e-08
+                  residual [ 1 ] = 0.00153462 > 1e-08
+                  residual [ 2 ] = 0.000188233 > 1e-08
+                  residual [ 3 ] = 0.000773765 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (146, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 142 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00019398 > 1e-08
+                  residual [ 1 ] = 0.00105449 > 1e-08
+                  residual [ 2 ] = 0.00012506 > 1e-08
+                  residual [ 3 ] = 0.000525313 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (147, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 143 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000114481 > 1e-08
+                  residual [ 1 ] = 0.000649138 > 1e-08
+                  residual [ 2 ] = 7.43769e-05 > 1e-08
+                  residual [ 3 ] = 0.00032208 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (148, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 144 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 6.71879e-05 > 1e-08
+                  residual [ 1 ] = 0.000385326 > 1e-08
+                  residual [ 2 ] = 4.44658e-05 > 1e-08
+                  residual [ 3 ] = 0.000190474 > 1e-08
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (149, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 145 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 6.11923e-05 > 1e-08
+                  residual [ 1 ] = 0.000322464 > 1e-08
+                  residual [ 2 ] = 4.01525e-05 > 1e-08
+                  residual [ 3 ] = 0.000160904 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (150, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 146 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 4.90712e-05 > 1e-08
+                  residual [ 1 ] = 0.00025095 > 1e-08
+                  residual [ 2 ] = 3.17709e-05 > 1e-08
+                  residual [ 3 ] = 0.00012595 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (151, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 147 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 3.94315e-05 > 1e-08
+                  residual [ 1 ] = 0.000202707 > 1e-08
+                  residual [ 2 ] = 2.54704e-05 > 1e-08
+                  residual [ 3 ] = 0.000101793 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (152, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 148 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 2.85169e-05 > 1e-08
+                  residual [ 1 ] = 0.000145707 > 1e-08
+                  residual [ 2 ] = 1.82799e-05 > 1e-08
+                  residual [ 3 ] = 7.33335e-05 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (153, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 149 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1.63623e-05 > 1e-08
+                  residual [ 1 ] = 8.36881e-05 > 1e-08
+                  residual [ 2 ] = 1.04447e-05 > 1e-08
+                  residual [ 3 ] = 4.21546e-05 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (154, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 150 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1.06283e-05 > 1e-08
+                  residual [ 1 ] = 5.41978e-05 > 1e-08
+                  residual [ 2 ] = 6.76688e-06 > 1e-08
+                  residual [ 3 ] = 2.73206e-05 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (155, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 151 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 6.08466e-06 > 1e-08
+                  residual [ 1 ] = 3.1068e-05 > 1e-08
+                  residual [ 2 ] = 3.87369e-06 > 1e-08
+                  residual [ 3 ] = 1.56546e-05 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (156, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 152 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 5.14747e-06 > 1e-08
+                  residual [ 1 ] = 2.62459e-05 > 1e-08
+                  residual [ 2 ] = 3.27774e-06 > 1e-08
+                  residual [ 3 ] = 1.32233e-05 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (157, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 153 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 2.98045e-06 > 1e-08
+                  residual [ 1 ] = 1.51586e-05 > 1e-08
+                  residual [ 2 ] = 1.89601e-06 > 1e-08
+                  residual [ 3 ] = 7.63917e-06 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (158, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 154 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 2.09389e-06 > 1e-08
+                  residual [ 1 ] = 1.06367e-05 > 1e-08
+                  residual [ 2 ] = 1.33163e-06 > 1e-08
+                  residual [ 3 ] = 5.36074e-06 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (159, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 155 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1.41562e-06 > 1e-08
+                  residual [ 1 ] = 7.18e-06 > 1e-08
+                  residual [ 2 ] = 8.99576e-07 > 1e-08
+                  residual [ 3 ] = 3.62042e-06 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (160, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 156 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 9.81544e-07 > 1e-08
+                  residual [ 1 ] = 4.96753e-06 > 1e-08
+                  residual [ 2 ] = 6.22432e-07 > 1e-08
+                  residual [ 3 ] = 2.50638e-06 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (161, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 157 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 7.08047e-07 > 1e-08
+                  residual [ 1 ] = 3.59007e-06 > 1e-08
+                  residual [ 2 ] = 4.48948e-07 > 1e-08
+                  residual [ 3 ] = 1.81112e-06 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (162, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 158 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 4.51376e-07 > 1e-08
+                  residual [ 1 ] = 2.28658e-06 > 1e-08
+                  residual [ 2 ] = 2.86159e-07 > 1e-08
+                  residual [ 3 ] = 1.15371e-06 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (163, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 159 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 2.63523e-07 > 1e-08
+                  residual [ 1 ] = 1.33488e-06 > 1e-08
+                  residual [ 2 ] = 1.671e-07 > 1e-08
+                  residual [ 3 ] = 6.73499e-07 > 1e-08
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (164, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 160 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1.34522e-07 > 1e-08
+                  residual [ 1 ] = 6.81324e-07 > 1e-08
+                  residual [ 2 ] = 8.52976e-08 > 1e-08
+                  residual [ 3 ] = 3.43765e-07 > 1e-08
+
+Hey LS PPOWER = 10, LS Latency = 1
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+GMRES ]> GMRES has recived data from LS
+GMRES ]>: GMRES rank = 0, data[0] = 15.000000
+GMRES ]>: GMRES rank = 0, data[1] = 48.525754
+GMRES ]>: GMRES rank = 0, data[2] = 0.020607
+GMRES ]>: GMRES rank = 0, data[3] = -0.005898
+GMRES ]>: GMRES rank = 0, data[4] = 0.003993
+GMRES ]>: GMRES rank = 0, data[5] = -0.002508
+GMRES ]>: GMRES rank = 0, data[6] = 0.001583
+GMRES ]>: GMRES rank = 0, data[7] = -0.000998
+GMRES ]>: GMRES rank = 0, data[8] = 0.000632
+GMRES ]>: GMRES rank = 0, data[9] = -0.000396
+GMRES ]>: GMRES rank = 0, data[10] = 0.000253
+GMRES ]>: GMRES rank = 0, data[11] = -0.000154
+GMRES ]>: GMRES rank = 0, data[12] = 0.000099
+GMRES ]>: GMRES rank = 0, data[13] = -0.000054
+GMRES ]>: GMRES rank = 0, data[14] = 0.000037
+GMRES ]>: GMRES rank = 0, data[15] = -0.000017
+GMRES ]>: GMRES rank = 0, data[16] = 0.000011
+GMRES ]>: GMRES rank = 0, data[17] = 14.707027
+GMRES ]>: GMRES rank = 0, data[18] = 33.637429
+GMRES ]>: GMRES rank = 0, data[19] = 31.260607
+GMRES ]>: GMRES rank = 0, data[20] = 31.401005
+GMRES ]>: GMRES rank = 0, data[21] = 31.392121
+GMRES ]>: GMRES rank = 0, data[22] = 31.392681
+GMRES ]>: GMRES rank = 0, data[23] = 31.392646
+GMRES ]>: GMRES rank = 0, data[24] = 31.392648
+GMRES ]>: GMRES rank = 0, data[25] = 31.392648
+GMRES ]>: GMRES rank = 0, data[26] = 31.392648
+GMRES ]>: GMRES rank = 0, data[27] = 31.392648
+GMRES ]>: GMRES rank = 0, data[28] = 31.392648
+GMRES ]>: GMRES rank = 0, data[29] = 31.392648
+GMRES ]>: GMRES rank = 0, data[30] = 31.392648
+GMRES ]>: GMRES rank = 0, data[31] = 31.392648
+GMRES ]>: GMRES rank = 0, data[32] = 0.000000
+GMRES ]>: GMRES rank = 0, data[33] = -4.223374
+GMRES ]>: GMRES rank = 0, data[34] = -1.846553
+GMRES ]>: GMRES rank = 0, data[35] = -1.986951
+GMRES ]>: GMRES rank = 0, data[36] = -1.978067
+GMRES ]>: GMRES rank = 0, data[37] = -1.978627
+GMRES ]>: GMRES rank = 0, data[38] = -1.978591
+GMRES ]>: GMRES rank = 0, data[39] = -1.978593
+GMRES ]>: GMRES rank = 0, data[40] = -1.978593
+GMRES ]>: GMRES rank = 0, data[41] = -1.978593
+GMRES ]>: GMRES rank = 0, data[42] = -1.978593
+GMRES ]>: GMRES rank = 0, data[43] = -1.978593
+GMRES ]>: GMRES rank = 0, data[44] = -1.978593
+GMRES ]>: GMRES rank = 0, data[45] = -1.978593
+GMRES ]>: GMRES rank = 0, data[46] = -1.978593
+ Tpetra::CrsMatrix (Kokkos refactor):
+  Template parameters:
+   Scalar: complex<double>
+   LocalOrdinal: int
+   GlobalOrdinal: int
+   Node: Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace>
+  isFillComplete: true
+  Global dimensions: [300, 300]
+  Global number of entries: 2828
+  Global number of diagonal entries: 300
+  Global max number of entries in a row: 11
+  
+  Row Map:
+  
+   "Tpetra::Map":
+    Template parameters:
+     LocalOrdinal: int
+     GlobalOrdinal: int
+     Node: Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace>
+    Global number of entries: 300
+    Minimum global index: 0
+    Maximum global index: 299
+    Index base: 0
+    Number of processes: 1
+    Uniform: true
+    Contiguous: true
+    Distributed: false
+  Column Map: same as row Map
+  Domain Map: same as row Map
+  Range Map: same as domain Map
+  Process rank: 0
+   Number of allocated entries: 2828
+   Number of entries: 2828
+   Number of diagonal entries: 300
+   Max number of entries per row: 11
+
+numVectors = : 4
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+r1_tmp_norm[0] = 0.055067
+r1_tmp_norm[0] = 0.056291
+r1_tmp_norm[0] = 0.058216
+r1_tmp_norm[0] = 0.059203
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+r1_tmp_norm[1] = 0.002803
+r1_tmp_norm[1] = 0.003001
+r1_tmp_norm[1] = 0.003090
+r1_tmp_norm[1] = 0.003213
+r1_tmp_norm[2] = 0.000134
+r1_tmp_norm[2] = 0.000149
+r1_tmp_norm[2] = 0.000151
+r1_tmp_norm[2] = 0.000160
+r1_tmp_norm[3] = 0.000006
+r1_tmp_norm[3] = 0.000007
+r1_tmp_norm[3] = 0.000007
+r1_tmp_norm[3] = 0.000008
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+r1_tmp_norm[4] = 0.000000
+r1_tmp_norm[4] = 0.000000
+r1_tmp_norm[4] = 0.000000
+r1_tmp_norm[4] = 0.000000
+r1_tmp_norm[5] = 0.000000
+r1_tmp_norm[5] = 0.000000
+r1_tmp_norm[5] = 0.000000
+r1_tmp_norm[5] = 0.000000
+r1_tmp_norm[6] = 0.000000
+r1_tmp_norm[6] = 0.000000
+r1_tmp_norm[6] = 0.000000
+r1_tmp_norm[6] = 0.000000
+r1_tmp_norm[7] = 0.000000
+r1_tmp_norm[7] = 0.000000
+r1_tmp_norm[7] = 0.000000
+r1_tmp_norm[7] = 0.000000
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+r1_tmp_norm[8] = 0.000000
+r1_tmp_norm[8] = 0.000000
+r1_tmp_norm[8] = 0.000000
+r1_tmp_norm[8] = 0.000000
+r1_tmp_norm[9] = 0.000000
+r1_tmp_norm[9] = 0.000000
+r1_tmp_norm[9] = 0.000000
+r1_tmp_norm[9] = 0.000000
+The GMRES Restarted Residual is updated by the LEAST SQUARE Polynomial METHOD
+
+Belos::StatusTestGeneralOutput: Passed
+  (Num calls,Mod test,State test): (165, 1, Passed Failed Undefined)
+   Passed.......OR Combination -> 
+     OK...........Number of Iterations = 160 < 5000
+     Converged....(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 4.64519e-14 < 1e-08
+                  residual [ 1 ] = 6.40189e-14 < 1e-08
+                  residual [ 2 ] = 4.5968e-14 < 1e-08
+                  residual [ 3 ] = 6.82911e-14 < 1e-08
+
+Passed.......OR Combination -> 
+  OK...........Number of Iterations = 160 < 5000
+  Converged....(2-Norm Res Vec) / (2-Norm Prec Res0)
+               residual [ 0 ] = 4.64519e-14 < 1e-08
+               residual [ 1 ] = 6.40189e-14 < 1e-08
+               residual [ 2 ] = 4.5968e-14 < 1e-08
+               residual [ 3 ] = 6.82911e-14 < 1e-08
+
+=================================================================================
+
+                      TimeMonitor results over 1 processor
+
+Timer Name                                            Global time (num calls)    
+---------------------------------------------------------------------------------
+complex<double>: BlockGmresSolMgr total solve time    1.934 (1)                  
+complex<double>: DGKS[2]: Ortho (Inner Product)       0.1633 (815)               
+complex<double>: DGKS[2]: Ortho (Norm)                0.2751 (1970)              
+complex<double>: DGKS[2]: Ortho (Update)              0.1513 (815)               
+complex<double>: DGKS[2]: Orthogonalization           0.7677 (165)               
+complex<double>: Operation Op*x                       0.1537 (166)               
+complex<double>: Operation Prec*x                     0 (0)                      
+=================================================================================
+Solving TIME = 1.938268
+GMRES ]> This GMRES Component is converged
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+GMRES ]> GMRES send exit signal
+info===1895972000
+$} Ellipse Allocating work memory 14
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+aire = 963506.173504
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Info ]> LS Receive signal information from Father
+Info ]> LS exit
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 15
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Main ]> Father Receive exit type from GMRES 0 Component = 666
+Main ]> Father send exit type to ERAM and LS Component
+Main ]> Father has final exit signal to GMRES Component
+-------------------------------------------------------------------------------
+                               Remove Application
+-------------------------------------------------------------------------------
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Evals[1] = 52.186156 + 30.731809i
+Evals[2] = 55.727643 + 30.544014i
+Evals[3] = 59.522857 + 30.531642i
+Evals[4] = 46.527100 + 29.888497i
+Evals[5] = 62.712443 + 28.520291i
+Evals[6] = 41.207198 + 28.414014i
+Evals[7] = 37.093932 + 26.799013i
+Evals[8] = 63.753374 + 26.797941i
+Evals[9] = 67.766798 + 25.240990i
+Evals[10] = 32.617288 + 24.998507i
+Evals[11] = 29.145205 + 23.533843i
+Evals[12] = 69.719258 + 21.572167i
+Evals[13] = 26.042915 + 21.517551i
+Evals[14] = 23.466907 + 19.988808i
+Evals[15] = 70.253463 + 19.045678i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Info ]> ERAM Receive signal information from Father
+Info ]> ERAM exit
+GMRES ]> Close of GMRES after waiting a little instant
+Main ]> Main Free the Arnoldi Components after waiting a little instant

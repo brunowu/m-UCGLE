@@ -15,24 +15,19 @@
 #include "BelosLinearProblem.hpp"
 #include "BelosTpetraAdapter.hpp"
 
-#include "include/Solvers/GMRES/BelosBlockGmresLsSolMgr.hpp"
+#include "BelosBlockGmresSolMgr.hpp"
 
 // I/O for Matrix-Market files
 #include <MatrixMarket_Tpetra.hpp>
 #include <Tpetra_Import.hpp>
 
-#include "include/Solvers/GMRES/LSResUpdate.hpp"
-
-#include "include/Libs/mpi_lsa_com.hpp"
-
 // SMG2S test matrix generation with given spectra
-#include "include/SMG2S/smg2s/smg2s.h"
+#include "../include/SMG2S/smg2s/smg2s.h"
 
 // SMG2S interface to Trilinos/teptra csr sparse matrix
-#include "include/SMG2S/interface/Trilinos/trilinos_interface.hpp"
+#include "../include/SMG2S/interface/Trilinos/trilinos_interface.hpp"
 
 #include <ctime>
-
 
 typedef std::complex<double>                  ST;
 
@@ -66,16 +61,13 @@ int main(int argc, char *argv[]){
 	Teuchos::RCP<const Teuchos::Comm<int> > comm = Tpetra::getDefaultComm();
 	int myRank = comm->getRank();
 
-  int grank, gsize;
-  int type = 666;
-  int exit_type = 0;
+    int grank, gsize;
+    int type = 666;
+    int exit_type = 0;
 
-  MPI_Comm COMM_FATHER;
 
-  MPI_Comm_size( MPI_COMM_WORLD, &gsize );
-  MPI_Comm_rank( MPI_COMM_WORLD, &grank );
-
-  MPI_Comm_get_parent( &COMM_FATHER );
+    MPI_Comm_size( MPI_COMM_WORLD, &gsize );
+    MPI_Comm_rank( MPI_COMM_WORLD, &grank );
 
 	Teuchos::oblackholestream blackhole;
 
@@ -134,8 +126,7 @@ int main(int argc, char *argv[]){
 
 
 	cmdp.setOption("ksp-lsp-degree",&lsPower,"Least Square polynomial degree for preconditioning.");
-        cmdp.setOption("ksp-lsp-latency",&latency,"Latency of Least Square polynomial preconditioning to apply.");
-
+    cmdp.setOption("ksp-lsp-latency",&latency,"Latency of Least Square polynomial preconditioning to apply.");
 	cmdp.setOption("ksp-use-lsp","ksp-no-use-lsp",&lspuse, "Whether to use LS polynomial preconditioning.");
 
 	if (cmdp.parse(argc,argv) != Teuchos::CommandLineProcessor::PARSE_SUCCESSFUL) {
@@ -154,8 +145,8 @@ int main(int argc, char *argv[]){
  	mptestpl.set( "Num Blocks", numblocks);
 	
 	mptestpl.set("LS Polynomial Degree", lsPower);
-  mptestpl.set("LS Apply Latency", latency);
-  mptestpl.set("LS USE", lspuse);
+    mptestpl.set("LS Apply Latency", latency);
+    mptestpl.set("LS USE", lspuse);
 
 	mptestpl.set<MT>( "Convergence Tolerance", tol );
 	mptestpl.set( "Timer Label",  Teuchos::typeName(ONE) );
@@ -250,7 +241,6 @@ int main(int argc, char *argv[]){
 	double rnd_r, rnd_i;
 	GO i; 
 	int j;
-//	std::srand(std::time(0));
 	for(j = 0; j < numVectors; j++){
 		std::srand((i + j)*1.2345);
 		for(i = 0; i < nrows; i++){
@@ -258,7 +248,6 @@ int main(int argc, char *argv[]){
 			rnd_i = (double)std::rand()/RAND_MAX;
 			v.real(rnd_r);
 			v.imag(rnd_i);
-//			X->replaceGlobalValue(i, j, v);
 		}		
 	}
 
@@ -280,7 +269,6 @@ int main(int argc, char *argv[]){
 
 	TEUCHOS_TEST_FOR_EXCEPT(problem->setProblem() == false);
 
-//  LSResUpdate(problem);
 
 
   t2 = MPI_Wtime();
@@ -334,19 +322,6 @@ int main(int argc, char *argv[]){
 		}
 	}
   
-    usleep(5000000);
-
-  mpi_lsa_com_type_send(&COMM_FATHER, &type);
-
-  if(grank == 0){
-    printf("GMRES ]> GMRES send exit signal\n");
-  }
-
- 
-    usleep(1000000);
-  
-
-  MPI_Comm_free(&COMM_FATHER);
 
   printf("GMRES ]> Close of GMRES after waiting a little instant\n");
 

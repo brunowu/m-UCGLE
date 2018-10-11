@@ -2,4 +2,63 @@ mpirun -np 1 ./test.exe -nb_gmres 1 -proc_gmres 1 -nb_arnoldi 1 -proc_arnoldi 1 
 
 mpirun -np 1 ./test.exe -nb_gmres 1 -proc_gmres 1 -nb_arnoldi 1 -proc_arnoldi 1 -gmres_exec ./gmres.exe -arnoldi_exec ./arnoldi.exe -lsqr_exec ./lsqr.exe --filename=\"utm300_cp.mtx\" --eps-quiet --eps-nodebug --eps-exsitu --eps-sort=\"LI\" --eps-nonherm --eps-nev=15 --eps-blockSize=1 --eps-tol=0.1 --eps-no-print-matrix --eps-all-print --eps-maxRestarts=50 --ksp-nodebug --ksp-frequency=1 --ksp-tol=1e-10 --ksp-num-rhs=1 --ksp-block-size=1 --ksp-no-precond --ksp-num-blocks=200 --ksp-fixed-tol --ksp-no-print-matrix --ksp-all-print --ksp-no-dump-data --ksp-lsp-degree=3 --ksp-lsp-latency=2 --ksp-use-lsp --eps-usesmg2s  --eps-smg2s-size=300 --eps-smg2s-continous=4 --eps-smg2s-lbandwidth=4 --eps-smg2s-spectra-file="./matGen/spectrum.txt" --ksp-usesmg2s  --ksp-smg2s-size=300 --ksp-smg2s-continous=4  --ksp-smg2s-lbandwidth=4 --ksp-smg2s-spectra-file="./matGen/spectrum.txt" > test_smg2s.txt --DEBUG
 
+mpirun -np 1 ./test.exe -nb_gmres 1 -proc_gmres 1 -nb_arnoldi 1 -proc_arnoldi 1 -gmres_exec ./gmres.exe -arnoldi_exec ./arnoldi.exe -lsqr_exec ./lsqr.exe --filename=\"utm300_cp.mtx\" --eps-quiet --eps-nodebug --eps-exsitu --eps-sort=\"LI\" --eps-nonherm --eps-nev=15 --eps-blockSize=1 --eps-tol=0.1 --eps-no-print-matrix --eps-all-print --eps-maxRestarts=50 --ksp-nodebug --ksp-frequency=1 --ksp-tol=1e-8 --ksp-num-rhs=4 --ksp-block-size=4 --ksp-no-precond --ksp-num-blocks=40 --ksp-fixed-tol --ksp-no-print-matrix --ksp-all-print --ksp-no-dump-data --ksp-lsp-degree=1 --ksp-lsp-latency=4 --ksp-no-use-lsp --eps-usesmg2s  --eps-smg2s-size=300 --eps-smg2s-continous=3 --eps-smg2s-lbandwidth=4 --eps-smg2s-spectra-file="spectrum2.txt" --ksp-usesmg2s  --ksp-smg2s-size=300 --ksp-smg2s-continous=3  --ksp-smg2s-lbandwidth=4 --ksp-smg2s-spectra-file="spectrum2.txt" > test_smg2s.txt
 
+Test1 :
+
+
+1. random_value =  (double)rand()/RAND_MAX*0.0003+0.00001;
+   random_value2 = (double)rand()/RAND_MAX*0.0003-0.00011;
+2. random_value =  (double)rand()/RAND_MAX*0.00015+0.00001;
+   random_value2 = (double)rand()/RAND_MAX*0.00015-0.00011;
+
+Test 1: 
+random_value =  (double)rand()/RAND_MAX*45+21;
+random_value2 = (double)rand()/RAND_MAX*45-21;
+
+mpirun -np 1 ./test.exe -nb_gmres 1 -proc_gmres 1 -nb_arnoldi 1 -proc_arnoldi 1 -gmres_exec ./gmres.exe -arnoldi_exec ./arnoldi.exe -lsqr_exec ./lsqr.exe --filename=\"utm300_cp.mtx\" --eps-quiet --eps-nodebug --eps-exsitu --eps-sort=\"LI\" --eps-nonherm --eps-nev=15 --eps-blockSize=1 --eps-tol=0.1 --eps-no-print-matrix --eps-all-print --eps-maxRestarts=50 --ksp-nodebug --ksp-frequency=1 --ksp-tol=1e-8 --ksp-num-rhs=64 --ksp-block-size=64 --ksp-no-precond --ksp-num-blocks=40 --ksp-fixed-tol --ksp-no-print-matrix --ksp-all-print --ksp-no-dump-data --ksp-lsp-degree=10 --ksp-lsp-latency=1 --ksp-no-use-lsp --eps-usesmg2s  --eps-smg2s-size=300 --eps-smg2s-continous=3 --eps-smg2s-lbandwidth=4 --eps-smg2s-spectra-file="spectrum2.txt" --ksp-usesmg2s  --ksp-smg2s-size=300 --ksp-smg2s-continous=3  --ksp-smg2s-lbandwidth=4 --ksp-smg2s-spectra-file="spectrum2.txt"
+
+Test 2:   
+
+random_value =  (double)rand()/RAND_MAX*2.5+0.5;
+random_value2 = (double)rand()/RAND_MAX*2.5-0.5;
+
+mpirun -np 1 ./test.exe -nb_gmres 1 -proc_gmres 1 -nb_arnoldi 1 -proc_arnoldi 1 -gmres_exec ./gmres.exe -arnoldi_exec ./arnoldi.exe -lsqr_exec ./lsqr.exe --filename=\"utm300_cp.mtx\" --eps-quiet --eps-nodebug --eps-exsitu --eps-sort=\"LI\" --eps-nonherm --eps-nev=15 --eps-blockSize=1 --eps-tol=0.1 --eps-no-print-matrix --eps-all-print --eps-maxRestarts=50 --ksp-nodebug --ksp-frequency=1 --ksp-tol=1e-8 --ksp-num-rhs=16 --ksp-block-size=16 --ksp-no-precond --ksp-num-blocks=40 --ksp-fixed-tol --ksp-no-print-matrix --ksp-all-print --ksp-no-dump-data --ksp-lsp-degree=1 --ksp-lsp-latency=1 --ksp-use-lsp --eps-usesmg2s  --eps-smg2s-size=300 --eps-smg2s-continous=3 --eps-smg2s-lbandwidth=4 --eps-smg2s-spectra-file="spectrum2.txt" --ksp-usesmg2s  --ksp-smg2s-size=300 --ksp-smg2s-continous=3  --ksp-smg2s-lbandwidth=4 --ksp-smg2s-spectra-file="spectrum2.txt"
+
+Test 3:
+
+random_value =  (double)rand()/RAND_MAX*5+0.2;
+random_value2 = (double)rand()/RAND_MAX*5-2.5;
+
+mpirun -np 1 ./test.exe -nb_gmres 1 -proc_gmres 1 -nb_arnoldi 1 -proc_arnoldi 1 -gmres_exec ./gmres.exe -arnoldi_exec ./arnoldi.exe -lsqr_exec ./lsqr.exe --filename=\"utm300_cp.mtx\" --eps-quiet --eps-nodebug --eps-exsitu --eps-sort=\"LI\" --eps-nonherm --eps-nev=15 --eps-blockSize=1 --eps-tol=0.1 --eps-no-print-matrix --eps-all-print --eps-maxRestarts=50 --ksp-nodebug --ksp-frequency=1 --ksp-tol=1e-8 --ksp-num-rhs=4 --ksp-block-size=4 --ksp-no-precond --ksp-num-blocks=40 --ksp-fixed-tol --ksp-no-print-matrix --ksp-all-print --ksp-no-dump-data --ksp-lsp-degree=10 --ksp-lsp-latency=1 --ksp-use-lsp --eps-usesmg2s  --eps-smg2s-size=300 --eps-smg2s-continous=3 --eps-smg2s-lbandwidth=4 --eps-smg2s-spectra-file="spectrum2.txt" --ksp-usesmg2s  --ksp-smg2s-size=300 --ksp-smg2s-continous=3  --ksp-smg2s-lbandwidth=4 --ksp-smg2s-spectra-file="spectrum2.txt"
+
+Test 4:
+
+random_value =  (double)rand()/RAND_MAX*(-5)-0.2;
+random_value2 = (double)rand()/RAND_MAX*5-2.5;
+
+mpirun -np 1 ./test.exe -nb_gmres 1 -proc_gmres 1 -nb_arnoldi 1 -proc_arnoldi 1 -gmres_exec ./gmres.exe -arnoldi_exec ./arnoldi.exe -lsqr_exec ./lsqr.exe --filename=\"utm300_cp.mtx\" --eps-quiet --eps-nodebug --eps-exsitu --eps-sort=\"LI\" --eps-nonherm --eps-nev=15 --eps-blockSize=1 --eps-tol=0.1 --eps-no-print-matrix --eps-all-print --eps-maxRestarts=50 --ksp-nodebug --ksp-frequency=1 --ksp-tol=1e-8 --ksp-num-rhs=64 --ksp-block-size=64 --ksp-no-precond --ksp-num-blocks=40 --ksp-fixed-tol --ksp-no-print-matrix --ksp-all-print --ksp-no-dump-data --ksp-lsp-degree=10 --ksp-lsp-latency=1 --ksp-no-use-lsp --eps-usesmg2s  --eps-smg2s-size=300 --eps-smg2s-continous=3 --eps-smg2s-lbandwidth=4 --eps-smg2s-spectra-file="spectrum2.txt" --ksp-usesmg2s  --ksp-smg2s-size=300 --ksp-smg2s-continous=3  --ksp-smg2s-lbandwidth=4 --ksp-smg2s-spectra-file="spectrum2.txt"
+
+Test 5:
+
+random_value =  (double)rand()/RAND_MAX*(-0.2)-0.03;
+random_value2 = (double)rand()/RAND_MAX*0.4-0.2;
+
+mpirun -np 1 ./test.exe -nb_gmres 1 -proc_gmres 1 -nb_arnoldi 1 -proc_arnoldi 1 -gmres_exec ./gmres.exe -arnoldi_exec ./arnoldi.exe -lsqr_exec ./lsqr.exe --filename=\"utm300_cp.mtx\" --eps-quiet --eps-nodebug --eps-exsitu --eps-sort=\"LI\" --eps-nonherm --eps-nev=15 --eps-blockSize=1 --eps-tol=0.1 --eps-no-print-matrix --eps-all-print --eps-maxRestarts=50 --ksp-nodebug --ksp-frequency=1 --ksp-tol=1e-8 --ksp-num-rhs=64 --ksp-block-size=64 --ksp-no-precond --ksp-num-blocks=40 --ksp-fixed-tol --ksp-no-print-matrix --ksp-all-print --ksp-no-dump-data --ksp-lsp-degree=10 --ksp-lsp-latency=1 --ksp-no-use-lsp --eps-usesmg2s  --eps-smg2s-size=300 --eps-smg2s-continous=3 --eps-smg2s-lbandwidth=4 --eps-smg2s-spectra-file="spectrum2.txt" --ksp-usesmg2s  --ksp-smg2s-size=300 --ksp-smg2s-continous=3  --ksp-smg2s-lbandwidth=4 --ksp-smg2s-spectra-file="spectrum2.txt"
+
+Test 6:
+
+random_value =  (double)rand()/RAND_MAX*(-6.1)-3.2;
+random_value2 = (double)rand()/RAND_MAX*4.2-2.1;
+
+mpirun -np 1 ./test.exe -nb_gmres 1 -proc_gmres 1 -nb_arnoldi 1 -proc_arnoldi 1 -gmres_exec ./gmres.exe -arnoldi_exec ./arnoldi.exe -lsqr_exec ./lsqr.exe --filename=\"utm300_cp.mtx\" --eps-quiet --eps-nodebug --eps-exsitu --eps-sort=\"LI\" --eps-nonherm --eps-nev=15 --eps-blockSize=1 --eps-tol=0.1 --eps-no-print-matrix --eps-all-print --eps-maxRestarts=50 --ksp-nodebug --ksp-frequency=1 --ksp-tol=1e-8 --ksp-num-rhs=64 --ksp-block-size=64 --ksp-no-precond --ksp-num-blocks=40 --ksp-fixed-tol --ksp-no-print-matrix --ksp-all-print --ksp-no-dump-data --ksp-lsp-degree=10 --ksp-lsp-latency=1 --ksp-no-use-lsp --eps-usesmg2s  --eps-smg2s-size=300 --eps-smg2s-continous=3 --eps-smg2s-lbandwidth=4 --eps-smg2s-spectra-file="spectrum2.txt" --ksp-usesmg2s  --ksp-smg2s-size=300 --ksp-smg2s-continous=3  --ksp-smg2s-lbandwidth=4 --ksp-smg2s-spectra-file="spectrum2.txt"
+
+
+
+----------------
+Scaling Test
+
+mpirun -np 1 ./test.exe -nb_gmres 1 -proc_gmres 2 -nb_arnoldi 1 -proc_arnoldi 1 -gmres_exec ./gmres.exe -arnoldi_exec ./arnoldi.exe -lsqr_exec ./lsqr.exe --filename=\"utm300_cp.mtx\" --eps-quiet --eps-nodebug --eps-exsitu --eps-sort=\"LI\" --eps-nonherm --eps-nev=15 --eps-blockSize=1 --eps-tol=0.1 --eps-no-print-matrix --eps-all-print --eps-maxRestarts=20 --ksp-nodebug --ksp-frequency=10 --ksp-tol=1e-8 --ksp-num-rhs=1 --ksp-block-size=1 --ksp-no-precond --ksp-num-blocks=50 --ksp-fixed-tol --ksp-no-print-matrix --ksp-all-print --ksp-no-dump-data --ksp-lsp-degree=10 --ksp-lsp-latency=1 --ksp-use-lsp --eps-usesmg2s  --eps-smg2s-size=300 --eps-smg2s-continous=4 --eps-smg2s-lbandwidth=4 --eps-smg2s-spectra-file="spectrum2.txt" --ksp-usesmg2s  --ksp-smg2s-size=300 --ksp-smg2s-continous=4  --ksp-smg2s-lbandwidth=4 --ksp-smg2s-spectra-file=" "
+
+
+mpirun -np 112 ./bgmres.exe --ksp-nodebug --ksp-frequency=10 --ksp-tol=1e-10 --ksp-num-rhs=64 --ksp-block-size=64 --ksp-no-precond --ksp-num-blocks=40 --ksp-fixed-tol --ksp-no-print-matrix --ksp-all-print --ksp-no-dump-data --ksp-usesmg2s --ksp-smg2s-size=112000 --ksp-smg2s-continous=2  --ksp-smg2s-lbandwidth=3 --ksp-smg2s-spectra-file=" "

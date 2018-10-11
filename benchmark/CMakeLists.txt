@@ -11,4 +11,12 @@ set(LINK_LIBRARIES ${Epetra_LIBRARIES} ${Anasazi_LIBRARIES} ${Amesos_LIBRARIES})
 add_executable(blockKrylovSchur blockKrylovSchur.cpp)
 target_link_libraries(blockKrylovSchur ${LINK_LIBRARIES})
 
+
+#set Belos libraries to link (LINK_LIBRARIES_GMRES)
+set(LINK_LIBRARIES_GMRES ${Tpetra_LIBRARIES} ${Teuchos_LIBRARIES} ${Belos_LIBRARIES})
+
+add_executable(bgmres.exe blockGMRES.cpp)
+
+target_link_libraries(bgmres.exe ${LINK_LIBRARIES_GMRES})
+
 INCLUDE(CPack)

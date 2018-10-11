@@ -18,10 +18,10 @@
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 Initialization ]> GMRES executable number is 1 
-Initialization ]> Each GMRES Proc number is 5 
+Initialization ]> Each GMRES Proc number is 2 
 Initialization ]> ERAM executable number is 1 
 Initialization ]> Each ERAM Proc number is 1 
-Initialization ]> Thus Total proc number = 1 + 1 + 1 * 5 + 1 * 1 = 8 
+Initialization ]> Thus Total proc number = 1 + 1 + 1 * 2 + 1 * 1 = 5 
 Initialization ]> GMRES executable name list is: [ ./gmres.exe  ]
 Initialization ]> ERAM executable name list is: [ ./arnoldi.exe  ]
 Initialization ]> LS executable name list is: [ ./lsqr.exe  ]
@@ -44,36 +44,2753 @@ Parser GMRES runtime Flag = --ksp-tol=3e-5
 Parser GMRES runtime Flag = --ksp-num-rhs=2  
 Parser GMRES runtime Flag = --ksp-block-size=2  
 Parser GMRES runtime Flag = --ksp-no-precond  
-Parser GMRES runtime Flag = --ksp-num-blocks=70  
+Parser GMRES runtime Flag = --ksp-num-blocks=200  
 Parser GMRES runtime Flag = --ksp-fixed-tol  
 Parser GMRES runtime Flag = --ksp-no-print-matrix  
 Parser GMRES runtime Flag = --ksp-all-print  
 Parser GMRES runtime Flag = --ksp-no-dump-data  
-Parser GMRES runtime Flag = --ksp-lsp-degree=2  
+Parser GMRES runtime Flag = --ksp-lsp-degree=4  
 Parser GMRES runtime Flag = --ksp-lsp-latency=2  
-Parser GMRES runtime Flag = --ksp-no-use-lsp  
+Parser GMRES runtime Flag = --ksp-use-lsp  
 -------------------------------------------------------------------------------
                            Start Spawning Executables
 -------------------------------------------------------------------------------
-Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name romeo1 and rank 0!
-Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name romeo1 and rank 1!
-Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name romeo1 and rank 2!
-Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name romeo1 and rank 3!
-Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name romeo1 and rank 4!
+Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name romeologin1.ro18.urca and rank 0!
+Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name romeologin1.ro18.urca and rank 1!
 Testing Scalar == complex<double>
 GMRES ]> Building problem...
 GMRES ]> Matrix Loaded ... complex<double>
 
 Tpetra::CrsMatrix (Kokkos refactor): {isFillComplete: true, global dimensions: [300, 300], global number of entries: 3155}
 
-Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name romeo1 and rank 0!
+Building TIME = 0.016424
+GMRES ]> Construct solver ...
+Construct TIME = 0.000168
+GMRES ]> Solving problem ...
+Belos::BlockGmresSolMgr::solve():  Warning! Requested Krylov subspace dimension is larger than operator dimension!
+ The maximum number of blocks allowed for the Krylov subspace will be adjusted to 149
+LS POWER = 4, LS LATENCY = 2
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (1, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 0 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 1 > 3e-05
+                  residual [ 1 ] = 1 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (2, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 1 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.474678 > 3e-05
+                  residual [ 1 ] = 0.42886 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (3, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 2 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.354556 > 3e-05
+                  residual [ 1 ] = 0.312251 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (4, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 3 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.369509 > 3e-05
+                  residual [ 1 ] = 0.260532 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (5, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 4 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.362114 > 3e-05
+                  residual [ 1 ] = 0.231736 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (6, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 5 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.347069 > 3e-05
+                  residual [ 1 ] = 0.20617 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (7, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 6 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.333921 > 3e-05
+                  residual [ 1 ] = 0.173188 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (8, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 7 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.319975 > 3e-05
+                  residual [ 1 ] = 0.146751 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (9, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 8 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.292716 > 3e-05
+                  residual [ 1 ] = 0.128166 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (10, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 9 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.248673 > 3e-05
+                  residual [ 1 ] = 0.107234 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (11, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 10 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.218771 > 3e-05
+                  residual [ 1 ] = 0.0957521 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (12, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 11 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.188718 > 3e-05
+                  residual [ 1 ] = 0.0867463 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (13, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 12 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.162598 > 3e-05
+                  residual [ 1 ] = 0.0753998 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (14, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 13 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.147404 > 3e-05
+                  residual [ 1 ] = 0.0693191 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (15, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 14 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.136919 > 3e-05
+                  residual [ 1 ] = 0.0622703 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (16, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 15 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.128212 > 3e-05
+                  residual [ 1 ] = 0.0587378 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (17, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 16 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.116974 > 3e-05
+                  residual [ 1 ] = 0.0535972 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (18, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 17 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.11015 > 3e-05
+                  residual [ 1 ] = 0.0502916 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (19, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 18 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.105009 > 3e-05
+                  residual [ 1 ] = 0.0474627 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (20, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 19 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.103031 > 3e-05
+                  residual [ 1 ] = 0.0457086 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (21, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 20 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.102878 > 3e-05
+                  residual [ 1 ] = 0.0450567 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (22, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 21 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.102974 > 3e-05
+                  residual [ 1 ] = 0.0437396 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (23, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 22 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.105762 > 3e-05
+                  residual [ 1 ] = 0.0462988 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (24, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 23 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0855711 > 3e-05
+                  residual [ 1 ] = 0.0408397 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (25, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 24 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0812131 > 3e-05
+                  residual [ 1 ] = 0.0380897 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (26, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 25 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0724055 > 3e-05
+                  residual [ 1 ] = 0.0375503 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (27, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 26 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0779011 > 3e-05
+                  residual [ 1 ] = 0.0408139 > 3e-05
+
+Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name romeologin1.ro18.urca and rank 0!
 Info ]> The Comm world size of ERAM is 1 
 Parser the MATRIX file NAME = utm300_cp.mtx ! 
 Anasazi Version 12.12d
 
 Anasazi Scalar type == complex<double>
 ERAM ]> Building problem... complex<double>
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (28, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 27 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.087208 > 3e-05
+                  residual [ 1 ] = 0.0494337 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (29, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 28 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.129785 > 3e-05
+                  residual [ 1 ] = 0.0716215 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (30, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 29 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.220252 > 3e-05
+                  residual [ 1 ] = 0.122877 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (31, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 30 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.195372 > 3e-05
+                  residual [ 1 ] = 0.107525 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (32, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 31 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.118423 > 3e-05
+                  residual [ 1 ] = 0.0648332 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (33, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 32 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.101078 > 3e-05
+                  residual [ 1 ] = 0.0553071 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (34, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 33 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0869598 > 3e-05
+                  residual [ 1 ] = 0.0475686 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (35, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 34 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0604112 > 3e-05
+                  residual [ 1 ] = 0.0330485 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (36, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 35 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0455913 > 3e-05
+                  residual [ 1 ] = 0.0249781 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (37, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 36 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.039981 > 3e-05
+                  residual [ 1 ] = 0.0218905 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (38, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 37 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.038451 > 3e-05
+                  residual [ 1 ] = 0.0210553 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (39, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 38 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0378118 > 3e-05
+                  residual [ 1 ] = 0.0206972 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (40, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 39 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0361669 > 3e-05
+                  residual [ 1 ] = 0.0198032 > 3e-05
+
 ERAM ]> Matrix Loaded ... complex<double>
---------------------------------------------------------------------------
-mpirun noticed that process rank 1 with PID 26914 on node romeo1 exited on signal 6 (Aborted).
---------------------------------------------------------------------------
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (41, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 40 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0256493 > 3e-05
+                  residual [ 1 ] = 0.0140623 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (42, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 41 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0192285 > 3e-05
+                  residual [ 1 ] = 0.0105526 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (43, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 42 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0126099 > 3e-05
+                  residual [ 1 ] = 0.00691442 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (44, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 43 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.0104184 > 3e-05
+                  residual [ 1 ] = 0.00569123 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (45, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 44 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00847872 > 3e-05
+                  residual [ 1 ] = 0.00461191 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (46, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 45 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00653826 > 3e-05
+                  residual [ 1 ] = 0.00354628 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (47, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 46 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00479345 > 3e-05
+                  residual [ 1 ] = 0.00259925 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (48, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 47 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.004409 > 3e-05
+                  residual [ 1 ] = 0.00239242 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (49, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 48 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00457073 > 3e-05
+                  residual [ 1 ] = 0.00247874 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (50, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 49 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00401904 > 3e-05
+                  residual [ 1 ] = 0.00217855 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (51, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 50 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00305807 > 3e-05
+                  residual [ 1 ] = 0.00165197 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (52, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 51 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00233014 > 3e-05
+                  residual [ 1 ] = 0.00125498 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (53, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 52 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00178134 > 3e-05
+                  residual [ 1 ] = 0.000957096 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (54, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 53 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00129896 > 3e-05
+                  residual [ 1 ] = 0.000699246 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (55, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 54 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000926556 > 3e-05
+                  residual [ 1 ] = 0.000499834 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (56, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 55 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000834444 > 3e-05
+                  residual [ 1 ] = 0.000451813 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (57, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 56 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000773216 > 3e-05
+                  residual [ 1 ] = 0.000419246 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (58, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 57 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00068555 > 3e-05
+                  residual [ 1 ] = 0.00037191 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (59, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 58 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000498518 > 3e-05
+                  residual [ 1 ] = 0.000270255 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (60, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 59 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000307064 > 3e-05
+                  residual [ 1 ] = 0.000166444 > 3e-05
+
+-------------------------------------------------------------------------------
+                    Start Resolving Linear Systems by MUCGLE
+-------------------------------------------------------------------------------
+Info ]> The Comm world size of LS is 1 
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (61, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 60 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000321865 > 3e-05
+                  residual [ 1 ] = 0.000174144 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (62, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 61 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000261579 > 3e-05
+                  residual [ 1 ] = 0.000141575 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (63, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 62 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000191239 > 3e-05
+                  residual [ 1 ] = 0.000103558 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (64, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 63 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.000149768 > 3e-05
+                  residual [ 1 ] = 8.11001e-05 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (65, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 64 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 0.00010197 > 3e-05
+                  residual [ 1 ] = 5.51995e-05 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (66, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 65 < 5000
+     Unconverged..(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 7.7528e-05 > 3e-05
+                  residual [ 1 ] = 4.19525e-05 > 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (67, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 66 < 5000
+     Unconverged (LoA)(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 4.54085e-05 > 3e-05
+                  residual [ 1 ] = 2.4529e-05 < 3e-05
+
+
+Belos::StatusTestGeneralOutput: Failed
+  (Num calls,Mod test,State test): (68, 1, Passed Failed Undefined)
+   Failed.......OR Combination -> 
+     OK...........Number of Iterations = 67 < 5000
+     Unconverged (LoA)(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 3.16086e-05 > 3e-05
+                  residual [ 1 ] = 1.70667e-05 < 3e-05
+
+
+Belos::StatusTestGeneralOutput: Passed
+  (Num calls,Mod test,State test): (69, 1, Passed Failed Undefined)
+   Passed.......OR Combination -> 
+     OK...........Number of Iterations = 68 < 5000
+     Converged....(2-Norm Res Vec) / (2-Norm Prec Res0)
+                  residual [ 0 ] = 2.49794e-05 < 3e-05
+                  residual [ 1 ] = 1.34908e-05 < 3e-05
+
+Belos::BlockGmresSolMgr::solve(): Warning! Solver has experienced a loss of accuracy!
+Passed.......OR Combination -> 
+  OK...........Number of Iterations = 68 < 5000
+  Converged....(2-Norm Res Vec) / (2-Norm Prec Res0)
+               residual [ 0 ] = 2.49794e-05 < 3e-05
+               residual [ 1 ] = 1.34908e-05 < 3e-05
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===11921440
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+GMRES ]> Close of GMRES after waiting a little instant
+Main ]> Array receive from ERAM 0 Component
+Main ]> Father send array to LS, length = 10
+Main ]> Father has Array received from LS Component
+Main ]> Father has sent preconditioned parameters to GMRES Component
+Main ]> Father Receive exit type from GMRES 0 Component = 666
+Main ]> Father send exit type to ERAM and LS Component
+Main ]> Father has final exit signal to GMRES Component
+-------------------------------------------------------------------------------
+                               Remove Application
+-------------------------------------------------------------------------------
+info===0
+$} Ellipse Allocating work memory 6
+$} Ellipse Computing Edges
+----------------------
+$} Ellipse Research two points optimal ellipse
+$} Ellipse Research three points optimal ellipse
+Teuchos in Trilinos 12.12.1
+
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Info ]> LS Receive signal information from Father
+Info ]> LS exit
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Evals[1] = -0.444917 + 0.517996i
+Evals[2] = -0.830905 + 0.514121i
+Evals[3] = -0.776008 + 0.420672i
+Evals[4] = -0.739301 + 0.383432i
+Evals[5] = -0.466327 + 0.365766i
+Evals[6] = -0.287363 + 0.355562i
+Evals[7] = -0.557817 + 0.355268i
+Evals[8] = -0.182803 + 0.297065i
+Evals[9] = -1.121625 + 0.275130i
+Evals[10] = -1.298722 + 0.265428i
+
+
+Arnoldi ]> Arnoldi send eigenvalues to FATHER
+Info ]> ERAM Receive signal information from Father
+Info ]> ERAM exit
+Main ]> Main Free the Arnoldi Components after waiting a little instant
